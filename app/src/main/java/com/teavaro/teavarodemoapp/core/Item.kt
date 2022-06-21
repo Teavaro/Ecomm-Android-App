@@ -1,7 +1,8 @@
 package com.teavaro.teavarodemoapp.core
 
 data class Item (
-    var picture: Int,
+    var id: Int,
     var title: String,
-    var price: Float
+    var price: Float,
+    var picture: Int
 )

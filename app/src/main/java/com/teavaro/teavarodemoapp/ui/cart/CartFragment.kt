@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.teavaro.teavarodemoapp.core.Item
+import com.teavaro.teavarodemoapp.core.Store
 import com.teavaro.teavarodemoapp.databinding.FragmentCartBinding
 
 class CartFragment : Fragment() {
@@ -28,11 +29,7 @@ class CartFragment : Fragment() {
         _binding = FragmentCartBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val cartAdapter = CartAdapter(requireContext(), listOf(
-            Item(1, "puerco", 23.4f),
-            Item(2, "picadillo", 20.1f),
-            Item(3, "leche", 15.6f),
-        ))
+        val cartAdapter = CartAdapter(requireContext(), Store.getItemsCart())
         val lvItems = binding.listItems
         lvItems.adapter = cartAdapter
 

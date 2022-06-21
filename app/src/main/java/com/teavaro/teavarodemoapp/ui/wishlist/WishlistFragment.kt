@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.teavaro.teavarodemoapp.core.Item
+import com.teavaro.teavarodemoapp.core.Store
 import com.teavaro.teavarodemoapp.databinding.FragmentWishlistBinding
 import com.teavaro.teavarodemoapp.ui.shop.ShopAdapter
 
@@ -29,11 +30,7 @@ class WishlistFragment : Fragment() {
         _binding = FragmentWishlistBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val wishAdapter = WishAdapter(requireContext(), listOf(
-            Item(1, "puerco", 23.4f),
-            Item(2, "picadillo", 20.1f),
-            Item(3, "leche", 15.6f),
-        ))
+        val wishAdapter = WishAdapter(requireContext(), Store.getItemsWish())
         val lvItems = binding.listItems
         lvItems.adapter = wishAdapter
 
