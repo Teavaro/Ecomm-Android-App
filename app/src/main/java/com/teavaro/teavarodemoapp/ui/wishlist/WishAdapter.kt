@@ -7,7 +7,12 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import com.teavaro.teavarodemoapp.R
 import com.teavaro.teavarodemoapp.core.Item
+import com.teavaro.teavarodemoapp.core.Store
+import kotlinx.android.synthetic.main.item_cart.view.*
 import kotlinx.android.synthetic.main.item_wish.view.*
+import kotlinx.android.synthetic.main.item_wish.view.btnRemove
+import kotlinx.android.synthetic.main.item_wish.view.txtPrice
+import kotlinx.android.synthetic.main.item_wish.view.txtTitle
 
 class WishAdapter(context: Context,
                   private val listItems: List<Item>) :
@@ -19,6 +24,10 @@ class WishAdapter(context: Context,
         val item = listItems[position]
         layout.txtTitle.text = item.title
         layout.txtPrice.text = item.price.toString()
+
+        layout.btnRemove.setOnClickListener {
+            Store.removeItemFromWish(item.id)
+        }
 
         return layout
     }

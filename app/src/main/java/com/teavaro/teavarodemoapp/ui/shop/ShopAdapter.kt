@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import com.teavaro.teavarodemoapp.R
 import com.teavaro.teavarodemoapp.core.Item
+import com.teavaro.teavarodemoapp.core.Store
 import kotlinx.android.synthetic.main.item_shop.view.*
 
 class ShopAdapter(context: Context,
@@ -20,6 +21,14 @@ class ShopAdapter(context: Context,
         layout.txtTitle.text = item.title
         layout.txtPrice.text = item.price.toString()
         layout.imgPicture.setImageResource(R.drawable.prod_snapple)
+
+        layout.btnAddToCart.setOnClickListener {
+            Store.addItemToCart(item.id)
+        }
+
+        layout.btnAddToWish.setOnClickListener {
+            Store.addItemToWish(item.id)
+        }
 
         return layout
     }

@@ -7,7 +7,10 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import com.teavaro.teavarodemoapp.R
 import com.teavaro.teavarodemoapp.core.Item
+import com.teavaro.teavarodemoapp.core.Store
 import kotlinx.android.synthetic.main.item_cart.view.*
+import kotlinx.android.synthetic.main.item_cart.view.txtPrice
+import kotlinx.android.synthetic.main.item_cart.view.txtTitle
 
 class CartAdapter(context: Context,
                   private val listItems: List<Item>) :
@@ -19,6 +22,10 @@ class CartAdapter(context: Context,
         val item = listItems[position]
         layout.txtTitle.text = item.title
         layout.txtPrice.text = item.price.toString()
+
+        layout.btnRemove.setOnClickListener {
+            Store.removeItemFromCart(item.id)
+        }
 
         return layout
     }
