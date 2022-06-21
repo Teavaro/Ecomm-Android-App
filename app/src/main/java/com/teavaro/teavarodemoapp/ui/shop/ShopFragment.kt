@@ -7,7 +7,9 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.teavaro.teavarodemoapp.core.Item
 import com.teavaro.teavarodemoapp.databinding.FragmentShopBinding
+import com.teavaro.teavarodemoapp.ui.cart.CartAdapter
 
 class ShopFragment : Fragment() {
 
@@ -28,10 +30,14 @@ class ShopFragment : Fragment() {
         _binding = FragmentShopBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-//        val textView: TextView = binding.textShop
-//        shopViewModel.text.observe(viewLifecycleOwner) {
-//            textView.text = it
-//        }
+        val shopAdapter = ShopAdapter(requireContext(), listOf(
+            Item(1, "puerco", 23.4f),
+            Item(2, "picadillo", 20.1f),
+            Item(3, "leche", 15.6f),
+        ))
+        val lvItems = binding.listItems
+        lvItems.adapter = shopAdapter
+
         return root
     }
 

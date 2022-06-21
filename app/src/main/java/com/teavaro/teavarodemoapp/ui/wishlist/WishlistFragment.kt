@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.teavaro.teavarodemoapp.databinding.FragmentWishlistBinding
@@ -28,10 +27,10 @@ class WishlistFragment : Fragment() {
         _binding = FragmentWishlistBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-//        val textView: TextView = binding.textWishlist
-//        wishlistViewModel.text.observe(viewLifecycleOwner) {
-//            textView.text = it
-//        }
+        val wishAdapter = WishAdapter(requireContext(), listOf("Puerco", "Pollo", "Picadillo"))
+        val lvItems = binding.listItems
+        lvItems.adapter = wishAdapter
+
         return root
     }
 
