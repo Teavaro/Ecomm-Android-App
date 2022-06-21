@@ -18,8 +18,8 @@ class ShopAdapter(context: Context,
 
         val item = listItems[position]
         layout.txtTitle.text = item.title
-//        layout.txtPrice.text = "3434"
-//        layout.imgPicture.setImageResource(item.picture)
+        layout.txtPrice.text = item.price.toString()
+        layout.imgPicture.setImageResource(R.drawable.prod_snapple)
 
         return layout
     }

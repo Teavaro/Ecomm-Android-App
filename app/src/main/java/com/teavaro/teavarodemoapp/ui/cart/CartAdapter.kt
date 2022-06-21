@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import com.teavaro.teavarodemoapp.R
 import com.teavaro.teavarodemoapp.core.Item
-import kotlinx.android.synthetic.main.item_shop.view.*
+import kotlinx.android.synthetic.main.item_cart.view.*
 
 class CartAdapter(context: Context,
                   private val listItems: List<Item>) :
@@ -18,8 +18,7 @@ class CartAdapter(context: Context,
 
         val item = listItems[position]
         layout.txtTitle.text = item.title
-//        layout.txtPrice.text = item.price.toString()
-//        layout.imgPicture.setImageResource(item.picture)
+        layout.txtPrice.text = item.price.toString()
 
         return layout
     }
