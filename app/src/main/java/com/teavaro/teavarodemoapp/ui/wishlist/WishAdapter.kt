@@ -8,8 +8,6 @@ import android.widget.ArrayAdapter
 import com.teavaro.teavarodemoapp.R
 import com.teavaro.teavarodemoapp.core.Item
 import com.teavaro.teavarodemoapp.core.Store
-import kotlinx.android.synthetic.main.item_cart.view.*
-import kotlinx.android.synthetic.main.item_wish.view.*
 import kotlinx.android.synthetic.main.item_wish.view.btnRemove
 import kotlinx.android.synthetic.main.item_wish.view.txtPrice
 import kotlinx.android.synthetic.main.item_wish.view.txtTitle

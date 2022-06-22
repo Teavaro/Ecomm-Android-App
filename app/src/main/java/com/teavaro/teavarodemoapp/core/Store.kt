@@ -28,13 +28,17 @@ object Store {
     }
 
     fun addItemToWish(id: Int){
-        if(isInitialized)
+        if(isInitialized) {
+            listItems[id].isWish = true
             listWish.add(listItems[id])
+        }
     }
 
     fun removeItemFromWish(id: Int){
-        if(isInitialized)
+        if(isInitialized) {
+            listItems[id].isWish = false
             listWish.removeAt(id)
+        }
     }
 
     fun getItems(): ArrayList<Item>{

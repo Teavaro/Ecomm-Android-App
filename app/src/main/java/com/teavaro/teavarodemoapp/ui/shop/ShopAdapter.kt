@@ -26,6 +26,11 @@ class ShopAdapter(context: Context,
             Store.addItemToCart(item.id)
         }
 
+        if(item.isWish)
+            layout.btnAddToWish.setImageResource(R.drawable.ic_wishlist_red_24dp)
+        else
+            layout.btnAddToWish.setImageResource(R.drawable.ic_wishlist_black_24dp)
+
         layout.btnAddToWish.setOnClickListener {
             Store.addItemToWish(item.id)
         }
