@@ -20,7 +20,7 @@ class ShopAdapter(context: Context,
 
         val item = listItems[position]
         layout.txtTitle.text = item.title
-        layout.txtPrice.text = item.price.toString()
+        layout.txtPrice.text = "$${item.price}"
         layout.imgPicture.setImageResource(R.drawable.prod_snapple)
 
         layout.btnAddToCart.setOnClickListener {

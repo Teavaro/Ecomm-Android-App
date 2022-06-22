@@ -49,4 +49,12 @@ object Store {
         }
         return listWish
     }
+
+    fun getTotalPriceCart(): Float {
+        var total = 0f
+        for (item in listItems) {
+            total += item.price * item.countOnCart
+        }
+        return total
+    }
 }

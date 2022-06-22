@@ -9,6 +9,7 @@ import androidx.navigation.findNavController
 import com.teavaro.teavarodemoapp.R
 import com.teavaro.teavarodemoapp.core.Item
 import com.teavaro.teavarodemoapp.core.Store
+import kotlinx.android.synthetic.main.item_shop.view.*
 import kotlinx.android.synthetic.main.item_wish.view.btnRemove
 import kotlinx.android.synthetic.main.item_wish.view.txtPrice
 import kotlinx.android.synthetic.main.item_wish.view.txtTitle
@@ -22,11 +23,15 @@ class WishAdapter(context: Context,
 
         val item = listItems[position]
         layout.txtTitle.text = item.title
-        layout.txtPrice.text = item.price.toString()
+        layout.txtPrice.text = "$${item.price}"
 
         layout.btnRemove.setOnClickListener {
             Store.removeItemFromWish(item.id)
             parent.findNavController().navigate(R.id.navigation_wishlist)
+        }
+
+        layout.btnAddToCart.setOnClickListener {
+            Store.addItemToCart(item.id)
         }
 
         return layout

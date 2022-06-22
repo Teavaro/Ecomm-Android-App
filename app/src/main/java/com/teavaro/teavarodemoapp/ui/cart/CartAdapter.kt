@@ -25,7 +25,7 @@ class CartAdapter(context: Context,
         layout.txtTitle.text = item.title
         layout.txtPrice.text = item.price.toString()
         layout.txtCount.text = item.countOnCart.toString()
-        layout.txtSubTotal.text = subTotal.toString()
+        layout.txtSubTotal.text = "$$subTotal / piece"
 
         layout.btnRemove.setOnClickListener {
             Store.removeItemFromCart(item.id)

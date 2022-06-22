@@ -30,8 +30,9 @@ class CartFragment : Fragment() {
         val root: View = binding.root
 
         val cartAdapter = CartAdapter(requireContext(), Store.getItemsCart())
-        val lvItems = binding.listItems
-        lvItems.adapter = cartAdapter
+        binding.listItems.adapter = cartAdapter
+
+        binding.txtTotal.text = "$${Store.getTotalPriceCart()} in total"
 
         return root
     }
