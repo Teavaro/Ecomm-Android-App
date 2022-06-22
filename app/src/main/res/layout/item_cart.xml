@@ -63,10 +63,10 @@
 
         <TextView
             style="@style/NormalText"
+            android:id="@+id/txtCount"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="right"
-            android:text="1"/>
+            android:gravity="right"/>
     </RelativeLayout>
 
     <RelativeLayout
@@ -81,10 +81,10 @@
 
         <TextView
             style="@style/NormalText"
+            android:id="@+id/txtSubTotal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="right"
-            android:text="$54.00 in total"/>
+            android:gravity="right"/>
     </RelativeLayout>
 
     <View

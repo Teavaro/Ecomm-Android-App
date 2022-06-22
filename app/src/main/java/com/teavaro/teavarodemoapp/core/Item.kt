@@ -5,5 +5,6 @@ data class Item (
     var title: String,
     var price: Float,
     var picture: Int,
-    var isWish: Boolean = false
+    var isWish: Boolean = false,
+    var countOnCart: Int = 0
 )

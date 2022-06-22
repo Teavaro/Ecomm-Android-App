@@ -33,7 +33,10 @@ class ShopAdapter(context: Context,
             layout.btnAddToWish.setImageResource(R.drawable.ic_wishlist_black_24dp)
 
         layout.btnAddToWish.setOnClickListener {
-            Store.addItemToWish(item.id)
+            if(!item.isWish)
+                Store.addItemToWish(item.id)
+            else
+                Store.removeItemFromWish(item.id)
             parent.findNavController().navigate(R.id.navigation_shop)
         }
 

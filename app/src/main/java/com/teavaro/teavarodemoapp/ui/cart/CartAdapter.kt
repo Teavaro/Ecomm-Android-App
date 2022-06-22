@@ -21,8 +21,11 @@ class CartAdapter(context: Context,
         val layout = LayoutInflater.from(context).inflate(R.layout.item_cart,parent, false)
 
         val item = listItems[position]
+        val subTotal: Float = item.price * item.countOnCart
         layout.txtTitle.text = item.title
         layout.txtPrice.text = item.price.toString()
+        layout.txtCount.text = item.countOnCart.toString()
+        layout.txtSubTotal.text = subTotal.toString()
 
         layout.btnRemove.setOnClickListener {
             Store.removeItemFromCart(item.id)
