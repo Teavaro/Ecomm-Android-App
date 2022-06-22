@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.teavaro.teavarodemoapp.core.Item
@@ -33,6 +34,9 @@ class WishlistFragment : Fragment() {
         val wishAdapter = WishAdapter(requireContext(), Store.getItemsWish())
         val lvItems = binding.listItems
         lvItems.adapter = wishAdapter
+
+        if(wishAdapter.count == 0)
+            binding.txtEmpty.visibility = LinearLayout.VISIBLE
 
         return root
     }

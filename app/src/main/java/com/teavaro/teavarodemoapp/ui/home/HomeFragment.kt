@@ -4,10 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
+import com.teavaro.teavarodemoapp.R
+import com.teavaro.teavarodemoapp.core.Store
 import com.teavaro.teavarodemoapp.databinding.FragmentHomeBinding
+import com.teavaro.teavarodemoapp.ui.shop.ShopAdapter
 
 class HomeFragment : Fragment() {
 
@@ -28,10 +31,12 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-//        val textView: TextView = binding.textHome
-//        homeViewModel.text.observe(viewLifecycleOwner) {
-//            textView.text = it
-//        }
+        val shopAdapter = ShopAdapter(requireContext(), Store.getItemsOffer())
+        binding.listItems.adapter = shopAdapter
+
+        binding.btnExplore.setOnClickListener {
+            root.findNavController().navigate(R.id.navigation_shop)
+        }
         return root
     }
 

@@ -16,12 +16,14 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
+        android:id="@+id/layTotal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:layout_marginTop="10dp"
+        android:orientation="vertical"
         android:paddingLeft="20dp"
-        android:paddingRight="20dp">
+        android:paddingRight="20dp"
+        android:visibility="gone">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -49,5 +51,14 @@
             android:layout_marginBottom="40dp"
             android:text="Proceed to checkout" />
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/txtEmpty"
+        style="@style/NormalText"
+        android:layout_marginLeft="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Your cart is currently empty"
+        android:visibility="gone" />
 
 </LinearLayout>

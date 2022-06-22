@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.teavaro.teavarodemoapp.core.Item
@@ -33,6 +34,11 @@ class CartFragment : Fragment() {
         binding.listItems.adapter = cartAdapter
 
         binding.txtTotal.text = "$${Store.getTotalPriceCart()} in total"
+
+        if(cartAdapter.count == 0)
+            binding.txtEmpty.visibility = LinearLayout.VISIBLE
+        else
+            binding.layTotal.visibility = LinearLayout.VISIBLE
 
         return root
     }
