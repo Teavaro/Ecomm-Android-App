@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import androidx.navigation.findNavController
 import com.teavaro.teavarodemoapp.R
 import com.teavaro.teavarodemoapp.core.Item
 import com.teavaro.teavarodemoapp.core.Store
@@ -15,7 +16,7 @@ class ShopAdapter(context: Context,
     ArrayAdapter<Item>(context, 0, listItems) {
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
-        val layout = LayoutInflater.from(context).inflate(R.layout.item_shop,parent, false)
+        var layout = LayoutInflater.from(context).inflate(R.layout.item_shop,parent, false)
 
         val item = listItems[position]
         layout.txtTitle.text = item.title
@@ -33,6 +34,7 @@ class ShopAdapter(context: Context,
 
         layout.btnAddToWish.setOnClickListener {
             Store.addItemToWish(item.id)
+            parent.findNavController().navigate(R.id.navigation_shop)
         }
 
         return layout

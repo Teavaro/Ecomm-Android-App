@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import androidx.navigation.findNavController
 import com.teavaro.teavarodemoapp.R
 import com.teavaro.teavarodemoapp.core.Item
 import com.teavaro.teavarodemoapp.core.Store
@@ -25,6 +26,7 @@ class CartAdapter(context: Context,
 
         layout.btnRemove.setOnClickListener {
             Store.removeItemFromCart(item.id)
+            parent.findNavController().navigate(R.id.navigation_cart)
         }
 
         return layout
