@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.navigation.findNavController
@@ -30,8 +31,10 @@ class WishAdapter(context: Context,
 
         if(item.isInStock)
             layout.inStock.visibility = ImageView.VISIBLE
-        else
+        else {
             layout.noStock.visibility = ImageView.VISIBLE
+            layout.btnAddToCart.visibility = Button.GONE
+        }
 
         layout.btnRemove.setOnClickListener {
             Store.removeItemFromWish(item.id)

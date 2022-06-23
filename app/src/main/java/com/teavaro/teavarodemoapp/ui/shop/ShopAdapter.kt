@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.Toast
 import com.teavaro.teavarodemoapp.R
@@ -25,6 +26,9 @@ class ShopAdapter(context: Context,
         layout.txtTitle.text = item.title
         layout.txtPrice.text = "$${item.price}"
         layout.imgPicture.setImageResource(R.drawable.prod_snapple)
+
+        if(!item.isInStock)
+            layout.btnAddToCart.visibility = Button.GONE
 
         layout.btnAddToCart.setOnClickListener {
             Store.addItemToCart(item.id)
