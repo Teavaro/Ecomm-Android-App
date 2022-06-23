@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.ImageView
+import android.widget.Toast
 import com.teavaro.teavarodemoapp.R
 import com.teavaro.teavarodemoapp.core.Item
 import com.teavaro.teavarodemoapp.core.Store
@@ -27,6 +28,7 @@ class ShopAdapter(context: Context,
 
         layout.btnAddToCart.setOnClickListener {
             Store.addItemToCart(item.id)
+            Toast.makeText(context, "An item was added to the cart.", Toast.LENGTH_SHORT).show()
         }
 
         layout.btnAddToWish.let { imageView ->
@@ -41,6 +43,7 @@ class ShopAdapter(context: Context,
                     item.isWish = false
                 }
                 setWishPicture(imageView as ImageView, item)
+                Toast.makeText(context, "An item was added to the wishlist.", Toast.LENGTH_SHORT).show()
             }
         }
 

@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.Toast
 import androidx.navigation.findNavController
 import com.teavaro.teavarodemoapp.R
 import com.teavaro.teavarodemoapp.core.Item
@@ -28,10 +29,12 @@ class WishAdapter(context: Context,
         layout.btnRemove.setOnClickListener {
             Store.removeItemFromWish(item.id)
             parent.findNavController().navigate(R.id.navigation_wishlist)
+            Toast.makeText(context, "An item was removed from the wishlist.", Toast.LENGTH_SHORT).show()
         }
 
         layout.btnAddToCart.setOnClickListener {
             Store.addItemToCart(item.id)
+            Toast.makeText(context, "An item was added to the cart.", Toast.LENGTH_SHORT).show()
         }
 
         return layout
