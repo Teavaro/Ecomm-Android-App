@@ -13,6 +13,7 @@ import com.teavaro.teavarodemoapp.core.Store
 import kotlinx.android.synthetic.main.item_cart.view.*
 import kotlinx.android.synthetic.main.item_cart.view.txtPrice
 import kotlinx.android.synthetic.main.item_cart.view.txtTitle
+import kotlinx.android.synthetic.main.item_shop.view.*
 
 class CartAdapter(context: Context,
                   private val listItems: List<Item>) :

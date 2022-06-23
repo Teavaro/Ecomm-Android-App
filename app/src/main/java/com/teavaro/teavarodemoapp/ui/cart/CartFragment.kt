@@ -5,8 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
+import com.teavaro.teavarodemoapp.R
 import com.teavaro.teavarodemoapp.core.Item
 import com.teavaro.teavarodemoapp.core.Store
 import com.teavaro.teavarodemoapp.databinding.FragmentCartBinding
@@ -39,6 +42,12 @@ class CartFragment : Fragment() {
             binding.txtEmpty.visibility = LinearLayout.VISIBLE
         else
             binding.layTotal.visibility = LinearLayout.VISIBLE
+
+        binding.btnCheckout.setOnClickListener {
+            Store.removeAllCartItems()
+            root.findNavController().navigate(R.id.navigation_cart)
+            Toast.makeText(context, "Success!", Toast.LENGTH_SHORT).show()
+        }
 
         return root
     }

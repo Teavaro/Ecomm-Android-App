@@ -68,4 +68,10 @@ object Store {
         }
         return listOffer
     }
+
+    fun removeAllCartItems() {
+        for (item in listItems) {
+            item.countOnCart = 0
+        }
+    }
 }
