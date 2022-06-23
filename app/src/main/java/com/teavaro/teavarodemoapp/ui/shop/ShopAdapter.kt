@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
-import androidx.navigation.findNavController
+import android.widget.ImageView
 import com.teavaro.teavarodemoapp.R
 import com.teavaro.teavarodemoapp.core.Item
 import com.teavaro.teavarodemoapp.core.Store
@@ -29,27 +29,28 @@ class ShopAdapter(context: Context,
             Store.addItemToCart(item.id)
         }
 
-        setWishPicture(item)
-
-        layout.btnAddToWish.setOnClickListener {
-            if(!item.isWish) {
-                Store.addItemToWish(item.id)
-                item.isWish = true
+        layout.btnAddToWish.let { imageView ->
+            setWishPicture(imageView, item)
+            imageView.setOnClickListener {
+                if(!item.isWish) {
+                    Store.addItemToWish(item.id)
+                    item.isWish = true
+                }
+                else {
+                    Store.removeItemFromWish(item.id)
+                    item.isWish = false
+                }
+                setWishPicture(imageView as ImageView, item)
             }
-            else {
-                Store.removeItemFromWish(item.id)
-                item.isWish = false
-            }
-            setWishPicture(item)
         }
 
         return layout
     }
 
-    fun setWishPicture(item: Item){
+    private fun setWishPicture(imageView: ImageView, item: Item){
         if(item.isWish)
-            layout.btnAddToWish.setImageResource(R.drawable.ic_wishlist_red_24dp)
+            imageView.setImageResource(R.drawable.ic_wishlist_red_24dp)
         else
-            layout.btnAddToWish.setImageResource(R.drawable.ic_wishlist_black_24dp)
+            imageView.setImageResource(R.drawable.ic_wishlist_black_24dp)
     }
 }
