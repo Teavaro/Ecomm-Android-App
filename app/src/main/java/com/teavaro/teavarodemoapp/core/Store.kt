@@ -4,6 +4,7 @@ object Store {
 
     private var listItems: ArrayList<Item> = ArrayList()
     private var isInitialized = false
+    var isLogin = false
 
     init {
         listItems.add(Item(0, "puerco", 23.4f, 0, true))
