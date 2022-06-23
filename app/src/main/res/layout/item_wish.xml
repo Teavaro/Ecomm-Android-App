@@ -27,11 +27,23 @@
 
         <TextView
             style="@style/BoldText"
+            android:id="@+id/inStock"
+            android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="right"
             android:text="In Stock"
             android:textColor="@color/green" />
+
+        <TextView
+            style="@style/BoldText"
+            android:id="@+id/noStock"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:text="Unavailable"
+            android:textColor="@color/red" />
     </RelativeLayout>
 
     <TextView

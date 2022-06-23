@@ -28,7 +28,7 @@ class ShopAdapter(context: Context,
 
         layout.btnAddToCart.setOnClickListener {
             Store.addItemToCart(item.id)
-            Toast.makeText(context, "An item was added to the cart.", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, "Product added!", Toast.LENGTH_SHORT).show()
         }
 
         layout.btnAddToWish.let { imageView ->
@@ -43,7 +43,7 @@ class ShopAdapter(context: Context,
                     item.isWish = false
                 }
                 setWishPicture(imageView as ImageView, item)
-                Toast.makeText(context, "An item was added to the wishlist.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "Product added!", Toast.LENGTH_SHORT).show()
             }
         }
 

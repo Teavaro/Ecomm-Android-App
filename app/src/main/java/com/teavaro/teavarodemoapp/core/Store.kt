@@ -9,7 +9,7 @@ object Store {
         listItems.add(Item(0, "puerco", 23.4f, 0))
         listItems.add(Item(1, "picadillo", 20.1f, 1))
         listItems.add(Item(2, "leche", 15.6f, 2))
-        listItems.add(Item(3, "cereal", 11.2f, 3, true))
+        listItems.add(Item(3, "cereal", 11.2f, 3, isOffer = true, isInStock = false))
         listItems.add(Item(4, "pollo", 4.3f, 4, true))
         isInitialized = true
     }

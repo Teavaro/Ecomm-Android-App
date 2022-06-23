@@ -6,6 +6,7 @@ data class Item (
     var price: Float,
     var picture: Int,
     var isOffer: Boolean = false,
+    var isInStock: Boolean = true,
     var isWish: Boolean = false,
     var countOnCart: Int = 0
 )

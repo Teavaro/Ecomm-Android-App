@@ -31,7 +31,7 @@ class CartAdapter(context: Context,
         layout.btnRemove.setOnClickListener {
             Store.removeItemFromCart(item.id)
             parent.findNavController().navigate(R.id.navigation_cart)
-            Toast.makeText(context, "An item was removed from the cart.", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, "Product removed!", Toast.LENGTH_SHORT).show()
         }
 
         return layout
