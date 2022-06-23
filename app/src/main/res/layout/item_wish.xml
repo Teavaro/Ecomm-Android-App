@@ -32,7 +32,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="right"
-            android:text="In Stock"
+            android:text="In stock"
             android:textColor="@color/green" />
 
         <TextView
@@ -42,7 +42,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="right"
-            android:text="Unavailable"
+            android:text="Out of stock"
             android:textColor="@color/red" />
     </RelativeLayout>
 
