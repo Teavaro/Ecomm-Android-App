@@ -6,24 +6,17 @@
     android:paddingLeft="20dp"
     android:paddingRight="20dp">
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/btnRemove"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        android:src="@drawable/ic_remove_black_24dp" />
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TextView
-            style="@style/BoldText"
-            android:id="@+id/txtTitle"
-            android:layout_width="match_parent"
+        <ImageView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Pork Cocktail Sausages" />
+            android:id="@+id/btnRemove"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:src="@drawable/ic_remove_black_24dp" />
 
         <TextView
             style="@style/BoldText"
@@ -45,6 +38,13 @@
             android:text="Out of stock"
             android:textColor="@color/red" />
     </RelativeLayout>
+
+    <TextView
+        style="@style/BoldText"
+        android:id="@+id/txtTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Pork Cocktail Sausages" />
 
     <TextView
         style="@style/BoldText"

@@ -23,8 +23,7 @@
         <ImageView
             android:id="@+id/imgPicture"
             android:layout_width="wrap_content"
-            android:layout_height="150dp"
-            android:src="@drawable/prod_snapple" />
+            android:layout_height="150dp"/>
     </RelativeLayout>
 
     <TextView

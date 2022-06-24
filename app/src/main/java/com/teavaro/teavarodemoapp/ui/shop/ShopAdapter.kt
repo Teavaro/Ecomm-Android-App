@@ -22,7 +22,8 @@ class ShopAdapter(context: Context,
         val item = listItems[position]
         layout.txtTitle.text = item.title
         layout.txtPrice.text = "$${item.price}"
-        layout.imgPicture.setImageResource(R.drawable.prod_snapple)
+        val imgId: Int = parent.resources.getIdentifier(item.picture, "drawable", "com.teavaro.teavarodemoapp")
+        layout.imgPicture.setImageResource(imgId)
 
         if(!item.isInStock) {
             layout.btnAddToCart.visibility = Button.GONE

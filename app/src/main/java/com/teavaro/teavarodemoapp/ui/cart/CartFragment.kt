@@ -1,5 +1,6 @@
 package com.teavaro.teavarodemoapp.ui.cart
 
+import android.app.Dialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -44,6 +45,7 @@ class CartFragment : Fragment() {
             binding.layTotal.visibility = LinearLayout.VISIBLE
 
         binding.btnCheckout.setOnClickListener {
+
             Store.removeAllCartItems()
             root.findNavController().navigate(R.id.navigation_cart)
             Toast.makeText(context, "Success!", Toast.LENGTH_SHORT).show()

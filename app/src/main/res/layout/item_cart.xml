@@ -14,24 +14,14 @@
         android:layout_marginBottom="10dp"
         android:src="@drawable/ic_remove_black_24dp" />
 
-    <RelativeLayout
+    <TextView
+        style="@style/BoldText"
+        android:id="@+id/txtTitle"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:gravity="right"
+        android:text="Pork Cocktail Sausages"/>
 
-        <TextView
-            style="@style/BoldText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Product:" />
-
-        <TextView
-            style="@style/BoldText"
-            android:id="@+id/txtTitle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="right"
-            android:text="Pork Cocktail Sausages"/>
-    </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
