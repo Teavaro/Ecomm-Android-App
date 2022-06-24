@@ -1,6 +1,7 @@
 package com.teavaro.teavarodemoapp.ui.cart
 
-import android.app.Dialog
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,7 +12,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.teavaro.teavarodemoapp.R
-import com.teavaro.teavarodemoapp.core.Item
 import com.teavaro.teavarodemoapp.core.Store
 import com.teavaro.teavarodemoapp.databinding.FragmentCartBinding
 
@@ -45,10 +45,18 @@ class CartFragment : Fragment() {
             binding.layTotal.visibility = LinearLayout.VISIBLE
 
         binding.btnCheckout.setOnClickListener {
+            val builder = AlertDialog.Builder(context)
+            builder.setTitle("Checkout confirmation")
+                .setMessage("Do you want to proceed with checkout?")
+                .setNegativeButton("Cancel")  {_,_ ->
 
-            Store.removeAllCartItems()
-            root.findNavController().navigate(R.id.navigation_cart)
-            Toast.makeText(context, "Success!", Toast.LENGTH_SHORT).show()
+                }
+                .setPositiveButton("Proceed") { _, _ ->
+                    Store.removeAllCartItems()
+                    root.findNavController().navigate(R.id.navigation_cart)
+                    Toast.makeText(context, "Success!", Toast.LENGTH_SHORT).show()
+                }
+                .create().show()
         }
 
         return root

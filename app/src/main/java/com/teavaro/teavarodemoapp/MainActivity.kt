@@ -6,6 +6,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.children
@@ -70,11 +71,20 @@ class MainActivity : AppCompatActivity() {
                 navController.navigate(R.id.navigation_login)
             }
             R.id.menu_logout -> {
-                Store.isLogin = false
-                val startIntent = Intent(this, MainActivity::class.java)
-                startIntent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
-                startActivity(startIntent)
-                Toast.makeText(this, "Logout success!", Toast.LENGTH_SHORT).show()
+                val builder = AlertDialog.Builder(this)
+                builder.setTitle("Logout confirmation")
+                    .setMessage("Do you want to proceed with the logout?")
+                    .setNegativeButton("Cancel")  {_,_ ->
+
+                    }
+                    .setPositiveButton("Proceed") { _, _ ->
+                        Store.isLogin = false
+                        val startIntent = Intent(this, MainActivity::class.java)
+                        startIntent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+                        startActivity(startIntent)
+                        Toast.makeText(this, "Logout success!", Toast.LENGTH_SHORT).show()
+                    }
+                    .create().show()
             }
             else -> navController.navigate(R.id.navigation_home)
         }
