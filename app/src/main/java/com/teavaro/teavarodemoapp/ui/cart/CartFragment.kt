@@ -59,7 +59,7 @@ class CartFragment : Fragment() {
                 }
                 .setPositiveButton("Proceed") { _, _ ->
                     Store.removeAllCartItems()
-                    root.findNavController().navigate(R.id.navigation_cart)
+                    root.findNavController().navigate(R.id.navigation_home)
                     Toast.makeText(context, "Success!", Toast.LENGTH_SHORT).show()
                 }
                 .create().show()
