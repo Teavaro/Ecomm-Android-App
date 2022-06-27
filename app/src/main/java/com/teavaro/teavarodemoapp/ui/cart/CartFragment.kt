@@ -14,6 +14,7 @@ import androidx.navigation.findNavController
 import com.teavaro.teavarodemoapp.R
 import com.teavaro.teavarodemoapp.core.Store
 import com.teavaro.teavarodemoapp.databinding.FragmentCartBinding
+import com.teavaro.teavarodemoapp.ui.shop.ShopAdapter
 
 class CartFragment : Fragment() {
 
@@ -34,8 +35,13 @@ class CartFragment : Fragment() {
         _binding = FragmentCartBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val cartAdapter = CartAdapter(requireContext(), Store.getItemsCart())
-        binding.listItems.adapter = cartAdapter
+        var list = Store.getItemsCart()
+        val cartAdapter = CartAdapter(requireContext(), list)
+        for (pos in 0..list.lastIndex){
+            container?.let {
+                binding.listItems.addView(cartAdapter.getView(pos, view, it), 0)
+            }
+        }
 
         binding.txtTotal.text = "$${Store.getTotalPriceCart()} in total"
 

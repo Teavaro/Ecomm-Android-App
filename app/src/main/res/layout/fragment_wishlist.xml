@@ -6,19 +6,26 @@
     android:layout_marginTop="30dp"
     tools:context=".ui.wishlist.WishlistFragment">
 
-    <ListView
-        android:id="@+id/listItems"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="40dp"
-        android:divider="@color/white" />
+        android:layout_marginBottom="40dp">
+
+        <LinearLayout
+            android:id="@+id/listItems"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="40dp"
+            android:divider="@color/white"
+            android:orientation="vertical" />
+    </ScrollView>
 
     <TextView
         android:id="@+id/txtEmpty"
         style="@style/NormalText"
-        android:layout_marginLeft="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
         android:text="Your wish list is currently empty"
         android:visibility="gone" />
 </FrameLayout>

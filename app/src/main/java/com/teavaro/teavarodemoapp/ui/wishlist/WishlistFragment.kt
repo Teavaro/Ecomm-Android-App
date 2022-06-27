@@ -31,9 +31,11 @@ class WishlistFragment : Fragment() {
         _binding = FragmentWishlistBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val wishAdapter = WishAdapter(requireContext(), Store.getItemsWish())
-        val lvItems = binding.listItems
-        lvItems.adapter = wishAdapter
+        var list = Store.getItemsWish()
+        val wishAdapter = WishAdapter(requireContext(), list)
+        for (pos in 0..list.lastIndex){
+            binding.listItems.addView(wishAdapter.getView(pos, view, container!!))
+        }
 
         if(wishAdapter.count == 0)
             binding.txtEmpty.visibility = LinearLayout.VISIBLE

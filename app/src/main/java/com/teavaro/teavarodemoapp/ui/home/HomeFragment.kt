@@ -31,8 +31,11 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val shopAdapter = ShopAdapter(requireContext(), Store.getItemsOffer())
-        binding.listItems.adapter = shopAdapter
+        var list = Store.getItemsOffer()
+        val shopAdapter = ShopAdapter(requireContext(), list)
+        for (pos in 0..list.lastIndex){
+            binding.listItems.addView(shopAdapter.getView(pos, view, container!!))
+        }
 
         binding.btnExplore.setOnClickListener {
             root.findNavController().navigate(R.id.navigation_shop)
