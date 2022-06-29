@@ -22,5 +22,4 @@
 
 #### Package and upload a build to Firebase App distribution:
 
-
 `./gradlew uploadDebugApkToFirebaseAppDistribution --stacktrace`
