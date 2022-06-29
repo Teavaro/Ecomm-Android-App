@@ -33,5 +33,5 @@ tasks.register<customTasks.slackUploader.SlackUploader>("uploadReleaseApkToSlack
 
 tasks.register<Exec>("uploadDebugApkToFirebaseAppDistribution") {
   dependsOn("incrementAndroidVersionCode", "assembleDebug")
-  commandLine("$rootDir/androidApp/UploadApkToFirebaseAppDistribution.sh")
+  commandLine("$rootDir/app/UploadApkToFirebaseAppDistribution.sh")
 }
