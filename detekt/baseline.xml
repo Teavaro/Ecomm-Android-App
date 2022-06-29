@@ -1,0 +1,1197 @@
+<?xml version="1.0" ?>
+<SmellBaseline>
+  <ManuallySuppressedIssues></ManuallySuppressedIssues>
+  <CurrentIssues>
+    <ID>ComplexCondition:RxErrorHandlingCallAdapterFactory.kt$RxErrorHandlingCallAdapterFactory$rawType != Observable::class.java &amp;&amp; !isFlowable &amp;&amp; !isSingle &amp;&amp; !isMaybe</ID>
+    <ID>ComplexCondition:WrapContentSwipeRefreshLayout.kt$WrapContentSwipeRefreshLayout$!isEnabled || mReturningToStart || canChildScrollUp() || mRefreshing || mNestedScrollInProgress</ID>
+    <ID>ComplexCondition:WrapContentSwipeRefreshLayout.kt$WrapContentSwipeRefreshLayout$mUsingCustomStart &amp;&amp; dy &gt; 0 &amp;&amp; mTotalUnconsumed == 0f &amp;&amp; abs(dy - consumed[1]) &gt; 0</ID>
+    <ID>ComplexMethod:AddNewAddressFragment.kt$AddNewAddressFragment$override fun initUI()</ID>
+    <ID>ComplexMethod:BaseViewArgsDelegate.kt$BaseViewArgsDelegate$protected fun getBundleArgsClass(bundle: Bundle): B</ID>
+    <ID>ComplexMethod:BundleExtensions.kt$fun &lt;T&gt; Bundle.put(key: String, value: T?)</ID>
+    <ID>ComplexMethod:ShopInfoBottomSheetDialogFragment.kt$ShopInfoBottomSheetDialogFragment$@SuppressLint("SetTextI18n") override fun initUI()</ID>
+    <ID>ComplexMethod:ShopItemRvItemBinder.kt$ShopItemRvItemBinder$@SuppressLint("SetTextI18n") override fun bind(item: CartItem, position: Int, context: Context)</ID>
+    <ID>ComplexMethod:WrapContentSwipeRefreshLayout.kt$WrapContentSwipeRefreshLayout$@Suppress("VARIABLE_WITH_REDUNDANT_INITIALIZER") @SuppressLint("ClickableViewAccessibility") override fun onTouchEvent(ev: MotionEvent): Boolean</ID>
+    <ID>ComplexMethod:WrapContentSwipeRefreshLayout.kt$WrapContentSwipeRefreshLayout$override fun onInterceptTouchEvent(ev: MotionEvent): Boolean</ID>
+    <ID>ComplexMethod:WrapContentSwipeRefreshLayout.kt$WrapContentSwipeRefreshLayout$override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int)</ID>
+    <ID>EmptyCatchBlock:AppActivityLifecycleCallbacksImpl.kt$AppActivityLifecycleCallbacksImpl${}</ID>
+    <ID>EmptyCatchBlock:AppTerminationListenerService.kt$AppTerminationListenerService.Companion${}</ID>
+    <ID>EmptyCatchBlock:GMSLocationManager.kt$GMSLocationManager${}</ID>
+    <ID>EmptyCatchBlock:HMSLocationManager.kt$HMSLocationManager${}</ID>
+    <ID>EmptyFunctionBlock:AppActivityLifecycleCallbacksImpl.kt$AppActivityLifecycleCallbacksImpl${}</ID>
+    <ID>EmptyFunctionBlock:AppBottomNavigationController.kt$AppBottomNavigationController${}</ID>
+    <ID>EmptyFunctionBlock:CartFragment.kt$CartFragment${}</ID>
+    <ID>EmptyFunctionBlock:CategoriesAndShopsFragment.kt$CategoriesAndShopsFragment${}</ID>
+    <ID>EmptyFunctionBlock:ComingSoonActivity.kt$ComingSoonActivity${}</ID>
+    <ID>EmptyFunctionBlock:ConsumerAuthenticationActivity.kt$ConsumerAuthenticationActivity${}</ID>
+    <ID>EmptyFunctionBlock:DeliveryMethodsSpinnerAdapter.kt$DeliveryMethodsSpinnerAdapter.&lt;no name provided&gt;${}</ID>
+    <ID>EmptyFunctionBlock:DropDownGenericAdapter.kt$DropDownGenericAdapter.&lt;no name provided&gt;${}</ID>
+    <ID>EmptyFunctionBlock:ExpandableLayout.kt$ExpandableLayout.ExpansionListener${}</ID>
+    <ID>EmptyFunctionBlock:ForceUpdateActivity.kt$ForceUpdateActivity${}</ID>
+    <ID>EmptyFunctionBlock:LocationRepo.kt$LocationRepo.&lt;no name provided&gt;${}</ID>
+    <ID>EmptyFunctionBlock:MirroredDrawable.kt$MirroredDrawable${}</ID>
+    <ID>EmptyFunctionBlock:OrdersListingFragment.kt$OrdersListingFragment${}</ID>
+    <ID>EmptyFunctionBlock:PreLoginActivity.kt$PreLoginActivity${}</ID>
+    <ID>EmptyFunctionBlock:ShopItemsFragment.kt$ShopItemsFragment${}</ID>
+    <ID>EmptyFunctionBlock:SignUpFragment.kt$SignUpFragment.&lt;no name provided&gt;${}</ID>
+    <ID>EmptyFunctionBlock:SplashActivity.kt$SplashActivity${}</ID>
+    <ID>EmptyFunctionBlock:SplashActivity.kt$SplashActivity.&lt;no name provided&gt;${}</ID>
+    <ID>EmptyFunctionBlock:WrapContentSwipeRefreshLayout.kt$WrapContentSwipeRefreshLayout.&lt;no name provided&gt;${ }</ID>
+    <ID>EmptyFunctionBlock:WrapContentSwipeRefreshLayout.kt$WrapContentSwipeRefreshLayout.&lt;no name provided&gt;${}</ID>
+    <ID>EmptySecondaryConstructor:CustomFloatingActionButton.kt$CustomFloatingActionButton${}</ID>
+    <ID>ForbiddenComment:AppNavigator.kt$AppNavigator$// TODO:- To Log</ID>
+    <ID>ForbiddenComment:FavouriteItemsFragment.kt$FavouriteItemsFragment$// TODO:-</ID>
+    <ID>ForbiddenComment:MoreViewModel.kt$MoreViewModel$// TODO:- To be implemented</ID>
+    <ID>ForbiddenComment:OnBoardingNavigatorImpl.kt$OnBoardingNavigatorImpl$// TODO:- To be implemented</ID>
+    <ID>ForbiddenComment:Validator.kt$Validator$// ToDo:- To remove and replace with the above implementation.</ID>
+    <ID>LargeClass:WrapContentSwipeRefreshLayout.kt$WrapContentSwipeRefreshLayout : ViewGroupNestedScrollingParentNestedScrollingChild</ID>
+    <ID>LongMethod:AddNewAddressFragment.kt$AddNewAddressFragment$override fun initUI()</ID>
+    <ID>LongMethod:BaseViewArgsDelegate.kt$BaseViewArgsDelegate$protected fun getBundleArgsClass(bundle: Bundle): B</ID>
+    <ID>LongMethod:FavouriteRVItemBinder.kt$FavouriteRVItemBinder$@SuppressLint("SetTextI18n") override fun bind(item: CartItem, position: Int, context: Context)</ID>
+    <ID>LongMethod:RxErrorHandlingCallAdapterFactory.kt$RxErrorHandlingCallAdapterFactory$override fun get(returnType: Type, annotations: Array&lt;Annotation&gt;, retrofit: Retrofit): CallAdapter&lt;*, *&gt;?</ID>
+    <ID>LongMethod:ShopItemRvItemBinder.kt$ShopItemRvItemBinder$@SuppressLint("SetTextI18n") override fun bind(item: CartItem, position: Int, context: Context)</ID>
+    <ID>LongMethod:WrapContentSwipeRefreshLayout.kt$WrapContentSwipeRefreshLayout$@Suppress("VARIABLE_WITH_REDUNDANT_INITIALIZER") @SuppressLint("ClickableViewAccessibility") override fun onTouchEvent(ev: MotionEvent): Boolean</ID>
+    <ID>LongMethod:WrapContentSwipeRefreshLayout.kt$WrapContentSwipeRefreshLayout$override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int)</ID>
+    <ID>LongParameterList:ImageViewExtensions.kt$(url: String?, withRoundedCorners: Boolean = false, @DimenRes cornerRadiusRes: Int = R.dimen._5dp, @DrawableRes errorImage: Int = R.drawable.error_image, @DrawableRes fallBackImage: Int = R.drawable.error_image, @DrawableRes placeholderImage: Int = R.drawable.error_image)</ID>
+    <ID>LongParameterList:KhdmaDialog.kt$KhdmaDialog.Companion$(activity: FragmentActivity, title: String = "", message: Int, okLabelId: Int, cancelLabelId: Int, okAction: () -&gt; Unit, cancelAction: () -&gt; Unit = {})</ID>
+    <ID>LongParameterList:KhdmaDialog.kt$KhdmaDialog.Companion$(activity: FragmentActivity, title: String = "", message: String, okLabel: String, cancelLabel: String, okAction: () -&gt; Unit)</ID>
+    <ID>LongParameterList:KhdmaDialog.kt$KhdmaDialog.Companion$(activity: FragmentActivity, title: String = "", message: String, okLabel: String, cancelLabel: String, okAction: () -&gt; Unit, cancelAction: () -&gt; Unit = {})</ID>
+    <ID>LongParameterList:KhdmaDialog.kt$KhdmaDialog.Companion$(activity: FragmentActivity, title: String = "", message: String, okLabelId: Int, cancelLabelId: Int, okAction: () -&gt; Unit)</ID>
+    <ID>LongParameterList:RxErrorHandlingCallAdapter.kt$RxErrorHandlingCallAdapter$(private val retrofit: Retrofit, private val responseType: Type, val scheduler: Scheduler?, val isAsync: Boolean, private val isResult: Boolean, private val isBody: Boolean, private val isFlowable: Boolean, private val isSingle: Boolean, private val isMaybe: Boolean, private val isCompletable: Boolean)</ID>
+    <ID>LongParameterList:ShoppingServiceAPIs.kt$ShoppingServiceAPIs$(@Query("serviceId") serviceId: Long, @Query("serviceCategoryId") serviceCategoryId: Int, @Query("lat") lat: Double, @Query("lon") long: Double, @Query("pageNum") page: Int? = 0, @Query("name") searchText: String?)</ID>
+    <ID>LongParameterList:ShoppingServiceRepo.kt$ShoppingServiceRepo$(serviceId: Long, categoryId: Int, lat: Double, long: Double, page: Int? = 1, searchText: String?)</ID>
+    <ID>LongParameterList:User.kt$User$(@SerializedName("id") /* User id is optional because although user id should not be null, but there is a case where we need to create a new user and we use the this user model to build a user object and send it to the backend (Registration), and we do so we do not have a user id yet, so to be able to use the same model, I made the user id optional and nullable. */ var userId: Long? = null, var fullName: String, var phoneNumber: String, var email: String?, var password: String? = null, // Added for the sign up only, // If user rule Id is needed, You should get it from mobileRole object. val mobileRoleId: Int, var userTypeCode: String? = null, @SerializedName("preferLanguage") val preferredLanguage: String, var defaultAddress: UserAddress? = null, var imagePath: String? = null, var userType: LookUp? = null, var shopName: String? = null, var deliverdOrders: List&lt;DeliveredOrder&gt;? = null)</ID>
+    <ID>MagicNumber:AddedShopItemRVItemBinder.kt$AddedShopItemRVItemBinder$300L</ID>
+    <ID>MagicNumber:AndroidUtils.kt$AndroidUtils$160f</ID>
+    <ID>MagicNumber:AppBottomNavigationView.kt$AppBottomNavigationView$0.55f</ID>
+    <ID>MagicNumber:AppErrorHandler.kt$AppErrorHandler$401</ID>
+    <ID>MagicNumber:AppVersion.kt$AppVersion$3</ID>
+    <ID>MagicNumber:BaseRefreshTokenInterceptor.kt$BaseRefreshTokenInterceptor$10L</ID>
+    <ID>MagicNumber:BaseRefreshTokenInterceptor.kt$BaseRefreshTokenInterceptor$200</ID>
+    <ID>MagicNumber:BaseRefreshTokenInterceptor.kt$BaseRefreshTokenInterceptor$400</ID>
+    <ID>MagicNumber:BaseRefreshTokenInterceptor.kt$BaseRefreshTokenInterceptor$401</ID>
+    <ID>MagicNumber:BaseRefreshTokenInterceptor.kt$BaseRefreshTokenInterceptor$599</ID>
+    <ID>MagicNumber:CartItem.kt$CartItem$100</ID>
+    <ID>MagicNumber:CartItemRvItemBinder.kt$CartItemRvItemBinder$300L</ID>
+    <ID>MagicNumber:CartRepo.kt$CartRepo$404</ID>
+    <ID>MagicNumber:CartSynchronizer.kt$CartSynchronizer$5000</ID>
+    <ID>MagicNumber:CategoriesAndShopsViewModel.kt$CategoriesAndShopsViewModel$500</ID>
+    <ID>MagicNumber:ComingSoonProgressView.kt$ComingSoonProgressView$0.75f</ID>
+    <ID>MagicNumber:ComingSoonProgressView.kt$ComingSoonProgressView$10</ID>
+    <ID>MagicNumber:ComingSoonProgressView.kt$ComingSoonProgressView$100</ID>
+    <ID>MagicNumber:ComingSoonProgressView.kt$ComingSoonProgressView$25</ID>
+    <ID>MagicNumber:ComingSoonProgressView.kt$ComingSoonProgressView$270f</ID>
+    <ID>MagicNumber:ComingSoonProgressView.kt$ComingSoonProgressView$30</ID>
+    <ID>MagicNumber:ComingSoonProgressView.kt$ComingSoonProgressView$360f</ID>
+    <ID>MagicNumber:ComingSoonProgressView.kt$ComingSoonProgressView$40</ID>
+    <ID>MagicNumber:ConsumerBottomNavigationController.kt$ConsumerBottomNavigationController$3</ID>
+    <ID>MagicNumber:ConsumerBottomNavigationController.kt$ConsumerBottomNavigationController$4</ID>
+    <ID>MagicNumber:ConsumerHomeRepo.kt$ConsumerHomeRepo$404</ID>
+    <ID>MagicNumber:CustomFloatingActionButton.kt$CustomFloatingActionButton$45</ID>
+    <ID>MagicNumber:CustomFloatingActionButton.kt$CustomFloatingActionButton$55</ID>
+    <ID>MagicNumber:DateTimeUtils.kt$DateTimeUtils$100</ID>
+    <ID>MagicNumber:DateTimeUtils.kt$DateTimeUtils$12</ID>
+    <ID>MagicNumber:DateTimeUtils.kt$DateTimeUtils$1440.0</ID>
+    <ID>MagicNumber:DateTimeUtils.kt$DateTimeUtils$24</ID>
+    <ID>MagicNumber:DateTimeUtils.kt$DateTimeUtils$60</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.0001f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.0002f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.0005f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.0009f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.0014f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.0020f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.0027f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.0036f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.0046f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.0058f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.0071f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.0085f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.0101f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.0118f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.0137f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.0158f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.0180f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.0205f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.0231f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.0259f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.0289f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.0321f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.0355f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.0391f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.0430f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.0471f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.0514f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.0560f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.0608f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.0660f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.0714f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.0771f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.0830f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.0893f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.0959f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.1029f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.1101f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.1177f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.1257f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.1339f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.1426f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.1516f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.1610f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.1707f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.1808f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.1913f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.2021f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.2133f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.2248f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.2366f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.2487f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.2611f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.2738f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.2867f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.2998f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.3131f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.3265f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.3400f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.3536f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.3673f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.3810f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.3946f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.4082f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.4217f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.4352f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.4485f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.4616f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.4746f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.4874f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.5000f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.5124f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.5246f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.5365f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.5482f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.5597f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.5710f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.5820f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.5928f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.6033f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.6136f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.6237f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.6335f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.6431f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.6525f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.6616f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.6706f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.6793f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.6878f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.6961f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.7043f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.7122f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.7199f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.7275f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.7349f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.7421f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.7491f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.7559f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.7626f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.7692f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.7756f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.7818f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.7879f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.7938f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.7996f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.8053f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.8108f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.8162f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.8215f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.8266f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.8317f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.8366f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.8414f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.8461f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.8507f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.8551f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.8595f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.8638f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.8679f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.8720f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.8760f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.8798f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.8836f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.8873f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.8909f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.8945f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.8979f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.9013f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.9046f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.9078f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.9109f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.9139f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.9169f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.9198f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.9227f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.9254f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.9281f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.9307f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.9333f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.9358f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.9382f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.9406f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.9429f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.9452f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.9474f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.9495f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.9516f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.9536f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.9556f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.9575f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.9594f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.9612f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.9629f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.9646f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.9663f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.9679f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.9695f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.9710f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.9725f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.9739f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.9753f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.9766f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.9779f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.9791f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.9803f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.9815f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.9826f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.9837f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.9848f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.9858f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.9867f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.9877f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.9885f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.9894f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.9902f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.9910f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.9917f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.9924f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.9931f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.9937f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.9944f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.9949f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.9955f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.9960f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.9964f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.9969f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.9973f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.9977f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.9980f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.9984f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.9986f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.9989f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.9991f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.9993f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.9995f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.9997f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.9998f</ID>
+    <ID>MagicNumber:FastOutSlowInInterpolator.kt$FastOutSlowInInterpolator$0.9999f</ID>
+    <ID>MagicNumber:FavouriteRVItemBinder.kt$FavouriteRVItemBinder$300L</ID>
+    <ID>MagicNumber:FirebaseRemoteConfigDataSourceImpl.kt$FirebaseRemoteConfigDataSourceImpl$3</ID>
+    <ID>MagicNumber:GMSLocationManager.kt$GMSLocationManager$1000</ID>
+    <ID>MagicNumber:GMSLocationManager.kt$GMSLocationManager$170f</ID>
+    <ID>MagicNumber:GMSLocationManager.kt$GMSLocationManager$50000</ID>
+    <ID>MagicNumber:HMSLocationManager.kt$HMSLocationManager$1000</ID>
+    <ID>MagicNumber:HMSLocationManager.kt$HMSLocationManager$170f</ID>
+    <ID>MagicNumber:HMSLocationManager.kt$HMSLocationManager$50000</ID>
+    <ID>MagicNumber:HuaweiMapLocationSearchFragment.kt$HuaweiMapLocationSearchFragment$18f</ID>
+    <ID>MagicNumber:HuaweiMapLocationSearchFragment.kt$HuaweiMapLocationSearchFragment$2000</ID>
+    <ID>MagicNumber:ILocationManager.kt$ILocationManager$1.1515</ID>
+    <ID>MagicNumber:ILocationManager.kt$ILocationManager$1.609344</ID>
+    <ID>MagicNumber:ILocationManager.kt$ILocationManager$180.0</ID>
+    <ID>MagicNumber:ILocationManager.kt$ILocationManager$60</ID>
+    <ID>MagicNumber:ImageLoader.kt$ImageLoader$0.25</ID>
+    <ID>MagicNumber:ImageLoader.kt$ImageLoader$28</ID>
+    <ID>MagicNumber:ImagePicker.kt$ImagePicker$512</ID>
+    <ID>MagicNumber:ImagePicker.kt$ImagePicker.Companion$1024</ID>
+    <ID>MagicNumber:JwtUtils.kt$JwtUtils$1000</ID>
+    <ID>MagicNumber:LocationSearchOnCompleteListener.kt$GoogleMapLocationSearchFragment$18f</ID>
+    <ID>MagicNumber:LocationSearchOnCompleteListener.kt$GoogleMapLocationSearchFragment$2000</ID>
+    <ID>MagicNumber:MaterialButtonExtensions.kt$0.5f</ID>
+    <ID>MagicNumber:OkHttpConfigs.kt$OkHttpConfigs$10</ID>
+    <ID>MagicNumber:OkHttpConfigs.kt$OkHttpConfigs$1024</ID>
+    <ID>MagicNumber:OkHttpConfigs.kt$OkHttpConfigs$60</ID>
+    <ID>MagicNumber:OrderReviewFragment.kt$OrderReviewFragment$180</ID>
+    <ID>MagicNumber:RecyclerViewItemSwipeCallback.kt$RecyclerViewItemSwipeCallback$25</ID>
+    <ID>MagicNumber:RecyclerViewItemSwipeCallback.kt$RecyclerViewItemSwipeCallback$3</ID>
+    <ID>MagicNumber:SearchItemsFragment.kt$SearchItemsFragment$500</ID>
+    <ID>MagicNumber:ShopCategoriesAndSubCategoriesFragment.kt$ShopCategoriesAndSubCategoriesFragment$3</ID>
+    <ID>MagicNumber:ShopItemRvItemBinder.kt$ShopItemRvItemBinder$0.3f</ID>
+    <ID>MagicNumber:ShopItemRvItemBinder.kt$ShopItemRvItemBinder$0.7f</ID>
+    <ID>MagicNumber:ShopItemRvItemBinder.kt$ShopItemRvItemBinder$300</ID>
+    <ID>MagicNumber:ShopItemRvItemBinder.kt$ShopItemRvItemBinder$300L</ID>
+    <ID>MagicNumber:ShowCaseUtils.kt$ShowCaseUtils$15</ID>
+    <ID>MagicNumber:SplashActivity.kt$SplashActivity$200</ID>
+    <ID>MagicNumber:SplashActivity.kt$SplashActivity$300</ID>
+    <ID>MagicNumber:SplashActivity.kt$SplashActivity$350</ID>
+    <ID>MagicNumber:Validator.kt$Validator$6</ID>
+    <ID>MagicNumber:WrapContentSwipeRefreshLayout.kt$WrapContentSwipeRefreshLayout$.4</ID>
+    <ID>MagicNumber:WrapContentSwipeRefreshLayout.kt$WrapContentSwipeRefreshLayout$.4f</ID>
+    <ID>MagicNumber:WrapContentSwipeRefreshLayout.kt$WrapContentSwipeRefreshLayout$.5f</ID>
+    <ID>MagicNumber:WrapContentSwipeRefreshLayout.kt$WrapContentSwipeRefreshLayout$.8f</ID>
+    <ID>MagicNumber:WrapContentSwipeRefreshLayout.kt$WrapContentSwipeRefreshLayout$0.25f</ID>
+    <ID>MagicNumber:WrapContentSwipeRefreshLayout.kt$WrapContentSwipeRefreshLayout$3</ID>
+    <ID>MagicNumber:WrapContentSwipeRefreshLayout.kt$WrapContentSwipeRefreshLayout$4</ID>
+    <ID>MagicNumber:WrapContentSwipeRefreshLayout.kt$WrapContentSwipeRefreshLayout$5</ID>
+    <ID>MatchingDeclarationName:LocationSearchOnCompleteListener.kt$GoogleMapLocationSearchFragment : AppFragment</ID>
+    <ID>MaxLineLength:ActivityArgs.kt$ActivityArgs$throw Exception("Null Activity extras! .. If bundle will be null in some cases, then please use 'NullableActivityArgs'")</ID>
+    <ID>MaxLineLength:AddNewAddressFragment.kt$AddNewAddressFragment$DropDownGenericAdapter.attach(binding.addressTypeAutoCompleteTextView, items = state.addressTypes, itemName = { it!!.name!! })</ID>
+    <ID>MaxLineLength:AddNewAddressFragment.kt$AddNewAddressFragment$class</ID>
+    <ID>MaxLineLength:AddNewAddressFragment.kt$AddNewAddressFragment$is LocationPermissionDeniedThrowable</ID>
+    <ID>MaxLineLength:AddNewAddressFragment.kt$AddNewAddressFragment$setAsOneTimeAddressSwitch.visibility = if(address.defaultAddress) View.INVISIBLE else View.VISIBLE</ID>
+    <ID>MaxLineLength:AddedShopItemRVItemBinder.kt$AddedShopItemRVItemBinder$private val action: (removeItem: Boolean, item: CartItem) -&gt; Unit</ID>
+    <ID>MaxLineLength:AddressRVItemBinder.kt$AddressRVItemBinder$parentCardView.strokeColor = getColor(context, if(item.isHomeAddress == true) R.color.purple_color else R.color.white)</ID>
+    <ID>MaxLineLength:AddressesFragment.kt$AddressesFragment$class</ID>
+    <ID>MaxLineLength:AddressesFragment.kt$AddressesFragment$this.recyclerViewManager.post(list, shouldReloadFromScratch = shouldReloadFromScratch, shouldLoadMore = shouldLoadMore)</ID>
+    <ID>MaxLineLength:AndroidUtils.kt$AndroidUtils$val inputMethodManager = fragment.activity?.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager</ID>
+    <ID>MaxLineLength:AppActivity.kt$AppActivity$KhdmaDialog.showWarning(this, message = message, okLabel = okButtonTitle, cancelLabel = cancelButtonTitle, okAction = okAction)</ID>
+    <ID>MaxLineLength:AppActivity.kt$AppActivity$abstract</ID>
+    <ID>MaxLineLength:AppBottomNavigationView.kt$AppBottomNavigationView$((binding.cartNavGraph.layoutParams as LayoutParams).behavior as? HideBottomViewOnScrollBehavior)?.slideDown(binding.cartNavGraph)</ID>
+    <ID>MaxLineLength:AppBottomNavigationView.kt$AppBottomNavigationView$((binding.cartNavGraph.layoutParams as LayoutParams).behavior as? HideBottomViewOnScrollBehavior)?.slideUp(binding.cartNavGraph)</ID>
+    <ID>MaxLineLength:AppBottomNavigationView.kt$AppBottomNavigationView$binding.cartNavGraph.setImageDrawable(attributes.getDrawable(R.styleable.AppBottomNavigationView_floatingButtonDrawable))</ID>
+    <ID>MaxLineLength:AppBottomSheetDialogFragment.kt$AppBottomSheetDialogFragment$KhdmaDialog.showWarning(requireActivity(), message = message, okLabel = okButtonTitle, cancelLabel = cancelButtonTitle, okAction = okAction)</ID>
+    <ID>MaxLineLength:AppBottomSheetDialogFragment.kt$AppBottomSheetDialogFragment$abstract</ID>
+    <ID>MaxLineLength:AppCompatActivityExtensions.kt$fun</ID>
+    <ID>MaxLineLength:AppDialogFragment.kt$AppDialogFragment$abstract</ID>
+    <ID>MaxLineLength:AppFragment.kt$AppFragment$KhdmaDialog.showWarning(requireActivity(), message = message, okLabel = okButtonTitle, cancelLabel = cancelButtonTitle, okAction = okAction)</ID>
+    <ID>MaxLineLength:AppFragment.kt$AppFragment$abstract</ID>
+    <ID>MaxLineLength:AppLocale.kt$AppLocale$private fun getSharedPreference(context: Context)</ID>
+    <ID>MaxLineLength:AppNavHostFragment.kt$AppNavHostFragment$// because onStop of the previous Fragment was not getting called/delayed sometimes, so when switching to the first tab is</ID>
+    <ID>MaxLineLength:AppPermissionsManager.kt$AppPermissionsManager$this.permissionsManger.requestPermissions(this.getCurrentActivity(), *permissions, description = getCurrentActivity().getString(R.string.camera_and_read_storage_permission_description), listener = listener)</ID>
+    <ID>MaxLineLength:AppPermissionsManager.kt$AppPermissionsManager$this.permissionsManger.requestPermissions(this.getCurrentActivity(), *permissions, description = getCurrentActivity().getString(R.string.location_permission_description), listener = listener)</ID>
+    <ID>MaxLineLength:AppPermissionsManager.kt$AppPermissionsManager$this.permissionsManger.requestSinglePermission(this.getCurrentActivity(), CAMERA, description = getCurrentActivity().getString(R.string.camera_and_read_storage_permission_description), listener = listener)</ID>
+    <ID>MaxLineLength:AppViewHolderBinder.kt$AppViewHolderBinder$abstract</ID>
+    <ID>MaxLineLength:AppViewModel.kt$AppViewModel$protected fun requestExecutor()</ID>
+    <ID>MaxLineLength:BaseErrorHandler.kt$BaseErrorHandler$abstract</ID>
+    <ID>MaxLineLength:BaseMVVMActivity.kt$BaseMVVMActivity$abstract</ID>
+    <ID>MaxLineLength:BaseMVVMBottomSheetDialogFragment.kt$BaseMVVMBottomSheetDialogFragment$// java.lang.IllegalStateException: Fragment already added due to the Dialog fragments sometimes added twice quickly.</ID>
+    <ID>MaxLineLength:BaseMVVMBottomSheetDialogFragment.kt$BaseMVVMBottomSheetDialogFragment$abstract</ID>
+    <ID>MaxLineLength:BaseMVVMDialogFragment.kt$BaseMVVMDialogFragment$// java.lang.IllegalStateException: Fragment already added due to the Dialog fragments sometimes added twice quickly.</ID>
+    <ID>MaxLineLength:BaseMVVMDialogFragment.kt$BaseMVVMDialogFragment$abstract</ID>
+    <ID>MaxLineLength:BaseMVVMFragment.kt$BaseMVVMFragment$abstract</ID>
+    <ID>MaxLineLength:CallEnqueueObservable.kt$CallEnqueueObservable$override</ID>
+    <ID>MaxLineLength:CallEnqueueObservable.kt$CallEnqueueObservable.CallCallback$private</ID>
+    <ID>MaxLineLength:CallExecuteObservable.kt$CallExecuteObservable$override</ID>
+    <ID>MaxLineLength:CameraAndReadStoragePermissionsPlugin.kt$CameraAndReadStoragePermissionsPlugin$permissionsManger</ID>
+    <ID>MaxLineLength:CartFragment.kt$CartFragment$KhdmaDialog.showWarning(activity = requireActivity(), message = message, okLabel = okButtonTitle, cancelLabel = cancelButtonTitle, okAction = okAction)</ID>
+    <ID>MaxLineLength:CartFragment.kt$CartFragment$binding.selectOrUnselectAllCheckbox.text = getString(if(checked) R.string.unselect_all else R.string.select_all)</ID>
+    <ID>MaxLineLength:CartFragment.kt$CartFragment$val</ID>
+    <ID>MaxLineLength:CartFragment.kt$CartFragment.&lt;no name provided&gt;$override</ID>
+    <ID>MaxLineLength:CartItemsWrapper.kt$CartItemsWrapper$return Invoice(orderTotal, totalAfterDiscount = totalToPay, deliveryFees = deliveryFees, taxes = totalTaxes, currency = currency)</ID>
+    <ID>MaxLineLength:CartItemsWrapper.kt$CartItemsWrapper$val currency = if(selectedCartItems.isNotEmpty()) selectedCartItems.first().currencyShortName else cartShopSections.firstOrNull()?.shop?.currencySymbol</ID>
+    <ID>MaxLineLength:CartRepo.kt$CartRepo$orderAPIs.createDraftOrder(PlaceOrderRequest.createDraftOrder(it, this.getOrderAddress())).ignoreElement()</ID>
+    <ID>MaxLineLength:CartRepo.kt$CartRepo$val request = PlaceOrderRequest.create(cartItemsWrapper.cartItems, cartItemsWrapper.userAddress!!, deliveryMethods)</ID>
+    <ID>MaxLineLength:CartShopSectionRvItemBinder.kt$CartShopSectionRvItemBinder$)</ID>
+    <ID>MaxLineLength:CartShopSectionRvItemBinder.kt$CartShopSectionRvItemBinder$private</ID>
+    <ID>MaxLineLength:CartSynchronizationWorker.kt$CartSynchronizationWorker$/* 1. The createWork() method is called on the main thread but the returned Single subscribes on the background thread. 2. We don’t need to worry about disposing the Observer since RxWorker will dispose it automatically when the work stops. 3. Returning Single with the value Result.failure() or single with an error will cause the worker to enter the failed state. */</ID>
+    <ID>MaxLineLength:CartSynchronizer.kt$CartSynchronizer$// a user removed the Application from the recent apps (Killed the App), then the work manager will not execute,</ID>
+    <ID>MaxLineLength:CartSynchronizer.kt$CartSynchronizer$// in this case this service should start and initiate the work manager before being (the service) destroyed.</ID>
+    <ID>MaxLineLength:CartViewModel.kt$CartViewModel$private fun findInvoiceItem(section: CartShopSection)</ID>
+    <ID>MaxLineLength:CartViewModel.kt$CartViewModel$this.requestExecutor</ID>
+    <ID>MaxLineLength:CategoriesAndShopsViewModel.kt$CategoriesAndShopsViewModel$// Skip 2 because I want to skip the initial value and the default value I'm setting when switching ViewPager2 tabs</ID>
+    <ID>MaxLineLength:CategoriesAndShopsViewModel.kt$CategoriesAndShopsViewModel$shoppingServiceRepo.getShopsOfServiceCategory(serviceId!!, selectedCategoryId, addressId!!, page, lastSearchText)</ID>
+    <ID>MaxLineLength:CategoriesAndShopsViewModel.kt$CategoriesAndShopsViewModel$shoppingServiceRepo.getShopsOfServiceCategory(serviceId!!, selectedCategoryId, lat!!, long!!, page, lastSearchText)</ID>
+    <ID>MaxLineLength:ColorOptionRvItemBinder.kt$ColorOptionRvItemBinder$class</ID>
+    <ID>MaxLineLength:ComingSoonActivity.kt$ComingSoonActivity$class</ID>
+    <ID>MaxLineLength:ComingSoonProgressView.kt$ComingSoonProgressView$canvas.drawText(it, centerX - textBounds.exactCenterX(), centerY - textBounds.exactCenterY() + 30, unitTextPaint)</ID>
+    <ID>MaxLineLength:ComingSoonProgressView.kt$ComingSoonProgressView$canvas.drawText(it, centerX - textBounds.exactCenterX(), centerY - textBounds.exactCenterY() - 25, textPaint)</ID>
+    <ID>MaxLineLength:ComingSoonProgressView.kt$ComingSoonProgressView$context.theme.obtainStyledAttributes(attrs, R.styleable.ComingSoonProgressView, defStyleAttr, defStyleRes)</ID>
+    <ID>MaxLineLength:ComingSoonViewModel.kt$ComingSoonViewModel$private val remoteConfigDataSource: FirebaseRemoteConfigDataSource</ID>
+    <ID>MaxLineLength:CommonModuleFeaturesNavigator.kt$CommonModuleFeaturesNavigator$fun openCategorizedShopsScreen(fragment: Fragment, address: UserAddress, serviceId: Long, serviceCategories: List&lt;ServiceCategory&gt;)</ID>
+    <ID>MaxLineLength:CommonModuleFeaturesNavigatorImpl.kt$CommonModuleFeaturesNavigatorImpl$// We use a try &amp; catch block here because an Exception will be thrown if the Play Store is not installed on the target device.</ID>
+    <ID>MaxLineLength:CommonModuleFeaturesNavigatorImpl.kt$CommonModuleFeaturesNavigatorImpl$openFragment(fragment, R.id.action_to_addresses, args = AddressArgs(selectedAddressId = selectedAddressId).createBundle())</ID>
+    <ID>MaxLineLength:ConsumerAuthenticationActivity.kt$ConsumerAuthenticationActivity$class</ID>
+    <ID>MaxLineLength:ConsumerAuthenticationActivity.kt$ConsumerAuthenticationActivity$is ConsumerAuthenticationStates.UserObj -&gt; this.openFragment(getDefaultFragment(), state.user.createBundle())</ID>
+    <ID>MaxLineLength:ConsumerBottomNavigationController.kt$ConsumerBottomNavigationController$class</ID>
+    <ID>MaxLineLength:ConsumerHomeFragment.kt$ConsumerHomeFragment$KhdmaDialog</ID>
+    <ID>MaxLineLength:ConsumerHomeFragment.kt$ConsumerHomeFragment$class</ID>
+    <ID>MaxLineLength:ConsumerHomeFragment.kt$ConsumerHomeFragment$is ConsumerHomeViewStates.ServiceCategoriesComponents -&gt; navigator.openCategorizedShopsScreen(this, state.address, state.serviceId, state.serviceCategories)</ID>
+    <ID>MaxLineLength:ConsumerHomeFragment.kt$ConsumerHomeFragment$is ConsumerHomeViewStates.WelcomeText -&gt; binding.welcomeTextView.text = getString(R.string.welcome) + " " + state.text</ID>
+    <ID>MaxLineLength:ConsumerHomeRepo.kt$ConsumerHomeRepo$fun</ID>
+    <ID>MaxLineLength:ConsumerHomeRepo.kt$ConsumerHomeRepo$return@onErrorResumeNext shoppingServiceAPIs.getServiceCategories(serviceId, address.lat!!.toDouble(), address.long!!.toDouble())</ID>
+    <ID>MaxLineLength:ConsumerHomeViewModel.kt$ConsumerHomeViewModel$requestExecutor</ID>
+    <ID>MaxLineLength:ConsumerHomeViewModel.kt$ConsumerHomeViewModel$this.requestExecutor</ID>
+    <ID>MaxLineLength:DataSourceModules.kt$factory { FirebaseRemoteConfigDataSourceImpl(R.xml.remote_config_defaults, BuildConfig.IS_PRODUCTION) }.bind(FirebaseRemoteConfigDataSource::class)</ID>
+    <ID>MaxLineLength:DateTimeExtensions.kt$fun</ID>
+    <ID>MaxLineLength:DateTimeUtils.kt$DateTimeUtils$fun</ID>
+    <ID>MaxLineLength:DateTimeUtils.kt$DateTimeUtils$val remainingTimeInMinutes = this.getDurationBetweenTwoDates(startDateString, endDateString, dateFormat).toStandardMinutes().minutes</ID>
+    <ID>MaxLineLength:DeviceInfo.kt$DeviceInfo$/* Secure Android ID: On a device first boot, a randomly value is generated and stored. This value is available via Settings.Secure.ANDROID_ID. It’s a 64-bit number that should remain constant for the lifetime of a device. ANDROID_ID seems a good choice for a unique device identifier because it’s available for smart phones and tablets. However, the value may change if a factory reset is performed on the device. There is also a known bug with a popular handset from a manufacturer where every instance have the same ANDROID_ID\ // =&gt; https://stackoverflow.com/a/47691574/6927433 */</ID>
+    <ID>MaxLineLength:DiffListCallback.kt$DiffListCallback$class</ID>
+    <ID>MaxLineLength:DropDownGenericAdapter.kt$DropDownGenericAdapter.Companion$fun</ID>
+    <ID>MaxLineLength:EditUserProfileInfoViewModel.kt$EditUserProfileInfoViewModel$this.requestCameraAndReadStoragePermissionsIfNotAllowed(this.permissionsManger, this.viewStateController, successAction)</ID>
+    <ID>MaxLineLength:EditUserProfileInfoViewModel.kt$EditUserProfileInfoViewModel$this.requestExecutor</ID>
+    <ID>MaxLineLength:EnvironmentVariables.kt$EnvironmentVariables$val globalHeaders = mutableMapOf("Content-Typ" to "application/json", "APP_TOKEN_HEADER" to BuildConfig.ANDROID_SERVER_KEY)</ID>
+    <ID>MaxLineLength:FavouriteItemsFragment.kt$FavouriteItemsFragment$class</ID>
+    <ID>MaxLineLength:FavouriteRVItemBinder.kt$FavouriteRVItemBinder$)</ID>
+    <ID>MaxLineLength:FavouriteRVItemBinder.kt$FavouriteRVItemBinder$discountTextView.text = getString(context, R.string.discount) + " " + item.getDiscountPercentageAsString()</ID>
+    <ID>MaxLineLength:ForceUpdateActivity.kt$ForceUpdateActivity$class</ID>
+    <ID>MaxLineLength:ForgotPasswordFragment.kt$ForgotPasswordFragment$class</ID>
+    <ID>MaxLineLength:ForgotPasswordViewModel.kt$ForgotPasswordViewModel$class</ID>
+    <ID>MaxLineLength:FragmentArgs.kt$FragmentArgs$throw Exception("Null Fragment bundle! .. If bundle will be null in some cases, then please use 'NullableFragmentArgs'")</ID>
+    <ID>MaxLineLength:FragmentModules.kt$val supportWhatsappNumber = startUpConfigParams?.whatsappSupportNumber ?: Constants.WHATSAPP_SUPPORT_FALLBACK_NUMBER</ID>
+    <ID>MaxLineLength:GMSLocationManager.kt$GMSLocationManager$class</ID>
+    <ID>MaxLineLength:HMSLocationManager.kt$HMSLocationManager$class</ID>
+    <ID>MaxLineLength:HomeRVItemBinder.kt$HomeRVItemBinder$:</ID>
+    <ID>MaxLineLength:HuaweiMapLocationSearchFragment.kt$HuaweiMapLocationSearchFragment$class</ID>
+    <ID>MaxLineLength:ILocationManager.kt$ILocationManager$var distanceInMiles = (sin(deg2rad(lat1)) * sin(deg2rad(lat2)) + (cos(deg2rad(lat1)) * cos(deg2rad(lat2)) * cos(deg2rad(theta))))</ID>
+    <ID>MaxLineLength:ItemRevisionAPIs.kt$ItemRevisionAPIs$fun</ID>
+    <ID>MaxLineLength:KhdmaDatePicker.kt$KhdmaDatePicker$val datePickerDialog = DatePickerDialog(requireContext(), R.style.DatePickersStyle, dateListener, year, month, day)</ID>
+    <ID>MaxLineLength:KhdmaDialog.kt$KhdmaDialog.Companion$fun</ID>
+    <ID>MaxLineLength:KhdmaDialog.kt$KhdmaDialog.Companion$private</ID>
+    <ID>MaxLineLength:KhdmaDialog.kt$KhdmaDialog.Companion$this.showError(activity, message = message, okLabel = activity.getString(R.string.ok), cancelLabel = activity.getString(R.string.cancel), okAction = okAction)</ID>
+    <ID>MaxLineLength:KhdmaDialog.kt$KhdmaDialog.Companion$this.showWarning(activity, message = activity.getString(message), okAction = okAction, cancelAction = cancelAction)</ID>
+    <ID>MaxLineLength:KhdmaDialog.kt$KhdmaDialog.Companion$val dialog = this.createDialog(title, message = activity.getString(message), activity.getString(okLabelId), activity.getString(cancelLabelId))</ID>
+    <ID>MaxLineLength:KhdmaDialog.kt$KhdmaDialog.Companion$val dialog = this.createDialog(title, message, activity.getString(R.string.proceed), activity.getString(R.string.back))</ID>
+    <ID>MaxLineLength:KhdmaDialog.kt$KhdmaDialog.Companion$val dialog = this.createDialog(title, message, activity.getString(okLabelId), activity.getString(cancelLabelId))</ID>
+    <ID>MaxLineLength:KhdmaTimePicker.kt$KhdmaTimePicker$val timePickerDialog = TimePickerDialog(requireContext(), R.style.DatePickersStyle, timeListener, hourOfDay, minute,false)</ID>
+    <ID>MaxLineLength:KotlinLiveBus.kt$KotlinLiveBus$fun &lt;T&gt; postSingleEvent(tag: String, eventValue: T)</ID>
+    <ID>MaxLineLength:KotlinLiveBus.kt$KotlinLiveBus$fun &lt;T&gt; postStickyEvent(tag: String, eventValue: T)</ID>
+    <ID>MaxLineLength:KotlinLiveBus.kt$KotlinLiveBus$private</ID>
+    <ID>MaxLineLength:KotlinLiveBus.kt$KotlinLiveBus$private const val CAST_EXCEPTION_MESSAGE = "LiveEvent casting exception! LiveEventBase saved on the " + "bus doesn't have the LiveEvent type"</ID>
+    <ID>MaxLineLength:ListingUtils.kt$ListingUtils$action: (preSubmit: Boolean) -&gt; Unit? = {}</ID>
+    <ID>MaxLineLength:ListingUtils.kt$ListingUtils$emptyListAction: () -&gt; Unit? = {}</ID>
+    <ID>MaxLineLength:LocationRepo.kt$LocationRepo$fun</ID>
+    <ID>MaxLineLength:LocationSearchOnCompleteListener.kt$GoogleMapLocationSearchFragment$class</ID>
+    <ID>MaxLineLength:LocationSearchOnCompleteListener.kt$GoogleMapLocationSearchFragment$val searchButton: AppCompatImageButton = autocompleteSupportFragment.requireView().findViewById(R.id.places_autocomplete_search_button)</ID>
+    <ID>MaxLineLength:LocationSearchOnCompleteListener.kt$GoogleMapLocationSearchFragment$val searchText: AppCompatEditText = autocompleteSupportFragment.requireView().findViewById(R.id.places_autocomplete_search_input)</ID>
+    <ID>MaxLineLength:LoginFragment.kt$LoginFragment$binding.forgotPasswordTextView.paintFlags = binding.forgotPasswordTextView.paintFlags or Paint.UNDERLINE_TEXT_FLAG</ID>
+    <ID>MaxLineLength:MoreFragment.kt$MoreFragment$binding.appVersionTextView.text = getString(R.string.version) + " " + this.versionName + " (" + this.versionCode + ")"</ID>
+    <ID>MaxLineLength:MoreFragment.kt$MoreFragment$binding.userImageView.loadFrom(imageUrl, fallBackImage = R.drawable.user_place_holder, errorImage = R.drawable.user_place_holder, placeholderImage = R.drawable.user_place_holder)</ID>
+    <ID>MaxLineLength:MoreFragment.kt$MoreFragment$private val versionCode: Int</ID>
+    <ID>MaxLineLength:MoreRVItemBinder.kt$MoreRVItemBinder$class</ID>
+    <ID>MaxLineLength:NullableActivityArgs.kt$NullableActivityArgs$class</ID>
+    <ID>MaxLineLength:NullableFragmentArgs.kt$NullableFragmentArgs$class</ID>
+    <ID>MaxLineLength:OnBoardingNavigatorImpl.kt$OnBoardingNavigatorImpl$// We use a try &amp; catch block here because an Exception will be thrown if the Play Store is not installed on the target device.</ID>
+    <ID>MaxLineLength:OrderRatingDialogFragment.kt$OrderRatingDialogFragment$AppDialogFragment&lt;com.ams.featureRestaurantsService.scenes.orderScenes.orderRatingDialogFragment.OrderRatingViewModel, DeliveredOrder&gt;(R.layout.dialog_fragment_rate, com.ams.featureRestaurantsService.scenes.orderScenes.orderRatingDialogFragment.OrderRatingViewModel::class)</ID>
+    <ID>MaxLineLength:OrderRatingViewModel.kt$OrderRatingViewModel$class</ID>
+    <ID>MaxLineLength:OrderReturnReasonFragment.kt$OrderReturnReasonFragment$// is OrderReturnReasonViewStates.RenderReturnReasons -&gt; this.binding.returnReasonAutoCompleteTextView.attachCustomReasonAdapter(state.reasons)</ID>
+    <ID>MaxLineLength:OrderReturnReasonFragment.kt$OrderReturnReasonFragment$class</ID>
+    <ID>MaxLineLength:OrderReturnRvItemBinder.kt$OrderReturnRvItemBinder$AppViewHolderBinder&lt;CartItem, LayoutRecyclerViewItemOrderReturnBinding&gt;(LayoutRecyclerViewItemOrderReturnBinding::inflate)</ID>
+    <ID>MaxLineLength:OrderReviewFragment.kt$OrderReviewFragment$AppFragment&lt;OrderReviewViewModel, OrderReviewViewStates&gt;(R.layout.fragment_order_review, OrderReviewViewModel::class)</ID>
+    <ID>MaxLineLength:OrderReviewFragment.kt$OrderReviewFragment$is OrderReviewViewStates.OrderReturnOrderScreen -&gt; this.navigator.openReturnOrderScreen(this@OrderReviewFragment, state.order)</ID>
+    <ID>MaxLineLength:OrderReviewFragment.kt$OrderReviewFragment$private lateinit var orderStatusRecyclerViewManager: SinglePageRecyclerViewManager&lt;OrderStatus, OrderStatusRvItemBinder&gt;</ID>
+    <ID>MaxLineLength:OrderReviewFragment.kt$OrderReviewFragment$this.binding.orderDeliveryLayout.messageImageView.setOnClickListener { this.navigator.openWhatsAppChat(requireContext(), order.orderDeliveryInfo?.phoneNumber!!) }</ID>
+    <ID>MaxLineLength:OrderReviewFragment.kt$OrderReviewFragment$this.binding.orderReviewInvoiceLayout.deliveryFeesValueTextView.text = (order.deliveryCost ?: 0).toString() + " " + order.getCurrencySymbol()</ID>
+    <ID>MaxLineLength:OrderReviewFragment.kt$OrderReviewFragment$this.binding.orderReviewInvoiceLayout.discountValueTextView.text = order.orderDiscount.toString() + " " + order.getCurrencySymbol()</ID>
+    <ID>MaxLineLength:OrderReviewFragment.kt$OrderReviewFragment$this.binding.orderReviewInvoiceLayout.subtotalValueTextView.text = order.orderTotal.toString() + " " + order.getCurrencySymbol()</ID>
+    <ID>MaxLineLength:OrderReviewFragment.kt$OrderReviewFragment$this.binding.orderReviewInvoiceLayout.totalAfterDiscountValueTextView.text = order.getOrderTotalAfterDiscount().toString() + " " + order.getCurrencySymbol()</ID>
+    <ID>MaxLineLength:OrderReviewFragment.kt$OrderReviewFragment$this.binding.orderReviewInvoiceLayout.totalExpandOrCollapseImageView.rotation = this.binding.orderReviewInvoiceLayout.totalExpandOrCollapseImageView.rotation + 180</ID>
+    <ID>MaxLineLength:OrderReviewFragment.kt$OrderReviewFragment$this.orderStatusRecyclerViewManager = SinglePageRecyclerViewManager(this.binding.orderStatusRecyclerView, layoutManager, recyclerViewItemRenderer)</ID>
+    <ID>MaxLineLength:OrderReviewRvItemBinder.kt$OrderReviewRvItemBinder$AppViewHolderBinder&lt;CartItem, LayoutRecyclerViewItemOrderSummaryBinding&gt;(LayoutRecyclerViewItemOrderSummaryBinding::inflate)</ID>
+    <ID>MaxLineLength:OrderReviewViewModel.kt$OrderReviewViewModel$this.viewStateController.post(OrderReviewViewStates.RenderOrder(it, this.filteredOrderStatus(), this.getOrderActiveStatusPosition()))</ID>
+    <ID>MaxLineLength:OrderStatusRvItemBinder.kt$OrderStatusRvItemBinder$class</ID>
+    <ID>MaxLineLength:OrderSummaryDeliveryMethodRvItemBinder.kt$OrderSummaryDeliveryMethodRvItemBinder$DropDownGenericAdapter.attach(this, items = item.shop.deliveryMethods ?: listOf(), itemName = { it!!.name })</ID>
+    <ID>MaxLineLength:OrderSummaryDeliveryMethodRvItemBinder.kt$OrderSummaryDeliveryMethodRvItemBinder$class</ID>
+    <ID>MaxLineLength:OrderSummaryFragment.kt$OrderSummaryFragment$addressNameTextView.text = cartItemsWrapper.userAddress?.addressType?.name ?: getString(R.string.other_address_type)</ID>
+    <ID>MaxLineLength:OrderSummaryFragment.kt$OrderSummaryFragment$class</ID>
+    <ID>MaxLineLength:OrderSummaryFragment.kt$OrderSummaryFragment$is OrderSummaryViewStates.NoAvailableTimeSlots -&gt; ToastUtils.showToast(requireContext(), R.string.no_available_delivery_slots, Toast.LENGTH_LONG)</ID>
+    <ID>MaxLineLength:OrderSummaryFragment.kt$OrderSummaryFragment$is OrderSummaryViewStates.ShopAvailableTimeSlots -&gt; this.showDeliverySchedules(state.shopId, state.timeSlots)</ID>
+    <ID>MaxLineLength:OrderSummaryFragment.kt$OrderSummaryFragment$is OrderSummaryViewStates.ShowOrderConfirmation -&gt; this.navigator.openOrderConfirmationScreen(this@OrderSummaryFragment)</ID>
+    <ID>MaxLineLength:OrderSummaryItemRvItemBinder.kt$OrderSummaryItemRvItemBinder$class</ID>
+    <ID>MaxLineLength:OrderSummaryViewModel.kt$OrderSummaryViewModel$formattedTimeSlot = selectedDay.dayName + " " + selectedDay.dayDate + " " + scheduledTimeSlot.fromHour + " " + to + " " + scheduledTimeSlot.toHour</ID>
+    <ID>MaxLineLength:OrderSummaryViewModel.kt$OrderSummaryViewModel$fun</ID>
+    <ID>MaxLineLength:OrdersFragment.kt$OrdersFragment$TabLayoutMediator</ID>
+    <ID>MaxLineLength:OtherModules.kt$factory { get&lt;AppActivityLifecycleCallbacks&gt;().currentActivity as AppCompatActivity }.bind(AndroidScopeComponent::class)</ID>
+    <ID>MaxLineLength:PaginatedRecyclerViewManager.kt$PaginatedRecyclerViewManager$class</ID>
+    <ID>MaxLineLength:PaginatedRecyclerViewManager.kt$PaginatedRecyclerViewManager$private val recyclerViewWithEmptyView: RecyclerViewWithEmptyView</ID>
+    <ID>MaxLineLength:PaginatorDelegate.kt$PaginatorDelegate$class</ID>
+    <ID>MaxLineLength:PlaceOrderRequest.kt$PlaceOrderRequest.Companion$mapOf("branchId" to it.first, "deliveryMethodId" to it.second.id, "slotId" to it.third?.timeSlotId).removeNullValues()</ID>
+    <ID>MaxLineLength:PreLoginActivity.kt$PreLoginActivity$class</ID>
+    <ID>MaxLineLength:PreLoginActivity.kt$PreLoginActivity$is LocationPermissionDeniedThrowable -&gt; KhdmaDialog.showError(this, R.string.location_permission_description) { this.navigator.openAppSettings(this) }</ID>
+    <ID>MaxLineLength:PreLoginPermissionRequestFragment.kt$PreLoginPermissionRequestFragment$class</ID>
+    <ID>MaxLineLength:RecyclerViewWithEmptyView.kt$RecyclerViewWithEmptyView$binding.emptyView.emptyLabelTextView.text = attributes.getString(R.styleable.RecyclerViewWithEmptyView_empty_text_label)</ID>
+    <ID>MaxLineLength:RecyclerViewWithEmptyView.kt$RecyclerViewWithEmptyView$binding.pullToRefresh</ID>
+    <ID>MaxLineLength:RefreshTokenInterceptor.kt$RefreshTokenInterceptor$override fun baseURLFromOriginalRequest(originalRequest: Request)</ID>
+    <ID>MaxLineLength:RefreshTokenInterceptor.kt$RefreshTokenInterceptor$val tokenResponseObj = this.serializationService.fromJson(tokenResponse, RefreshTokenResponseWrapper::class.java)</ID>
+    <ID>MaxLineLength:RepositoryModules.kt$scoped { AuthenticationRepo(authenticationAPIs = get(), sessionService = get(), startUpConfigsDataSource = get()) }</ID>
+    <ID>MaxLineLength:RepositoryModules.kt$single { LocationRepo(locationManager = get(), sessionService = get(), permissionsManger = get(), sharedPreferencesDataSource = get()) }</ID>
+    <ID>MaxLineLength:RequestExecutor.kt$RequestExecutor$fun</ID>
+    <ID>MaxLineLength:ResetPasswordDialogFragment.kt$ResetPasswordDialogFragment$class</ID>
+    <ID>MaxLineLength:RestModules.kt$factory { OKHttpNetworkClient(context = androidApplication(), okHttpConfigs = get(), advertisingId = DeviceInfo.getAndroidID(androidContext()), localeManager = AppLocale) }</ID>
+    <ID>MaxLineLength:ResultObservable.kt$ResultObservable.ResultObserver$private</ID>
+    <ID>MaxLineLength:RuntimePermissionsManger.kt$RuntimePermissionsManger$// scope.showForwardToSettingsDialog(deniedList, "You need to allow necessary permissions in Settings manually", "OK", "Cancel")</ID>
+    <ID>MaxLineLength:RuntimePermissionsManger.kt$RuntimePermissionsManger$fun</ID>
+    <ID>MaxLineLength:RuntimePermissionsManger.kt$RuntimePermissionsManger$private</ID>
+    <ID>MaxLineLength:RuntimePermissionsManger.kt$RuntimePermissionsManger$scope.showRequestReasonDialog(deniedList, description, this.okButtonTitle ?: "Ok", this.cancelButtonTitle ?: "Cancel")</ID>
+    <ID>MaxLineLength:RxErrorHandlingCallAdapter.kt$RxErrorHandlingCallAdapter$val responseObservable: Observable&lt;Response&lt;R&gt;&gt; = if (isAsync) CallEnqueueObservable(call) else CallExecuteObservable(call)</ID>
+    <ID>MaxLineLength:RxErrorHandlingCallAdapterFactory.kt$RxErrorHandlingCallAdapterFactory$val name = if (isFlowable) "Flowable" else if (isSingle) "Single" else if (isMaybe) "Maybe" else "Observable"</ID>
+    <ID>MaxLineLength:RxExtensions.kt$fun</ID>
+    <ID>MaxLineLength:ScheduledDayRVItemBinder.kt$ScheduledDayRVItemBinder$:</ID>
+    <ID>MaxLineLength:ScheduledDayRVItemBinder.kt$ScheduledDayRVItemBinder$private fun getNormalBackground(context: Context)</ID>
+    <ID>MaxLineLength:ScheduledDeliveryPickerDialogFragment.kt$ScheduledDeliveryPickerDialogFragment$class</ID>
+    <ID>MaxLineLength:ScheduledDeliveryPickerDialogFragment.kt$ScheduledDeliveryPickerDialogFragment$if (!::selectedDay.isInitialized || !::selectedTimeSlot.isInitialized) this.listener.onNoDeliveryScheduleSelected()</ID>
+    <ID>MaxLineLength:ScheduledDeliveryPickerDialogFragment.kt$ScheduledDeliveryPickerDialogFragment$val lastSelectedItem = it.getAllItems().find { timeSlot -&gt; timeSlot.isSelected }?.apply { isSelected = false }</ID>
+    <ID>MaxLineLength:ScheduledTimeSlotRVItemBinder.kt$ScheduledTimeSlotRVItemBinder$:</ID>
+    <ID>MaxLineLength:ScheduledTimeSlotRVItemBinder.kt$ScheduledTimeSlotRVItemBinder$private fun getNormalBackground(context: Context)</ID>
+    <ID>MaxLineLength:SearchItemsFragment.kt$SearchItemsFragment$class</ID>
+    <ID>MaxLineLength:SearchItemsRepo.kt$SearchItemsRepo$return this.searchItemsAPIs.getItemsByBarCode(branchId = branchId, barCode = barCode, page = page).map { it.data }</ID>
+    <ID>MaxLineLength:SearchItemsRepo.kt$SearchItemsRepo$return this.searchItemsAPIs.getItemsBySearchText(branchId = branchId, searchText = searchText, page = page).map { it.data }</ID>
+    <ID>MaxLineLength:SearchItemsViewModel.kt$SearchItemsViewModel$return searchItemsRepo.findItemsByBarcode(branchId = this.branchId!!, barCode = this.barcodeId!!, page = page)</ID>
+    <ID>MaxLineLength:ServiceProviderTypeButton.kt$ServiceProviderTypeButton$val drawableId = attributes.getResourceId(R.styleable.ServiceProviderTypeButton_serviceProviderButtonDrawable, 0)</ID>
+    <ID>MaxLineLength:ShopCategoriesAndSubCategoriesFragment.kt$ShopCategoriesAndSubCategoriesFragment$binding.shopView.shopStatusImageView.setImageDrawable(ContextCompat.getDrawable(requireContext(), R.drawable.shape_shop_status_closed))</ID>
+    <ID>MaxLineLength:ShopCategoriesAndSubCategoriesFragment.kt$ShopCategoriesAndSubCategoriesFragment$binding.shopView.shopStatusImageView.setImageDrawable(ContextCompat.getDrawable(requireContext(), statusDrawable))</ID>
+    <ID>MaxLineLength:ShopCategoriesAndSubCategoriesFragment.kt$ShopCategoriesAndSubCategoriesFragment$binding.shopView.shopStatusTextView.text = getString(R.string.open_from) + " " + fromHour + " " + getString(R.string.to) + " " + toHour</ID>
+    <ID>MaxLineLength:ShopCategoriesAndSubCategoriesFragment.kt$ShopCategoriesAndSubCategoriesFragment$class</ID>
+    <ID>MaxLineLength:ShopCategoriesAndSubCategoriesFragment.kt$ShopCategoriesAndSubCategoriesFragment$is ShopCategoriesAndSubCategoriesViewStates.OpenItemsWithOffers -&gt; this.navigator.openItemsWithOffersScreen(this, state.shop)</ID>
+    <ID>MaxLineLength:ShopCategoriesAndSubCategoriesFragment.kt$ShopCategoriesAndSubCategoriesFragment$is ShopCategoriesAndSubCategoriesViewStates.OpenShopCategoryItems -&gt; this.navigator.openCategoryItemsScreen(this, state.shop, state.categoryId)</ID>
+    <ID>MaxLineLength:ShopCategoriesAndSubCategoriesFragment.kt$ShopCategoriesAndSubCategoriesFragment$is ShopCategoriesAndSubCategoriesViewStates.OpenShopSubCategories -&gt; this.navigator.openShopSubCategoriesScreen(this, state.shop, state.subCategoryId, state.categoryName)</ID>
+    <ID>MaxLineLength:ShopCategoriesAndSubCategoriesFragment.kt$ShopCategoriesAndSubCategoriesFragment$is ShopCategoriesAndSubCategoriesViewStates.OpenShopSubCategoryItems -&gt; this.navigator.openSubCategoryItemsScreen(this, state.shop, state.categoryId, state.subCategoryId)</ID>
+    <ID>MaxLineLength:ShopCategoriesAndSubCategoriesFragment.kt$ShopCategoriesAndSubCategoriesFragment$is ShopCategoriesAndSubCategoriesViewStates.SearchShopItems -&gt; this.navigator.openSearchWithBarcodeScreen(this, state.shop)</ID>
+    <ID>MaxLineLength:ShopCategoriesAndSubCategoriesViewModel.kt$ShopCategoriesAndSubCategoriesViewModel$class</ID>
+    <ID>MaxLineLength:ShopCategoryAndSubCategoryRvItemBinder.kt$ShopCategoryAndSubCategoryRvItemBinder$:</ID>
+    <ID>MaxLineLength:ShopHorizontalCategoriesRVItemBinder.kt$ShopHorizontalCategoriesRVItemBinder$:</ID>
+    <ID>MaxLineLength:ShopHorizontalCategoriesRVItemBinder.kt$ShopHorizontalCategoriesRVItemBinder$class</ID>
+    <ID>MaxLineLength:ShopInfoBottomSheetDialogFragment.kt$ShopInfoBottomSheetDialogFragment$class</ID>
+    <ID>MaxLineLength:ShopItemInfoFragment.kt$ShopItemInfoFragment$class</ID>
+    <ID>MaxLineLength:ShopItemRvItemBinder.kt$ShopItemRvItemBinder$addToCartButton.text = getString(context, if(item.hasRevision == true) R.string.go_to_details else R.string.add_to_cart)</ID>
+    <ID>MaxLineLength:ShopItemsFragment.kt$ShopItemsFragment$class</ID>
+    <ID>MaxLineLength:ShopItemsFragment.kt$ShopItemsFragment$is ShopItemsViewStates.ShopItems -&gt; ListingUtils.postPaginatedResult(shopItemsRecyclerViewManager, state.typedList)</ID>
+    <ID>MaxLineLength:ShopItemsFragment.kt$ShopItemsFragment$text = state.numberOfFetchedItems.toString() + " " + getString(R.string.of) + " " + state.totalNumberOfItems.toString() + " " + getString(R.string.items)</ID>
+    <ID>MaxLineLength:ShopItemsViewModel.kt$ShopItemsViewModel$(addedItem.getUniqueId() == shopItem.getUniqueId()) || (addedItem.parentItemId == shopItem.getUniqueId())</ID>
+    <ID>MaxLineLength:ShopRVItemBinder.kt$ShopRVItemBinder$shopStatusTextView.text = getString(context, R.string.open_from) + " " + item.fromHour + " " + getString(context, R.string.to) + " " + item.toHour</ID>
+    <ID>MaxLineLength:SignUpFragment.kt$SignUpFragment$class</ID>
+    <ID>MaxLineLength:SimpleTypes.kt$AppSimpleActivity&lt;VB: ViewBinding&gt; : AppActivity</ID>
+    <ID>MaxLineLength:SimpleTypes.kt$AppSimpleBottomSheetDialogFragment : AppBottomSheetDialogFragment</ID>
+    <ID>MaxLineLength:SimpleTypes.kt$AppSimpleDialogFragment : AppDialogFragment</ID>
+    <ID>MaxLineLength:SimpleTypes.kt$AppSimpleFragment : AppFragment</ID>
+    <ID>MaxLineLength:SinglePageRecyclerViewManager.kt$SinglePageRecyclerViewManager$class</ID>
+    <ID>MaxLineLength:SinglePageRecyclerViewManager.kt$SinglePageRecyclerViewManager$private val layoutManager: RecyclerView.LayoutManager</ID>
+    <ID>MaxLineLength:SizeOptionRvItemBinder.kt$SizeOptionRvItemBinder$class</ID>
+    <ID>MaxLineLength:SnackbarUtils.kt$SnackbarUtils$snackbarTopMargin = TypedValue.complexToDimensionPixelSize(typedValue.data, activity.resources.displayMetrics)</ID>
+    <ID>MaxLineLength:SnackbarUtils.kt$SnackbarUtils$val snackbarSideMargins = AndroidUtils.convertDpToPixel(activity.resources.getDimension(R.dimen._50dp)).roundToInt()</ID>
+    <ID>MaxLineLength:SplashActivity.kt$SplashActivity$class</ID>
+    <ID>MaxLineLength:SplashViewModel.kt$SplashViewModel$class</ID>
+    <ID>MaxLineLength:SplashViewModel.kt$SplashViewModel$this.dateTimeUtils.isDateAfterCurrentDate(this.splashRepo.getLaunchDate()) -&gt; viewStateController.post(SplashStates.ComingSoon)</ID>
+    <ID>MaxLineLength:StartUpConfigsDataSourceImpl.kt$StartUpConfigsDataSourceImpl$class</ID>
+    <ID>MaxLineLength:StartUpConfigsDataSourceImpl.kt$StartUpConfigsDataSourceImpl$override fun getCartMaxDistance(): Int</ID>
+    <ID>MaxLineLength:StringExtensions.kt$return this.toCamelCase().replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString() }</ID>
+    <ID>MaxLineLength:UnderlinedAuthenticationButton.kt$UnderlinedAuthenticationButton$binding.buttonLabelTextView.text = attributes.getString(R.styleable.UnderlinedAuthenticationButton_authentication_button_label)</ID>
+    <ID>MaxLineLength:UnderlinedAuthenticationButton.kt$UnderlinedAuthenticationButton$val enabled = attributes.getBoolean(R.styleable.UnderlinedAuthenticationButton_authentication_button_inactive, true)</ID>
+    <ID>MaxLineLength:UserAgentInterceptor.kt$UserAgentInterceptor$class</ID>
+    <ID>MaxLineLength:UserAgentInterceptor.kt$UserAgentInterceptor$return "$appName / $versionName($versionCode); $installerName; ($manufacturer; $model; SDK $version; Android $versionRelease)"</ID>
+    <ID>MaxLineLength:UserAgentInterceptor.kt$UserAgentInterceptor$val appName = overrideAppName ?: if (stringId == 0) applicationInfo.nonLocalizedLabel.toString() else context.getString(stringId)</ID>
+    <ID>MaxLineLength:UserProfileInfoFragment.kt$UserProfileInfoFragment$class</ID>
+    <ID>MaxLineLength:UserProfileInfoFragment.kt$UserProfileInfoFragment$is CameraAndReadStoragePermissionsDeniedThrowable</ID>
+    <ID>MaxLineLength:UserProfileInfoRepo.kt$UserProfileInfoRepo$private</ID>
+    <ID>MaxLineLength:UserProfileInfoRepo.kt$UserProfileInfoRepo$return if (sessionService.hasValidUser()) this.userAccountAPIs.getUserInfo().map { it.data?.deliverdOrders ?: listOf() } else Single.just(listOf())</ID>
+    <ID>MaxLineLength:UserProfileInfoViewModel.kt$UserProfileInfoViewModel$this.requestCameraAndReadStoragePermissionsIfNotAllowed(this.permissionsManger, this.viewStateController, successAction)</ID>
+    <ID>MaxLineLength:Validator.kt$Validator$val emailRegexPattern = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@" + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$"</ID>
+    <ID>MaxLineLength:ViewBindingExtensions.kt$fun &lt;T: ViewBinding&gt; Fragment.viewBinding(viewBindingFactory: (View) -&gt; T)</ID>
+    <ID>MaxLineLength:ViewGroupExtensions.kt$internal inline</ID>
+    <ID>MaxLineLength:ViewModelModules.kt$viewModel { LoginViewModel(authenticationRepo = KoinScopeResolver.getFromCurrentActivityScope(), dateTimeUtils = get(), remoteConfigDataSource = get()) }</ID>
+    <ID>MaxLineLength:ViewModelModules.kt$viewModel { OrderSummaryViewModel(orderSummaryRepo = get(), cartRepo = get(), locationRepo = get(), dateTimeUtils = get()) }</ID>
+    <ID>MaxLineLength:ViewModelModules.kt$viewModel { PreLoginPermissionRequestViewModel(locationManager = get(), permissionsManger = get(), locationRepo = get()) }</ID>
+    <ID>MaxLineLength:ViewModelModules.kt$viewModel { ShopCategoriesAndSubCategoriesViewModel(shoppingServiceRepo = KoinScopeResolver.getScopedShoppingServiceRepo()) }</ID>
+    <ID>MaxLineLength:WhichServiceButton.kt$WhichServiceButton$val backgroundTintColor = attributes.getColor(R.styleable.WhichServiceButton_buttonBackgroundColor, fallbackColor)</ID>
+    <ID>MaxLineLength:WrapContentCircleImageView.kt$WrapContentCircleImageView$circle.paint.setShadowLayer(mShadowRadius.toFloat(), shadowXOffset.toFloat(), shadowYOffset.toFloat(), KEY_SHADOW_COLOR)</ID>
+    <ID>MaxLineLength:WrapContentCircleImageView.kt$WrapContentCircleImageView.OvalShadow$canvas.drawCircle((viewWidth / 2).toFloat(), (viewHeight / 2).toFloat(), (viewWidth / 2 - mShadowRadius).toFloat(), paint)</ID>
+    <ID>MaxLineLength:WrapContentCircleImageView.kt$WrapContentCircleImageView.OvalShadow$canvas.drawCircle((viewWidth / 2).toFloat(), (viewHeight / 2).toFloat(), (viewWidth / 2).toFloat(), mShadowPaint)</ID>
+    <ID>MaxLineLength:WrapContentSwipeRefreshLayout.kt$WrapContentSwipeRefreshLayout$*</ID>
+    <ID>MaxLineLength:WrapContentSwipeRefreshLayout.kt$WrapContentSwipeRefreshLayout$* @return The offset in pixels from the top of this view at which the progress spinner should come to rest after a successful swipe gesture.</ID>
+    <ID>MaxLineLength:WrapContentSwipeRefreshLayout.kt$WrapContentSwipeRefreshLayout$* @return Whether it is possible for the child view of this layout to scroll up. Override this if the child view is a custom view.</ID>
+    <ID>MaxLineLength:WrapContentSwipeRefreshLayout.kt$WrapContentSwipeRefreshLayout$// If a client layout is using a custom start position for the circle view, they mean to hide it again before scrolling the child view</ID>
+    <ID>MaxLineLength:WrapContentSwipeRefreshLayout.kt$WrapContentSwipeRefreshLayout$// If nested scrolling is enabled, the total amount that needed to be consumed by this as the nested scrolling parent is used in place of the overscroll determined by MOVE events in the onTouch handler</ID>
+    <ID>MaxLineLength:WrapContentSwipeRefreshLayout.kt$WrapContentSwipeRefreshLayout$// If we are in the middle of consuming, a scroll, then we want to move the spinner back up before allowing the list to scroll</ID>
+    <ID>MaxLineLength:WrapContentSwipeRefreshLayout.kt$WrapContentSwipeRefreshLayout$// If we get back to mTotalUnconsumed == 0 and there is more to go, hide the circle so it isn't exposed if its blocking content is moved</ID>
+    <ID>MaxLineLength:WrapContentSwipeRefreshLayout.kt$WrapContentSwipeRefreshLayout$class</ID>
+    <ID>MaxLineLength:WrapContentSwipeRefreshLayout.kt$WrapContentSwipeRefreshLayout$if</ID>
+    <ID>MaxLineLength:WrapContentSwipeRefreshLayout.kt$WrapContentSwipeRefreshLayout$it.layout(width / 2 - circleWidth / 2, mCurrentTargetOffsetTop, width / 2 + circleWidth / 2, mCurrentTargetOffsetTop + circleHeight)</ID>
+    <ID>MaxLineLength:WrapContentSwipeRefreshLayout.kt$WrapContentSwipeRefreshLayout$mCircleView?.measure(MeasureSpec.makeMeasureSpec(mCircleDiameter, MeasureSpec.EXACTLY), MeasureSpec.makeMeasureSpec(mCircleDiameter, MeasureSpec.EXACTLY))</ID>
+    <ID>MaxLineLength:WrapContentSwipeRefreshLayout.kt$WrapContentSwipeRefreshLayout$override</ID>
+    <ID>MaxLineLength:WrapContentSwipeRefreshLayout.kt$WrapContentSwipeRefreshLayout$return isEnabled &amp;&amp; !mReturningToStart &amp;&amp; !mRefreshing &amp;&amp; nestedScrollAxes and ViewCompat.SCROLL_AXIS_VERTICAL != 0</ID>
+    <ID>MaxLineLength:WrapContentSwipeRefreshLayout.kt$WrapContentSwipeRefreshLayout$return mNestedScrollingChildHelper.dispatchNestedScroll(dxConsumed, dyConsumed, dxUnconsumed, dyUnconsumed, offsetInWindow)</ID>
+    <ID>MaxLineLength:WrapContentSwipeRefreshLayout.kt$WrapContentSwipeRefreshLayout$setMeasuredDimension(resolveSizeAndState(maxWidth, widthMeasureSpec, childState), resolveSizeAndState(maxHeight, heightMeasureSpec, childState shl MEASURED_HEIGHT_STATE_SHIFT))</ID>
+    <ID>MaxLineLength:WrapContentSwipeRefreshLayout.kt$WrapContentSwipeRefreshLayout$val endTarget = if (!mUsingCustomStart) progressViewEndOffset + progressViewStartOffset else progressViewEndOffset</ID>
+    <ID>MaxLineLength:WrapContentSwipeRefreshLayout.kt$WrapContentSwipeRefreshLayout$val measureMatchParentChildren = MeasureSpec.getMode(widthMeasureSpec) != MeasureSpec.EXACTLY || MeasureSpec.getMode(heightMeasureSpec) != MeasureSpec.EXACTLY</ID>
+    <ID>MaxLineLength:WrapContentSwipeRefreshLayout.kt$WrapContentSwipeRefreshLayout$val slingshotDist = if (mUsingCustomStart) (progressViewEndOffset - progressViewStartOffset).toFloat() else progressViewEndOffset.toFloat()</ID>
+    <ID>MaxLineLength:WrapContentSwipeRefreshLayout.kt$WrapContentSwipeRefreshLayout$val tensionPercent = (tensionSlingshotPercent / 4 - (tensionSlingshotPercent / 4).toDouble().pow(2.0)).toFloat() * 2f</ID>
+    <ID>MaxLineLength:WrapContentSwipeRefreshLayout.kt$WrapContentSwipeRefreshLayout.OnChildScrollUpCallback$*</ID>
+    <ID>MaxLineLength:WrapContentSwipeRefreshLayout.kt$WrapContentSwipeRefreshLayout.OnChildScrollUpCallback$* Classes that wish to override [SwipeRefreshLayout.canChildScrollUp] method behavior should implement this interface.</ID>
+    <ID>MaxLineLength:WrapContentSwipeRefreshLayout.kt$WrapContentSwipeRefreshLayout.OnRefreshListener$* Classes that wish to be notified when the swipe gesture correctly triggers a refresh should implement this interface.</ID>
+    <ID>MaxLineLength:build.gradle.kts$buildConfigField(BuildSystem.buildConfig.stringField, BuildSystem.buildConfig.allServicesImageUrlField, "\"setup/service-category/image/all_services.png\"")</ID>
+    <ID>MaxLineLength:build.gradle.kts$buildConfigField(BuildSystem.buildConfig.stringField, BuildSystem.buildConfig.androidServerKey, "\"ANDROID_QT62khxr47jf8RcKnffdnii7MU7D2do7W7yZ2FePCdTc01JY434vjR07n675ChVclca6t4duOHeUzSdvvpYNXPnLdLBfLOr5Mdya6klPGvZVOW46Cza9pCpcUUpPvUCV\"")</ID>
+    <ID>MaxLineLength:build.gradle.kts$buildConfigField(BuildSystem.buildConfig.stringField, BuildSystem.buildConfig.baseImageUrlField, "\"https://khdma-production-bucket.s3.eu-west-2.amazonaws.com/\"")</ID>
+    <ID>MaxLineLength:build.gradle.kts$buildConfigField(BuildSystem.buildConfig.stringField, BuildSystem.buildConfig.baseImageUrlField, "\"https://khdma-staging-bucket.s3.eu-west-2.amazonaws.com/\"")</ID>
+    <ID>MaxLineLength:build.gradle.kts$buildConfigField(BuildSystem.buildConfig.stringField, BuildSystem.buildConfig.baseImageUrlField, "\"https://khdma-uat-bucket.s3.eu-west-2.amazonaws.com/\"")</ID>
+    <ID>MaxLineLength:build.gradle.kts$buildConfigField(BuildSystem.buildConfig.stringField, BuildSystem.buildConfig.baseUrlField, "\"https://5dmastage.site/\"")</ID>
+    <ID>MaxLineLength:build.gradle.kts$buildConfigField(BuildSystem.buildConfig.stringField, BuildSystem.buildConfig.baseUrlField, "\"https://5dmauat.site/\"")</ID>
+    <ID>MaxLineLength:build.gradle.kts$buildConfigField(BuildSystem.buildConfig.stringField, BuildSystem.buildConfig.baseUrlField, "\"https://www.5dma.vip/\"")</ID>
+    <ID>MaxLineLength:build.gradle.kts$buildConfigField(BuildSystem.buildConfig.stringField, BuildSystem.buildConfig.databaseName, "\"5dmaDB_Staging\"")</ID>
+    <ID>MaxLineLength:build.gradle.kts$buildConfigField(BuildSystem.buildConfig.stringField, BuildSystem.buildConfig.databaseName, "\"5dmaDB_UAT\"")</ID>
+    <ID>MaxLineLength:build.gradle.kts$buildConfigField(BuildSystem.buildConfig.stringField, BuildSystem.buildConfig.dynamicLink, "\"https://5dmastaging.page.link/\"")</ID>
+    <ID>MaxLineLength:build.gradle.kts$buildConfigField(BuildSystem.buildConfig.stringField, BuildSystem.buildConfig.dynamicLink, "\"https://5dmavip.page.link/\"")</ID>
+    <ID>MaxLineLength:build.gradle.kts$buildConfigField(BuildSystem.buildConfig.stringField, BuildSystem.buildConfig.googleAPIKey, "\"AIzaSyAumFk7Ofx3__0pHaaeRmmwYtTv5kH9rLM\"")</ID>
+    <ID>MaxLineLength:build.gradle.kts$buildConfigField(BuildSystem.buildConfig.stringField, BuildSystem.buildConfig.googleAPIKey, "\"AIzaSyDZ4awYXpWeFbhJcNQHfXeYSx9CCqMeMWA\"")</ID>
+    <ID>MaxLineLength:build.gradle.kts$buildConfigField(BuildSystem.buildConfig.stringField, BuildSystem.buildConfig.huaweiAPIKey, "\"CgB6e3x9PzCoI2lk4aEJAgLn0GOg2GA+mNYVJsVjuKkvmCKZHP2JbvxXHuRoqjIWguFQ0GBgPuv374yubS6ez5W+\"")</ID>
+    <ID>MaxLineLength:build.gradle.kts$buildConfigField(BuildSystem.buildConfig.stringField, BuildSystem.buildConfig.offersImageUrlField, "\"inventory/category/image/offers.png\"")</ID>
+    <ID>MaxLineLength:build.gradle.kts$buildConfigField(BuildSystem.buildConfig.stringField, BuildSystem.buildConfig.serviceProviderUrlField, "\"https://www.5dma.vip/login/register/\"")</ID>
+    <ID>MaxLineLength:build.gradle.kts$buildConfigField(BuildSystem.buildConfig.stringField, BuildSystem.buildConfig.sharedPreferencesFileNameField, "\"com.ams.productionEnv.5dmaAppPrefs\"")</ID>
+    <ID>MaxLineLength:build.gradle.kts$buildConfigField(BuildSystem.buildConfig.stringField, BuildSystem.buildConfig.sharedPreferencesFileNameField, "\"com.ams.stagingEnv.5dmaAppPrefs\"")</ID>
+    <ID>MaxLineLength:build.gradle.kts$manifestPlaceholders[BuildSystem.buildConfig.huaweiAPIKey] = "CgB6e3x9PzCoI2lk4aEJAgLn0GOg2GA+mNYVJsVjuKkvmCKZHP2JbvxXHuRoqjIWguFQ0GBgPuv374yubS6ez5W+"</ID>
+    <ID>MayBeConst:SingleLiveEvent.kt$SingleLiveEvent.Companion$private val TAG = "SingleLiveEvent"</ID>
+    <ID>MayBeConst:WrapContentSwipeRefreshLayout.kt$WrapContentSwipeRefreshLayout.Companion$val CIRCLE_DIAMETER = 40</ID>
+    <ID>MayBeConst:WrapContentSwipeRefreshLayout.kt$WrapContentSwipeRefreshLayout.Companion$val CIRCLE_DIAMETER_LARGE = 56</ID>
+    <ID>NestedBlockDepth:AddNewAddressFragment.kt$AddNewAddressFragment$override fun initUI()</ID>
+    <ID>NestedBlockDepth:BaseViewArgsDelegate.kt$BaseViewArgsDelegate$protected fun getBundleArgsClass(bundle: Bundle): B</ID>
+    <ID>NestedBlockDepth:OrderSummaryDeliveryMethodRvItemBinder.kt$OrderSummaryDeliveryMethodRvItemBinder$@SuppressLint("SetTextI18n") override fun bind(item: DeliverySelection, position: Int, context: Context)</ID>
+    <ID>NestedBlockDepth:ShopItemRvItemBinder.kt$ShopItemRvItemBinder$@SuppressLint("SetTextI18n") override fun bind(item: CartItem, position: Int, context: Context)</ID>
+    <ID>NestedBlockDepth:WrapContentSwipeRefreshLayout.kt$WrapContentSwipeRefreshLayout$override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int)</ID>
+    <ID>NewLineAtEndOfFile:APIError.kt$com.ams.khdmaData.models.APIError.kt</ID>
+    <ID>NewLineAtEndOfFile:ActivityArgs.kt$com.ams.khdmaCore.utils.viewArgs.activityArgs.ActivityArgs.kt</ID>
+    <ID>NewLineAtEndOfFile:ActivityExtensions.kt$com.ams.khdmaCore.extensions.ActivityExtensions.kt</ID>
+    <ID>NewLineAtEndOfFile:AddNewAddressStates.kt$com.ams.featureLocationAndAddresses.scenes.addressScenes.addNewAddressFragment.AddNewAddressStates.kt</ID>
+    <ID>NewLineAtEndOfFile:AddNewAddressViewModel.kt$com.ams.featureLocationAndAddresses.scenes.addressScenes.addNewAddressFragment.AddNewAddressViewModel.kt</ID>
+    <ID>NewLineAtEndOfFile:AddedShopItemRVItemBinder.kt$com.ams.featureRestaurantsService.scenes.restaurantItemInfoFragment.restaurantItemInfo.binders.AddedShopItemRVItemBinder.kt</ID>
+    <ID>NewLineAtEndOfFile:AddressAPIs.kt$com.ams.featureLocationAndAddresses.data.apis.AddressAPIs.kt</ID>
+    <ID>NewLineAtEndOfFile:AddressAndLocationFeatureNavigator.kt$com.ams.khdmanavigators.navigators.AddressAndLocationFeatureNavigator.kt</ID>
+    <ID>NewLineAtEndOfFile:AddressAndLocationFeatureNavigatorImpl.kt$com.ams.khdmaApp.implementations.navigators.AddressAndLocationFeatureNavigatorImpl.kt</ID>
+    <ID>NewLineAtEndOfFile:AddressArgs.kt$com.ams.khdmaData.models.activityAndFragmentArgs.AddressArgs.kt</ID>
+    <ID>NewLineAtEndOfFile:ShoppingFilterFragmentArgs.kt$com.ams.khdmaData.models.activityAndFragmentArgs.ShoppingFilterFragmentArgs.kt</ID>
+    <ID>NewLineAtEndOfFile:AddressRVItemBinder.kt$com.ams.featureLocationAndAddresses.scenes.addressScenes.addressesFragment.AddressRVItemBinder.kt</ID>
+    <ID>NewLineAtEndOfFile:AddressRepo.kt$com.ams.featureLocationAndAddresses.scenes.addressScenes.addressesFragment.AddressRepo.kt</ID>
+    <ID>NewLineAtEndOfFile:AddressThrowables.kt$com.ams.khdmaData.errors.throwables.AddressThrowables.kt</ID>
+    <ID>NewLineAtEndOfFile:AddressType.kt$com.ams.khdmaData.enums.types.AddressType.kt</ID>
+    <ID>NewLineAtEndOfFile:AddressesFragment.kt$com.ams.featureLocationAndAddresses.scenes.addressScenes.addressesFragment.AddressesFragment.kt</ID>
+    <ID>NewLineAtEndOfFile:AddressesListingStates.kt$com.ams.featureLocationAndAddresses.scenes.addressScenes.addressesFragment.AddressesListingStates.kt</ID>
+    <ID>NewLineAtEndOfFile:AndroidSharedPreferences.kt$com.ams.khdmaServices.sharedPrefService.AndroidSharedPreferences.kt</ID>
+    <ID>NewLineAtEndOfFile:AndroidUtils.kt$com.ams.khdmaCore.utils.AndroidUtils.kt</ID>
+    <ID>NewLineAtEndOfFile:AnyExtensions.kt$com.ams.khdmaCore.extensions.AnyExtensions.kt</ID>
+    <ID>NewLineAtEndOfFile:AppActivity.kt$com.ams.khdmaMVVM.appBases.views.AppActivity.kt</ID>
+    <ID>NewLineAtEndOfFile:AppActivityLifecycleCallbacks.kt$com.ams.khdmaApp.lifecycleObservers.activityLifecycleCallbacks.AppActivityLifecycleCallbacks.kt</ID>
+    <ID>NewLineAtEndOfFile:AppActivityLifecycleCallbacksImpl.kt$com.ams.khdmaApp.lifecycleObservers.activityLifecycleCallbacks.AppActivityLifecycleCallbacksImpl.kt</ID>
+    <ID>NewLineAtEndOfFile:AppBottomNavigationView.kt$com.ams.khdmaCustomComponents.bottomNavigation.AppBottomNavigationView.kt</ID>
+    <ID>NewLineAtEndOfFile:AppBottomSheetDialogFragment.kt$com.ams.khdmaMVVM.appBases.views.AppBottomSheetDialogFragment.kt</ID>
+    <ID>NewLineAtEndOfFile:AppClassUtils.kt$com.ams.khdmaCore.utils.AppClassUtils.kt</ID>
+    <ID>NewLineAtEndOfFile:AppCompatActivityExtensions.kt$com.ams.khdmaCore.extensions.AppCompatActivityExtensions.kt</ID>
+    <ID>NewLineAtEndOfFile:AppCompatAutoCompleteTextViewExtensions.kt$com.ams.khdmaCore.extensions.AppCompatAutoCompleteTextViewExtensions.kt</ID>
+    <ID>NewLineAtEndOfFile:AppDialogFragment.kt$com.ams.khdmaMVVM.appBases.views.AppDialogFragment.kt</ID>
+    <ID>NewLineAtEndOfFile:AppErrorHandler.kt$com.ams.khdmaData.networking.AppErrorHandler.kt</ID>
+    <ID>NewLineAtEndOfFile:AppFragment.kt$com.ams.khdmaMVVM.appBases.views.AppFragment.kt</ID>
+    <ID>NewLineAtEndOfFile:AppLocale.kt$com.ams.khdmaCore.utils.locale.AppLocale.kt</ID>
+    <ID>NewLineAtEndOfFile:AppNavHostFragment.kt$com.ams.khdmaCustomComponents.bottomNavigation.AppNavHostFragment.kt</ID>
+    <ID>NewLineAtEndOfFile:AppNavigator.kt$com.ams.khdmanavigators.AppNavigator.kt</ID>
+    <ID>NewLineAtEndOfFile:AppPaginator.kt$com.ams.khdmaMVVM.utils.pagination.AppPaginator.kt</ID>
+    <ID>NewLineAtEndOfFile:AppPermissionsManager.kt$com.ams.khdmaCore.managers.runtimePermissions.AppPermissionsManager.kt</ID>
+    <ID>NewLineAtEndOfFile:AppService.kt$com.ams.khdmaData.models.AppService.kt</ID>
+    <ID>NewLineAtEndOfFile:AppTerminationListenerService.kt$com.ams.khdmaApp.bgServices.appServices.AppTerminationListenerService.kt</ID>
+    <ID>NewLineAtEndOfFile:AppThrowable.kt$com.ams.khdmaData.errors.throwables.AppThrowable.kt</ID>
+    <ID>NewLineAtEndOfFile:AppVersion.kt$com.ams.khdmaCore.utils.AppVersion.kt</ID>
+    <ID>NewLineAtEndOfFile:AppViewHolderBinder.kt$com.ams.khdmaRecyclerview.reusable.AppViewHolderBinder.kt</ID>
+    <ID>NewLineAtEndOfFile:AppViewModel.kt$com.ams.khdmaMVVM.appBases.AppViewModel.kt</ID>
+    <ID>NewLineAtEndOfFile:AuthenticationAPIs.kt$com.ams.featureOnboarding.data.apis.AuthenticationAPIs.kt</ID>
+    <ID>NewLineAtEndOfFile:AuthenticationFragmentArgs.kt$com.ams.khdmaData.models.activityAndFragmentArgs.AuthenticationFragmentArgs.kt</ID>
+    <ID>NewLineAtEndOfFile:AuthenticationRepo.kt$com.ams.featureOnboarding.scenes.authenticationScenes.AuthenticationRepo.kt</ID>
+    <ID>NewLineAtEndOfFile:BaseErrorHandler.kt$com.ams.khdmaData.BaseErrorHandler.kt</ID>
+    <ID>NewLineAtEndOfFile:BaseIErrors.kt$com.ams.khdmaData.BaseIErrors.kt</ID>
+    <ID>NewLineAtEndOfFile:BaseLocaleManager.kt$com.ams.khdmaCore.utils.locale.BaseLocaleManager.kt</ID>
+    <ID>NewLineAtEndOfFile:BaseMVVMActivity.kt$com.ams.khdmaMVVM.bases.BaseMVVMActivity.kt</ID>
+    <ID>NewLineAtEndOfFile:BaseMVVMBottomSheetDialogFragment.kt$com.ams.khdmaMVVM.bases.BaseMVVMBottomSheetDialogFragment.kt</ID>
+    <ID>NewLineAtEndOfFile:BaseMVVMDialogFragment.kt$com.ams.khdmaMVVM.bases.BaseMVVMDialogFragment.kt</ID>
+    <ID>NewLineAtEndOfFile:BaseMVVMFragment.kt$com.ams.khdmaMVVM.bases.BaseMVVMFragment.kt</ID>
+    <ID>NewLineAtEndOfFile:BaseRefreshTokenInterceptor.kt$com.ams.khdmaData.networking.interceptors.refreshToken.BaseRefreshTokenInterceptor.kt</ID>
+    <ID>NewLineAtEndOfFile:BaseRoomSingleItemTypeConverter.kt$com.ams.khdmaData.db.typeConverters.BaseRoomSingleItemTypeConverter.kt</ID>
+    <ID>NewLineAtEndOfFile:BaseViewArgsDelegate.kt$com.ams.khdmaCore.utils.viewArgs.BaseViewArgsDelegate.kt</ID>
+    <ID>NewLineAtEndOfFile:BaseViewModel.kt$com.ams.khdmaMVVM.bases.BaseViewModel.kt</ID>
+    <ID>NewLineAtEndOfFile:BindUIViews.kt$com.ams.khdmaCore.extensions.BindUIViews.kt</ID>
+    <ID>NewLineAtEndOfFile:BindingRecyclerViewAdapter.kt$com.ams.khdmaRecyclerview.adapters.BindingRecyclerViewAdapter.kt</ID>
+    <ID>NewLineAtEndOfFile:BitmapExtensions.kt$com.ams.khdmaCore.extensions.BitmapExtensions.kt</ID>
+    <ID>NewLineAtEndOfFile:BonusPoints.kt$com.ams.khdmaData.models.BonusPoints.kt</ID>
+    <ID>NewLineAtEndOfFile:BonusPointsWrapper.kt$com.ams.khdmaData.models.uiModels.BonusPointsWrapper.kt</ID>
+    <ID>NewLineAtEndOfFile:BooleanExtensions.kt$com.ams.khdmaCore.extensions.BooleanExtensions.kt</ID>
+    <ID>NewLineAtEndOfFile:BottomNavigationViewExtensions.kt$com.ams.khdmaCustomComponents.extensions.BottomNavigationViewExtensions.kt</ID>
+    <ID>NewLineAtEndOfFile:BroadcastEvents.kt$com.ams.khdmaCore.utils.BroadcastEvents.kt</ID>
+    <ID>NewLineAtEndOfFile:Bundlable.kt$com.ams.khdmaCore.utils.viewArgs.Bundlable.kt</ID>
+    <ID>NewLineAtEndOfFile:BundleExtensions.kt$com.ams.khdmaCore.extensions.BundleExtensions.kt</ID>
+    <ID>NewLineAtEndOfFile:CameraAndReadStoragePermissionsPlugin.kt$com.ams.featureCommonScenes.scenes.common.profileScenes.CameraAndReadStoragePermissionsPlugin.kt</ID>
+    <ID>NewLineAtEndOfFile:CartAPIs.kt$com.ams.khdmaData.networking.apis.CartAPIs.kt</ID>
+    <ID>NewLineAtEndOfFile:CartDao.kt$com.ams.khdmaData.db.daos.CartDao.kt</ID>
+    <ID>NewLineAtEndOfFile:CartFragment.kt$com.ams.featureRestaurantsService.scenes.cartFragment.CartFragment.kt</ID>
+    <ID>NewLineAtEndOfFile:CartItemRvItemBinder.kt$com.ams.featureRestaurantsService.scenes.cartFragment.CartItemRvItemBinder.kt</ID>
+    <ID>NewLineAtEndOfFile:CartItemsWrapper.kt$com.ams.khdmaData.models.responses.CartItemsWrapper.kt</ID>
+    <ID>NewLineAtEndOfFile:CartRepo.kt$com.ams.khdmaData.commonRepos.CartRepo.kt</ID>
+    <ID>NewLineAtEndOfFile:CartShopSection.kt$com.ams.khdmaData.models.CartShopSection.kt</ID>
+    <ID>NewLineAtEndOfFile:CartShopSectionRvItemBinder.kt$com.ams.featureRestaurantsService.scenes.cartFragment.CartShopSectionRvItemBinder.kt</ID>
+    <ID>NewLineAtEndOfFile:CartSynchronizationWorker.kt$com.ams.khdmaApp.bgServices.workManagers.CartSynchronizationWorker.kt</ID>
+    <ID>NewLineAtEndOfFile:CartSynchronizer.kt$com.ams.khdmaApp.bgServices.utils.CartSynchronizer.kt</ID>
+    <ID>NewLineAtEndOfFile:CartViewModel.kt$com.ams.featureShoppingService.scenes.cartFragment.CartViewModel.kt</ID>
+    <ID>NewLineAtEndOfFile:CategoriesAndShopsViewModel.kt$com.ams.featureRestaurantsService.scenes.restaurantsFragments.CategoriesAndShopsViewModel.kt</ID>
+    <ID>NewLineAtEndOfFile:CategoriesAndShopsViewState.kt$com.ams.featureShoppingService.scenes.shopsFragments.CategoriesAndShopsViewState.kt</ID>
+    <ID>NewLineAtEndOfFile:CollectionExtensions.kt$com.ams.khdmaRecyclerview.extensions.CollectionExtensions.kt</ID>
+    <ID>NewLineAtEndOfFile:ColorOption.kt$com.ams.khdmaData.models.ColorOption.kt</ID>
+    <ID>NewLineAtEndOfFile:ColorOptionRvItemBinder.kt$com.ams.featureRestaurantsService.scenes.restaurantItemInfoFragment.restaurantItemInfo.binders.ColorOptionRvItemBinder.kt</ID>
+    <ID>NewLineAtEndOfFile:ComingSoonProgressView.kt$com.ams.khdmaCustomComponents.ComingSoonProgressView.kt</ID>
+    <ID>NewLineAtEndOfFile:ComingSoonViewModel.kt$com.ams.featureOnboarding.scenes.comingSoonScene.ComingSoonViewModel.kt</ID>
+    <ID>NewLineAtEndOfFile:ComingSoonViewStates.kt$com.ams.featureOnboarding.scenes.comingSoonScene.ComingSoonViewStates.kt</ID>
+    <ID>NewLineAtEndOfFile:CommonModuleFeaturesNavigatorImpl.kt$com.ams.khdmaApp.implementations.navigators.CommonModuleFeaturesNavigatorImpl.kt</ID>
+    <ID>NewLineAtEndOfFile:CommonThrowables.kt$com.ams.khdmaData.errors.throwables.CommonThrowables.kt</ID>
+    <ID>NewLineAtEndOfFile:Constants.kt$com.ams.khdmaResources.Constants.kt</ID>
+    <ID>NewLineAtEndOfFile:ConsumerAuthenticationSharedViewModel.kt$com.ams.featureOnboarding.scenes.authenticationScenes.consumer.authenticationActivity.ConsumerAuthenticationSharedViewModel.kt</ID>
+    <ID>NewLineAtEndOfFile:ConsumerAuthenticationStates.kt$com.ams.featureOnboarding.scenes.authenticationScenes.consumer.authenticationActivity.ConsumerAuthenticationStates.kt</ID>
+    <ID>NewLineAtEndOfFile:ConsumerBottomNavigationController.kt$com.ams.featureCommonScenes.scenes.consumer.mainActivity.ConsumerBottomNavigationController.kt</ID>
+    <ID>NewLineAtEndOfFile:ConsumerHomeFragment.kt$com.ams.featureCommonScenes.scenes.consumer.homeFragment.ConsumerHomeFragment.kt</ID>
+    <ID>NewLineAtEndOfFile:ConsumerHomeRepo.kt$com.ams.featureCommonScenes.scenes.consumer.homeFragment.ConsumerHomeRepo.kt</ID>
+    <ID>NewLineAtEndOfFile:ConsumerHomeViewModel.kt$com.ams.featureCommonScenes.scenes.consumer.homeFragment.ConsumerHomeViewModel.kt</ID>
+    <ID>NewLineAtEndOfFile:ConsumerHomeViewStates.kt$com.ams.featureCommonScenes.scenes.consumer.homeFragment.ConsumerHomeViewStates.kt</ID>
+    <ID>NewLineAtEndOfFile:ConsumerMainActivity.kt$com.ams.featureCommonScenes.scenes.consumer.mainActivity.ConsumerMainActivity.kt</ID>
+    <ID>NewLineAtEndOfFile:ConsumerMainViewStates.kt$com.ams.featureCommonScenes.scenes.consumer.mainActivity.ConsumerMainViewStates.kt</ID>
+    <ID>NewLineAtEndOfFile:ConsumerViewModel.kt$com.ams.featureCommonScenes.scenes.consumer.mainActivity.ConsumerViewModel.kt</ID>
+    <ID>NewLineAtEndOfFile:Coordinates.kt$com.ams.khdmaData.models.Coordinates.kt</ID>
+    <ID>NewLineAtEndOfFile:CountryCodesAdapter.kt$com.ams.featureOnboarding.scenes.authenticationScenes.consumer.signUpScene.CountryCodesAdapter.kt</ID>
+    <ID>NewLineAtEndOfFile:CustomFloatingActionButton.kt$com.ams.khdmaCustomComponents.CustomFloatingActionButton.kt</ID>
+    <ID>NewLineAtEndOfFile:DataSourceModules.kt$com.ams.khdmaApp.injection.modules.DataSourceModules.kt</ID>
+    <ID>NewLineAtEndOfFile:Date2JsonAdapter.kt$com.ams.khdmaServices.gsonService.utils.adapters.Date2JsonAdapter.kt</ID>
+    <ID>NewLineAtEndOfFile:DateTimeExtensions.kt$com.ams.khdmaCore.extensions.DateTimeExtensions.kt</ID>
+    <ID>NewLineAtEndOfFile:DateTimeUtils.kt$com.ams.khdmaCore.utils.DateTimeUtils.kt</ID>
+    <ID>NewLineAtEndOfFile:DeliveredOrder.kt$com.ams.khdmaData.models.DeliveredOrder.kt</ID>
+    <ID>NewLineAtEndOfFile:DeliveryMethod.kt$com.ams.khdmaData.models.DeliveryMethod.kt</ID>
+    <ID>NewLineAtEndOfFile:DeliveryMethodsSpinnerAdapter.kt$com.ams.featureRestaurantsService.scenes.orderSummaryFragment.DeliveryMethodsSpinnerAdapter.kt</ID>
+    <ID>NewLineAtEndOfFile:DeliverySelection.kt$com.ams.khdmaData.models.responses.DeliverySelection.kt</ID>
+    <ID>NewLineAtEndOfFile:DeliveryType.kt$com.ams.khdmaData.enums.types.DeliveryType.kt</ID>
+    <ID>NewLineAtEndOfFile:DeviceInfo.kt$com.ams.khdmaCore.utils.DeviceInfo.kt</ID>
+    <ID>NewLineAtEndOfFile:DiffItemCallback.kt$com.ams.khdmaRecyclerview.diffUtils.DiffItemCallback.kt</ID>
+    <ID>NewLineAtEndOfFile:DiffListCallback.kt$com.ams.khdmaRecyclerview.diffUtils.DiffListCallback.kt</ID>
+    <ID>NewLineAtEndOfFile:DoubleExtensions.kt$com.ams.khdmaCore.extensions.DoubleExtensions.kt</ID>
+    <ID>NewLineAtEndOfFile:DraftOrderResponse.kt$com.ams.khdmaData.models.responses.genericWrappers.DraftOrderResponse.kt</ID>
+    <ID>NewLineAtEndOfFile:DrawableExtensions.kt$com.ams.khdmaCustomComponents.extensions.DrawableExtensions.kt</ID>
+    <ID>NewLineAtEndOfFile:DropDownGenericAdapter.kt$com.ams.khdmaCore.genericAdapters.DropDownGenericAdapter.kt</ID>
+    <ID>NewLineAtEndOfFile:DynamicLinksUtils.kt$com.ams.khdmaCore.utils.DynamicLinksUtils.kt</ID>
+    <ID>NewLineAtEndOfFile:EditUserProfileInfoStates.kt$com.ams.featureCommonScenes.scenes.common.profileScenes.editProfileInfoFragment.EditUserProfileInfoStates.kt</ID>
+    <ID>NewLineAtEndOfFile:EditUserProfileInfoViewModel.kt$com.ams.featureCommonScenes.scenes.common.profileScenes.editProfileInfoFragment.EditUserProfileInfoViewModel.kt</ID>
+    <ID>NewLineAtEndOfFile:EmptyReturnItemSelectedThrowable.kt$com.ams.khdmaData.errors.throwables.uniqueThrowables.EmptyReturnItemSelectedThrowable.kt</ID>
+    <ID>NewLineAtEndOfFile:Endpoints.kt$com.ams.khdmaData.networking.Endpoints.kt</ID>
+    <ID>NewLineAtEndOfFile:EnvironmentVariables.kt$com.ams.khdmaData.networking.EnvironmentVariables.kt</ID>
+    <ID>NewLineAtEndOfFile:ExampleInstrumentedTest.kt$com.ams.featureCommonScenes.ExampleInstrumentedTest.kt</ID>
+    <ID>NewLineAtEndOfFile:ExampleInstrumentedTest.kt$com.ams.featureLocationAndAddresses.ExampleInstrumentedTest.kt</ID>
+    <ID>NewLineAtEndOfFile:ExampleInstrumentedTest.kt$com.ams.featureOnboarding.ExampleInstrumentedTest.kt</ID>
+    <ID>NewLineAtEndOfFile:ExampleInstrumentedTest.kt$com.ams.featureShoppingService.ExampleInstrumentedTest.kt</ID>
+    <ID>NewLineAtEndOfFile:ExampleInstrumentedTest.kt$com.ams.featureTransportation.ExampleInstrumentedTest.kt</ID>
+    <ID>NewLineAtEndOfFile:ExampleInstrumentedTest.kt$com.ams.khdmaData.ExampleInstrumentedTest.kt</ID>
+    <ID>NewLineAtEndOfFile:ExampleInstrumentedTest.kt$com.ams.khdmaDialogs.ExampleInstrumentedTest.kt</ID>
+    <ID>NewLineAtEndOfFile:ExampleInstrumentedTest.kt$com.ams.khdmaMVVM.ExampleInstrumentedTest.kt</ID>
+    <ID>NewLineAtEndOfFile:ExampleInstrumentedTest.kt$com.ams.khdmaRecyclerview.ExampleInstrumentedTest.kt</ID>
+    <ID>NewLineAtEndOfFile:ExampleInstrumentedTest.kt$com.ams.khdmaResources.ExampleInstrumentedTest.kt</ID>
+    <ID>NewLineAtEndOfFile:ExampleInstrumentedTest.kt$com.ams.khdmanavigators.ExampleInstrumentedTest.kt</ID>
+    <ID>NewLineAtEndOfFile:ExpandableLayout.kt$com.ams.khdmaCustomComponents.ExpandableLayout.kt</ID>
+    <ID>NewLineAtEndOfFile:FastOutSlowInInterpolator.kt$com.ams.khdmaCustomComponents.FastOutSlowInInterpolator.kt</ID>
+    <ID>NewLineAtEndOfFile:FavouriteItemsFragment.kt$com.ams.featureShoppingService.scenes.favouriteItemsFragment.FavouriteItemsFragment.kt</ID>
+    <ID>NewLineAtEndOfFile:FavouriteItemsRepo.kt$com.ams.featureShoppingService.scenes.favouriteItemsFragment.FavouriteItemsRepo.kt</ID>
+    <ID>NewLineAtEndOfFile:FavouriteItemsStates.kt$com.ams.featureRestaurantsService.scenes.favouriteMealsFragment.FavouriteItemsStates.kt</ID>
+    <ID>NewLineAtEndOfFile:FavouriteItemsViewModel.kt$com.ams.featureRestaurantsService.scenes.favouriteMealsFragment.FavouriteItemsViewModel.kt</ID>
+    <ID>NewLineAtEndOfFile:FavouriteRVItemBinder.kt$com.ams.featureRestaurantsService.scenes.favouriteMealsFragment.FavouriteRVItemBinder.kt</ID>
+    <ID>NewLineAtEndOfFile:FavouritesAPIs.kt$com.ams.khdmaData.networking.apis.FavouritesAPIs.kt</ID>
+    <ID>NewLineAtEndOfFile:FirebaseRemoteConfigDataSource.kt$com.ams.khdmaData.datasources.firebaseRemoteConfigDataSource.FirebaseRemoteConfigDataSource.kt</ID>
+    <ID>NewLineAtEndOfFile:FirebaseRemoteConfigDataSourceImpl.kt$com.ams.khdmaData.datasources.firebaseRemoteConfigDataSource.FirebaseRemoteConfigDataSourceImpl.kt</ID>
+    <ID>NewLineAtEndOfFile:Flipper.kt$com.ams.khdmaData.flipper.Flipper.kt</ID>
+    <ID>NewLineAtEndOfFile:ForceUpdateActivity.kt$com.ams.featureOnboarding.scenes.forceUpdateScene.ForceUpdateActivity.kt</ID>
+    <ID>NewLineAtEndOfFile:ForgotPasswordViewModel.kt$com.ams.featureOnboarding.scenes.authenticationScenes.consumer.resetPasswordScene.ForgotPasswordViewModel.kt</ID>
+    <ID>NewLineAtEndOfFile:FragmentArgs.kt$com.ams.khdmaCore.utils.viewArgs.fragmentArgs.FragmentArgs.kt</ID>
+    <ID>NewLineAtEndOfFile:FragmentExtensions.kt$com.ams.khdmaCore.extensions.FragmentExtensions.kt</ID>
+    <ID>NewLineAtEndOfFile:FragmentModules.kt$com.ams.khdmaApp.injection.modules.FragmentModules.kt</ID>
+    <ID>NewLineAtEndOfFile:FragmentNavigatorDelegate.kt$com.ams.khdmanavigators.utils.FragmentNavigatorDelegate.kt</ID>
+    <ID>NewLineAtEndOfFile:FragmentViewBindingDelegate.kt$com.ams.khdmaMVVM.utils.viewBinding.FragmentViewBindingDelegate.kt</ID>
+    <ID>NewLineAtEndOfFile:FullScreenImageViewDialogFragment.kt$com.ams.khdmaDialogs.FullScreenImageViewDialogFragment.kt</ID>
+    <ID>NewLineAtEndOfFile:GMSLocationManager.kt$com.ams.khdmaCore.utils.location.GMSLocationManager.kt</ID>
+    <ID>NewLineAtEndOfFile:GooglePlacesAPIManager.kt$com.ams.khdmaCore.utils.places.GooglePlacesAPIManager.kt</ID>
+    <ID>NewLineAtEndOfFile:GsonAnnotations.kt$com.ams.khdmaServices.gsonService.utils.GsonAnnotations.kt</ID>
+    <ID>NewLineAtEndOfFile:GsonService.kt$com.ams.khdmaServices.gsonService.GsonService.kt</ID>
+    <ID>NewLineAtEndOfFile:HMSLocationManager.kt$com.ams.khdmaCore.utils.location.HMSLocationManager.kt</ID>
+    <ID>NewLineAtEndOfFile:HomeRVItemBinder.kt$com.ams.featureCommonScenes.scenes.consumer.homeFragment.HomeRVItemBinder.kt</ID>
+    <ID>NewLineAtEndOfFile:HuaweiMapLocationSearchFragment.kt$com.ams.featureLocationAndAddresses.scenes.locationSearchScenes.huaweiMapLocationSearchScene.HuaweiMapLocationSearchFragment.kt</ID>
+    <ID>NewLineAtEndOfFile:HuaweiSiteAPIManager.kt$com.ams.khdmaCore.utils.places.HuaweiSiteAPIManager.kt</ID>
+    <ID>NewLineAtEndOfFile:IConnectivityListener.kt$com.ams.khdmaCore.utils.internetConnectionManager.connectivityListener.IConnectivityListener.kt</ID>
+    <ID>NewLineAtEndOfFile:IErrors.kt$com.ams.khdmaData.IErrors.kt</ID>
+    <ID>NewLineAtEndOfFile:ILocale.kt$com.ams.khdmaCore.utils.locale.ILocale.kt</ID>
+    <ID>NewLineAtEndOfFile:ILocationManager.kt$com.ams.khdmaCore.utils.location.ILocationManager.kt</ID>
+    <ID>NewLineAtEndOfFile:IPermissionsManager.kt$com.ams.khdmaCore.managers.runtimePermissions.IPermissionsManager.kt</ID>
+    <ID>NewLineAtEndOfFile:IRestLocale.kt$com.ams.khdmaCore.utils.locale.IRestLocale.kt</ID>
+    <ID>NewLineAtEndOfFile:IRestaurantsServiceSharedViewModel.kt$com.ams.featureShoppingService.IRestaurantsServiceSharedViewModel.kt</ID>
+    <ID>NewLineAtEndOfFile:ITaggableClass.kt$com.ams.khdmaCore.utils.ITaggableClass.kt</ID>
+    <ID>NewLineAtEndOfFile:IUser.kt$com.ams.khdmaServices.sessionService.IUser.kt</ID>
+    <ID>NewLineAtEndOfFile:IViewModel.kt$com.ams.khdmaMVVM.utils.IViewModel.kt</ID>
+    <ID>NewLineAtEndOfFile:ImageLoader.kt$com.ams.khdmaServices.imageLoadingService.ImageLoader.kt</ID>
+    <ID>NewLineAtEndOfFile:ImageLoadingService.kt$com.ams.khdmaServices.imageLoadingService.ImageLoadingService.kt</ID>
+    <ID>NewLineAtEndOfFile:ImagePicker.kt$com.ams.khdmaCustomComponents.ImagePicker.kt</ID>
+    <ID>NewLineAtEndOfFile:ImageViewExtensions.kt$com.ams.khdmaServices.imageLoadingService.ImageViewExtensions.kt</ID>
+    <ID>NewLineAtEndOfFile:Injector.kt$com.ams.khdmaCore.utils.di.Injector.kt</ID>
+    <ID>NewLineAtEndOfFile:InternalNavigatorListeners.kt$com.ams.khdmaMVVM.InternalNavigatorListeners.kt</ID>
+    <ID>NewLineAtEndOfFile:InternetConnectionType.kt$com.ams.khdmaCore.utils.internetConnectionManager.InternetConnectionType.kt</ID>
+    <ID>NewLineAtEndOfFile:Invoice.kt$com.ams.khdmaData.models.Invoice.kt</ID>
+    <ID>NewLineAtEndOfFile:ItemRevisionAPIs.kt$com.ams.featureShoppingService.data.apis.ItemRevisionAPIs.kt</ID>
+    <ID>NewLineAtEndOfFile:JwtWrapper.kt$com.ams.khdmaData.networking.interceptors.refreshToken.jwt.JwtWrapper.kt</ID>
+    <ID>NewLineAtEndOfFile:KhdmaApp.kt$com.ams.khdmaApp.application.KhdmaApp.kt</ID>
+    <ID>NewLineAtEndOfFile:KhdmaDatePicker.kt$com.ams.khdmaDialogs.KhdmaDatePicker.kt</ID>
+    <ID>NewLineAtEndOfFile:KhdmaDialog.kt$com.ams.khdmaDialogs.KhdmaDialog.kt</ID>
+    <ID>NewLineAtEndOfFile:KhdmaNetworkLoader.kt$com.ams.khdmaDialogs.KhdmaNetworkLoader.kt</ID>
+    <ID>NewLineAtEndOfFile:KhdmaTimePicker.kt$com.ams.khdmaDialogs.KhdmaTimePicker.kt</ID>
+    <ID>NewLineAtEndOfFile:KoinInitializer.kt$com.ams.khdmaApp.injection.KoinInitializer.kt</ID>
+    <ID>NewLineAtEndOfFile:KoinScopeResolver.kt$com.ams.khdmaCore.utils.di.KoinScopeResolver.kt</ID>
+    <ID>NewLineAtEndOfFile:KoinScopeResolverExtensions.kt$com.ams.featureShoppingService.KoinScopeResolverExtensions.kt</ID>
+    <ID>NewLineAtEndOfFile:KoinScopeResolverExtensions.kt$com.ams.khdmaCore.utils.di.extensions.KoinScopeResolverExtensions.kt</ID>
+    <ID>NewLineAtEndOfFile:KotlinLiveBus.kt$com.ams.khdmaCore.utils.kotlinLiveBus.core.KotlinLiveBus.kt</ID>
+    <ID>NewLineAtEndOfFile:LegacyConnectivityListener.kt$com.ams.khdmaCore.utils.internetConnectionManager.connectivityListener.LegacyConnectivityListener.kt</ID>
+    <ID>NewLineAtEndOfFile:LegacyLocale.kt$com.ams.khdmaCore.utils.locale.LegacyLocale.kt</ID>
+    <ID>NewLineAtEndOfFile:LifeCycleObservers.kt$com.ams.khdmaApp.lifecycleObservers.LifeCycleObservers.kt</ID>
+    <ID>NewLineAtEndOfFile:ListingUtils.kt$com.ams.khdmaMVVM.utils.ListingUtils.kt</ID>
+    <ID>NewLineAtEndOfFile:LiveBusSingleLiveEvent.kt$com.ams.khdmaCore.utils.kotlinLiveBus.core.LiveBusSingleLiveEvent.kt</ID>
+    <ID>NewLineAtEndOfFile:LiveDataExtensions.kt$com.ams.khdmaCore.extensions.LiveDataExtensions.kt</ID>
+    <ID>NewLineAtEndOfFile:LocationRepo.kt$com.ams.khdmaData.commonRepos.LocationRepo.kt</ID>
+    <ID>NewLineAtEndOfFile:LocationSearchOnCompleteListener.kt$com.ams.featureLocationAndAddresses.scenes.locationSearchScenes.googleMapLocationSearchScene.LocationSearchOnCompleteListener.kt</ID>
+    <ID>NewLineAtEndOfFile:LocationSearchViewModel.kt$com.ams.featureLocationAndAddresses.scenes.locationSearchScenes.LocationSearchViewModel.kt</ID>
+    <ID>NewLineAtEndOfFile:LoggerUtil.kt$com.ams.khdmaCore.utils.kotlinLiveBus.utils.LoggerUtil.kt</ID>
+    <ID>NewLineAtEndOfFile:LoginResponse.kt$com.ams.khdmaData.models.responses.LoginResponse.kt</ID>
+    <ID>NewLineAtEndOfFile:LoginViewModel.kt$com.ams.featureOnboarding.scenes.authenticationScenes.consumer.loginScene.LoginViewModel.kt</ID>
+    <ID>NewLineAtEndOfFile:LookUp.kt$com.ams.khdmaData.models.LookUp.kt</ID>
+    <ID>NewLineAtEndOfFile:LookupTableInterpolator.kt$com.ams.khdmaCustomComponents.LookupTableInterpolator.kt</ID>
+    <ID>NewLineAtEndOfFile:ManualLocationSearchListener.kt$com.ams.featureLocationAndAddresses.scenes.locationSearchScenes.ManualLocationSearchListener.kt</ID>
+    <ID>NewLineAtEndOfFile:MapExtensions.kt$com.ams.khdmaCore.extensions.MapExtensions.kt</ID>
+    <ID>NewLineAtEndOfFile:MaterialButtonExtensions.kt$com.ams.khdmaCore.extensions.MaterialButtonExtensions.kt</ID>
+    <ID>NewLineAtEndOfFile:MirroredDrawable.kt$com.ams.khdmaCustomComponents.MirroredDrawable.kt</ID>
+    <ID>NewLineAtEndOfFile:MoreFragment.kt$com.ams.featureCommonScenes.scenes.common.moreFragment.MoreFragment.kt</ID>
+    <ID>NewLineAtEndOfFile:MoreHeaderData.kt$com.ams.khdmaData.models.MoreHeaderData.kt</ID>
+    <ID>NewLineAtEndOfFile:MoreItem.kt$com.ams.khdmaData.models.uiModels.MoreItem.kt</ID>
+    <ID>NewLineAtEndOfFile:MoreItemType.kt$com.ams.khdmaData.enums.types.MoreItemType.kt</ID>
+    <ID>NewLineAtEndOfFile:MoreRVItemBinder.kt$com.ams.featureCommonScenes.scenes.common.moreFragment.MoreRVItemBinder.kt</ID>
+    <ID>NewLineAtEndOfFile:MoreRepo.kt$com.ams.featureCommonScenes.scenes.common.moreFragment.MoreRepo.kt</ID>
+    <ID>NewLineAtEndOfFile:MoreViewModel.kt$com.ams.featureCommonScenes.scenes.common.moreFragment.MoreViewModel.kt</ID>
+    <ID>NewLineAtEndOfFile:MoreViewStates.kt$com.ams.featureCommonScenes.scenes.common.moreFragment.MoreViewStates.kt</ID>
+    <ID>NewLineAtEndOfFile:MultipartBody.kt$com.ams.khdmaData.networking.utils.MultipartBody.kt</ID>
+    <ID>NewLineAtEndOfFile:Navigators.kt$com.ams.featureCommonScenes.Navigators.kt</ID>
+    <ID>NewLineAtEndOfFile:Navigators.kt$com.ams.featureLocationAndAddresses.Navigators.kt</ID>
+    <ID>NewLineAtEndOfFile:Navigators.kt$com.ams.featureOnboarding.Navigators.kt</ID>
+    <ID>NewLineAtEndOfFile:Navigators.kt$com.ams.featureShoppingService.extensions.Navigators.kt</ID>
+    <ID>NewLineAtEndOfFile:NavigatorsExtensions.kt$com.ams.khdmanavigators.utils.NavigatorsExtensions.kt</ID>
+    <ID>NewLineAtEndOfFile:NavigatorsModule.kt$com.ams.khdmaApp.injection.modules.NavigatorsModule.kt</ID>
+    <ID>NewLineAtEndOfFile:NetworkConnectivityObserver.kt$com.ams.khdmaCore.utils.internetConnectionManager.NetworkConnectivityObserver.kt</ID>
+    <ID>NewLineAtEndOfFile:NetworkUtils.kt$com.ams.khdmaData.networking.utils.NetworkUtils.kt</ID>
+    <ID>NewLineAtEndOfFile:NewConnectivityListener.kt$com.ams.khdmaCore.utils.internetConnectionManager.connectivityListener.NewConnectivityListener.kt</ID>
+    <ID>NewLineAtEndOfFile:NewLocale.kt$com.ams.khdmaCore.utils.locale.NewLocale.kt</ID>
+    <ID>NewLineAtEndOfFile:NoInternetConnectionException.kt$com.ams.khdmaData.errors.exceptions.NoInternetConnectionException.kt</ID>
+    <ID>NewLineAtEndOfFile:NullableActivityArgs.kt$com.ams.khdmaCore.utils.viewArgs.activityArgs.NullableActivityArgs.kt</ID>
+    <ID>NewLineAtEndOfFile:NullableFragmentArgs.kt$com.ams.khdmaCore.utils.viewArgs.fragmentArgs.NullableFragmentArgs.kt</ID>
+    <ID>NewLineAtEndOfFile:OKHttpInterceptors.kt$com.ams.khdmaData.networking.providers.interceptors.OKHttpInterceptors.kt</ID>
+    <ID>NewLineAtEndOfFile:OKHttpNetworkClient.kt$com.ams.khdmaData.networking.OKHttpNetworkClient.kt</ID>
+    <ID>NewLineAtEndOfFile:OkHttpConfigs.kt$com.ams.khdmaData.networking.providers.OkHttpConfigs.kt</ID>
+    <ID>NewLineAtEndOfFile:OnBoardingNavigator.kt$com.ams.khdmanavigators.navigators.OnBoardingNavigator.kt</ID>
+    <ID>NewLineAtEndOfFile:OnBoardingNavigatorImpl.kt$com.ams.khdmaApp.implementations.navigators.OnBoardingNavigatorImpl.kt</ID>
+    <ID>NewLineAtEndOfFile:Order.kt$com.ams.khdmaData.models.Order.kt</ID>
+    <ID>NewLineAtEndOfFile:OrderAPIs.kt$com.ams.khdmaData.networking.apis.OrderAPIs.kt</ID>
+    <ID>NewLineAtEndOfFile:OrderConfirmationDialogFragment.kt$com.ams.featureRestaurantsService.scenes.orderConfirmationDialogFragment.OrderConfirmationDialogFragment.kt</ID>
+    <ID>NewLineAtEndOfFile:OrderRVItemBinder.kt$com.ams.featureRestaurantsService.scenes.orderScenes.ordersListingFragments.common.OrderRVItemBinder.kt</ID>
+    <ID>NewLineAtEndOfFile:OrderRateRequest.kt$com.ams.khdmaData.models.requests.OrderRateRequest.kt</ID>
+    <ID>NewLineAtEndOfFile:OrderRatingDialogFragment.kt$com.ams.featureRestaurantsService.scenes.orderScenes.orderRatingDialogFragment.OrderRatingDialogFragment.kt</ID>
+    <ID>NewLineAtEndOfFile:OrderRatingRepo.kt$com.ams.featureRestaurantsService.scenes.orderScenes.orderRatingDialogFragment.OrderRatingRepo.kt</ID>
+    <ID>NewLineAtEndOfFile:OrderRatingViewModel.kt$com.ams.featureRestaurantsService.scenes.orderScenes.orderRatingDialogFragment.OrderRatingViewModel.kt</ID>
+    <ID>NewLineAtEndOfFile:OrderReturnFragment.kt$com.ams.featureRestaurantsService.scenes.orderScenes.ordersReturnFragment.OrderReturnFragment.kt</ID>
+    <ID>NewLineAtEndOfFile:OrderReturnReasonFragment.kt$com.ams.featureRestaurantsService.scenes.orderScenes.orderReturnReasonFragment.OrderReturnReasonFragment.kt</ID>
+    <ID>NewLineAtEndOfFile:OrderReturnReasonRepo.kt$com.ams.featureRestaurantsService.scenes.orderScenes.orderReturnReasonFragment.OrderReturnReasonRepo.kt</ID>
+    <ID>NewLineAtEndOfFile:OrderReturnReasonViewModel.kt$com.ams.featureRestaurantsService.scenes.orderScenes.orderReturnReasonFragment.OrderReturnReasonViewModel.kt</ID>
+    <ID>NewLineAtEndOfFile:OrderReturnReasonViewStates.kt$com.ams.featureRestaurantsService.scenes.orderScenes.orderReturnReasonFragment.OrderReturnReasonViewStates.kt</ID>
+    <ID>NewLineAtEndOfFile:OrderReturnRvItemBinder.kt$com.ams.featureRestaurantsService.scenes.orderScenes.ordersReturnFragment.OrderReturnRvItemBinder.kt</ID>
+    <ID>NewLineAtEndOfFile:OrderReturnViewModel.kt$com.ams.featureRestaurantsService.scenes.orderScenes.ordersReturnFragment.OrderReturnViewModel.kt</ID>
+    <ID>NewLineAtEndOfFile:OrderReviewRepo.kt$com.ams.featureRestaurantsService.scenes.orderScenes.orderReviewFragment.OrderReviewRepo.kt</ID>
+    <ID>NewLineAtEndOfFile:OrderReviewRvItemBinder.kt$com.ams.featureRestaurantsService.scenes.orderScenes.orderReviewFragment.OrderReviewRvItemBinder.kt</ID>
+    <ID>NewLineAtEndOfFile:OrderReviewStatus.kt$com.ams.khdmaData.enums.OrderReviewStatus.kt</ID>
+    <ID>NewLineAtEndOfFile:OrderReviewViewModel.kt$com.ams.featureRestaurantsService.scenes.orderScenes.orderReviewFragment.OrderReviewViewModel.kt</ID>
+    <ID>NewLineAtEndOfFile:OrderReviewViewStates.kt$com.ams.featureRestaurantsService.scenes.orderScenes.orderReviewFragment.OrderReviewViewStates.kt</ID>
+    <ID>NewLineAtEndOfFile:OrderSummaryDeliveryMethodRvItemBinder.kt$com.ams.featureRestaurantsService.scenes.orderSummaryFragment.OrderSummaryDeliveryMethodRvItemBinder.kt</ID>
+    <ID>NewLineAtEndOfFile:OrderSummaryFragment.kt$com.ams.featureRestaurantsService.scenes.orderSummaryFragment.OrderSummaryFragment.kt</ID>
+    <ID>NewLineAtEndOfFile:OrderSummaryRepo.kt$com.ams.featureShoppingService.scenes.orderSummaryFragment.OrderSummaryRepo.kt</ID>
+    <ID>NewLineAtEndOfFile:OrderSummaryViewModel.kt$com.ams.featureShoppingService.scenes.orderSummaryFragment.OrderSummaryViewModel.kt</ID>
+    <ID>NewLineAtEndOfFile:OrderSummaryViewStates.kt$com.ams.featureShoppingService.scenes.orderSummaryFragment.OrderSummaryViewStates.kt</ID>
+    <ID>NewLineAtEndOfFile:OrdersCalendarPickerButton.kt$com.ams.khdmaCustomComponents.OrdersCalendarPickerButton.kt</ID>
+    <ID>NewLineAtEndOfFile:OrdersDao.kt$com.ams.khdmaData.db.daos.OrdersDao.kt</ID>
+    <ID>NewLineAtEndOfFile:OrdersFragment.kt$com.ams.featureRestaurantsService.scenes.orderScenes.ordersListingFragments.common.OrdersFragment.kt</ID>
+    <ID>NewLineAtEndOfFile:OrdersListingFragment.kt$com.ams.featureRestaurantsService.scenes.orderScenes.ordersListingFragments.common.OrdersListingFragment.kt</ID>
+    <ID>NewLineAtEndOfFile:OrdersListingRepo.kt$com.ams.featureRestaurantsService.scenes.orderScenes.ordersListingFragments.common.OrdersListingRepo.kt</ID>
+    <ID>NewLineAtEndOfFile:OrdersListingViewModel.kt$com.ams.featureRestaurantsService.scenes.orderScenes.ordersListingFragments.common.OrdersListingViewModel.kt</ID>
+    <ID>NewLineAtEndOfFile:OtherAPIs.kt$com.ams.featureCommonScenes.data.apis.OtherAPIs.kt</ID>
+    <ID>NewLineAtEndOfFile:OtherModules.kt$com.ams.khdmaApp.injection.modules.OtherModules.kt</ID>
+    <ID>NewLineAtEndOfFile:PageWrapper.kt$com.ams.khdmaData.models.responses.PageWrapper.kt</ID>
+    <ID>NewLineAtEndOfFile:PaginatedRecyclerViewManager.kt$com.ams.khdmaRecyclerview.managers.PaginatedRecyclerViewManager.kt</ID>
+    <ID>NewLineAtEndOfFile:PaginatorDelegate.kt$com.ams.khdmaMVVM.utils.pagination.PaginatorDelegate.kt</ID>
+    <ID>NewLineAtEndOfFile:PreLoginPermissionRequestFragment.kt$com.ams.featureOnboarding.scenes.preHomeScene.preLoginPermissionRequestFragment.PreLoginPermissionRequestFragment.kt</ID>
+    <ID>NewLineAtEndOfFile:PreLoginPermissionRequestStates.kt$com.ams.featureOnboarding.scenes.preHomeScene.preLoginPermissionRequestFragment.PreLoginPermissionRequestStates.kt</ID>
+    <ID>NewLineAtEndOfFile:PreLoginPermissionRequestViewModel.kt$com.ams.featureOnboarding.scenes.preHomeScene.preLoginPermissionRequestFragment.PreLoginPermissionRequestViewModel.kt</ID>
+    <ID>NewLineAtEndOfFile:PreLoginRepo.kt$com.ams.featureOnboarding.scenes.preHomeScene.preLoginActivity.PreLoginRepo.kt</ID>
+    <ID>NewLineAtEndOfFile:PreLoginViewModel.kt$com.ams.featureOnboarding.scenes.preHomeScene.preLoginActivity.PreLoginViewModel.kt</ID>
+    <ID>NewLineAtEndOfFile:PreLoginViewStates.kt$com.ams.featureOnboarding.scenes.preHomeScene.preLoginActivity.PreLoginViewStates.kt</ID>
+    <ID>NewLineAtEndOfFile:PushNotification.kt$com.ams.khdmaData.models.PushNotification.kt</ID>
+    <ID>NewLineAtEndOfFile:PushNotificationsService.kt$com.ams.khdmaApp.bgServices.appServices.PushNotificationsService.kt</ID>
+    <ID>NewLineAtEndOfFile:PushNotificationsUtils.kt$com.ams.khdmaCore.utils.PushNotificationsUtils.kt</ID>
+    <ID>NewLineAtEndOfFile:RecyclerViewAdapter.kt$com.ams.khdmaRecyclerview.adapters.RecyclerViewAdapter.kt</ID>
+    <ID>NewLineAtEndOfFile:RecyclerViewExtensions.kt$com.ams.khdmaRecyclerview.extensions.RecyclerViewExtensions.kt</ID>
+    <ID>NewLineAtEndOfFile:RecyclerViewItemSwipeCallback.kt$com.ams.khdmaRecyclerview.RecyclerViewItemSwipeCallback.kt</ID>
+    <ID>NewLineAtEndOfFile:RecyclerViewWithEmptyView.kt$com.ams.khdmaRecyclerview.custom.RecyclerViewWithEmptyView.kt</ID>
+    <ID>NewLineAtEndOfFile:RefreshTokenInterceptor.kt$com.ams.khdmaData.networking.interceptors.refreshToken.RefreshTokenInterceptor.kt</ID>
+    <ID>NewLineAtEndOfFile:RefreshTokenRequest.kt$com.ams.khdmaData.models.requests.RefreshTokenRequest.kt</ID>
+    <ID>NewLineAtEndOfFile:RefreshTokenResponse.kt$com.ams.khdmaData.models.responses.RefreshTokenResponse.kt</ID>
+    <ID>NewLineAtEndOfFile:RemoteConfigException.kt$com.ams.khdmaData.errors.exceptions.RemoteConfigException.kt</ID>
+    <ID>NewLineAtEndOfFile:RepositoryModules.kt$com.ams.khdmaApp.injection.modules.RepositoryModules.kt</ID>
+    <ID>NewLineAtEndOfFile:RequestExecuterComponents.kt$com.ams.khdmaMVVM.utils.requestExecutor.RequestExecuterComponents.kt</ID>
+    <ID>NewLineAtEndOfFile:RequestExecutor.kt$com.ams.khdmaMVVM.utils.requestExecutor.RequestExecutor.kt</ID>
+    <ID>NewLineAtEndOfFile:ResetPasswordRepo.kt$com.ams.featureCommonScenes.scenes.common.resetPasswordDialogFragment.ResetPasswordRepo.kt</ID>
+    <ID>NewLineAtEndOfFile:ResetPasswordViewModel.kt$com.ams.featureCommonScenes.scenes.common.resetPasswordDialogFragment.ResetPasswordViewModel.kt</ID>
+    <ID>NewLineAtEndOfFile:ResetPasswordViewStates.kt$com.ams.featureCommonScenes.scenes.common.resetPasswordDialogFragment.ResetPasswordViewStates.kt</ID>
+    <ID>NewLineAtEndOfFile:ResourceProvider.kt$com.ams.khdmaCore.utils.ResourceProvider.kt</ID>
+    <ID>NewLineAtEndOfFile:ResponseWrapper.kt$com.ams.khdmaData.models.responses.genericWrappers.ResponseWrapper.kt</ID>
+    <ID>NewLineAtEndOfFile:RestModules.kt$com.ams.khdmaApp.injection.modules.RestModules.kt</ID>
+    <ID>NewLineAtEndOfFile:RetrofitAdapters.kt$com.ams.khdmaData.networking.providers.RetrofitAdapters.kt</ID>
+    <ID>NewLineAtEndOfFile:RetrofitClient.kt$com.ams.khdmaData.networking.RetrofitClient.kt</ID>
+    <ID>NewLineAtEndOfFile:RetrofitException.kt$com.ams.khdmaData.networking.retrofitErrorHandler.RetrofitException.kt</ID>
+    <ID>NewLineAtEndOfFile:ReturnItemsWrapper.kt$com.ams.khdmaData.models.ReturnItemsWrapper.kt</ID>
+    <ID>NewLineAtEndOfFile:ReturnOrderRequest.kt$com.ams.khdmaData.models.requests.ReturnOrderRequest.kt</ID>
+    <ID>NewLineAtEndOfFile:ReturnReasonThrowable.kt$com.ams.khdmaData.errors.throwables.uniqueThrowables.ReturnReasonThrowable.kt</ID>
+    <ID>NewLineAtEndOfFile:ReturnRequestArgs.kt$com.ams.khdmaData.models.activityAndFragmentArgs.ReturnRequestArgs.kt</ID>
+    <ID>NewLineAtEndOfFile:ReturnStatus.kt$com.ams.khdmaData.enums.ReturnStatus.kt</ID>
+    <ID>NewLineAtEndOfFile:ReturnStatus.kt$com.ams.khdmaData.models.ReturnStatus.kt</ID>
+    <ID>NewLineAtEndOfFile:RuntimePermissionsManger.kt$com.ams.khdmaCore.managers.runtimePermissions.RuntimePermissionsManger.kt</ID>
+    <ID>NewLineAtEndOfFile:RxErrorHandlingCallAdapter.kt$com.ams.khdmaData.networking.retrofitErrorHandler.RxErrorHandlingCallAdapter.kt</ID>
+    <ID>NewLineAtEndOfFile:RxErrorHandlingCallAdapterFactory.kt$com.ams.khdmaData.networking.retrofitErrorHandler.RxErrorHandlingCallAdapterFactory.kt</ID>
+    <ID>NewLineAtEndOfFile:RxExtensions.kt$com.ams.khdmaCore.extensions.RxExtensions.kt</ID>
+    <ID>NewLineAtEndOfFile:ScheduledDay.kt$com.ams.khdmaData.models.ScheduledDay.kt</ID>
+    <ID>NewLineAtEndOfFile:ScheduledDayRVItemBinder.kt$com.ams.featureRestaurantsService.scenes.scheduledDeliveryPickerDialogFragment.ScheduledDayRVItemBinder.kt</ID>
+    <ID>NewLineAtEndOfFile:ScheduledTimeSlot.kt$com.ams.khdmaData.models.ScheduledTimeSlot.kt</ID>
+    <ID>NewLineAtEndOfFile:ScheduledTimeSlotRVItemBinder.kt$com.ams.featureRestaurantsService.scenes.scheduledDeliveryPickerDialogFragment.ScheduledTimeSlotRVItemBinder.kt</ID>
+    <ID>NewLineAtEndOfFile:SearchItemsAPIs.kt$com.ams.featureShoppingService.data.apis.SearchItemsAPIs.kt</ID>
+    <ID>NewLineAtEndOfFile:SearchItemsFragment.kt$com.ams.featureShoppingService.scenes.itemSearchFragment.SearchItemsFragment.kt</ID>
+    <ID>NewLineAtEndOfFile:SearchItemsRepo.kt$com.ams.featureRestaurantsService.scenes.mealsSearchFragment.SearchItemsRepo.kt</ID>
+    <ID>NewLineAtEndOfFile:SearchItemsViewModel.kt$com.ams.featureRestaurantsService.scenes.mealsSearchFragment.SearchItemsViewModel.kt</ID>
+    <ID>NewLineAtEndOfFile:SearchItemsViewStates.kt$com.ams.featureShoppingService.scenes.itemSearchFragment.SearchItemsViewStates.kt</ID>
+    <ID>NewLineAtEndOfFile:SelectServiceProviderTypeFragment.kt$com.ams.featureOnboarding.scenes.preHomeScene.selectServiceProviderTypeFragment.SelectServiceProviderTypeFragment.kt</ID>
+    <ID>NewLineAtEndOfFile:SelectUserTypeFragment.kt$com.ams.featureOnboarding.scenes.preHomeScene.selectAppModeFragment.SelectUserTypeFragment.kt</ID>
+    <ID>NewLineAtEndOfFile:ServiceCategory.kt$com.ams.khdmaData.models.ServiceCategory.kt</ID>
+    <ID>NewLineAtEndOfFile:ServiceNotAvailableThrowable.kt$com.ams.khdmaData.errors.throwables.uniqueThrowables.ServiceNotAvailableThrowable.kt</ID>
+    <ID>NewLineAtEndOfFile:ServiceType.kt$com.ams.khdmaData.enums.types.ServiceType.kt</ID>
+    <ID>NewLineAtEndOfFile:ServicesAPIs.kt$com.ams.featureCommonScenes.data.apis.ServicesAPIs.kt</ID>
+    <ID>NewLineAtEndOfFile:ServicesModules.kt$com.ams.khdmaApp.injection.modules.ServicesModules.kt</ID>
+    <ID>NewLineAtEndOfFile:SessionServiceImpl.kt$com.ams.khdmaServices.sessionService.SessionServiceImpl.kt</ID>
+    <ID>NewLineAtEndOfFile:SharedPrefService.kt$com.ams.khdmaServices.sharedPrefService.SharedPrefService.kt</ID>
+    <ID>NewLineAtEndOfFile:SharedPrefServiceImpl.kt$com.ams.khdmaServices.sharedPrefService.SharedPrefServiceImpl.kt</ID>
+    <ID>NewLineAtEndOfFile:SharedPreferencesDataSource.kt$com.ams.khdmaData.datasources.localDataSources.sharedPreferencesDataSource.SharedPreferencesDataSource.kt</ID>
+    <ID>NewLineAtEndOfFile:Shop.kt$com.ams.khdmaData.models.Shop.kt</ID>
+    <ID>NewLineAtEndOfFile:ShopCategoriesAndSubCategoriesFragment.kt$com.ams.featureRestaurantsService.scenes.restaurantCategoriesAndSubCategoriesFragment.ShopCategoriesAndSubCategoriesFragment.kt</ID>
+    <ID>NewLineAtEndOfFile:ShopCategoriesAndSubCategoriesViewModel.kt$com.ams.featureShoppingService.scenes.shopCategoriesAndSubCategoriesFragment.ShopCategoriesAndSubCategoriesViewModel.kt</ID>
+    <ID>NewLineAtEndOfFile:ShopCategoriesAndSubCategoriesViewStates.kt$com.ams.featureRestaurantsService.scenes.restaurantCategoriesAndSubCategoriesFragment.ShopCategoriesAndSubCategoriesViewStates.kt</ID>
+    <ID>NewLineAtEndOfFile:ShopCategoryAndSubCategoryRvItemBinder.kt$com.ams.featureRestaurantsService.scenes.restaurantCategoriesAndSubCategoriesFragment.ShopCategoryAndSubCategoryRvItemBinder.kt</ID>
+    <ID>NewLineAtEndOfFile:ShopCategoryItem.kt$com.ams.khdmaData.models.ShopCategoryItem.kt</ID>
+    <ID>NewLineAtEndOfFile:ShopHorizontalCategoriesRVItemBinder.kt$com.ams.featureRestaurantsService.scenes.restaurantItemsFragment.ShopHorizontalCategoriesRVItemBinder.kt</ID>
+    <ID>NewLineAtEndOfFile:ShopInfoBottomSheetDialogFragment.kt$com.ams.featureRestaurantsService.scenes.restaurantInfoBottomSheetDialogFragment.ShopInfoBottomSheetDialogFragment.kt</ID>
+    <ID>NewLineAtEndOfFile:ShopItemImageViewPagerFragment.kt$com.ams.featureShoppingService.scenes.shopItemInfoFragment.ShopItemImageViewPagerFragment.kt</ID>
+    <ID>NewLineAtEndOfFile:ShopItemInfoRepo.kt$com.ams.featureShoppingService.scenes.shopItemInfoFragment.shopItemInfo.ShopItemInfoRepo.kt</ID>
+    <ID>NewLineAtEndOfFile:ShopItemInfoViewModel.kt$com.ams.featureRestaurantsService.scenes.restaurantItemInfoFragment.restaurantItemInfo.ShopItemInfoViewModel.kt</ID>
+    <ID>NewLineAtEndOfFile:ShopItemInfoViewStates.kt$com.ams.featureShoppingService.scenes.shopItemInfoFragment.shopItemInfo.ShopItemInfoViewStates.kt</ID>
+    <ID>NewLineAtEndOfFile:ShopItemRvItemBinder.kt$com.ams.featureRestaurantsService.scenes.restaurantItemsFragment.ShopItemRvItemBinder.kt</ID>
+    <ID>NewLineAtEndOfFile:ShopItemsFragment.kt$com.ams.featureRestaurantsService.scenes.restaurantItemsFragment.ShopItemsFragment.kt</ID>
+    <ID>NewLineAtEndOfFile:ShopItemsFilterDialogFragment.kt$com.ams.featureShoppingService.scenes.shopItemsFragment.ShopItemsFilterDialogFragment.kt</ID>
+    <ID>NewLineAtEndOfFile:ShopItemsViewModel.kt$com.ams.featureShoppingService.scenes.shopItemsFragment.ShopItemsViewModel.kt</ID>
+    <ID>NewLineAtEndOfFile:ShopItemsViewStates.kt$com.ams.featureShoppingService.scenes.shopItemsFragment.ShopItemsViewStates.kt</ID>
+    <ID>NewLineAtEndOfFile:ShopRVItemBinder.kt$com.ams.featureShoppingService.scenes.shopsFragments.ShopRVItemBinder.kt</ID>
+    <ID>NewLineAtEndOfFile:ShoppingServiceFragmentArgs.kt$com.ams.khdmaData.models.activityAndFragmentArgs.ShoppingServiceFragmentArgs.kt</ID>
+    <ID>NewLineAtEndOfFile:ShoppingServiceNavigator.kt$com.ams.khdmanavigators.navigators.ShoppingServiceNavigator.kt</ID>
+    <ID>NewLineAtEndOfFile:ShoppingServiceNavigatorImpl.kt$com.ams.khdmaApp.implementations.navigators.ShoppingServiceNavigatorImpl.kt</ID>
+    <ID>NewLineAtEndOfFile:ShoppingServiceRepo.kt$com.ams.featureRestaurantsService.scenes.restaurantsServiceScenes.ShoppingServiceRepo.kt</ID>
+    <ID>NewLineAtEndOfFile:ShoppingServiceSharedViewModel.kt$com.ams.featureShoppingService.ShoppingServiceSharedViewModel.kt</ID>
+    <ID>NewLineAtEndOfFile:RestaurantsServiceSharedViewModelProvider.kt$com.ams.featureShoppingService.RestaurantsServiceSharedViewModelProvider.kt</ID>
+    <ID>NewLineAtEndOfFile:ShopsListingFragment.kt$com.ams.featureShoppingService.scenes.shopsFragments.ShopsListingFragment.kt</ID>
+    <ID>NewLineAtEndOfFile:ShopsListingFragmentCallBacks.kt$com.ams.featureShoppingService.scenes.shopsFragments.ShopsListingFragmentCallBacks.kt</ID>
+    <ID>NewLineAtEndOfFile:ShowCaseUtils.kt$com.ams.khdmaCustomComponents.showCase.ShowCaseUtils.kt</ID>
+    <ID>NewLineAtEndOfFile:SignUpViewModel.kt$com.ams.featureOnboarding.scenes.authenticationScenes.consumer.signUpScene.SignUpViewModel.kt</ID>
+    <ID>NewLineAtEndOfFile:SignUpViewStates.kt$com.ams.featureOnboarding.scenes.authenticationScenes.consumer.signUpScene.SignUpViewStates.kt</ID>
+    <ID>NewLineAtEndOfFile:SimpleItemDecoration.kt$com.ams.khdmaRecyclerview.decorators.SimpleItemDecoration.kt</ID>
+    <ID>NewLineAtEndOfFile:SimpleShopItemInfoFragment.kt$com.ams.featureShoppingService.scenes.shopItemInfoFragment.simpleShopItemInfo.SimpleShopItemInfoFragment.kt</ID>
+    <ID>NewLineAtEndOfFile:SimpleTypes.kt$com.ams.khdmaMVVM.appBases.views.SimpleTypes.kt</ID>
+    <ID>NewLineAtEndOfFile:SingleLiveEvent.kt$com.ams.khdmaMVVM.utils.SingleLiveEvent.kt</ID>
+    <ID>NewLineAtEndOfFile:SinglePageRecyclerViewManager.kt$com.ams.khdmaRecyclerview.managers.SinglePageRecyclerViewManager.kt</ID>
+    <ID>NewLineAtEndOfFile:SizeOption.kt$com.ams.khdmaData.models.SizeOption.kt</ID>
+    <ID>NewLineAtEndOfFile:SnackbarUtils.kt$com.ams.khdmaCore.utils.SnackbarUtils.kt</ID>
+    <ID>NewLineAtEndOfFile:SplashActivity.kt$com.ams.featureOnboarding.scenes.splashScene.SplashActivity.kt</ID>
+    <ID>NewLineAtEndOfFile:SplashViewModel.kt$com.ams.featureOnboarding.scenes.splashScene.SplashViewModel.kt</ID>
+    <ID>NewLineAtEndOfFile:StartUpConfigParams.kt$com.ams.khdmaData.models.StartUpConfigParams.kt</ID>
+    <ID>NewLineAtEndOfFile:StartUpConfigsAPI.kt$com.ams.featureOnboarding.data.apis.StartUpConfigsAPI.kt</ID>
+    <ID>NewLineAtEndOfFile:StartUpConfigsDataSource.kt$com.ams.khdmaData.datasources.localDataSources.startUpConfigsDataSource.StartUpConfigsDataSource.kt</ID>
+    <ID>NewLineAtEndOfFile:StickyLiveEvent.kt$com.ams.khdmaCore.utils.kotlinLiveBus.core.StickyLiveEvent.kt</ID>
+    <ID>NewLineAtEndOfFile:StickySingleLiveEvent.kt$com.ams.khdmaCore.utils.kotlinLiveBus.core.StickySingleLiveEvent.kt</ID>
+    <ID>NewLineAtEndOfFile:StringExtensions.kt$com.ams.khdmaCore.extensions.StringExtensions.kt</ID>
+    <ID>NewLineAtEndOfFile:TextViewExtensions.kt$com.ams.khdmaCore.extensions.TextViewExtensions.kt</ID>
+    <ID>NewLineAtEndOfFile:ToastUtils.kt$com.ams.khdmaCore.utils.ToastUtils.kt</ID>
+    <ID>NewLineAtEndOfFile:TripsFragment.kt$com.ams.featureTransportation.scenes.tripsFragment.TripsFragment.kt</ID>
+    <ID>NewLineAtEndOfFile:TripsRepo.kt$com.ams.featureTransportation.scenes.tripsFragment.TripsRepo.kt</ID>
+    <ID>NewLineAtEndOfFile:TypeAliases.kt$com.ams.khdmaData.TypeAliases.kt</ID>
+    <ID>NewLineAtEndOfFile:UnderlinedAuthenticationButton.kt$com.ams.khdmaCustomComponents.UnderlinedAuthenticationButton.kt</ID>
+    <ID>NewLineAtEndOfFile:User.kt$com.ams.khdmaData.models.User.kt</ID>
+    <ID>NewLineAtEndOfFile:UserAccountAPIs.kt$com.ams.featureCommonScenes.data.apis.UserAccountAPIs.kt</ID>
+    <ID>NewLineAtEndOfFile:UserAddress.kt$com.ams.khdmaData.models.UserAddress.kt</ID>
+    <ID>NewLineAtEndOfFile:UserProfileInfoFragment.kt$com.ams.featureCommonScenes.scenes.common.profileScenes.profileInfoFragment.UserProfileInfoFragment.kt</ID>
+    <ID>NewLineAtEndOfFile:UserProfileInfoRepo.kt$com.ams.featureCommonScenes.scenes.common.profileScenes.profileInfoFragment.UserProfileInfoRepo.kt</ID>
+    <ID>NewLineAtEndOfFile:UserProfileInfoStates.kt$com.ams.featureCommonScenes.scenes.common.profileScenes.profileInfoFragment.UserProfileInfoStates.kt</ID>
+    <ID>NewLineAtEndOfFile:UserType.kt$com.ams.khdmaData.enums.types.UserType.kt</ID>
+    <ID>NewLineAtEndOfFile:Validator.kt$com.ams.khdmaCore.utils.Validator.kt</ID>
+    <ID>NewLineAtEndOfFile:ViewBindingExtensions.kt$com.ams.khdmaMVVM.utils.viewBinding.ViewBindingExtensions.kt</ID>
+    <ID>NewLineAtEndOfFile:ViewGroupExtensions.kt$com.ams.khdmaCustomComponents.extensions.ViewGroupExtensions.kt</ID>
+    <ID>NewLineAtEndOfFile:ViewGroupExtensions.kt$com.ams.khdmaRecyclerview.extensions.ViewGroupExtensions.kt</ID>
+    <ID>NewLineAtEndOfFile:ViewHolder.kt$com.ams.khdmaRecyclerview.reusable.ViewHolder.kt</ID>
+    <ID>NewLineAtEndOfFile:ViewModelModules.kt$com.ams.khdmaApp.injection.modules.ViewModelModules.kt</ID>
+    <ID>NewLineAtEndOfFile:ViewState.kt$com.ams.khdmaMVVM.appBases.mvvmStates.ViewState.kt</ID>
+    <ID>NewLineAtEndOfFile:ViewStateController.kt$com.ams.khdmaMVVM.appBases.mvvmStates.ViewStateController.kt</ID>
+    <ID>NewLineAtEndOfFile:WebViewDialogFragment.kt$com.ams.khdmaDialogs.WebViewDialogFragment.kt</ID>
+    <ID>NewLineAtEndOfFile:WrapContentCircleImageView.kt$com.ams.khdmaRecyclerview.custom.wrapcontentSwiperefreshlayout.WrapContentCircleImageView.kt</ID>
+    <ID>NewLineAtEndOfFile:WrapContentSwipeRefreshLayout.kt$com.ams.khdmaRecyclerview.custom.wrapcontentSwiperefreshlayout.WrapContentSwipeRefreshLayout.kt</ID>
+    <ID>NewLineAtEndOfFile:build.gradle.kts$.build.gradle.kts</ID>
+    <ID>NewLineAtEndOfFile:tasks.gradle.kts$.tasks.gradle.kts</ID>
+    <ID>ReturnCount:BaseViewArgsDelegate.kt$BaseViewArgsDelegate$protected fun getBundleArgsClass(bundle: Bundle): B</ID>
+    <ID>ReturnCount:GMSLocationManager.kt$GMSLocationManager$override fun getAddressFromLocationCoordinate(latitude: Double?, longitude: Double?): Address?</ID>
+    <ID>ReturnCount:HMSLocationManager.kt$HMSLocationManager$override fun getAddressFromLocationCoordinate(latitude: Double?, longitude: Double?): Address?</ID>
+    <ID>ReturnCount:ImagePicker.kt$ImagePicker.Companion$fun getRealPathFromURI(context: Context, uri: Uri?): String?</ID>
+    <ID>ReturnCount:JwtUtils.kt$JwtUtils$@Suppress("MemberVisibilityCanBePrivate") fun getExpirationDate(token: String?): Long?</ID>
+    <ID>ReturnCount:KotlinLiveBus.kt$KotlinLiveBus$ fun &lt;T&gt; removeEvent(liveEvent: BaseLiveEvent&lt;T&gt;): Boolean</ID>
+    <ID>ReturnCount:LocationRepo.kt$LocationRepo$fun isDifferentAddress(): Boolean</ID>
+    <ID>ReturnCount:LookupTableInterpolator.kt$LookupTableInterpolator$override fun getInterpolation(input: Float): Float</ID>
+    <ID>ReturnCount:PageWrapper.kt$PageWrapper$fun getPageNumber(): Int</ID>
+    <ID>ReturnCount:PageWrapper.kt$PageWrapper$private fun getPageSize(): Int</ID>
+    <ID>ReturnCount:RxErrorHandlingCallAdapter.kt$RxErrorHandlingCallAdapter$@SuppressLint("CheckResult") override fun adapt(call: Call&lt;R&gt;): Any?</ID>
+    <ID>ReturnCount:RxErrorHandlingCallAdapter.kt$RxErrorHandlingCallAdapter$private fun asRetrofitException(throwable: Throwable): RetrofitException</ID>
+    <ID>ReturnCount:RxErrorHandlingCallAdapterFactory.kt$RxErrorHandlingCallAdapterFactory$override fun get(returnType: Type, annotations: Array&lt;Annotation&gt;, retrofit: Retrofit): CallAdapter&lt;*, *&gt;?</ID>
+    <ID>ReturnCount:SessionServiceImpl.kt$SessionServiceImpl$override fun &lt;T: IUser&gt; getSavedUser(clazz: Class&lt;T&gt;): T?</ID>
+    <ID>ReturnCount:ShopItemsViewModel.kt$ShopItemsViewModel$private fun getRawShopItems(page: Int): Single&lt;PageWrapper&lt;CartItem&gt;&gt;</ID>
+    <ID>ReturnCount:WrapContentSwipeRefreshLayout.kt$WrapContentSwipeRefreshLayout$@Suppress("VARIABLE_WITH_REDUNDANT_INITIALIZER") @SuppressLint("ClickableViewAccessibility") override fun onTouchEvent(ev: MotionEvent): Boolean</ID>
+    <ID>ReturnCount:WrapContentSwipeRefreshLayout.kt$WrapContentSwipeRefreshLayout$override fun onInterceptTouchEvent(ev: MotionEvent): Boolean</ID>
+    <ID>SpreadOperator:AppPermissionsManager.kt$AppPermissionsManager$(this.getCurrentActivity(), *permissions, description = getCurrentActivity().getString(R.string.camera_and_read_storage_permission_description), listener = listener)</ID>
+    <ID>SpreadOperator:AppPermissionsManager.kt$AppPermissionsManager$(this.getCurrentActivity(), *permissions, description = getCurrentActivity().getString(R.string.location_permission_description), listener = listener)</ID>
+    <ID>SpreadOperator:GsonSerializationService.kt$GsonSerializationService$(*list)</ID>
+    <ID>SpreadOperator:WrapContentSwipeRefreshLayout.kt$WrapContentSwipeRefreshLayout$(*colorRes)</ID>
+    <ID>TooGenericExceptionCaught:AppNavigator.kt$AppNavigator$e: Exception</ID>
+    <ID>TooGenericExceptionCaught:AppTerminationListenerService.kt$AppTerminationListenerService.Companion$e: RuntimeException</ID>
+    <ID>TooGenericExceptionCaught:BaseErrorHandler.kt$BaseErrorHandler$e: Exception</ID>
+    <ID>TooGenericExceptionCaught:BaseMVVMBottomSheetDialogFragment.kt$BaseMVVMBottomSheetDialogFragment$e: Exception</ID>
+    <ID>TooGenericExceptionCaught:BaseMVVMDialogFragment.kt$BaseMVVMDialogFragment$e: Exception</ID>
+    <ID>TooGenericExceptionCaught:BodyObservable.kt$BodyObservable.BodyObserver$inner: Throwable</ID>
+    <ID>TooGenericExceptionCaught:CallEnqueueObservable.kt$CallEnqueueObservable.CallCallback$inner: Throwable</ID>
+    <ID>TooGenericExceptionCaught:CallEnqueueObservable.kt$CallEnqueueObservable.CallCallback$t: Throwable</ID>
+    <ID>TooGenericExceptionCaught:CallExecuteObservable.kt$CallExecuteObservable$inner: Throwable</ID>
+    <ID>TooGenericExceptionCaught:CallExecuteObservable.kt$CallExecuteObservable$t: Throwable</ID>
+    <ID>TooGenericExceptionCaught:DateTimeUtils.kt$DateTimeUtils$e: RuntimeException</ID>
+    <ID>TooGenericExceptionCaught:ExceptionUtil.kt$ex: Exception</ID>
+    <ID>TooGenericExceptionCaught:JwtUtils.kt$JwtUtils$e: RuntimeException</ID>
+    <ID>TooGenericExceptionCaught:ResultObservable.kt$ResultObservable.ResultObserver$inner: Throwable</ID>
+    <ID>TooGenericExceptionCaught:ResultObservable.kt$ResultObservable.ResultObserver$t: Throwable</ID>
+    <ID>TooGenericExceptionThrown:ActivityArgs.kt$ActivityArgs$throw Exception("Null Activity extras! .. If bundle will be null in some cases, then please use 'NullableActivityArgs'")</ID>
+    <ID>TooGenericExceptionThrown:BaseViewArgsDelegate.kt$BaseViewArgsDelegate$throw Exception("Bundle arguments should be data class!")</ID>
+    <ID>TooGenericExceptionThrown:FragmentArgs.kt$FragmentArgs$throw Exception("Null Fragment bundle! .. If bundle will be null in some cases, then please use 'NullableFragmentArgs'")</ID>
+    <ID>TooManyFunctions:AddNewAddressViewModel.kt$AddNewAddressViewModel : AppViewModel</ID>
+    <ID>TooManyFunctions:AndroidSharedPreferences.kt$AndroidSharedPreferences$Builder</ID>
+    <ID>TooManyFunctions:AppActivity.kt$AppActivity&lt;VB: ViewBinding, VM: AppViewModel&lt;ViewState&gt;, ViewState&gt; : BaseMVVMActivityInternalNavigatorListeners</ID>
+    <ID>TooManyFunctions:AppBottomNavigationController.kt$AppBottomNavigationController</ID>
+    <ID>TooManyFunctions:AppBottomNavigationView.kt$AppBottomNavigationView : CoordinatorLayout</ID>
+    <ID>TooManyFunctions:AppBottomSheetDialogFragment.kt$AppBottomSheetDialogFragment&lt;VM: AppViewModel&lt;ViewState&gt;, ViewState&gt; : BaseMVVMBottomSheetDialogFragment</ID>
+    <ID>TooManyFunctions:AppFragment.kt$AppFragment&lt;VM: AppViewModel&lt;ViewState&gt;, ViewState&gt; : BaseMVVMFragment</ID>
+    <ID>TooManyFunctions:BaseLocaleManager.kt$BaseLocaleManager</ID>
+    <ID>TooManyFunctions:BaseRefreshTokenInterceptor.kt$BaseRefreshTokenInterceptor : Interceptor</ID>
+    <ID>TooManyFunctions:BaseViewArgsDelegate.kt$BaseViewArgsDelegate&lt;B: Bundlable&gt;</ID>
+    <ID>TooManyFunctions:CartRepo.kt$CartRepo</ID>
+    <ID>TooManyFunctions:CartViewModel.kt$CartViewModel : AppViewModel</ID>
+    <ID>TooManyFunctions:CategoriesAndShopsFragment.kt$CategoriesAndShopsFragment : AppFragmentShopsListingFragmentCallBacks</ID>
+    <ID>TooManyFunctions:CommonModuleFeaturesNavigator.kt$CommonModuleFeaturesNavigator : AppNavigator</ID>
+    <ID>TooManyFunctions:CommonModuleFeaturesNavigatorImpl.kt$CommonModuleFeaturesNavigatorImpl : CommonModuleFeaturesNavigator</ID>
+    <ID>TooManyFunctions:ConsumerHomeViewModel.kt$ConsumerHomeViewModel : AppViewModel</ID>
+    <ID>TooManyFunctions:ConsumerMainActivity.kt$ConsumerMainActivity : AppActivityShoppingServiceSharedViewModelProvider</ID>
+    <ID>TooManyFunctions:ConsumerViewModel.kt$ConsumerViewModel : AppViewModelIShoppingServiceSharedViewModel</ID>
+    <ID>TooManyFunctions:DateTimeUtils.kt$DateTimeUtils</ID>
+    <ID>TooManyFunctions:DeviceInfo.kt$DeviceInfo$DeviceInfo</ID>
+    <ID>TooManyFunctions:ExpandableLayout.kt$ExpandableLayout : FrameLayout</ID>
+    <ID>TooManyFunctions:KhdmaDialog.kt$KhdmaDialog$Companion</ID>
+    <ID>TooManyFunctions:KotlinLiveBus.kt$KotlinLiveBus$KotlinLiveBus</ID>
+    <ID>TooManyFunctions:LocationRepo.kt$LocationRepo</ID>
+    <ID>TooManyFunctions:MoreRepo.kt$MoreRepo</ID>
+    <ID>TooManyFunctions:OnBoardingNavigator.kt$OnBoardingNavigator : AppNavigator</ID>
+    <ID>TooManyFunctions:OnBoardingNavigatorImpl.kt$OnBoardingNavigatorImpl : OnBoardingNavigator</ID>
+    <ID>TooManyFunctions:OrderAPIs.kt$OrderAPIs</ID>
+    <ID>TooManyFunctions:OrderSummaryFragment.kt$OrderSummaryFragment : AppFragment</ID>
+    <ID>TooManyFunctions:OrderSummaryViewModel.kt$OrderSummaryViewModel : AppViewModel</ID>
+    <ID>TooManyFunctions:PaginatedRecyclerViewManager.kt$PaginatedRecyclerViewManager&lt;T: DiffableRVItem, VHB: AppViewHolderBinder&lt;T, *&gt;&gt;</ID>
+    <ID>TooManyFunctions:PreLoginViewModel.kt$PreLoginViewModel : AppViewModel</ID>
+    <ID>TooManyFunctions:PushNotificationsUtils.kt$PushNotificationsUtils$PushNotificationsUtils</ID>
+    <ID>TooManyFunctions:RecyclerViewAdapter.kt$RecyclerViewAdapter&lt;T: DiffableRVItem&gt; : Adapter</ID>
+    <ID>TooManyFunctions:RequestExecutor.kt$RequestExecutor&lt;S&gt;</ID>
+    <ID>TooManyFunctions:RxExtensions.kt$com.ams.khdmaCore.extensions.RxExtensions.kt</ID>
+    <ID>TooManyFunctions:SearchItemsViewModel.kt$SearchItemsViewModel : AppViewModel</ID>
+    <ID>TooManyFunctions:SessionService.kt$SessionService</ID>
+    <ID>TooManyFunctions:SessionServiceImpl.kt$SessionServiceImpl : SessionService</ID>
+    <ID>TooManyFunctions:SharedPrefService.kt$SharedPrefService</ID>
+    <ID>TooManyFunctions:SharedPrefServiceImpl.kt$SharedPrefServiceImpl : SharedPrefService</ID>
+    <ID>TooManyFunctions:SharedPreferencesDataSource.kt$SharedPreferencesDataSource</ID>
+    <ID>TooManyFunctions:SharedPreferencesDataSourceImpl.kt$SharedPreferencesDataSourceImpl : SharedPreferencesDataSource</ID>
+    <ID>TooManyFunctions:ShopItemInfoViewModel.kt$ShopItemInfoViewModel : AppViewModel</ID>
+    <ID>TooManyFunctions:ShopItemsViewModel.kt$ShopItemsViewModel : AppViewModel</ID>
+    <ID>TooManyFunctions:ShoppingServiceNavigator.kt$ShoppingServiceNavigator : AppNavigator</ID>
+    <ID>TooManyFunctions:ShoppingServiceNavigatorImpl.kt$ShoppingServiceNavigatorImpl : ShoppingServiceNavigator</ID>
+    <ID>TooManyFunctions:ShowCaseUtils.kt$ShowCaseUtils</ID>
+    <ID>TooManyFunctions:SinglePageRecyclerViewManager.kt$SinglePageRecyclerViewManager&lt;T: DiffableRVItem, VHB: AppViewHolderBinder&lt;T, *&gt;&gt;</ID>
+    <ID>TooManyFunctions:StartUpConfigsDataSource.kt$StartUpConfigsDataSource</ID>
+    <ID>TooManyFunctions:StartUpConfigsDataSourceImpl.kt$StartUpConfigsDataSourceImpl : StartUpConfigsDataSource</ID>
+    <ID>TooManyFunctions:WrapContentSwipeRefreshLayout.kt$WrapContentSwipeRefreshLayout : ViewGroupNestedScrollingParentNestedScrollingChild</ID>
+    <ID>VariableNaming:AppCompatActivityExtensions.kt$@Suppress("LocalVariableName") val FRAGMENT_TAG = fragmentClass.simpleName</ID>
+    <ID>VariableNaming:BaseRefreshTokenInterceptor.kt$BaseRefreshTokenInterceptor$@Suppress("PropertyName") protected val TAG = "REFRESH_TOKEN_INTERCEPTOR"</ID>
+    <ID>VariableNaming:ITaggableClass.kt$ITaggableClass$@Suppress("PropertyName") val TAG get() = "5dma Tags " + this.javaClass.toString()</ID>
+    <ID>VariableNaming:SessionServiceImpl.kt$SessionServiceImpl$@Suppress("PropertyName") protected val LOG_TAG = "SESSION_HANDLER"</ID>
+    <ID>WildcardImport:AddNewAddressFragment.kt$import com.ams.khdmaCore.extensions.*</ID>
+    <ID>WildcardImport:AddNewAddressFragment.kt$import com.ams.khdmaData.errors.throwables.*</ID>
+    <ID>WildcardImport:AddNewAddressViewModel.kt$import com.ams.khdmaData.errors.throwables.*</ID>
+    <ID>WildcardImport:AddressAPIs.kt$import retrofit2.http.*</ID>
+    <ID>WildcardImport:AppLocale.kt$import com.ams.khdmaCore.utils.locale.AppLocale.Locales.*</ID>
+    <ID>WildcardImport:AuthenticationAPIs.kt$import retrofit2.http.*</ID>
+    <ID>WildcardImport:BaseRefreshTokenInterceptor.kt$import okhttp3.*</ID>
+    <ID>WildcardImport:CartDao.kt$import androidx.room.*</ID>
+    <ID>WildcardImport:CartItem.kt$import com.ams.khdmaData.db.typeConverters.*</ID>
+    <ID>WildcardImport:CartItemsWrapper.kt$import com.ams.khdmaData.models.*</ID>
+    <ID>WildcardImport:CartRepo.kt$import com.ams.khdmaData.models.*</ID>
+    <ID>WildcardImport:CartSynchronizationWorker.kt$import androidx.work.*</ID>
+    <ID>WildcardImport:ConsumerHomeRepo.kt$import com.ams.khdmaData.models.*</ID>
+    <ID>WildcardImport:DateTimeUtils.kt$import org.joda.time.*</ID>
+    <ID>WildcardImport:EditUserProfileInfoFragment.kt$import com.ams.khdmaData.errors.throwables.*</ID>
+    <ID>WildcardImport:EditUserProfileInfoViewModel.kt$import com.ams.khdmaData.errors.throwables.*</ID>
+    <ID>WildcardImport:FavouritesAPIs.kt$import retrofit2.http.*</ID>
+    <ID>WildcardImport:GMSLocationManager.kt$import com.google.android.gms.location.*</ID>
+    <ID>WildcardImport:GsonServiceImpl.kt$import com.google.gson.*</ID>
+    <ID>WildcardImport:HMSLocationManager.kt$import com.huawei.hms.location.*</ID>
+    <ID>WildcardImport:ImageViewExtensions.kt$import coil.*</ID>
+    <ID>WildcardImport:KoinInitializer.kt$import com.ams.khdmaApp.injection.modules.*</ID>
+    <ID>WildcardImport:MirroredDrawable.kt$import android.graphics.*</ID>
+    <ID>WildcardImport:OKHttpNetworkClient.kt$import okhttp3.*</ID>
+    <ID>WildcardImport:OrderAPIs.kt$import retrofit2.http.*</ID>
+    <ID>WildcardImport:OrderReviewFragment.kt$import android.R.attr.*</ID>
+    <ID>WildcardImport:OrderSummaryFragment.kt$import com.ams.khdmaData.errors.throwables.*</ID>
+    <ID>WildcardImport:OrderSummaryViewModel.kt$import com.ams.khdmaData.models.*</ID>
+    <ID>WildcardImport:OrdersDao.kt$import androidx.room.*</ID>
+    <ID>WildcardImport:OtherModules.kt$import com.ams.khdmaCore.utils.*</ID>
+    <ID>WildcardImport:PaginatedRecyclerViewManager.kt$import com.ams.khdmaRecyclerview.extensions.*</ID>
+    <ID>WildcardImport:PlaceOrderRequest.kt$import com.ams.khdmaData.models.*</ID>
+    <ID>WildcardImport:RecyclerViewExtensions.kt$import androidx.recyclerview.widget.*</ID>
+    <ID>WildcardImport:RefreshTokenInterceptor.kt$import okhttp3.*</ID>
+    <ID>WildcardImport:ResetPasswordDialogFragment.kt$import com.ams.khdmaData.errors.throwables.*</ID>
+    <ID>WildcardImport:ResetPasswordViewModel.kt$import com.ams.khdmaData.errors.throwables.*</ID>
+    <ID>WildcardImport:ResourceProvider.kt$import androidx.annotation.*</ID>
+    <ID>WildcardImport:RestModules.kt$import com.ams.khdmaData.networking.apis.*</ID>
+    <ID>WildcardImport:RestModules.kt$import com.ams.khdmaData.networking.interceptors.*</ID>
+    <ID>WildcardImport:RoomTypeConverters.kt$import com.ams.khdmaData.models.*</ID>
+    <ID>WildcardImport:RxErrorHandlingCallAdapter.kt$import io.reactivex.rxjava3.core.*</ID>
+    <ID>WildcardImport:RxErrorHandlingCallAdapter.kt$import retrofit2.*</ID>
+    <ID>WildcardImport:RxErrorHandlingCallAdapterFactory.kt$import io.reactivex.rxjava3.core.*</ID>
+    <ID>WildcardImport:RxErrorHandlingCallAdapterFactory.kt$import retrofit2.*</ID>
+    <ID>WildcardImport:RxExtensions.kt$import io.reactivex.rxjava3.core.*</ID>
+    <ID>WildcardImport:SearchItemsFragment.kt$import com.journeyapps.barcodescanner.*</ID>
+    <ID>WildcardImport:ShoppingServiceNavigator.kt$import com.ams.khdmaData.models.*</ID>
+    <ID>WildcardImport:ShoppingServiceNavigatorImpl.kt$import com.ams.khdmaData.models.*</ID>
+    <ID>WildcardImport:SignUpFragment.kt$import com.ams.khdmaData.errors.throwables.*</ID>
+    <ID>WildcardImport:SignUpViewModel.kt$import com.ams.khdmaData.errors.throwables.*</ID>
+    <ID>WildcardImport:SplashActivity.kt$import android.view.animation.*</ID>
+    <ID>WildcardImport:StartUpConfigsDataSource.kt$import com.ams.khdmaData.models.*</ID>
+    <ID>WildcardImport:StartUpConfigsDataSourceImpl.kt$import com.ams.khdmaData.models.*</ID>
+    <ID>WildcardImport:UserAccountAPIs.kt$import retrofit2.http.*</ID>
+    <ID>WildcardImport:WrapContentCircleImageView.kt$import android.graphics.*</ID>
+    <ID>WildcardImport:WrapContentSwipeRefreshLayout.kt$import androidx.core.view.*</ID>
+  </CurrentIssues>
+</SmellBaseline>

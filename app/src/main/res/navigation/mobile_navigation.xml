@@ -7,31 +7,31 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.teavaro.teavarodemoapp.ui.home.HomeFragment"
+        android:name="com.teavaro.ecommDemoApp.ui.home.HomeFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/navigation_cart"
-        android:name="com.teavaro.teavarodemoapp.ui.cart.CartFragment"
+        android:name="com.teavaro.ecommDemoApp.ui.cart.CartFragment"
         android:label="@string/title_cart"
         tools:layout="@layout/fragment_cart" />
 
     <fragment
         android:id="@+id/navigation_wishlist"
-        android:name="com.teavaro.teavarodemoapp.ui.wishlist.WishlistFragment"
+        android:name="com.teavaro.ecommDemoApp.ui.wishlist.WishlistFragment"
         android:label="@string/title_wishlist"
         tools:layout="@layout/fragment_wishlist" />
 
     <fragment
         android:id="@+id/navigation_shop"
-        android:name="com.teavaro.teavarodemoapp.ui.shop.ShopFragment"
+        android:name="com.teavaro.ecommDemoApp.ui.shop.ShopFragment"
         android:label="@string/title_shop"
         tools:layout="@layout/fragment_shop" />
 
     <fragment
         android:id="@+id/navigation_login"
-        android:name="com.teavaro.teavarodemoapp.ui.login.LoginFragment"
+        android:name="com.teavaro.ecommDemoApp.ui.login.LoginFragment"
         android:label="@string/title_login"
         tools:layout="@layout/fragment_login" />
 </navigation>

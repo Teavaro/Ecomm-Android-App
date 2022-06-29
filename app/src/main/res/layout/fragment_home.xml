@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.home.HomeFragment">
 
     <ScrollView
@@ -40,6 +41,7 @@
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:id="@+id/btnExplore"
                     android:layout_marginTop="10dp"
                     android:text="Explore Fresh" />
             </LinearLayout>
@@ -54,50 +56,12 @@
 
             <View style="@style/Divider" />
 
-            <LinearLayout
-                android:layout_width="wrap_content"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/listItems"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:orientation="vertical">
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
-                        android:src="@drawable/ic_wishlist_black_24dp" />
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="150dp"
-                        android:src="@drawable/prod_snapple" />
-                </RelativeLayout>
-
-                <TextView
-                    style="@style/BoldText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="BetterBody Foods Organic Chia"
-                    android:textSize="20dp" />
-
-                <TextView
-                    style="@style/BoldText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="$55.00" />
-
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:text="Add To Cart" />
-            </LinearLayout>
+                android:divider="@color/white"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
 
             <ImageView
                 android:layout_width="match_parent"
@@ -105,7 +69,6 @@
                 android:layout_marginTop="30dp"
                 android:layout_marginBottom="60dp"
                 android:src="@drawable/bg_special_offer" />
-
         </LinearLayout>
     </ScrollView>
 </FrameLayout>
