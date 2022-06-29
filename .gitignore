@@ -77,5 +77,3 @@ lint/tmp/
 #
 gradle.properties
 secrets/tokens.properties
-gradle/wrapper/gradle-wrapper.properties
-local.properties
