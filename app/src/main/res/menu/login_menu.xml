@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:toools="http://schemas.android.com/tools"
-    toools:context=".MainActivity">
+    toools:context=".ui.MainActivity">
     <item
         android:id="@+id/menu_login"
         android:icon="@drawable/ic_cart_black_24dp"
