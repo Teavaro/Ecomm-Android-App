@@ -13,8 +13,8 @@ import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.teavaro.ecommDemoApp.R
 import com.teavaro.ecommDemoApp.baseClasses.mvvm.BaseActivity
-import com.teavaro.ecommDemoApp.core.Store
 import com.teavaro.ecommDemoApp.databinding.ActivityMainBinding
+import com.teavaro.ecommDemoApp.core.Store
 
 class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::inflate) {
 

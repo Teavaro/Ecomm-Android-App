@@ -1,6 +1,7 @@
 plugins {
     id(BuildSystem.plugins.androidApplication)
     id(BuildSystem.plugins.kotlinAndroid)
+    id(BuildSystem.plugins.extensions)
 }
 
 apply {

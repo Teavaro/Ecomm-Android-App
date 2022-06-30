@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.home.HomeFragment">
 
     <ScrollView
@@ -56,12 +55,11 @@
 
             <View style="@style/Divider" />
 
-            <androidx.recyclerview.widget.RecyclerView
+            <LinearLayout
                 android:id="@+id/listItems"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:divider="@color/white"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+                android:layout_height="match_parent"
+                android:orientation="vertical"/>
 
             <ImageView
                 android:layout_width="match_parent"
@@ -69,6 +67,7 @@
                 android:layout_marginTop="30dp"
                 android:layout_marginBottom="60dp"
                 android:src="@drawable/bg_special_offer" />
+
         </LinearLayout>
     </ScrollView>
 </FrameLayout>

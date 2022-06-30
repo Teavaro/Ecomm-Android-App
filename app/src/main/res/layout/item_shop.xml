@@ -2,55 +2,66 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:paddingLeft="20dp"
+    android:paddingRight="20dp">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+
         <ImageView
+            android:id="@+id/btnAddToWish"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/btnAddToWishlist"
+            android:layout_alignParentRight="true"
             android:layout_marginTop="10dp"
             android:layout_marginRight="10dp"
-            android:layout_alignParentRight="true"
             android:src="@drawable/ic_wishlist_black_24dp" />
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="150dp"
             android:id="@+id/imgPicture"
-            android:src="@drawable/prod_snapple" />
+            android:layout_width="wrap_content"
+            android:layout_height="150dp"/>
     </RelativeLayout>
 
     <TextView
+        android:id="@+id/txtTitle"
         style="@style/BoldText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:id="@+id/txtTitle"
-        android:text="BetterBody Foods Organic Chia"
         android:textSize="20dp" />
 
     <TextView
+        android:id="@+id/txtPrice"
         style="@style/BoldText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:id="@+id/txtPrice"
-        android:text="$55.00" />
+        android:gravity="center" />
 
     <Button
-        android:id="@+id/btnAddItem"
+        android:id="@+id/btnAddToCart"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:text="Add To Cart" />
 
-    <View
+    <TextView
+        android:id="@+id/outOfStock"
+        style="@style/BoldText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        style="@style/Divider"/>
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="Out of stock!"
+        android:textColor="@color/red"
+        android:visibility="gone" />
+
+    <View
+        style="@style/Divider"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
 </LinearLayout>
