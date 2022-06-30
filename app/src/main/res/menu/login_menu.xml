@@ -5,14 +5,12 @@
     toools:context=".ui.MainActivity">
     <item
         android:id="@+id/menu_login"
-        android:icon="@drawable/ic_cart_black_24dp"
         android:orderInCategory="1100"
         android:title="@string/menu_login"
-        app:showAsAction="never" />
+        app:showAsAction="always" />
     <item
         android:id="@+id/menu_logout"
-        android:icon="@drawable/ic_shop_black_24dp"
         android:orderInCategory="1100"
         android:title="@string/menu_logout"
-        app:showAsAction="never" />
+        app:showAsAction="always" />
 </menu>

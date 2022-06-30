@@ -5,6 +5,6 @@
     <string name="title_wishlist">Wishlist</string>
     <string name="title_shop">Shop</string>
     <string name="title_login">Login</string>
-    <string name="menu_login">Login</string>
+    <string name="menu_login">Log in</string>
     <string name="menu_logout">Log out</string>
 </resources>

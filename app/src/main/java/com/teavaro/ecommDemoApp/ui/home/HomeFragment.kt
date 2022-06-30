@@ -1,67 +1,50 @@
 package com.teavaro.ecommDemoApp.ui.home
 
-import android.widget.Button
-import android.widget.ImageView
-import android.widget.TextView
-import android.widget.Toast
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.findNavController
-import com.teavaro.ecommDemoApp.baseClasses.mvvm.BaseFragment
-import com.teavaro.ecommDemoApp.baseClasses.GenericRecyclerViewAdapter
+import androidx.navigation.findNavController
 import com.teavaro.ecommDemoApp.R
-import com.teavaro.ecommDemoApp.core.Item
 import com.teavaro.ecommDemoApp.core.Store
 import com.teavaro.ecommDemoApp.databinding.FragmentHomeBinding
-import com.teavaro.ecommDemoApp.databinding.ItemShopBinding
+import com.teavaro.ecommDemoApp.ui.shop.ShopAdapter
 
-class HomeFragment: BaseFragment<FragmentHomeBinding>(R.layout.fragment_home, FragmentHomeBinding::bind) {
+class HomeFragment : Fragment() {
 
-    private val homeViewModel by lazy { ViewModelProvider(this).get(HomeViewModel::class.java) }
-//    private val adapter by lazy {
-//        GenericRecyclerViewAdapter.create<Item, ItemShopBinding>(ItemShopBinding::inflate) { context, binding, _, item ->
-//            binding.txtTitle.text = item.title
-//            binding.txtPrice.text = "$${item.price}"
-//            val imgId: Int = context.resources.getIdentifier(item.picture, "drawable", "com.teavaro.teavarodemoapp")
-//            binding.imgPicture.setImageResource(imgId)
-//            if(!item.isInStock) {
-//             //   binding.btnAddToCart.visibility = Button.GONE
-//             //   binding.outOfStock.visibility = TextView.VISIBLE
-//            }
-//            binding.btnAddToCart.setOnClickListener {
-//                Store.addItemToCart(item.id)
-//                Toast.makeText(context, "Product added!", Toast.LENGTH_SHORT).show()
-//            }
-//            binding.btnAddToWish.let { imageView ->
-//                setWishPicture(imageView, item)
-//                imageView.setOnClickListener {
-//                    if(!item.isWish) {
-//                        Store.addItemToWish(item.id)
-//                        item.isWish = true
-//                    }
-//                    else {
-//                        Store.removeItemFromWish(item.id)
-//                        item.isWish = false
-//                    }
-//                    setWishPicture(imageView as ImageView, item)
-//                    Toast.makeText(context, "Product added!", Toast.LENGTH_SHORT).show()
-//                }
-//            }
-//        }
-//    }
+    private var _binding: FragmentHomeBinding? = null
 
-    override fun initUI() {
-//        viewBinding.listItems.adapter = this.adapter
-//        this.adapter.listItems = Store.getItems()
-//        this.adapter.notifyDataSetChanged()
-        viewBinding.btnExplore.setOnClickListener {
-            this.findNavController().navigate(R.id.navigation_shop)
+    // This property is only valid between onCreateView and
+    // onDestroyView.
+    private val binding get() = _binding!!
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        val homeViewModel =
+            ViewModelProvider(this).get(HomeViewModel::class.java)
+
+        _binding = FragmentHomeBinding.inflate(inflater, container, false)
+        val root: View = binding.root
+
+        var list = Store.getItemsOffer()
+        val shopAdapter = ShopAdapter(requireContext(), list)
+        for (pos in 0..list.lastIndex){
+            binding.listItems.addView(shopAdapter.getView(pos, view, container!!))
         }
+
+        binding.btnExplore.setOnClickListener {
+            root.findNavController().navigate(R.id.navigation_shop)
+        }
+        return root
     }
 
-    private fun setWishPicture(imageView: ImageView, item: Item) {
-//        if(item.isWish)
-//            imageView.setImageResource(R.drawable.ic_wishlist_red_24dp)
-//        else
-//            imageView.setImageResource(R.drawable.ic_wishlist_black_24dp)
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

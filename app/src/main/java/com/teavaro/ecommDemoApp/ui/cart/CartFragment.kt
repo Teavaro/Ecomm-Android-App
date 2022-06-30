@@ -1,37 +1,54 @@
 package com.teavaro.ecommDemoApp.ui.cart
 
 import android.app.AlertDialog
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.findNavController
+import androidx.navigation.findNavController
 import com.teavaro.ecommDemoApp.R
 import com.teavaro.ecommDemoApp.core.Store
 import com.teavaro.ecommDemoApp.databinding.FragmentCartBinding
-import com.teavaro.ecommDemoApp.baseClasses.mvvm.BaseFragment
-import com.teavaro.ecommDemoApp.baseClasses.GenericRecyclerViewAdapter
-import com.teavaro.ecommDemoApp.core.Item
-import com.teavaro.ecommDemoApp.databinding.ItemShopBinding
 
-class CartFragment: BaseFragment<FragmentCartBinding>(R.layout.fragment_cart, FragmentCartBinding::bind) {
+class CartFragment : Fragment() {
 
-    private val cartViewModel by lazy { ViewModelProvider(this).get(CartViewModel::class.java) }
-    private val adapter by lazy {
-        GenericRecyclerViewAdapter.create<String, ItemShopBinding>(ItemShopBinding::inflate) { context, binding, _, item ->
-            binding.txtTitle.text = item
+    private var _binding: FragmentCartBinding? = null
+
+    // This property is only valid between onCreateView and
+    // onDestroyView.
+    private val binding get() = _binding!!
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        val cartViewModel =
+            ViewModelProvider(this).get(CartViewModel::class.java)
+
+        _binding = FragmentCartBinding.inflate(inflater, container, false)
+        val root: View = binding.root
+
+        var list = Store.getItemsCart()
+        val cartAdapter = CartAdapter(requireContext(), list)
+        for (pos in 0..list.lastIndex){
+            container?.let {
+                binding.listItems.addView(cartAdapter.getView(pos, view, it), 0)
+            }
         }
-    }
 
-    override fun initUI() {
-        viewBinding.listItems.adapter = this.adapter
-        this.adapter.listItems = mutableListOf("Puerco", "Pollo", "Picadillo")
-        this.adapter.notifyDataSetChanged()
-        viewBinding.txtTotal.text = "$${Store.getTotalPriceCart()} in total"
-        if(adapter.listItems.isEmpty())
-            viewBinding.txtEmpty.visibility = LinearLayout.VISIBLE
+        binding.txtTotal.text = "$${Store.getTotalPriceCart()} in total"
+
+        if(cartAdapter.count == 0)
+            binding.txtEmpty.visibility = LinearLayout.VISIBLE
         else
-            viewBinding.layTotal.visibility = LinearLayout.VISIBLE
-        viewBinding.btnCheckout.setOnClickListener {
+            binding.layTotal.visibility = LinearLayout.VISIBLE
+
+        binding.btnCheckout.setOnClickListener {
             val builder = AlertDialog.Builder(context)
             builder.setTitle("Checkout confirmation")
                 .setMessage("Do you want to proceed with checkout?")
@@ -40,10 +57,17 @@ class CartFragment: BaseFragment<FragmentCartBinding>(R.layout.fragment_cart, Fr
                 }
                 .setPositiveButton("Proceed") { _, _ ->
                     Store.removeAllCartItems()
-                    this.findNavController().navigate(R.id.navigation_cart)
+                    root.findNavController().navigate(R.id.navigation_home)
                     Toast.makeText(context, "Success!", Toast.LENGTH_SHORT).show()
                 }
                 .create().show()
         }
+
+        return root
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

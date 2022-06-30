@@ -3,7 +3,6 @@ package com.teavaro.ecommDemoApp.core
 object Store {
 
     private var listItems: ArrayList<Item> = ArrayList()
-    private var isInitialized = false
     var isLogin = false
 
     init {
@@ -15,7 +14,6 @@ object Store {
         listItems.add(Item(5, "Frito-Lay Doritos & Cheetos Mix", 20.00f, "watermelon"))
         listItems.add(Item(6, "Green Mountain Coffee Roast", 20.00f, "grapes"))
         listItems.add(Item(7, "Nature’s Bakery Whole Wheat Bars", 50.00f, "mixed"))
-        isInitialized = true
     }
 
     fun addItemToCart(id: Int) {
