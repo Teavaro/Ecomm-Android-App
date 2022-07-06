@@ -38,4 +38,5 @@ object Versions {
     const val facebookFlipperNoop       = "0.9.0"
     const val facebookSoloader          = "0.10.3"
     const val hyperion                  = "0.9.34"
+    const val swrve                  = "10.0.0"
 }

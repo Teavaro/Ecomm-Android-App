@@ -1,6 +1,6 @@
 #!/bin/bash
 GIT_DIR=$(git rev-parse --git-dir)
-cd "${GIT_DIR%/*}/androidApp"
+cd "${GIT_DIR%/*}/app"
 
 PROJECT_ROOT_DIRECTORY=${PWD%/*}
 APK_PATH="$PWD/build/outputs/apk/debug"

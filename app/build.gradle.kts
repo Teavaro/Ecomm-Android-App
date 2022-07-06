@@ -1,5 +1,6 @@
 plugins {
-    id(BuildSystem.plugins.androidApplication)
+    id(BuildSystem.plugins.
+    androidApplication)
     id(BuildSystem.plugins.kotlinAndroid)
     id(BuildSystem.plugins.extensions)
 }
@@ -83,6 +84,7 @@ dependencies {
     debugImplementation(BuildSystem.libraries.hyperionCore)
     debugImplementation(BuildSystem.libraries.hyperionSharedPreferences)
     releaseImplementation(BuildSystem.libraries.hyperionNoop)
+    implementation(BuildSystem.libraries.swrve)
 
     //
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.3.1")

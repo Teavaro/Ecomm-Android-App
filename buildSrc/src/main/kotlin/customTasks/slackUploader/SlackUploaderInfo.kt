@@ -6,7 +6,7 @@ data class SlackUploaderInfo(var channels: List<String>,
                              // Debug, Release,...
                              var variantName: String,
                              var comment: String = getChangeLog(),
-                             var outputApkFolderPath: String = "./androidApp/build/outputs/apk/") {
+                             var outputApkFolderPath: String = "./app/build/outputs/apk/") {
 
     companion object {
         /*
