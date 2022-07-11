@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
+import com.swrve.sdk.SwrveSDK
 import com.teavaro.ecommDemoApp.R
 import com.teavaro.ecommDemoApp.core.Store
 import com.teavaro.ecommDemoApp.databinding.FragmentCartBinding
@@ -27,6 +28,7 @@ class CartFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        SwrveSDK.event("Navigation.cart")
         val cartViewModel =
             ViewModelProvider(this).get(CartViewModel::class.java)
 
@@ -53,9 +55,10 @@ class CartFragment : Fragment() {
             builder.setTitle("Checkout confirmation")
                 .setMessage("Do you want to proceed with checkout?")
                 .setNegativeButton("Cancel")  {_,_ ->
-
+                    SwrveSDK.event("Cart.Checkout.cancel")
                 }
                 .setPositiveButton("Proceed") { _, _ ->
+                    SwrveSDK.event("Cart.Checkout.proceed")
                     Store.removeAllCartItems()
                     root.findNavController().navigate(R.id.navigation_home)
                     Toast.makeText(context, "Success!", Toast.LENGTH_SHORT).show()

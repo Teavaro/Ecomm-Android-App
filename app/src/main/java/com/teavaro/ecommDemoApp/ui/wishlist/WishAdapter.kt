@@ -9,6 +9,7 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.navigation.findNavController
+import com.swrve.sdk.SwrveSDK
 import com.teavaro.ecommDemoApp.R
 import com.teavaro.ecommDemoApp.core.Item
 import com.teavaro.ecommDemoApp.core.Store
@@ -36,12 +37,14 @@ class WishAdapter(context: Context,
         }
 
         layout.btnRemove.setOnClickListener {
+            SwrveSDK.event("Wishlist.removeItemFromWish")
             Store.removeItemFromWish(item.id)
             parent.findNavController().navigate(R.id.navigation_wishlist)
             Toast.makeText(context, "Product removed!", Toast.LENGTH_SHORT).show()
         }
 
         layout.btnAddToCart.setOnClickListener {
+            SwrveSDK.event("Wishlist.addItemToCart")
             Store.addItemToCart(item.id)
             Toast.makeText(context, "Product added!", Toast.LENGTH_SHORT).show()
         }
