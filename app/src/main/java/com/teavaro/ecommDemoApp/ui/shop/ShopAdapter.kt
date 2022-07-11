@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import com.swrve.sdk.SwrveSDK
 import com.teavaro.ecommDemoApp.core.Item
 import com.teavaro.ecommDemoApp.R
 import com.teavaro.ecommDemoApp.core.Store
@@ -32,6 +33,7 @@ class ShopAdapter(context: Context,
 
 
         layout.btnAddToCart.setOnClickListener {
+            SwrveSDK.event("Shop.addItemToCart")
             Store.addItemToCart(item.id)
             Toast.makeText(context, "Product added!", Toast.LENGTH_SHORT).show()
         }
@@ -40,10 +42,12 @@ class ShopAdapter(context: Context,
             setWishPicture(imageView, item)
             imageView.setOnClickListener {
                 if(!item.isWish) {
+                    SwrveSDK.event("Shop.addItemToWish")
                     Store.addItemToWish(item.id)
                     item.isWish = true
                 }
                 else {
+                    SwrveSDK.event("Shop.removeItemFromWish")
                     Store.removeItemFromWish(item.id)
                     item.isWish = false
                 }

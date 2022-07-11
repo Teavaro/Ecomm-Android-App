@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
+import com.swrve.sdk.SwrveSDK
 import com.teavaro.ecommDemoApp.R
 import com.teavaro.ecommDemoApp.core.Store
 import com.teavaro.ecommDemoApp.databinding.FragmentHomeBinding
@@ -25,6 +26,7 @@ class HomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        SwrveSDK.event("Navigation.home")
         val homeViewModel =
             ViewModelProvider(this).get(HomeViewModel::class.java)
 
@@ -38,6 +40,7 @@ class HomeFragment : Fragment() {
         }
 
         binding.btnExplore.setOnClickListener {
+            SwrveSDK.event("Home.exploreFresh")
             root.findNavController().navigate(R.id.navigation_shop)
         }
         return root
