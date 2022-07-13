@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.swrve.sdk.SwrveSDK
 import com.teavaro.ecommDemoApp.core.Store
 import com.teavaro.ecommDemoApp.databinding.FragmentShopBinding
 
@@ -23,7 +22,6 @@ class ShopFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        SwrveSDK.event("Navigation.shop")
         val shopViewModel =
             ViewModelProvider(this).get(ShopViewModel::class.java)
 

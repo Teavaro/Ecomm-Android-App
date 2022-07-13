@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.swrve.sdk.SwrveSDK
 import com.teavaro.ecommDemoApp.core.Store
 import com.teavaro.ecommDemoApp.databinding.FragmentWishlistBinding
 
@@ -24,7 +23,6 @@ class WishlistFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        SwrveSDK.event("Navigation.wishlist")
         val wishlistViewModel =
             ViewModelProvider(this).get(WishlistViewModel::class.java)
 

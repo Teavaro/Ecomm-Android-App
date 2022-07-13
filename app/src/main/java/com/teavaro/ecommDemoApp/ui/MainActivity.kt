@@ -10,7 +10,6 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.swrve.sdk.SwrveSDK
 import com.teavaro.ecommDemoApp.R
 import com.teavaro.ecommDemoApp.baseClasses.mvvm.BaseActivity
 import com.teavaro.ecommDemoApp.core.LogInMenu
@@ -62,11 +61,9 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
             R.id.menu_login -> {
                 when(LogInMenu.menu.getItem(0).title){
                     "Log in" -> {
-                        SwrveSDK.event("Menu.Login")
                         this.navController.navigate(R.id.navigation_login)
                     }
                     "Log out" -> {
-                        SwrveSDK.event("Menu.Logout")
                         val builder = AlertDialog.Builder(this)
                         builder.setTitle("Logout confirmation")
                             .setMessage("Do you want to proceed with the logout?")
@@ -74,7 +71,6 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
 
                             }
                             .setPositiveButton("Proceed") { _, _ ->
-                                SwrveSDK.event("Login.logout")
                                 LogInMenu.menu.getItem(0).title = "Log in"
                                 Store.isLogin = false
                                 navController.navigate(R.id.navigation_home)
