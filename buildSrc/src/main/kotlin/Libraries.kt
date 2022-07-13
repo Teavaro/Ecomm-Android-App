@@ -24,4 +24,5 @@ object Libraries {
     const val hyperionSharedPreferences = "com.willowtreeapps.hyperion:hyperion-shared-preferences:${Versions.hyperion}"
     const val hyperionNoop = "com.willowtreeapps.hyperion:hyperion-core-no-op:${Versions.hyperion}"
     const val swrve = "com.swrve.sdk.android:swrve-firebase:${Versions.swrve}"
+    const val teavaroSDK = "org.bitbucket.teavaro:fc-sdk:${Versions.teavaro}"
 }

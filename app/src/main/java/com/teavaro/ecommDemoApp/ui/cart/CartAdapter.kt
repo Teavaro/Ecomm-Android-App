@@ -7,15 +7,12 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.navigation.findNavController
-import com.swrve.sdk.Swrve
-import com.swrve.sdk.SwrveSDK
 import com.teavaro.ecommDemoApp.R
 import com.teavaro.ecommDemoApp.core.Item
 import com.teavaro.ecommDemoApp.core.Store
 import kotlinx.android.synthetic.main.item_cart.view.*
 import kotlinx.android.synthetic.main.item_cart.view.txtPrice
 import kotlinx.android.synthetic.main.item_cart.view.txtTitle
-import kotlinx.android.synthetic.main.item_shop.view.*
 
 class CartAdapter(context: Context,
                   private val listItems: List<Item>) :
@@ -32,7 +29,6 @@ class CartAdapter(context: Context,
         layout.txtSubTotal.text = "$$subTotal / piece"
 
         layout.btnRemove.setOnClickListener {
-            SwrveSDK.event("Cart.removeItem")
             Store.removeItemFromCart(item.id)
             parent.findNavController().navigate(R.id.navigation_cart)
             Toast.makeText(context, "Product removed!", Toast.LENGTH_SHORT).show()
