@@ -4,8 +4,13 @@
     xmlns:toools="http://schemas.android.com/tools"
     toools:context=".ui.MainActivity">
     <item
+        android:id="@+id/menu_permissions"
+        android:orderInCategory="1100"
+        android:title="@string/menu_permissions"
+        app:showAsAction="never" />
+    <item
         android:id="@+id/menu_login"
         android:orderInCategory="1100"
         android:title="@string/menu_login"
-        app:showAsAction="always" />
+        app:showAsAction="never" />
 </menu>
