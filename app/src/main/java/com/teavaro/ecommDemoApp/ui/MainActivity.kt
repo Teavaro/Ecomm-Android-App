@@ -13,6 +13,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.teavaro.ecommDemoApp.R
 import com.teavaro.ecommDemoApp.baseClasses.mvvm.BaseActivity
 import com.teavaro.ecommDemoApp.core.LogInMenu
+import com.teavaro.ecommDemoApp.core.SharedPreferenceUtils
 import com.teavaro.ecommDemoApp.databinding.ActivityMainBinding
 import com.teavaro.ecommDemoApp.core.Store
 
@@ -44,12 +45,6 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
         // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.login_menu, menu)
         LogInMenu.menu = menu
-//        val idLogin = menu.getItem(0).itemId
-//        val idLogout = menu.getItem(1).itemId
-//        if(Store.isLogin)
-//            menu.removeItem(idLogin)
-//        else
-//            menu.removeItem(idLogout)
         return true
     }
 
@@ -59,7 +54,7 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
         // as you specify a parent activity in AndroidManifest.xml.
         when (item.itemId) {
             R.id.menu_login -> {
-                when(LogInMenu.menu.getItem(0).title){
+                when(LogInMenu.menu.getItem(1).title){
                     "Log in" -> {
                         this.navController.navigate(R.id.navigation_login)
                     }
@@ -71,13 +66,23 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
 
                             }
                             .setPositiveButton("Proceed") { _, _ ->
-                                LogInMenu.menu.getItem(0).title = "Log in"
+                                LogInMenu.menu.getItem(1).title = "Log in"
                                 Store.isLogin = false
                                 navController.navigate(R.id.navigation_home)
                                 Toast.makeText(this, "Logout success!", Toast.LENGTH_SHORT).show()
                             }
                             .create().show()
                     }
+                }
+            }
+            R.id.menu_permissions -> {
+                PermissionConsentDialogFragment.open(supportFragmentManager) { omPermissionAccepted, optPermissionAccepted, nbaPermissionAccepted ->
+                    SharedPreferenceUtils.acceptCdpConsent(this)
+//            FunnelConnectSDK.cdp().updatePermissions(
+//                omPermissionAccepted,
+//                optPermissionAccepted,
+//                nbaPermissionAccepted
+//            )
                 }
             }
             else -> navController.navigate(R.id.navigation_home)

@@ -38,7 +38,7 @@ class LoginFragment : Fragment() {
                 Store.isLogin = true
                 Toast.makeText(context, "Login success!", Toast.LENGTH_SHORT).show()
                 root.findNavController().navigate(R.id.navigation_home)
-                LogInMenu.menu.getItem(0).title = "Log out"
+                LogInMenu.menu.getItem(1).title = "Log out"
             } else
                 Toast.makeText(context, "Need to insert email and password!", Toast.LENGTH_SHORT)
                     .show()
