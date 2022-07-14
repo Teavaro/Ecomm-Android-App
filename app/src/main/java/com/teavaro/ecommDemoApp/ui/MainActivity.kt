@@ -39,6 +39,9 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
         supportActionBar?.setDisplayShowTitleEnabled(true)
         supportActionBar?.setDisplayShowHomeEnabled(true)
         supportActionBar?.setIcon(R.mipmap.ic_logo)
+
+        if(!SharedPreferenceUtils.isCdpConsentAccepted(this))
+            showPermissionsDialog()
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -76,17 +79,26 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
                 }
             }
             R.id.menu_permissions -> {
-                PermissionConsentDialogFragment.open(supportFragmentManager) { omPermissionAccepted, optPermissionAccepted, nbaPermissionAccepted ->
-                    SharedPreferenceUtils.acceptCdpConsent(this)
+                showPermissionsDialog()
+            }
+            else -> navController.navigate(R.id.navigation_home)
+        }
+        return true
+    }
+
+    private fun showPermissionsDialog() {
+        PermissionConsentDialogFragment.open(
+            supportFragmentManager,
+            { omPermissionAccepted, optPermissionAccepted, nbaPermissionAccepted ->
+                SharedPreferenceUtils.acceptCdpConsent(this)
 //            FunnelConnectSDK.cdp().updatePermissions(
 //                omPermissionAccepted,
 //                optPermissionAccepted,
 //                nbaPermissionAccepted
 //            )
-                }
-            }
-            else -> navController.navigate(R.id.navigation_home)
-        }
-        return true
+            },
+            {
+                SharedPreferenceUtils.rejectCdpConsent(this)
+            })
     }
 }

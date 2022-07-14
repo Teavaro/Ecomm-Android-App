@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.View
 import android.view.Window
 import androidx.fragment.app.DialogFragment
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import com.teavaro.ecommDemoApp.R
 import com.teavaro.ecommDemoApp.databinding.FragmentFPermissionsConsentBinding
@@ -15,6 +14,7 @@ class PermissionConsentDialogFragment: DialogFragment(R.layout.fragment_f_permis
 
     private val binding by viewBinding(FragmentFPermissionsConsentBinding::bind)
     private var acceptAction: ((omPermissionAccepted: Boolean, optPermissionAccepted: Boolean, nbaPermissionAccepted: Boolean) -> Unit)? = null
+    private var rejectAction: (() -> Unit)? = null
 
 //    override fun getTheme() = R.style.FullScreenDimmedDialogFragment
 
@@ -37,6 +37,7 @@ class PermissionConsentDialogFragment: DialogFragment(R.layout.fragment_f_permis
             this.dismiss()
         }
         binding.cancelButton.setOnClickListener {
+            this.rejectAction?.invoke()
             this.dismiss()
         }
     }
@@ -51,9 +52,10 @@ class PermissionConsentDialogFragment: DialogFragment(R.layout.fragment_f_permis
 
     companion object {
 
-        fun open(fm: FragmentManager, acceptAction: (omPermissionAccepted: Boolean, optPermissionAccepted: Boolean, nbaPermissionAccepted: Boolean) -> Unit = { _, _, _ -> }) {
+        fun open(fm: FragmentManager, acceptAction: (omPermissionAccepted: Boolean, optPermissionAccepted: Boolean, nbaPermissionAccepted: Boolean) -> Unit = { _, _, _ -> }, rejectAction: (() -> Unit)) {
             val dialogFragment = PermissionConsentDialogFragment()
             dialogFragment.acceptAction = acceptAction
+            dialogFragment.rejectAction = rejectAction
             dialogFragment.show(fm, null)
         }
     }
