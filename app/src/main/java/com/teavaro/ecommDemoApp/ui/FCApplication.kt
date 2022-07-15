@@ -18,6 +18,7 @@ class FCApplication: Application() {
         this.initAppPolices()
         println("Teavaro:------------------initializing FunnelConnectSDK-${BuildConfig.VERSION_NAME}-------------")
         FunnelConnectSDK.initialize(this, R.raw.config, FCOptions(true))
+//        FunnelConnectSDK.trustPid().startService(true)
         try {
             val config = SwrveConfig()
             config.isAutoStartLastUser = true

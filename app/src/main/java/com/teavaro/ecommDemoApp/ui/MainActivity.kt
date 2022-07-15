@@ -99,9 +99,19 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
                     optPermissionAccepted,
                     nbaPermissionAccepted
                 )
+
+                if(nbaPermissionAccepted) {
+                    if(!FunnelConnectSDK.trustPid().isConsentAccepted()) {
+                        FunnelConnectSDK.trustPid().acceptConsent()
+                        FunnelConnectSDK.trustPid().startService(true)
+                    }
+                }
+                else
+                    FunnelConnectSDK.trustPid().rejectConsent()
             },
             {
                 SharedPreferenceUtils.rejectCdpConsent(this)
+                FunnelConnectSDK.trustPid().rejectConsent()
                 FunnelConnectSDK.cdp().updatePermissions(false, false, false)
             })
     }
