@@ -16,6 +16,7 @@ import com.teavaro.ecommDemoApp.core.LogInMenu
 import com.teavaro.ecommDemoApp.core.SharedPreferenceUtils
 import com.teavaro.ecommDemoApp.databinding.ActivityMainBinding
 import com.teavaro.ecommDemoApp.core.Store
+import com.teavaro.funnelConnect.core.initializer.FunnelConnectSDK
 
 class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::inflate) {
 
@@ -62,13 +63,15 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
                         this.navController.navigate(R.id.navigation_login)
                     }
                     "Log out" -> {
+                        FunnelConnectSDK.cdp().logEvent("Button", "dialogLogout")
                         val builder = AlertDialog.Builder(this)
                         builder.setTitle("Logout confirmation")
                             .setMessage("Do you want to proceed with the logout?")
                             .setNegativeButton("Cancel")  {_,_ ->
-
+                                FunnelConnectSDK.cdp().logEvent("Button", "cancelLogout")
                             }
                             .setPositiveButton("Proceed") { _, _ ->
+                                FunnelConnectSDK.cdp().logEvent("Button", "proceedLogout")
                                 LogInMenu.menu.getItem(1).title = "Log in"
                                 Store.isLogin = false
                                 navController.navigate(R.id.navigation_home)
@@ -91,14 +94,15 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
             supportFragmentManager,
             { omPermissionAccepted, optPermissionAccepted, nbaPermissionAccepted ->
                 SharedPreferenceUtils.acceptCdpConsent(this)
-//            FunnelConnectSDK.cdp().updatePermissions(
-//                omPermissionAccepted,
-//                optPermissionAccepted,
-//                nbaPermissionAccepted
-//            )
+                FunnelConnectSDK.cdp().updatePermissions(
+                    omPermissionAccepted,
+                    optPermissionAccepted,
+                    nbaPermissionAccepted
+                )
             },
             {
                 SharedPreferenceUtils.rejectCdpConsent(this)
+                FunnelConnectSDK.cdp().updatePermissions(false, false, false)
             })
     }
 }

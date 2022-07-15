@@ -12,6 +12,7 @@ import androidx.navigation.findNavController
 import com.teavaro.ecommDemoApp.R
 import com.teavaro.ecommDemoApp.core.Item
 import com.teavaro.ecommDemoApp.core.Store
+import com.teavaro.funnelConnect.core.initializer.FunnelConnectSDK
 import kotlinx.android.synthetic.main.item_shop.view.btnAddToCart
 import kotlinx.android.synthetic.main.item_wish.view.*
 import kotlinx.android.synthetic.main.item_wish.view.txtPrice
@@ -36,12 +37,14 @@ class WishAdapter(context: Context,
         }
 
         layout.btnRemove.setOnClickListener {
+            FunnelConnectSDK.cdp().logEvent("Button", "removeFromWish")
             Store.removeItemFromWish(item.id)
             parent.findNavController().navigate(R.id.navigation_wishlist)
             Toast.makeText(context, "Product removed!", Toast.LENGTH_SHORT).show()
         }
 
         layout.btnAddToCart.setOnClickListener {
+            FunnelConnectSDK.cdp().logEvent("Button", "addToCart")
             Store.addItemToCart(item.id)
             Toast.makeText(context, "Product added!", Toast.LENGTH_SHORT).show()
         }

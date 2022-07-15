@@ -8,11 +8,10 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.teavaro.ecommDemoApp.R
-import com.teavaro.ecommDemoApp.core.SharedPreferenceUtils
 import com.teavaro.ecommDemoApp.core.Store
 import com.teavaro.ecommDemoApp.databinding.FragmentHomeBinding
-import com.teavaro.ecommDemoApp.ui.PermissionConsentDialogFragment
 import com.teavaro.ecommDemoApp.ui.shop.ShopAdapter
+import com.teavaro.funnelConnect.core.initializer.FunnelConnectSDK
 
 class HomeFragment : Fragment() {
 
@@ -30,6 +29,8 @@ class HomeFragment : Fragment() {
         val homeViewModel =
             ViewModelProvider(this).get(HomeViewModel::class.java)
 
+        FunnelConnectSDK.cdp().logEvent("Navigation", "home")
+
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
@@ -42,9 +43,6 @@ class HomeFragment : Fragment() {
         binding.btnExplore.setOnClickListener {
             root.findNavController().navigate(R.id.navigation_shop)
         }
-
-
-
         return root
     }
 
