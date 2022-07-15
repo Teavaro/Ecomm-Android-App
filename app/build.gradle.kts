@@ -85,7 +85,7 @@ dependencies {
     debugImplementation(BuildSystem.libraries.hyperionSharedPreferences)
     releaseImplementation(BuildSystem.libraries.hyperionNoop)
     implementation(BuildSystem.libraries.swrve)
-//    implementation(BuildSystem.libraries.teavaroSDK)
+    implementation(BuildSystem.libraries.teavaroSDK)
 
     //
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.3.1")
@@ -98,4 +98,6 @@ dependencies {
 
     implementation("androidx.room:room-runtime:$room_version")
     annotationProcessor("androidx.room:room-compiler:$room_version")
+
+
 }

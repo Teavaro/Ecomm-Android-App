@@ -1,0 +1,37 @@
+{
+  "secret": "test123",
+  "api_host": "https://fc-stage.teavaro.net/op",
+  "idconnect_type": "tmi",
+  "idconnect_api_host": "https://tmi.brand-demo.com/op/idconnect",
+  "api_info_url": "/vfde-web/info",
+  "api_ident_url": "/meinvf-apps-ident/ident",
+  "api_ident_name": "slsc",
+  "api_track_url": "/vfde-web-dmde/track/event",
+  "idconnect_allowed_use_cases": [
+    "stub",
+    "token",
+    "mspProxy"
+  ],
+  "telco_acronyms": {
+    "uat.mno.link": "xxxx",
+    "tmi.mno.link": "ndye",
+    "tmi.vodafone.de": "pqnx",
+    "tmi.telekom.de": "avgw",
+    "tmi.tmid.es": "kjws",
+    "es.tmiservice.orange.com": "aplw"
+  },
+  "calls_config": {
+    "calls_to_make": {
+      "info": "true",
+      "idconnect": "true",
+      "ident": "true",
+      "track": "true"
+    },
+    "calls_per_page": {
+      "info": "true",
+      "idconnect": "true",
+      "ident": "true",
+      "track": "true"
+    }
+  }
+}
