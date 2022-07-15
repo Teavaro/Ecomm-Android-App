@@ -42,7 +42,7 @@ class LoginFragment : Fragment() {
             FunnelConnectSDK.cdp().logEvent("Button", "login")
             if (!binding.edtEmail.text.isNullOrEmpty() && !binding.edtPassword.text.isNullOrEmpty()) {
                 FunnelConnectSDK.cdp().setUserId(binding.edtEmail.text.toString())
-                SwrveSDK.identify(FunnelConnectSDK.cdp().getUserId(), object : SwrveIdentityResponse {
+                SwrveSDK.identify(FunnelConnectSDK.cdp().getUmid(), object : SwrveIdentityResponse {
                     override fun onSuccess(status: String, swrveId: String) {
                         // Success, continue with your logic
                     }
