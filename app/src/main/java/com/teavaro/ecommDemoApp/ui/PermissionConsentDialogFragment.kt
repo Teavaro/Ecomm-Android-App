@@ -9,6 +9,7 @@ import androidx.fragment.app.FragmentManager
 import com.teavaro.ecommDemoApp.R
 import com.teavaro.ecommDemoApp.databinding.FragmentFPermissionsConsentBinding
 import com.teavaro.ecommDemoApp.viewBinding
+import com.teavaro.funnelConnect.core.initializer.FunnelConnectSDK
 
 class PermissionConsentDialogFragment: DialogFragment(R.layout.fragment_f_permissions_consent) {
 
@@ -19,6 +20,7 @@ class PermissionConsentDialogFragment: DialogFragment(R.layout.fragment_f_permis
 //    override fun getTheme() = R.style.FullScreenDimmedDialogFragment
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+        FunnelConnectSDK.cdp().logEvent("Navigation", "permissionDialog")
         val dialog = super.onCreateDialog(savedInstanceState)
         dialog.window?.requestFeature(Window.FEATURE_NO_TITLE)
         dialog.setCancelable(true)
@@ -43,11 +45,11 @@ class PermissionConsentDialogFragment: DialogFragment(R.layout.fragment_f_permis
     }
 
     private fun initialPresets() {
-//        FunnelConnectSDK.cdp().getPermissions().apply {
-//            binding.swCookies.isChecked = omAccepted
-//            binding.swNetwork.isChecked = optAccepted
-//            binding.swPersonal.isChecked = nbaAccepted
-//        }
+        FunnelConnectSDK.cdp().getPermissions().apply {
+            binding.swCookies.isChecked = omAccepted
+            binding.swNetwork.isChecked = optAccepted
+            binding.swPersonal.isChecked = nbaAccepted
+        }
     }
 
     companion object {

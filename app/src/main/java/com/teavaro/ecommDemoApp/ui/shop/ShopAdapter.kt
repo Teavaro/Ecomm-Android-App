@@ -8,6 +8,7 @@ import android.widget.*
 import com.teavaro.ecommDemoApp.core.Item
 import com.teavaro.ecommDemoApp.R
 import com.teavaro.ecommDemoApp.core.Store
+import com.teavaro.funnelConnect.core.initializer.FunnelConnectSDK
 import kotlinx.android.synthetic.main.item_shop.view.*
 
 class ShopAdapter(context: Context,
@@ -32,11 +33,13 @@ class ShopAdapter(context: Context,
 
 
         layout.btnAddToCart.setOnClickListener {
+            FunnelConnectSDK.cdp().logEvent("Button", "addToCart")
             Store.addItemToCart(item.id)
             Toast.makeText(context, "Product added!", Toast.LENGTH_SHORT).show()
         }
 
         layout.btnAddToWish.let { imageView ->
+            FunnelConnectSDK.cdp().logEvent("Button", "addToWish")
             setWishPicture(imageView, item)
             imageView.setOnClickListener {
                 if(!item.isWish) {
