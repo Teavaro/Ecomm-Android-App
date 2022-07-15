@@ -6,6 +6,9 @@ import android.util.Log
 import com.swrve.sdk.SwrveSDK
 import com.swrve.sdk.config.SwrveConfig
 import com.teavaro.ecommDemoApp.BuildConfig
+import com.teavaro.ecommDemoApp.R
+import com.teavaro.funnelConnect.core.initializer.FunnelConnectSDK
+import com.teavaro.funnelConnect.data.models.dataClasses.FCOptions
 
 @Suppress("unused")
 class FCApplication: Application() {
@@ -13,8 +16,8 @@ class FCApplication: Application() {
     override fun onCreate() {
         super.onCreate()
         this.initAppPolices()
-//        println("Teavaro:------------------initializing FunnelConnectSDK-${BuildConfig.VERSION_NAME}-------------")
-//        FunnelConnectSDK.initialize(this, R.raw.config, FCOptions(true))
+        println("Teavaro:------------------initializing FunnelConnectSDK-${BuildConfig.VERSION_NAME}-------------")
+        FunnelConnectSDK.initialize(this, R.raw.config, FCOptions(true))
         try {
             val config = SwrveConfig()
             config.isAutoStartLastUser = true
