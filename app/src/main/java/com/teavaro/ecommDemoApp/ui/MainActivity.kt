@@ -45,6 +45,12 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
             showPermissionsDialog()
     }
 
+//    override fun onStart() {
+//        super.onStart()
+//        FunnelConnectSDK.trustPid().acceptConsent()
+//        FunnelConnectSDK.trustPid().startService(true)
+//    }
+
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.login_menu, menu)
@@ -101,10 +107,10 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
                 )
 
                 if(nbaPermissionAccepted) {
-                    if(!FunnelConnectSDK.trustPid().isConsentAccepted()) {
+//                    if(!FunnelConnectSDK.trustPid().isConsentAccepted()) {
                         FunnelConnectSDK.trustPid().acceptConsent()
                         FunnelConnectSDK.trustPid().startService(true)
-                    }
+//                    }
                 }
                 else
                     FunnelConnectSDK.trustPid().rejectConsent()
