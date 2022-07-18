@@ -39,14 +39,15 @@ class ShopAdapter(context: Context,
         }
 
         layout.btnAddToWish.let { imageView ->
-            FunnelConnectSDK.cdp().logEvent("Button", "addToWish")
             setWishPicture(imageView, item)
             imageView.setOnClickListener {
                 if(!item.isWish) {
+                    FunnelConnectSDK.cdp().logEvent("Button", "addToWish")
                     Store.addItemToWish(item.id)
                     item.isWish = true
                 }
                 else {
+                    FunnelConnectSDK.cdp().logEvent("Button", "removeFromWish")
                     Store.removeItemFromWish(item.id)
                     item.isWish = false
                 }

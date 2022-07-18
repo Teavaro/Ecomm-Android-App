@@ -1,4 +1,4 @@
 object Build {
-    var versionCode = 2
+    var versionCode = 3
     var versionName = "1.0.0"
 }
