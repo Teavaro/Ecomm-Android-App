@@ -3,6 +3,7 @@ package com.teavaro.ecommDemoApp.ui
 import android.app.Application
 import android.os.StrictMode
 import android.util.Log
+import com.swrve.sdk.SwrveInitMode
 import com.swrve.sdk.SwrveSDK
 import com.swrve.sdk.config.SwrveConfig
 import com.teavaro.ecommDemoApp.BuildConfig
@@ -21,6 +22,7 @@ class FCApplication: Application() {
 
         try {
             val config = SwrveConfig()
+            config.initMode = SwrveInitMode.MANAGED
             config.isAutoStartLastUser = true
             SwrveSDK.createInstance(this, 32153, "FiIpd4eZ8CtQ6carAAx9", config)
         } catch (exp: IllegalArgumentException) {
