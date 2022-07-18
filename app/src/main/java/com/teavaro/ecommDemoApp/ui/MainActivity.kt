@@ -10,6 +10,8 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.swrve.sdk.SwrveInitMode
+import com.swrve.sdk.SwrveSDK
 import com.teavaro.ecommDemoApp.R
 import com.teavaro.ecommDemoApp.baseClasses.mvvm.BaseActivity
 import com.teavaro.ecommDemoApp.core.LogInMenu
@@ -43,6 +45,8 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
 
         if(!SharedPreferenceUtils.isCdpConsentAccepted(this))
             showPermissionsDialog()
+
+        SwrveSDK.start(this, FunnelConnectSDK.cdp().getUmid())
     }
 
 //    override fun onStart() {

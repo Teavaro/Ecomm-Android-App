@@ -9,10 +9,8 @@ buildscript {
     dependencies {
         classpath(BuildSystem.classPaths.kotlin)
         classpath(BuildSystem.classPaths.gradle)
-        //classpath("com.google.gms:google-services:4.3.3")
+        classpath("com.google.gms:google-services:4.3.3")
     }
-
-    //apply("com.google.gms.google-services")
 }
 
 plugins {

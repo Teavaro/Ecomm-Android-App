@@ -42,15 +42,15 @@ class LoginFragment : Fragment() {
             FunnelConnectSDK.cdp().logEvent("Button", "login")
             if (!binding.edtEmail.text.isNullOrEmpty() && !binding.edtPassword.text.isNullOrEmpty()) {
                 FunnelConnectSDK.cdp().setUserId(binding.edtEmail.text.toString())
-                SwrveSDK.identify(FunnelConnectSDK.cdp().getUmid(), object : SwrveIdentityResponse {
-                    override fun onSuccess(status: String, swrveId: String) {
-                        // Success, continue with your logic
-                    }
-
-                    override fun onError(responseCode: Int, errorMessage: String) {
-                        // Error should be handled.
-                    }
-                })
+//                SwrveSDK.identify(FunnelConnectSDK.cdp().getUmid(), object : SwrveIdentityResponse {
+//                    override fun onSuccess(status: String, swrveId: String) {
+//                        // Success, continue with your logic
+//                    }
+//
+//                    override fun onError(responseCode: Int, errorMessage: String) {
+//                        // Error should be handled.
+//                    }
+//                })
                 Store.isLogin = true
                 Toast.makeText(context, "Login success!", Toast.LENGTH_SHORT).show()
                 root.findNavController().navigate(R.id.navigation_home)
