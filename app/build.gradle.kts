@@ -3,6 +3,7 @@ plugins {
     androidApplication)
     id(BuildSystem.plugins.kotlinAndroid)
     id(BuildSystem.plugins.extensions)
+    id("com.google.gms.google-services")
 }
 
 apply {
@@ -98,6 +99,4 @@ dependencies {
 
     implementation("androidx.room:room-runtime:$room_version")
     annotationProcessor("androidx.room:room-compiler:$room_version")
-
-
 }
