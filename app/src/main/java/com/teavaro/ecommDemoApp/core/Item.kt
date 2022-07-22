@@ -3,6 +3,7 @@ package com.teavaro.ecommDemoApp.core
 data class Item (
     var id: Int,
     var title: String,
+    var description: String,
     var price: Float,
     var picture: String,
     var isOffer: Boolean = false,

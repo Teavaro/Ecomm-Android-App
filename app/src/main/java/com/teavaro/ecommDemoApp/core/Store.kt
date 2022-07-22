@@ -4,16 +4,17 @@ object Store {
 
     private var listItems: ArrayList<Item> = ArrayList()
     var isLogin = false
+    var description = "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don’t look even slightly believable. If you are going to use a passage of Lorem Ipsum."
 
     init {
-        listItems.add(Item(0, "Jacob’s Baked Crinklys Cheese", 60.00f, "crinklys", true))
-        listItems.add(Item(1, "Pork Cocktail Sausages, Pack", 54.00f, "pork", true, false))
-        listItems.add(Item(2, "Broccoli and Cauliflower Mix", 6.00f, "cauliflower"))
-        listItems.add(Item(3, "Morrisons Creamed Rice Pudding", 44.00f, "paprika"))
-        listItems.add(Item(4, "Fresh For The Bold Ground Amazon", 12.00f, "burst"))
-        listItems.add(Item(5, "Frito-Lay Doritos & Cheetos Mix", 20.00f, "watermelon"))
-        listItems.add(Item(6, "Green Mountain Coffee Roast", 20.00f, "grapes"))
-        listItems.add(Item(7, "Nature’s Bakery Whole Wheat Bars", 50.00f, "mixed"))
+        listItems.add(Item(0, "Jacob’s Baked Crinklys Cheese", description,60.00f, "crinklys", true))
+        listItems.add(Item(1, "Pork Cocktail Sausages, Pack", description, 54.00f, "pork", true, false))
+        listItems.add(Item(2, "Broccoli and Cauliflower Mix", description, 6.00f, "cauliflower"))
+        listItems.add(Item(3, "Morrisons Creamed Rice Pudding", description, 44.00f, "paprika"))
+        listItems.add(Item(4, "Fresh For The Bold Ground Amazon", description, 12.00f, "burst"))
+        listItems.add(Item(5, "Frito-Lay Doritos & Cheetos Mix", description, 20.00f, "watermelon"))
+        listItems.add(Item(6, "Green Mountain Coffee Roast", description, 20.00f, "grapes"))
+        listItems.add(Item(7, "Nature’s Bakery Whole Wheat Bars", description, 50.00f, "mixed"))
     }
 
     fun addItemToCart(id: Int) {

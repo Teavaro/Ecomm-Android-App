@@ -6,14 +6,17 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import com.teavaro.ecommDemoApp.R
 import com.teavaro.ecommDemoApp.core.Item
 import com.teavaro.ecommDemoApp.core.Store
+import com.teavaro.ecommDemoApp.ui.ItemDescriptionDialogFragment
 import com.teavaro.funnelConnect.core.initializer.FunnelConnectSDK
 import kotlinx.android.synthetic.main.item_cart.view.*
 import kotlinx.android.synthetic.main.item_cart.view.txtPrice
 import kotlinx.android.synthetic.main.item_cart.view.txtTitle
+import kotlinx.android.synthetic.main.item_shop.view.*
 
 class CartAdapter(context: Context,
                   private val listItems: List<Item>) :
@@ -34,6 +37,10 @@ class CartAdapter(context: Context,
             Store.removeItemFromCart(item.id)
             parent.findNavController().navigate(R.id.navigation_cart)
             Toast.makeText(context, "Product removed!", Toast.LENGTH_SHORT).show()
+        }
+
+        layout.txtTitle.setOnClickListener{
+            ItemDescriptionDialogFragment.open((context as AppCompatActivity).supportFragmentManager, item)
         }
 
         return layout
