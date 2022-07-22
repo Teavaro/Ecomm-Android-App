@@ -11,10 +11,11 @@ import com.teavaro.ecommDemoApp.databinding.FragmentFPermissionsConsentBinding
 import com.teavaro.ecommDemoApp.viewBinding
 import com.teavaro.funnelConnect.core.initializer.FunnelConnectSDK
 
-class PermissionConsentDialogFragment: DialogFragment(R.layout.fragment_f_permissions_consent) {
+class PermissionConsentDialogFragment : DialogFragment(R.layout.fragment_f_permissions_consent) {
 
     private val binding by viewBinding(FragmentFPermissionsConsentBinding::bind)
-    private var acceptAction: ((omPermissionAccepted: Boolean, optPermissionAccepted: Boolean, nbaPermissionAccepted: Boolean) -> Unit)? = null
+    private var acceptAction: ((omPermissionAccepted: Boolean, optPermissionAccepted: Boolean, nbaPermissionAccepted: Boolean) -> Unit)? =
+        null
     private var rejectAction: (() -> Unit)? = null
 
 //    override fun getTheme() = R.style.FullScreenDimmedDialogFragment
@@ -42,6 +43,9 @@ class PermissionConsentDialogFragment: DialogFragment(R.layout.fragment_f_permis
             this.rejectAction?.invoke()
             this.dismiss()
         }
+        binding.btnClose.setOnClickListener {
+            this.dismiss()
+        }
     }
 
     private fun initialPresets() {
@@ -54,7 +58,11 @@ class PermissionConsentDialogFragment: DialogFragment(R.layout.fragment_f_permis
 
     companion object {
 
-        fun open(fm: FragmentManager, acceptAction: (omPermissionAccepted: Boolean, optPermissionAccepted: Boolean, nbaPermissionAccepted: Boolean) -> Unit = { _, _, _ -> }, rejectAction: (() -> Unit)) {
+        fun open(
+            fm: FragmentManager,
+            acceptAction: (omPermissionAccepted: Boolean, optPermissionAccepted: Boolean, nbaPermissionAccepted: Boolean) -> Unit = { _, _, _ -> },
+            rejectAction: (() -> Unit)
+        ) {
             val dialogFragment = PermissionConsentDialogFragment()
             dialogFragment.acceptAction = acceptAction
             dialogFragment.rejectAction = rejectAction

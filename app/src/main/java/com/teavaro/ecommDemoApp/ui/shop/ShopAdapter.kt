@@ -5,11 +5,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
-import com.teavaro.ecommDemoApp.core.Item
+import androidx.appcompat.app.AppCompatActivity
 import com.teavaro.ecommDemoApp.R
+import com.teavaro.ecommDemoApp.core.Item
 import com.teavaro.ecommDemoApp.core.Store
+import com.teavaro.ecommDemoApp.ui.ItemDescriptionDialogFragment
 import com.teavaro.funnelConnect.core.initializer.FunnelConnectSDK
 import kotlinx.android.synthetic.main.item_shop.view.*
+
 
 class ShopAdapter(context: Context,
                   private val listItems: List<Item>) :
@@ -54,6 +57,14 @@ class ShopAdapter(context: Context,
                 setWishPicture(imageView as ImageView, item)
                 Toast.makeText(context, "Product added!", Toast.LENGTH_SHORT).show()
             }
+        }
+
+        layout.imgPicture.setOnClickListener{
+            ItemDescriptionDialogFragment.open((context as AppCompatActivity).supportFragmentManager, item, {
+                Store.addItemToCart(item.id)
+            },{
+                Store.addItemToWish(item.id)
+            })
         }
 
         return layout
