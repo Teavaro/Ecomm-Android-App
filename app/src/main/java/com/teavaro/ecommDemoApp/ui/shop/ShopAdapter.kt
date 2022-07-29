@@ -48,23 +48,34 @@ class ShopAdapter(context: Context,
                     FunnelConnectSDK.cdp().logEvent("Button", "addToWish")
                     Store.addItemToWish(item.id)
                     item.isWish = true
+                    Toast.makeText(context, "Product added!", Toast.LENGTH_SHORT).show()
                 }
                 else {
                     FunnelConnectSDK.cdp().logEvent("Button", "removeFromWish")
                     Store.removeItemFromWish(item.id)
                     item.isWish = false
+                    Toast.makeText(context, "Product removed!", Toast.LENGTH_SHORT).show()
                 }
                 setWishPicture(imageView as ImageView, item)
-                Toast.makeText(context, "Product added!", Toast.LENGTH_SHORT).show()
             }
         }
 
         layout.imgPicture.setOnClickListener{
-            ItemDescriptionDialogFragment.open((context as AppCompatActivity).supportFragmentManager, item, {
-                Store.addItemToCart(item.id)
-            },{
-                Store.addItemToWish(item.id)
-            })
+            if(item.isWish) {
+                ItemDescriptionDialogFragment.open(
+                    (context as AppCompatActivity).supportFragmentManager,
+                    item,
+                    {
+                        Store.addItemToCart(item.id)
+                    })
+            }
+            else{
+                ItemDescriptionDialogFragment.open((context as AppCompatActivity).supportFragmentManager, item, {
+                    Store.addItemToCart(item.id)
+                },{
+                    Store.addItemToWish(item.id)
+                })
+            }
         }
 
         return layout
