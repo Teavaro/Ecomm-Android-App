@@ -103,15 +103,10 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
             supportFragmentManager,
             { omPermissionAccepted, optPermissionAccepted, nbaPermissionAccepted ->
                 SharedPreferenceUtils.acceptCdpConsent(this)
-//                FunnelConnectSDK.cdp().updatePermissions(
-//                    omPermissionAccepted,
-//                    optPermissionAccepted,
-//                    nbaPermissionAccepted
-//                )
                 PermissionsMap().apply {
-                    addPermission("OM", true)
-                    addPermission("NBA", false)
-                    addPermission("OPT", false)
+                    addPermission("OM", omPermissionAccepted)
+                    addPermission("NBA", nbaPermissionAccepted)
+                    addPermission("OPT", optPermissionAccepted)
                 }.let {
                     FunnelConnectSDK.cdp().updatePermissions(it, 1)
                 }
