@@ -18,6 +18,7 @@ import com.teavaro.ecommDemoApp.core.SharedPreferenceUtils
 import com.teavaro.ecommDemoApp.databinding.ActivityMainBinding
 import com.teavaro.ecommDemoApp.core.Store
 import com.teavaro.funnelConnect.core.initializer.FunnelConnectSDK
+import com.teavaro.funnelConnect.utils.PermissionsMap
 
 class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::inflate) {
 
@@ -102,11 +103,18 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
             supportFragmentManager,
             { omPermissionAccepted, optPermissionAccepted, nbaPermissionAccepted ->
                 SharedPreferenceUtils.acceptCdpConsent(this)
-                FunnelConnectSDK.cdp().updatePermissions(
-                    omPermissionAccepted,
-                    optPermissionAccepted,
-                    nbaPermissionAccepted
-                )
+//                FunnelConnectSDK.cdp().updatePermissions(
+//                    omPermissionAccepted,
+//                    optPermissionAccepted,
+//                    nbaPermissionAccepted
+//                )
+                PermissionsMap().apply {
+                    addPermission("OM", true)
+                    addPermission("NBA", false)
+                    addPermission("OPT", false)
+                }.let {
+                    FunnelConnectSDK.cdp().updatePermissions(it, 1)
+                }
 
                 if(nbaPermissionAccepted) {
 //                    if(!FunnelConnectSDK.trustPid().isConsentAccepted()) {
@@ -120,7 +128,13 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
             {
                 SharedPreferenceUtils.rejectCdpConsent(this)
                 FunnelConnectSDK.trustPid().rejectConsent()
-                FunnelConnectSDK.cdp().updatePermissions(false, false, false)
+                PermissionsMap().apply {
+                    addPermission("OM", false)
+                    addPermission("NBA", false)
+                    addPermission("OPT", false)
+                }.let {
+                    FunnelConnectSDK.cdp().updatePermissions(it, 1)
+                }
             })
     }
 }

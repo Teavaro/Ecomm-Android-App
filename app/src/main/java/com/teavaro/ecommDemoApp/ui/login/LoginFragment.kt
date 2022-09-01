@@ -15,6 +15,7 @@ import com.teavaro.ecommDemoApp.core.LogInMenu
 import com.teavaro.ecommDemoApp.core.Store
 import com.teavaro.ecommDemoApp.databinding.FragmentLoginBinding
 import com.teavaro.funnelConnect.core.initializer.FunnelConnectSDK
+import com.teavaro.funnelConnect.data.models.dataClasses.FCUser
 
 
 class LoginFragment : Fragment() {
@@ -41,7 +42,7 @@ class LoginFragment : Fragment() {
         binding.btnLogin.setOnClickListener {
             FunnelConnectSDK.cdp().logEvent("Button", "login")
             if (!binding.edtEmail.text.isNullOrEmpty() && !binding.edtPassword.text.isNullOrEmpty()) {
-                FunnelConnectSDK.cdp().setUserId(binding.edtEmail.text.toString())
+                FunnelConnectSDK.cdp().setUser(FCUser("email", binding.edtEmail.text.toString()))
 //                SwrveSDK.identify(FunnelConnectSDK.cdp().getUmid(), object : SwrveIdentityResponse {
 //                    override fun onSuccess(status: String, swrveId: String) {
 //                        // Success, continue with your logic

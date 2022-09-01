@@ -39,5 +39,5 @@ object Versions {
     const val facebookSoloader          = "0.10.3"
     const val hyperion                  = "0.9.34"
     const val swrve                  = "10.0.0"
-    const val teavaro                  = "0.2.5"
+    const val teavaro                  = "0.5.8"
 }
