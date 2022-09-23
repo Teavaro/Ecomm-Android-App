@@ -12,7 +12,6 @@ import com.swrve.sdk.SwrveNotificationConfig
 import com.swrve.sdk.SwrveSDK
 import com.swrve.sdk.config.SwrveConfig
 import com.teavaro.ecommDemoApp.BuildConfig
-import com.teavaro.ecommDemoApp.ui.MainActivity
 import com.teavaro.ecommDemoApp.R
 import com.teavaro.funnelConnect.core.initializer.FunnelConnectSDK
 import com.teavaro.funnelConnect.data.models.dataClasses.FCOptions
@@ -24,7 +23,7 @@ class FCApplication: Application() {
         super.onCreate()
         this.initAppPolices()
         println("Teavaro:------------------initializing FunnelConnectSDK-${BuildConfig.VERSION_NAME}-------------")
-        FunnelConnectSDK.initialize(this, "test123", FCOptions(true))
+        FunnelConnectSDK.initialize(this, "BXDX2QY]37Yo^LH}Y4oDmNo6", FCOptions(true))
         FirebaseApp.initializeApp(this)
         initSwrve()
     }

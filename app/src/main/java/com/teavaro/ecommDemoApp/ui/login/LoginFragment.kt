@@ -8,8 +8,6 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
-import com.swrve.sdk.SwrveIdentityResponse
-import com.swrve.sdk.SwrveSDK
 import com.teavaro.ecommDemoApp.R
 import com.teavaro.ecommDemoApp.core.LogInMenu
 import com.teavaro.ecommDemoApp.core.Store
