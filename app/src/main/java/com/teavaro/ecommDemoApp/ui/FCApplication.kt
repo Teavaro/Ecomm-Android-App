@@ -4,6 +4,7 @@ import android.app.Application
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.content.Context
+import android.location.Location
 import android.os.StrictMode
 import android.util.Log
 import com.google.firebase.FirebaseApp
@@ -11,6 +12,8 @@ import com.swrve.sdk.SwrveInitMode
 import com.swrve.sdk.SwrveNotificationConfig
 import com.swrve.sdk.SwrveSDK
 import com.swrve.sdk.config.SwrveConfig
+import com.swrve.sdk.geo.SwrveGeoConfig
+import com.swrve.sdk.geo.SwrveGeoSDK
 import com.teavaro.ecommDemoApp.BuildConfig
 import com.teavaro.ecommDemoApp.R
 import com.teavaro.funnelConnect.core.initializer.FunnelConnectSDK
@@ -54,6 +57,13 @@ class FCApplication: Application() {
                     .accentColorHex("#3949AB")
             config.notificationConfig = notificationConfig.build()
             SwrveSDK.createInstance(this, 32153, "FiIpd4eZ8CtQ6carAAx9", config)
+            //geo config
+            val geoConfig = SwrveGeoConfig.Builder()
+                .geofenceTransitionListener { name: String?, transition: String?, triggerLocation: Location?, customProperties: String? ->
+                    FunnelConnectSDK.cdp().logEvent("entryGeoPlace", name.toString())
+                }
+                .build()
+            SwrveGeoSDK.init(this, geoConfig)
         } catch (exp: IllegalArgumentException) {
             Log.e("SwrveDemo", "Could not initialize the Swrve SDK", exp)
         }

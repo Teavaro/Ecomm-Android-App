@@ -24,5 +24,7 @@ object Libraries {
     const val hyperionSharedPreferences = "com.willowtreeapps.hyperion:hyperion-shared-preferences:${Versions.hyperion}"
     const val hyperionNoop = "com.willowtreeapps.hyperion:hyperion-core-no-op:${Versions.hyperion}"
     const val swrve = "com.swrve.sdk.android:swrve-firebase:${Versions.swrve}"
+    const val swrveGeo = "com.swrve.sdk.android:swrve-geo:${Versions.swrveGeo}"
     const val teavaroSDK = "com.github.Teavaro:FunnelConnect-SDK:${Versions.teavaro}"
+    const val googleServices = "com.google.gms:google-services:${Versions.googleServices}"
 }

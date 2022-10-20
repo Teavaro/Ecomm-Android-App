@@ -11,14 +11,17 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.swrve.sdk.SwrveSDK
+import com.swrve.sdk.geo.SwrveGeoSDK
 import com.teavaro.ecommDemoApp.R
 import com.teavaro.ecommDemoApp.baseClasses.mvvm.BaseActivity
 import com.teavaro.ecommDemoApp.core.LogInMenu
 import com.teavaro.ecommDemoApp.core.SharedPreferenceUtils
-import com.teavaro.ecommDemoApp.databinding.ActivityMainBinding
 import com.teavaro.ecommDemoApp.core.Store
+import com.teavaro.ecommDemoApp.databinding.ActivityMainBinding
 import com.teavaro.funnelConnect.core.initializer.FunnelConnectSDK
-import com.teavaro.funnelConnect.utils.PermissionsMap
+import com.teavaro.funnelConnect.data.constants.BasicCdpPermission
+import com.teavaro.funnelConnect.utils.platformTypes.permissionsMap.PermissionsMap
+
 
 class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::inflate) {
 
@@ -45,14 +48,19 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
 
         if(!SharedPreferenceUtils.isCdpConsentAccepted(this))
             showPermissionsDialog()
-        SwrveSDK.start(this, FunnelConnectSDK.cdp().getUmid())
-    }
 
-//    override fun onStart() {
-//        super.onStart()
-//        FunnelConnectSDK.trustPid().acceptConsent()
-//        FunnelConnectSDK.trustPid().startService(true)
-//    }
+        FunnelConnectSDK.onInitialize({
+            FunnelConnectSDK.trustPid().startService()
+            FunnelConnectSDK.cdp().startService{
+                SwrveSDK.start(this, FunnelConnectSDK.cdp().getUmid())
+                SwrveGeoSDK.start(this)
+            }
+        }) {
+            // Failure Action
+        }
+
+
+    }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -103,19 +111,15 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
             supportFragmentManager,
             { omPermissionAccepted, optPermissionAccepted, nbaPermissionAccepted ->
                 SharedPreferenceUtils.acceptCdpConsent(this)
-                PermissionsMap().apply {
-                    addPermission("OM", omPermissionAccepted)
-                    addPermission("NBA", nbaPermissionAccepted)
-                    addPermission("OPT", optPermissionAccepted)
-                }.let {
-                    FunnelConnectSDK.cdp().updatePermissions(it, 1)
-                }
+                SharedPreferenceUtils.setCdpOm(this,omPermissionAccepted)
+                SharedPreferenceUtils.setCdpOpt(this,optPermissionAccepted)
+                SharedPreferenceUtils.setCdpNba(this,nbaPermissionAccepted)
+                FunnelConnectSDK.cdp().updatePermissions(PermissionsMap(), -1)
+
 
                 if(nbaPermissionAccepted) {
-//                    if(!FunnelConnectSDK.trustPid().isConsentAccepted()) {
-                        FunnelConnectSDK.trustPid().acceptConsent()
-                        FunnelConnectSDK.trustPid().startService(true)
-//                    }
+                    FunnelConnectSDK.trustPid().acceptConsent()
+                    FunnelConnectSDK.trustPid().startService()
                 }
                 else
                     FunnelConnectSDK.trustPid().rejectConsent()
@@ -123,13 +127,10 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
             {
                 SharedPreferenceUtils.rejectCdpConsent(this)
                 FunnelConnectSDK.trustPid().rejectConsent()
-                PermissionsMap().apply {
-                    addPermission("OM", false)
-                    addPermission("NBA", false)
-                    addPermission("OPT", false)
-                }.let {
-                    FunnelConnectSDK.cdp().updatePermissions(it, 1)
-                }
+                SharedPreferenceUtils.setCdpOm(this,false)
+                SharedPreferenceUtils.setCdpOpt(this,false)
+                SharedPreferenceUtils.setCdpNba(this,false)
+                FunnelConnectSDK.cdp().updatePermissions(PermissionsMap(), -1)
             })
     }
 }

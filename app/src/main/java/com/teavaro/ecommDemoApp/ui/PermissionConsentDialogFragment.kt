@@ -7,6 +7,7 @@ import android.view.Window
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentManager
 import com.teavaro.ecommDemoApp.R
+import com.teavaro.ecommDemoApp.core.SharedPreferenceUtils
 import com.teavaro.ecommDemoApp.databinding.FragmentFPermissionsConsentBinding
 import com.teavaro.ecommDemoApp.viewBinding
 import com.teavaro.funnelConnect.core.initializer.FunnelConnectSDK
@@ -49,11 +50,9 @@ class PermissionConsentDialogFragment : DialogFragment(R.layout.fragment_f_permi
     }
 
     private fun initialPresets() {
-        FunnelConnectSDK.cdp().getPermissions().let {
-            binding.swCookies.isChecked = it.getPermission("OM")
-            binding.swNetwork.isChecked = it.getPermission("OPT")
-            binding.swPersonal.isChecked = it.getPermission("NBA")
-        }
+        binding.swCookies.isChecked = SharedPreferenceUtils.isCdpOm(requireContext())
+        binding.swNetwork.isChecked = SharedPreferenceUtils.isCdpOpt(requireContext())
+        binding.swPersonal.isChecked = SharedPreferenceUtils.isCdpNba(requireContext())
     }
 
     companion object {

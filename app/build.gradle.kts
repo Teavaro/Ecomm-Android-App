@@ -86,7 +86,9 @@ dependencies {
     debugImplementation(BuildSystem.libraries.hyperionSharedPreferences)
     releaseImplementation(BuildSystem.libraries.hyperionNoop)
     implementation(BuildSystem.libraries.swrve)
+    implementation(BuildSystem.libraries.swrveGeo)
     implementation(BuildSystem.libraries.teavaroSDK)
+    implementation(BuildSystem.libraries.googleServices)
 
     //
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.3.1")
