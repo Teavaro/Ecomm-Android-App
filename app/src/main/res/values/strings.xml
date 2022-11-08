@@ -7,5 +7,6 @@
     <string name="title_login">Login</string>
     <string name="menu_login">Log in</string>
     <string name="menu_logout">Log out</string>
+    <string name="clear_data">Clear data</string>
     <string name="menu_permissions">Permissions</string>
 </resources>

@@ -101,6 +101,14 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
             R.id.menu_permissions -> {
                 showPermissionsDialog()
             }
+            R.id.menu_clear_data -> {
+                FunnelConnectSDK.clearData()
+                FunnelConnectSDK.clearCookies()
+                SharedPreferenceUtils.setCdpOm(this,false)
+                SharedPreferenceUtils.setCdpOpt(this,false)
+                SharedPreferenceUtils.setCdpNba(this,false)
+                SharedPreferenceUtils.rejectCdpConsent(this)
+            }
             else -> navController.navigate(R.id.navigation_home)
         }
         return true

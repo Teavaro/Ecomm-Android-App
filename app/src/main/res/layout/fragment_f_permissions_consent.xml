@@ -26,7 +26,6 @@
             android:layout_marginStart="20dp"
             android:layout_marginTop="10dp"
             android:text="Permissions"
-            android:textColor="@color/blackOT"
             android:textSize="15sp"
             tools:ignore="HardcodedText" />
 
@@ -40,6 +39,7 @@
 
         <androidx.appcompat.widget.SwitchCompat
             android:id="@+id/swCookies"
+            android:textSize="13dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
@@ -57,6 +57,7 @@
 
         <androidx.appcompat.widget.SwitchCompat
             android:id="@+id/swNetwork"
+            android:textSize="13dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
@@ -74,6 +75,7 @@
 
         <com.google.android.material.switchmaterial.SwitchMaterial
             android:id="@+id/swPersonal"
+            android:textSize="13dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
@@ -82,26 +84,42 @@
             tools:ignore="HardcodedText" />
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:layout_margin="10dp">
+            android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="20dp">
 
             <Button
                 android:id="@+id/cancel_button"
+                android:textSize="12dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/grey"
+                android:layout_weight="1"
                 android:text="Reject All"
                 tools:ignore="HardcodedText" />
 
             <Button
                 android:id="@+id/accept_button"
+                android:textSize="12dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
-                android:text="Accept"
+                android:layout_weight="1"
+                android:text="Accept All"
                 tools:ignore="HardcodedText" />
         </LinearLayout>
+        <Button
+            android:id="@+id/save_button"
+            android:textSize="12dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/grey"
+            android:text="Save settings"
+            tools:ignore="HardcodedText" />
     </LinearLayout>
 </RelativeLayout>

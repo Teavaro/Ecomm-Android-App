@@ -33,11 +33,15 @@ class PermissionConsentDialogFragment : DialogFragment(R.layout.fragment_f_permi
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initialPresets()
-        binding.acceptButton.setOnClickListener {
+        binding.saveButton.setOnClickListener {
             val om = binding.swCookies
             val opt = binding.swNetwork
             val nba = binding.swPersonal
             this.acceptAction?.invoke(om.isChecked, opt.isChecked, nba.isChecked)
+            this.dismiss()
+        }
+        binding.acceptButton.setOnClickListener {
+            this.acceptAction?.invoke(true, true, true)
             this.dismiss()
         }
         binding.cancelButton.setOnClickListener {
