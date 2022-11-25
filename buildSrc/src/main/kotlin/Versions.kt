@@ -40,6 +40,6 @@ object Versions {
     const val hyperion                  = "0.9.34"
     const val swrve                  = "10.0.0"
     const val swrveGeo                  = "7.0.0"
-    const val teavaro                  = "0.6.3"
+    const val teavaro                  = "0.6.6"
     const val googleServices                  = "4.3.3"
 }

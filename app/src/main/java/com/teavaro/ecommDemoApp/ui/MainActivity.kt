@@ -1,10 +1,15 @@
 package com.teavaro.ecommDemoApp.ui
 
 import android.app.AlertDialog
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
+import android.widget.Toolbar
+import androidx.core.graphics.drawable.DrawableCompat
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
@@ -15,24 +20,22 @@ import com.swrve.sdk.geo.SwrveGeoSDK
 import com.teavaro.ecommDemoApp.R
 import com.teavaro.ecommDemoApp.baseClasses.mvvm.BaseActivity
 import com.teavaro.ecommDemoApp.core.LogInMenu
-import com.teavaro.ecommDemoApp.core.SharedPreferenceUtils
 import com.teavaro.ecommDemoApp.core.Store
 import com.teavaro.ecommDemoApp.databinding.ActivityMainBinding
 import com.teavaro.funnelConnect.core.initializer.FunnelConnectSDK
-import com.teavaro.funnelConnect.data.constants.BasicCdpPermission
 import com.teavaro.funnelConnect.utils.platformTypes.permissionsMap.PermissionsMap
 
 
 class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::inflate) {
 
     private val navController by lazy { this.findNavController(R.id.nav_host_fragment_container) }
+    private val notificationName = "APP_CS"
+    private val notificationVersion = 4
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(viewBinding.root)
         val navView: BottomNavigationView = viewBinding.navView
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
         val appBarConfiguration = AppBarConfiguration(setOf(
             R.id.navigation_home,
             R.id.navigation_cart,
@@ -42,24 +45,35 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
         )
         setupActionBarWithNavController(this.navController, appBarConfiguration)
         navView.setupWithNavController(this.navController)
-        supportActionBar?.setDisplayShowTitleEnabled(true)
         supportActionBar?.setDisplayShowHomeEnabled(true)
-        supportActionBar?.setIcon(R.mipmap.ic_logo)
-
-        if(!SharedPreferenceUtils.isCdpConsentAccepted(this))
-            showPermissionsDialog()
-
-        FunnelConnectSDK.onInitialize({
-            FunnelConnectSDK.trustPid().startService()
-            FunnelConnectSDK.cdp().startService{
-                SwrveSDK.start(this, FunnelConnectSDK.cdp().getUmid())
-                SwrveGeoSDK.start(this)
-            }
-        }) {
-            // Failure Action
+        supportActionBar?.setIcon(R.drawable.logo2)
+        if (resources.getString(R.string.mode) == "Day") {
+            supportActionBar?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT));
         }
 
+        FunnelConnectSDK.onInitialize({
+            if(FunnelConnectSDK.trustPid().isConsentAccepted())
+                FunnelConnectSDK.trustPid().startService()
+            FunnelConnectSDK.cdp().startService(null, notificationName, notificationVersion,{
+                if(FunnelConnectSDK.cdp().getPermissions().isEmpty())
+                    showPermissionsDialog()
+                SwrveSDK.start(this, FunnelConnectSDK.cdp().getUmid())
+                SwrveGeoSDK.start(this)
+            },
+            {
 
+            })
+        }) {
+        }
+    }
+
+    fun setOverflowButtonColor(toolbar: Toolbar, color: Int) {
+        var drawable: Drawable? = toolbar.overflowIcon
+        if (drawable != null) {
+            drawable = DrawableCompat.wrap(drawable)
+            DrawableCompat.setTint(drawable.mutate(), color)
+            toolbar.overflowIcon = drawable
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -104,10 +118,6 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
             R.id.menu_clear_data -> {
                 FunnelConnectSDK.clearData()
                 FunnelConnectSDK.clearCookies()
-                SharedPreferenceUtils.setCdpOm(this,false)
-                SharedPreferenceUtils.setCdpOpt(this,false)
-                SharedPreferenceUtils.setCdpNba(this,false)
-                SharedPreferenceUtils.rejectCdpConsent(this)
             }
             else -> navController.navigate(R.id.navigation_home)
         }
@@ -118,14 +128,12 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
         PermissionConsentDialogFragment.open(
             supportFragmentManager,
             { omPermissionAccepted, optPermissionAccepted, nbaPermissionAccepted ->
-                SharedPreferenceUtils.acceptCdpConsent(this)
-                SharedPreferenceUtils.setCdpOm(this,omPermissionAccepted)
-                SharedPreferenceUtils.setCdpOpt(this,optPermissionAccepted)
-                SharedPreferenceUtils.setCdpNba(this,nbaPermissionAccepted)
-                FunnelConnectSDK.cdp().updatePermissions(PermissionsMap(), -1)
-
-
-                if(nbaPermissionAccepted) {
+                val permissions = PermissionsMap()
+                permissions.addPermission("CS-TMI",omPermissionAccepted)
+                permissions.addPermission("CS-OPT",optPermissionAccepted)
+                permissions.addPermission("CS-NBA",nbaPermissionAccepted)
+                FunnelConnectSDK.cdp().updatePermissions(permissions, notificationName,notificationVersion)
+                 if(nbaPermissionAccepted) {
                     FunnelConnectSDK.trustPid().acceptConsent()
                     FunnelConnectSDK.trustPid().startService()
                 }
@@ -133,12 +141,12 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
                     FunnelConnectSDK.trustPid().rejectConsent()
             },
             {
-                SharedPreferenceUtils.rejectCdpConsent(this)
                 FunnelConnectSDK.trustPid().rejectConsent()
-                SharedPreferenceUtils.setCdpOm(this,false)
-                SharedPreferenceUtils.setCdpOpt(this,false)
-                SharedPreferenceUtils.setCdpNba(this,false)
-                FunnelConnectSDK.cdp().updatePermissions(PermissionsMap(), -1)
+                val permissions = PermissionsMap()
+                permissions.addPermission("CS-TMI",false)
+                permissions.addPermission("CS-OPT",false)
+                permissions.addPermission("CS-NBA",false)
+                FunnelConnectSDK.cdp().updatePermissions(permissions, notificationName,notificationVersion)
             })
     }
 }

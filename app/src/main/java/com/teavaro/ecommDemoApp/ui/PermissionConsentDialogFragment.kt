@@ -54,9 +54,11 @@ class PermissionConsentDialogFragment : DialogFragment(R.layout.fragment_f_permi
     }
 
     private fun initialPresets() {
-        binding.swCookies.isChecked = SharedPreferenceUtils.isCdpOm(requireContext())
-        binding.swNetwork.isChecked = SharedPreferenceUtils.isCdpOpt(requireContext())
-        binding.swPersonal.isChecked = SharedPreferenceUtils.isCdpNba(requireContext())
+        FunnelConnectSDK.cdp().getPermissions().let {
+            binding.swCookies.isChecked = it.getPermission("CS-TMI")
+            binding.swNetwork.isChecked = it.getPermission("CS-OPT")
+            binding.swPersonal.isChecked = it.getPermission("CS-NBA")
+        }
     }
 
     companion object {

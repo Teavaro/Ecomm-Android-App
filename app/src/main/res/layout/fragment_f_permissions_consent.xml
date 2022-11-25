@@ -25,8 +25,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="10dp"
-            android:text="Permissions"
-            android:textSize="15sp"
+            android:text="Consent Management"
+            android:textSize="18sp"
             tools:ignore="HardcodedText" />
 
         <TextView
@@ -34,53 +34,53 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="10dp"
-            android:text="Performance Cookies:"
+            android:text="Analytics Tracking:"
+            android:textSize="16dp"
             tools:ignore="HardcodedText" />
 
         <androidx.appcompat.widget.SwitchCompat
             android:id="@+id/swCookies"
-            android:textSize="13dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginBottom="10dp"
-            android:justificationMode="inter_word"
-            android:text="These cookies allow us to count visits and traffic sources so we can measure and improve the performance of our site."
+            android:text="Used for reporting and optimisation."
+            android:textSize="15dp"
             tools:ignore="HardcodedText" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:text="Targeting Cookies:"
+            android:text="Personalisation:"
+            android:textSize="16dp"
             tools:ignore="HardcodedText" />
 
         <androidx.appcompat.widget.SwitchCompat
             android:id="@+id/swNetwork"
-            android:textSize="13dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginBottom="10dp"
-            android:justificationMode="inter_word"
-            android:text="These cookies may be set through our site by our advertising partners. They may be used by those companies to build a profile of your interests and show you relevant adverts on other sites."
+            android:text="Used to deliver personalised experiences."
+            android:textSize="15dp"
             tools:ignore="HardcodedText" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:text="Network-based Marketing(TrustPid):"
+            android:text="Network Token:"
+            android:textSize="16dp"
             tools:ignore="HardcodedText" />
 
         <com.google.android.material.switchmaterial.SwitchMaterial
             android:id="@+id/swPersonal"
-            android:textSize="13dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:justificationMode="inter_word"
-            android:text="Used to provide personalised online marketing based on a unique network token. Trustpid creates and manages the marketing token in a way that does not directly identify you to this website."
+            android:text="This enables us to use a mobile network token to collect behavioural data for analytics and personalisation."
+            android:textSize="15dp"
             tools:ignore="HardcodedText" />
 
         <LinearLayout
@@ -88,38 +88,39 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="20dp">
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="10dp">
 
             <Button
                 android:id="@+id/cancel_button"
-                android:textSize="12dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/grey"
                 android:layout_weight="1"
+                android:backgroundTint="@color/grey"
                 android:text="Reject All"
+                android:textSize="10dp"
                 tools:ignore="HardcodedText" />
 
             <Button
                 android:id="@+id/accept_button"
-                android:textSize="12dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_weight="1"
                 android:text="Accept All"
+                android:textSize="10dp"
                 tools:ignore="HardcodedText" />
         </LinearLayout>
+
         <Button
             android:id="@+id/save_button"
-            android:textSize="12dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
             android:backgroundTint="@color/grey"
             android:text="Save settings"
+            android:textSize="10dp"
             tools:ignore="HardcodedText" />
     </LinearLayout>
 </RelativeLayout>
