@@ -4,18 +4,8 @@
     xmlns:toools="http://schemas.android.com/tools"
     toools:context=".ui.MainActivity">
     <item
-        android:id="@+id/menu_permissions"
+        android:id="@+id/version"
+        android:title=""
         android:orderInCategory="1100"
-        android:title="@string/menu_permissions"
-        app:showAsAction="never" />
-    <item
-        android:id="@+id/menu_login"
-        android:orderInCategory="1100"
-        android:title="@string/menu_login"
-        app:showAsAction="never" />
-    <item
-        android:id="@+id/menu_clear_data"
-        android:orderInCategory="1100"
-        android:title="@string/clear_data"
-        app:showAsAction="never" />
+        app:showAsAction="always" />
 </menu>

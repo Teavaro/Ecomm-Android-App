@@ -4,6 +4,7 @@ plugins {
     id(BuildSystem.plugins.kotlinAndroid)
     id(BuildSystem.plugins.extensions)
     id("com.google.gms.google-services")
+    id("org.jetbrains.kotlin.android")
 }
 
 apply {

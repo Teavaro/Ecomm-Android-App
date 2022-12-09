@@ -19,8 +19,7 @@ import com.swrve.sdk.SwrveSDK
 import com.swrve.sdk.geo.SwrveGeoSDK
 import com.teavaro.ecommDemoApp.R
 import com.teavaro.ecommDemoApp.baseClasses.mvvm.BaseActivity
-import com.teavaro.ecommDemoApp.core.LogInMenu
-import com.teavaro.ecommDemoApp.core.Store
+import com.teavaro.ecommDemoApp.core.*
 import com.teavaro.ecommDemoApp.databinding.ActivityMainBinding
 import com.teavaro.funnelConnect.core.initializer.FunnelConnectSDK
 import com.teavaro.funnelConnect.utils.platformTypes.permissionsMap.PermissionsMap
@@ -29,8 +28,6 @@ import com.teavaro.funnelConnect.utils.platformTypes.permissionsMap.PermissionsM
 class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::inflate) {
 
     private val navController by lazy { this.findNavController(R.id.nav_host_fragment_container) }
-    private val notificationName = "APP_CS"
-    private val notificationVersion = 4
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,7 +37,8 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
             R.id.navigation_home,
             R.id.navigation_cart,
             R.id.navigation_wishlist,
-            R.id.navigation_shop
+            R.id.navigation_shop,
+            R.id.navigation_settings
         )
         )
         setupActionBarWithNavController(this.navController, appBarConfiguration)
@@ -52,11 +50,13 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
         }
 
         FunnelConnectSDK.onInitialize({
-            if(FunnelConnectSDK.trustPid().isConsentAccepted())
-                FunnelConnectSDK.trustPid().startService()
-            FunnelConnectSDK.cdp().startService(null, notificationName, notificationVersion,{
+            if(FunnelConnectSDK.trustPid().isConsentAccepted()) {
+                val isStub = SharedPreferenceUtils.isStubMode(this)
+                FunnelConnectSDK.trustPid().startService(isStub)
+            }
+            FunnelConnectSDK.cdp().startService(null, Store.notificationName, Store.notificationVersion,{
                 if(FunnelConnectSDK.cdp().getPermissions().isEmpty())
-                    showPermissionsDialog()
+                    Store.showPermissionsDialog(this, supportFragmentManager)
                 SwrveSDK.start(this, FunnelConnectSDK.cdp().getUmid())
                 SwrveGeoSDK.start(this)
             },
@@ -88,65 +88,9 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         when (item.itemId) {
-            R.id.menu_login -> {
-                when(LogInMenu.menu.getItem(1).title){
-                    "Log in" -> {
-                        this.navController.navigate(R.id.navigation_login)
-                    }
-                    "Log out" -> {
-                        FunnelConnectSDK.cdp().logEvent("Button", "dialogLogout")
-                        val builder = AlertDialog.Builder(this)
-                        builder.setTitle("Logout confirmation")
-                            .setMessage("Do you want to proceed with the logout?")
-                            .setNegativeButton("Cancel")  {_,_ ->
-                                FunnelConnectSDK.cdp().logEvent("Button", "cancelLogout")
-                            }
-                            .setPositiveButton("Proceed") { _, _ ->
-                                FunnelConnectSDK.cdp().logEvent("Button", "proceedLogout")
-                                LogInMenu.menu.getItem(1).title = "Log in"
-                                Store.isLogin = false
-                                navController.navigate(R.id.navigation_home)
-                                Toast.makeText(this, "Logout success!", Toast.LENGTH_SHORT).show()
-                            }
-                            .create().show()
-                    }
-                }
-            }
-            R.id.menu_permissions -> {
-                showPermissionsDialog()
-            }
-            R.id.menu_clear_data -> {
-                FunnelConnectSDK.clearData()
-                FunnelConnectSDK.clearCookies()
-            }
-            else -> navController.navigate(R.id.navigation_home)
+
+            else -> navController.navigate(R.id.navigation_settings)
         }
         return true
-    }
-
-    private fun showPermissionsDialog() {
-        PermissionConsentDialogFragment.open(
-            supportFragmentManager,
-            { omPermissionAccepted, optPermissionAccepted, nbaPermissionAccepted ->
-                val permissions = PermissionsMap()
-                permissions.addPermission("CS-TMI",omPermissionAccepted)
-                permissions.addPermission("CS-OPT",optPermissionAccepted)
-                permissions.addPermission("CS-NBA",nbaPermissionAccepted)
-                FunnelConnectSDK.cdp().updatePermissions(permissions, notificationName,notificationVersion)
-                 if(nbaPermissionAccepted) {
-                    FunnelConnectSDK.trustPid().acceptConsent()
-                    FunnelConnectSDK.trustPid().startService()
-                }
-                else
-                    FunnelConnectSDK.trustPid().rejectConsent()
-            },
-            {
-                FunnelConnectSDK.trustPid().rejectConsent()
-                val permissions = PermissionsMap()
-                permissions.addPermission("CS-TMI",false)
-                permissions.addPermission("CS-OPT",false)
-                permissions.addPermission("CS-NBA",false)
-                FunnelConnectSDK.cdp().updatePermissions(permissions, notificationName,notificationVersion)
-            })
     }
 }

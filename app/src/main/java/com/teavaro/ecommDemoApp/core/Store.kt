@@ -1,9 +1,18 @@
 package com.teavaro.ecommDemoApp.core
 
+import android.app.NotificationManager
+import android.content.Context
+import androidx.fragment.app.FragmentManager
+import com.teavaro.ecommDemoApp.ui.PermissionConsentDialogFragment
+import com.teavaro.funnelConnect.core.initializer.FunnelConnectSDK
+import com.teavaro.funnelConnect.utils.platformTypes.permissionsMap.PermissionsMap
+
 object Store {
 
     private var listItems: ArrayList<Item> = ArrayList()
     var isLogin = false
+    val notificationName = "APP_CS"
+    val notificationVersion = 4
     var description = "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don’t look even slightly believable. If you are going to use a passage of Lorem Ipsum."
 
     init {
@@ -76,5 +85,32 @@ object Store {
         for (item in listItems) {
             item.countOnCart = 0
         }
+    }
+
+    fun showPermissionsDialog(context: Context, supportFragmentManager: FragmentManager) {
+        PermissionConsentDialogFragment.open(
+            supportFragmentManager,
+            { omPermissionAccepted, optPermissionAccepted, nbaPermissionAccepted ->
+                val permissions = PermissionsMap()
+                permissions.addPermission("CS-TMI",omPermissionAccepted)
+                permissions.addPermission("CS-OPT",optPermissionAccepted)
+                permissions.addPermission("CS-NBA",nbaPermissionAccepted)
+                FunnelConnectSDK.cdp().updatePermissions(permissions, notificationName,notificationVersion)
+                if(nbaPermissionAccepted) {
+                    FunnelConnectSDK.trustPid().acceptConsent()
+                    val isStub = SharedPreferenceUtils.isStubMode(context)
+                    FunnelConnectSDK.trustPid().startService(isStub)
+                }
+                else
+                    FunnelConnectSDK.trustPid().rejectConsent()
+            },
+            {
+                FunnelConnectSDK.trustPid().rejectConsent()
+                val permissions = PermissionsMap()
+                permissions.addPermission("CS-TMI",false)
+                permissions.addPermission("CS-OPT",false)
+                permissions.addPermission("CS-NBA",false)
+                FunnelConnectSDK.cdp().updatePermissions(permissions, notificationName,notificationVersion)
+            })
     }
 }
