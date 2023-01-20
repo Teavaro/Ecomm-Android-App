@@ -45,6 +45,12 @@
                     android:text="Explore Fresh" />
             </LinearLayout>
 
+            <WebView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/webView"
+                tools:ignore="WebViewLayout" />
+
             <TextView
                 style="@style/BoldText"
                 android:layout_width="match_parent"
@@ -60,13 +66,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"/>
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:layout_marginTop="30dp"
-                android:layout_marginBottom="60dp"
-                android:src="@drawable/bg_special_offer" />
 
         </LinearLayout>
     </ScrollView>

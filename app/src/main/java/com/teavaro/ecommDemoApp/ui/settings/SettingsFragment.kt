@@ -99,6 +99,5 @@ class SettingsFragment : Fragment() {
     private fun clearData(){
         FunnelConnectSDK.clearData()
         FunnelConnectSDK.clearCookies()
-        SharedPreferenceUtils.setStubMode(requireContext(), false)
     }
 }

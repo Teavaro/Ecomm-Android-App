@@ -4,10 +4,15 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.webkit.WebResourceRequest
+import android.webkit.WebResourceResponse
+import android.webkit.WebView
+import android.webkit.WebViewClient
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.teavaro.ecommDemoApp.R
+import com.teavaro.ecommDemoApp.core.MraidController
 import com.teavaro.ecommDemoApp.core.Store
 import com.teavaro.ecommDemoApp.databinding.FragmentHomeBinding
 import com.teavaro.ecommDemoApp.ui.shop.ShopAdapter
@@ -16,6 +21,7 @@ import com.teavaro.funnelConnect.core.initializer.FunnelConnectSDK
 class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
+
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -43,11 +49,24 @@ class HomeFragment : Fragment() {
         binding.btnExplore.setOnClickListener {
             root.findNavController().navigate(R.id.navigation_shop)
         }
+        loadAd()
         return root
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    private fun loadAd() {
+        val html = Store.getBanner()
+        binding.webView.settings.javaScriptEnabled = true
+        binding.webView.loadDataWithBaseURL(
+            "http://www.example.com/",
+            html,
+            "text/html",
+            "UTF-8",
+            null
+        )
     }
 }

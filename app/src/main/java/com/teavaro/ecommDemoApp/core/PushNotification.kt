@@ -1,10 +1,7 @@
 package com.teavaro.ecommDemoApp.core
 
-import android.os.AsyncTask
-import com.google.android.gms.common.util.HttpUtils
 import java.io.BufferedInputStream
 import java.io.InputStream
-import java.lang.reflect.Method
 import java.net.HttpURLConnection
 import java.net.URL
 

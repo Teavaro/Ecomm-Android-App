@@ -5,6 +5,7 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.Drawable
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
@@ -22,8 +23,6 @@ import com.teavaro.ecommDemoApp.baseClasses.mvvm.BaseActivity
 import com.teavaro.ecommDemoApp.core.*
 import com.teavaro.ecommDemoApp.databinding.ActivityMainBinding
 import com.teavaro.funnelConnect.core.initializer.FunnelConnectSDK
-import com.teavaro.funnelConnect.utils.platformTypes.permissionsMap.PermissionsMap
-
 
 class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::inflate) {
 
@@ -55,16 +54,19 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
                 FunnelConnectSDK.trustPid().startService(isStub)
             }
             FunnelConnectSDK.cdp().startService(null, Store.notificationName, Store.notificationVersion,{
+                Store.infoResponse = it
                 if(FunnelConnectSDK.cdp().getPermissions().isEmpty())
                     Store.showPermissionsDialog(this, supportFragmentManager)
                 SwrveSDK.start(this, FunnelConnectSDK.cdp().getUmid())
                 SwrveGeoSDK.start(this)
             },
             {
-
             })
         }) {
         }
+
+
+
     }
 
     fun setOverflowButtonColor(toolbar: Toolbar, color: Int) {

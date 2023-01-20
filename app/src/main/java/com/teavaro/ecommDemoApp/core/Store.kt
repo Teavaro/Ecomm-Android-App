@@ -1,8 +1,9 @@
 package com.teavaro.ecommDemoApp.core
 
-import android.app.NotificationManager
 import android.content.Context
+import android.util.Log
 import androidx.fragment.app.FragmentManager
+import com.google.gson.Gson
 import com.teavaro.ecommDemoApp.ui.PermissionConsentDialogFragment
 import com.teavaro.funnelConnect.core.initializer.FunnelConnectSDK
 import com.teavaro.funnelConnect.utils.platformTypes.permissionsMap.PermissionsMap
@@ -11,6 +12,7 @@ object Store {
 
     private var listItems: ArrayList<Item> = ArrayList()
     var isLogin = false
+    var infoResponse: String = "{}"
     val notificationName = "APP_CS"
     val notificationVersion = 4
     var description = "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don’t look even slightly believable. If you are going to use a passage of Lorem Ipsum."
@@ -112,5 +114,46 @@ object Store {
                 permissions.addPermission("CS-NBA",false)
                 FunnelConnectSDK.cdp().updatePermissions(permissions, notificationName,notificationVersion)
             })
+    }
+
+    fun getBanner(): String{
+        var text = ""
+        var gson = Gson()
+        var obj: InfoResponse = gson.fromJson(infoResponse, InfoResponse::class.java)
+        obj?.let { ob ->
+            ob.attributes?.let { attr ->
+                attr.forEach {
+                    text += "&amp;" + it.key + "=" + it.value
+                }
+            }
+        }
+        Log.d("iran:infoResponse", infoResponse)
+        Log.d("iran:attr", text)
+        return """
+           <!DOCTYPE html>
+           <html>
+           <body>
+            <div class="celtra-ad-v3">
+                <img src="data:image/png,celtra" style="display: none" onerror="
+                    (function(img) {
+                        var params = {'clickUrl':'','widthBreakpoint':'','expandDirection':'undefined','preferredClickThroughWindow':'new','clickEvent':'advertiser','externalAdServer':'Custom','tagVersion':'html-standard-7'};
+                        var req = document.createElement('script');
+                        req.id = params.scriptId = 'celtra-script-' + (window.celtraScriptIndex = (window.celtraScriptIndex||0)+1);
+                        params.clientTimestamp = new Date/1000;
+                        params.clientTimeZoneOffsetInMinutes = new Date().getTimezoneOffset();
+                        params.hostPageLoadId=window.celtraHostPageLoadId=window.celtraHostPageLoadId||(Math.random()+'').slice(2);
+                        var qs = '';
+                        for (var k in params) {
+                            qs += '&amp;' + encodeURIComponent(k) + '=' + encodeURIComponent(params[k]);
+                        }
+                        var src = 'https://ads.celtra.com/67444e1d/web.js?' + qs + '$text';
+                        req.src = src;
+                        img.parentNode.insertBefore(req, img.nextSibling);
+                    })(this);
+                "/>
+            </div>
+           </body>
+           </html>
+        """.trimIndent()
     }
 }
