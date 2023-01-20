@@ -45,7 +45,9 @@ class LoginFragment : Fragment() {
             FunnelConnectSDK.cdp().logEvent("Button", "login")
             if (!binding.edtEmail.text.isNullOrEmpty() && !binding.edtPassword.text.isNullOrEmpty()) {
                 val emailCoded = stringToSha256String(binding.edtEmail.text.toString())
-                FunnelConnectSDK.cdp().setUser(FCUser("slsc", emailCoded))
+                FunnelConnectSDK.cdp().setUser(FCUser("slsc", emailCoded),{
+                    Store.infoResponse = it
+                })
                 Store.isLogin = true
                 root.findNavController().navigate(R.id.navigation_settings)
                 SwrveSDK.start(parentFragment?.activity, FunnelConnectSDK.cdp().getUmid())
