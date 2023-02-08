@@ -9,8 +9,8 @@ import com.teavaro.funnelConnect.core.initializer.FunnelConnectSDK
 import com.teavaro.funnelConnect.utils.platformTypes.permissionsMap.PermissionsMap
 
 object Store {
-
     private var listItems: ArrayList<Item> = ArrayList()
+    var section = ""
     var isLogin = false
     var infoResponse: String = "{}"
     val notificationName = "APP_CS"

@@ -1,14 +1,11 @@
 package com.teavaro.ecommDemoApp.ui
 
-import android.app.AlertDialog
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.Drawable
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.Toast
 import android.widget.Toolbar
 import androidx.core.graphics.drawable.DrawableCompat
 import androidx.navigation.findNavController
@@ -94,5 +91,15 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
             else -> navController.navigate(R.id.navigation_settings)
         }
         return true
+    }
+
+    override fun onResume() {
+        super.onResume()
+        when(Store.section){
+            "store" -> {
+                navController.navigate(R.id.navigation_shop)
+                Store.section = ""
+            }
+        }
     }
 }

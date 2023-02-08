@@ -10,14 +10,17 @@ import android.util.Log
 import com.google.firebase.FirebaseApp
 import com.swrve.sdk.SwrveInitMode
 import com.swrve.sdk.SwrveNotificationConfig
+import com.swrve.sdk.SwrvePushNotificationListener
 import com.swrve.sdk.SwrveSDK
 import com.swrve.sdk.config.SwrveConfig
 import com.swrve.sdk.geo.SwrveGeoConfig
 import com.swrve.sdk.geo.SwrveGeoSDK
 import com.teavaro.ecommDemoApp.BuildConfig
 import com.teavaro.ecommDemoApp.R
+import com.teavaro.ecommDemoApp.core.Store
 import com.teavaro.funnelConnect.core.initializer.FunnelConnectSDK
 import com.teavaro.funnelConnect.data.models.dataClasses.FCOptions
+
 
 @Suppress("unused")
 class FCApplication: Application() {
@@ -56,6 +59,11 @@ class FCApplication: Application() {
                     .largeIconDrawableId(R.drawable.grapes)
                     .accentColorHex("#3949AB")
             config.notificationConfig = notificationConfig.build()
+            config.notificationListener = SwrvePushNotificationListener {
+                val section = it.getJSONObject("New Group 1").getString("section")
+                Store.section = section
+//                Log.e("SwrveDemo", section)
+            }
             SwrveSDK.createInstance(this, 32153, "FiIpd4eZ8CtQ6carAAx9", config)
             //geo config
             val geoConfig = SwrveGeoConfig.Builder()

@@ -13,7 +13,7 @@ object PushNotification {
     fun send(user: String?, message: String?): String {
         return try {
             if(user != null && message != null) {
-                val url = URL("$URL&user=$user&message=$message")
+                val url = URL("$URL&user=$user")
                 val urlConnection: HttpURLConnection = url.openConnection() as HttpURLConnection
                 urlConnection.requestMethod = "POST"
                 try {
