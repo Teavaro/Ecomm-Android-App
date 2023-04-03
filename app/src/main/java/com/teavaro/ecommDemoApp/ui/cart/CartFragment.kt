@@ -62,8 +62,27 @@ class CartFragment : Fragment() {
                 .setPositiveButton("Proceed") { _, _ ->
                     FunnelConnectSDK.cdp().logEvent("Button", "proceedCheckout")
                     Store.removeAllCartItems()
-                    root.findNavController().navigate(R.id.navigation_home)
+                    root.findNavController().navigate(R.id.navigation_cart)
                     Toast.makeText(context, "Success!", Toast.LENGTH_SHORT).show()
+                }
+                .create().show()
+        }
+
+        binding.btnClearCart.setOnClickListener {
+            FunnelConnectSDK.cdp().logEvent("Button", "dialogClearCart")
+            val builder = AlertDialog.Builder(context)
+            builder.setTitle("Clear confirmation")
+                .setMessage("Do you want to clear the cart?")
+                .setNegativeButton("Cancel")  {_,_ ->
+                    FunnelConnectSDK.cdp().logEvent("Button", "cancelClearCart")
+                }
+                .setPositiveButton("Proceed") { _, _ ->
+                    FunnelConnectSDK.cdp().logEvent("Button", "proceedClearCart")
+                    val acId = Store.addAbandonedCart(Store.getItemsCart())
+                    FunnelConnectSDK.cdp().logEvent("abandoned_cart_id", acId.toString())
+                    Store.removeAllCartItems()
+                    root.findNavController().navigate(R.id.navigation_cart)
+                    Toast.makeText(context, "Cart cleared!", Toast.LENGTH_SHORT).show()
                 }
                 .create().show()
         }

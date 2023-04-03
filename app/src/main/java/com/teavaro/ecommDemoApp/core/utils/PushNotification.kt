@@ -1,4 +1,4 @@
-package com.teavaro.ecommDemoApp.core
+package com.teavaro.ecommDemoApp.core.utils
 
 import java.io.BufferedInputStream
 import java.io.InputStream

@@ -29,7 +29,7 @@ class FCApplication: Application() {
         super.onCreate()
         this.initAppPolices()
         println("Teavaro:------------------initializing FunnelConnectSDK-${BuildConfig.VERSION_NAME}-------------")
-        FunnelConnectSDK.initialize(this, "R&Ai^v>TfqCz4Y^HH2?3uk8j", FCOptions(true))
+        FunnelConnectSDK.initialize(this, "ko8G.Rv_vT97LiDuoBHbhBJt", FCOptions(true))
         FirebaseApp.initializeApp(this)
         initSwrve()
     }

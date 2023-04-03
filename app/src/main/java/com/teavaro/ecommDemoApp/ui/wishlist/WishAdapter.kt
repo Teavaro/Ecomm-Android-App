@@ -11,11 +11,10 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import com.teavaro.ecommDemoApp.R
-import com.teavaro.ecommDemoApp.core.Item
 import com.teavaro.ecommDemoApp.core.Store
+import com.teavaro.ecommDemoApp.core.room.ItemEntity
 import com.teavaro.ecommDemoApp.ui.ItemDescriptionDialogFragment
 import com.teavaro.funnelConnect.core.initializer.FunnelConnectSDK
-import kotlinx.android.synthetic.main.item_cart.view.*
 import kotlinx.android.synthetic.main.item_shop.view.btnAddToCart
 import kotlinx.android.synthetic.main.item_wish.view.*
 import kotlinx.android.synthetic.main.item_wish.view.btnRemove
@@ -23,8 +22,8 @@ import kotlinx.android.synthetic.main.item_wish.view.txtPrice
 import kotlinx.android.synthetic.main.item_wish.view.txtTitle
 
 class WishAdapter(context: Context,
-                  private val listItems: List<Item>) :
-    ArrayAdapter<Item>(context, 0, listItems) {
+                  private val listItems: List<ItemEntity>) :
+    ArrayAdapter<ItemEntity>(context, 0, listItems) {
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         val layout = LayoutInflater.from(context).inflate(R.layout.item_wish,parent, false)
@@ -42,20 +41,20 @@ class WishAdapter(context: Context,
 
         layout.btnRemove.setOnClickListener {
             FunnelConnectSDK.cdp().logEvent("Button", "removeFromWish")
-            Store.removeItemFromWish(item.id)
+            Store.removeItemFromWish(item.itemId)
             parent.findNavController().navigate(R.id.navigation_wishlist)
             Toast.makeText(context, "Product removed!", Toast.LENGTH_SHORT).show()
         }
 
         layout.btnAddToCart.setOnClickListener {
             FunnelConnectSDK.cdp().logEvent("Button", "addToCart")
-            Store.addItemToCart(item.id)
+            Store.addItemToCart(item.itemId)
             Toast.makeText(context, "Product added!", Toast.LENGTH_SHORT).show()
         }
 
         layout.txtTitle.setOnClickListener{
             ItemDescriptionDialogFragment.open((context as AppCompatActivity).supportFragmentManager, item, {
-                Store.addItemToCart(item.id)
+                Store.addItemToCart(item.itemId)
             })
         }
 

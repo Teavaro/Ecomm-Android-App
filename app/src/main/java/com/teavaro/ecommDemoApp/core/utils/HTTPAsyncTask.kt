@@ -1,4 +1,4 @@
-package com.teavaro.ecommDemoApp.core
+package com.teavaro.ecommDemoApp.core.utils
 
 import android.os.AsyncTask
 

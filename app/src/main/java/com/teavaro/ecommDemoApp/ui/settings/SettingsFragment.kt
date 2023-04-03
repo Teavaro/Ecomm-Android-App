@@ -8,12 +8,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
-import androidx.fragment.app.findFragment
 import androidx.navigation.findNavController
 import com.teavaro.ecommDemoApp.R
-import com.teavaro.ecommDemoApp.core.HTTPAsyncTask
-import com.teavaro.ecommDemoApp.core.LogInMenu
-import com.teavaro.ecommDemoApp.core.SharedPreferenceUtils
+import com.teavaro.ecommDemoApp.core.utils.HTTPAsyncTask
+import com.teavaro.ecommDemoApp.core.utils.SharedPreferenceUtils
 import com.teavaro.ecommDemoApp.core.Store
 import com.teavaro.ecommDemoApp.databinding.FragmentSettingsBinding
 import com.teavaro.funnelConnect.core.initializer.FunnelConnectSDK

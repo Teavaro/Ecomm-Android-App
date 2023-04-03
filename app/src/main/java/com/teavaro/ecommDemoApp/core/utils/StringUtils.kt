@@ -1,4 +1,4 @@
-package com.teavaro.ecommDemoApp.core
+package com.teavaro.ecommDemoApp.core.utils
 
 import com.teavaro.funnelConnect.utils.stringUtils.IStringUtils
 import java.net.URLDecoder
