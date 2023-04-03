@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.teavaro.ecommDemoApp.R
 import com.teavaro.ecommDemoApp.core.Store
+import com.teavaro.ecommDemoApp.core.utils.StringUtils
 import com.teavaro.ecommDemoApp.databinding.FragmentCartBinding
 import com.teavaro.funnelConnect.core.initializer.FunnelConnectSDK
 
@@ -79,6 +80,7 @@ class CartFragment : Fragment() {
                 .setPositiveButton("Proceed") { _, _ ->
                     FunnelConnectSDK.cdp().logEvent("Button", "proceedClearCart")
                     val acId = Store.addAbandonedCart(Store.getItemsCart())
+                    StringUtils.setClipboard(requireContext(), "http://www.teavarodemoapp.com?abandoned_cart_id=$acId")
                     FunnelConnectSDK.cdp().logEvent("abandoned_cart_id", acId.toString())
                     Store.removeAllCartItems()
                     root.findNavController().navigate(R.id.navigation_cart)

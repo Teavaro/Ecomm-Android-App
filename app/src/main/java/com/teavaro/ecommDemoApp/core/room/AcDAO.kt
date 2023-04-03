@@ -13,4 +13,7 @@ interface AcDAO {
 
     @Insert
     fun saveAC(ac: ACEntity)
+
+    @Query("SELECT * FROM ACEntity")
+    fun getAllAcs(): List<ACEntity>
 }

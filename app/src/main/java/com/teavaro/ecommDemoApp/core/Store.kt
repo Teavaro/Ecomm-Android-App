@@ -1,15 +1,19 @@
 package com.teavaro.ecommDemoApp.core
 
 import android.content.Context
+import android.net.Uri
 import android.util.Log
+import androidx.annotation.MainThread
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentManager
 import com.google.gson.Gson
 import com.teavaro.ecommDemoApp.R
 import com.teavaro.ecommDemoApp.core.dataClases.InfoResponse
+import com.teavaro.ecommDemoApp.core.room.ACEntity
 import com.teavaro.ecommDemoApp.core.room.AppDb
 import com.teavaro.ecommDemoApp.core.room.ItemEntity
 import com.teavaro.ecommDemoApp.core.utils.SharedPreferenceUtils
+import com.teavaro.ecommDemoApp.core.utils.StringUtils
 import com.teavaro.ecommDemoApp.ui.AbandonedCartDialogFragment
 import com.teavaro.ecommDemoApp.ui.ItemDescriptionDialogFragment
 import com.teavaro.ecommDemoApp.ui.PermissionConsentDialogFragment
@@ -26,7 +30,7 @@ object Store {
     var listOffers: ArrayList<ItemEntity> = ArrayList()
     var listCart: ArrayList<ItemEntity> = ArrayList()
     var listWish: ArrayList<ItemEntity> = ArrayList()
-    var listAc = listOf<ItemEntity>()
+    var listAc : ArrayList<ACEntity> = ArrayList()
     var section = ""
     var isLogin = false
     var navigateAction: ((Int) -> Unit)? = null
@@ -179,10 +183,12 @@ object Store {
                 }
             }
         }
-
-
         text += "&amp;device=android"
         text += "&amp;impression=offer"
+        if(this.listAc.isNotEmpty()){
+            val abCartId = this.listAc.last().acId
+            text += "&amp;ab_cart_id=$abCartId"
+        }
         Log.d("iran:infoResponse", infoResponse)
         Log.d("iran:attr", text)
         return """
@@ -213,7 +219,7 @@ object Store {
         """.trimIndent()
     }
 
-    fun initializeData(db: AppDb) {
+    fun initializeData(db: AppDb, action: (() -> Unit)) {
         this.db = db
         Thread {
 //            db.itemDao().removeAllItems()
@@ -228,7 +234,9 @@ object Store {
                 db.itemDao().saveItems(ItemEntity(7, "Nature’s Bakery Whole Wheat Bars", description, 50.00f, "mixed"))
             }
             listItems = db.itemDao().getAllItems() as ArrayList<ItemEntity>
+            this.listAc = db.acDao().getAllAcs() as ArrayList<ACEntity>
             listOffers = getItemsOffer()
+            action.invoke()
         }.start()
     }
 
@@ -248,8 +256,8 @@ object Store {
                 if(!attr.isNull("ab_cart_id")) {
                     attr.getString("ab_cart_id")?.let {
                         abCartId = it
-                        refreshAcItems(123){
-                            showAbandonedCartDialog(supportFragmentManager, it)
+                        refreshAcItems(abCartId.toInt()){ list ->
+                            showAbandonedCartDialog(supportFragmentManager, list)
                         }
                     }
                 }
@@ -268,11 +276,15 @@ object Store {
 
     fun addAbandonedCart(items: List<ItemEntity>): Int {
         val acId = getUniqueId()
-        db?.let {
+        db?.let { db ->
             Thread {
                 for(item in items){
-                    item.acId = 123
-                    it.itemDao().update(item)
+                    item.acId = acId
+                    db.itemDao().update(item)
+                }
+                ACEntity(acId).let {
+                    db.acDao().saveAC(it)
+                    this.listAc.add(it)
                 }
             }.start()
         }
@@ -286,9 +298,18 @@ object Store {
     fun refreshAcItems(acId: Int, action: ((List<ItemEntity>)->Unit)) {
         db?.let {
             Thread {
-                listAc = it.itemDao().getAllAcItems(acId)
-                action.invoke(listAc)
+                val list = it.itemDao().getAllAcItems(acId)
+                action.invoke(list)
             }.start()
+        }
+    }
+
+    fun handleDeepLink(appLinkData: Uri, supportFragmentManager: FragmentManager) {
+        val acId = appLinkData.getQueryParameter("abandoned_cart_id")
+        acId?.let {
+            refreshAcItems(it.toInt()){ items ->
+                showAbandonedCartDialog(supportFragmentManager, items)
+            }
         }
     }
 }

@@ -1,15 +1,17 @@
 package com.teavaro.ecommDemoApp.ui
 
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.Drawable
+import android.net.Uri
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toolbar
+import androidx.annotation.MainThread
 import androidx.core.graphics.drawable.DrawableCompat
 import androidx.navigation.findNavController
-import androidx.navigation.set
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
@@ -36,7 +38,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
         var db = Room.databaseBuilder(applicationContext, AppDb::class.java, "TeavaroEcommDB")
 //            .fallbackToDestructiveMigration()
             .build()
-        Store.initializeData(db)
 
         val navView: BottomNavigationView = viewBinding.navView
         val appBarConfiguration = AppBarConfiguration(
@@ -54,6 +55,12 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
         supportActionBar?.setIcon(R.drawable.logo2)
         if (resources.getString(R.string.mode) == "Day") {
             supportActionBar?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT));
+        }
+
+        Store.initializeData(db){
+            this@MainActivity.runOnUiThread {
+                navController.navigate(R.id.navigation_home)
+            }
         }
 
         FunnelConnectSDK.onInitialize({
@@ -74,7 +81,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
         }) {
         }
 
-
+        handleIntent(intent)
     }
 
     fun setOverflowButtonColor(toolbar: Toolbar, color: Int) {
@@ -83,6 +90,18 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
             drawable = DrawableCompat.wrap(drawable)
             DrawableCompat.setTint(drawable.mutate(), color)
             toolbar.overflowIcon = drawable
+        }
+    }
+
+    private fun handleIntent(intent: Intent?) {
+        val appLinkAction: String? = intent?.action
+        val appLinkData: Uri? = intent?.data
+        showDeepLinkOffer(appLinkAction, appLinkData)
+    }
+
+    private fun showDeepLinkOffer(appLinkAction: String?, appLinkData: Uri?) {
+        if (Intent.ACTION_VIEW == appLinkAction && appLinkData != null) {
+            Store.handleDeepLink(appLinkData, supportFragmentManager)
         }
     }
 

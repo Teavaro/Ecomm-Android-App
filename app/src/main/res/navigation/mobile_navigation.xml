@@ -3,7 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_home">
+    app:startDestination="@+id/navigation_start">
+
+    <fragment
+        android:id="@+id/navigation_start"
+        android:name="com.teavaro.ecommDemoApp.ui.StartFragment"
+        android:label=""
+        tools:layout="@layout/fragment_start" />
 
     <fragment
         android:id="@+id/navigation_home"
