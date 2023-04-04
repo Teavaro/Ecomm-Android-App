@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.teavaro.ecommDemoApp.R
 import com.teavaro.ecommDemoApp.core.Store
 import com.teavaro.ecommDemoApp.core.room.ItemEntity
+import com.teavaro.ecommDemoApp.core.utils.TrackUtils
 import com.teavaro.ecommDemoApp.ui.ItemDescriptionDialogFragment
 import com.teavaro.funnelConnect.core.initializer.FunnelConnectSDK
 import kotlinx.android.synthetic.main.item_shop.view.*
@@ -35,7 +36,8 @@ class ShopAdapter(context: Context,
 
 
         layout.btnAddToCart.setOnClickListener {
-            FunnelConnectSDK.cdp().logEvent("Button", "addToCart")
+            val events = mapOf(TrackUtils.CLICK to "add_item_to_cart", "item_id" to item.itemId.toString())
+            TrackUtils.events(events)
             Store.addItemToCart(item.itemId)
             Toast.makeText(context, "Product added!", Toast.LENGTH_SHORT).show()
         }
@@ -44,13 +46,15 @@ class ShopAdapter(context: Context,
             setWishPicture(imageView, item)
             imageView.setOnClickListener {
                 if(item.isInWish == false) {
-                    FunnelConnectSDK.cdp().logEvent("Button", "addToWish")
+                    val events = mapOf(TrackUtils.IMPRESSION to "add_item_to_wish", "item_id" to item.itemId.toString())
+                    TrackUtils.events(events)
                     Store.addItemToWish(item.itemId)
                     item.isInWish = true
                     Toast.makeText(context, "Product added!", Toast.LENGTH_SHORT).show()
                 }
                 else {
-                    FunnelConnectSDK.cdp().logEvent("Button", "removeFromWish")
+                    val events = mapOf(TrackUtils.IMPRESSION to "remove_item_from_wish", "item_id" to item.itemId.toString())
+                    TrackUtils.events(events)
                     Store.removeItemFromWish(item.itemId)
                     item.isInWish = false
                     Toast.makeText(context, "Product removed!", Toast.LENGTH_SHORT).show()

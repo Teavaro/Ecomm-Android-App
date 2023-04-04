@@ -13,6 +13,7 @@ import com.teavaro.ecommDemoApp.R
 import com.teavaro.ecommDemoApp.core.utils.HTTPAsyncTask
 import com.teavaro.ecommDemoApp.core.utils.SharedPreferenceUtils
 import com.teavaro.ecommDemoApp.core.Store
+import com.teavaro.ecommDemoApp.core.utils.TrackUtils
 import com.teavaro.ecommDemoApp.databinding.FragmentSettingsBinding
 import com.teavaro.funnelConnect.core.initializer.FunnelConnectSDK
 
@@ -29,7 +30,7 @@ class SettingsFragment : Fragment() {
         _binding = FragmentSettingsBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        FunnelConnectSDK.cdp().logEvent("Navigation", "settings")
+        TrackUtils.impression("settings_view")
 
         if(Store.isLogin){
             binding.logOut.visibility = Button.VISIBLE
@@ -59,15 +60,15 @@ class SettingsFragment : Fragment() {
         }
 
         binding.logOut.setOnClickListener {
-            FunnelConnectSDK.cdp().logEvent("Button", "dialogLogout")
+            TrackUtils.click("dialog_logout")
             val builder = AlertDialog.Builder(requireContext())
             builder.setTitle("Logout confirmation")
                 .setMessage("Do you want to proceed with the logout?")
                 .setNegativeButton("Cancel")  {_,_ ->
-                    FunnelConnectSDK.cdp().logEvent("Button", "cancelLogout")
+                    TrackUtils.click("cancel_logout")
                 }
                 .setPositiveButton("Proceed") { _, _ ->
-                    FunnelConnectSDK.cdp().logEvent("Button", "proceedLogout")
+                    TrackUtils.click("proceed_logout")
                     Store.isLogin = false
                     root.findNavController().navigate(R.id.navigation_settings)
                     Toast.makeText(requireContext(), "Logout success!", Toast.LENGTH_SHORT).show()

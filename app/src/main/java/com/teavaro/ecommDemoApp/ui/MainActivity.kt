@@ -6,10 +6,10 @@ import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toolbar
-import androidx.annotation.MainThread
 import androidx.core.graphics.drawable.DrawableCompat
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -24,6 +24,7 @@ import com.teavaro.ecommDemoApp.baseClasses.mvvm.BaseActivity
 import com.teavaro.ecommDemoApp.core.*
 import com.teavaro.ecommDemoApp.core.room.AppDb
 import com.teavaro.ecommDemoApp.core.utils.SharedPreferenceUtils
+import com.teavaro.ecommDemoApp.core.utils.TrackUtils
 import com.teavaro.ecommDemoApp.databinding.ActivityMainBinding
 import com.teavaro.funnelConnect.core.initializer.FunnelConnectSDK
 
@@ -34,6 +35,9 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(viewBinding.root)
+
+        Log.d("TrackUtils","initialized")
+        TrackUtils.lifeCycle(lifecycle)
 
         var db = Room.databaseBuilder(applicationContext, AppDb::class.java, "TeavaroEcommDB")
 //            .fallbackToDestructiveMigration()

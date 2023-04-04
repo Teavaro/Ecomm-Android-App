@@ -11,6 +11,7 @@ import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentManager
 import com.teavaro.ecommDemoApp.R
 import com.teavaro.ecommDemoApp.core.room.ItemEntity
+import com.teavaro.ecommDemoApp.core.utils.TrackUtils
 import com.teavaro.ecommDemoApp.databinding.FragmentAbandonedCartDialogBinding
 import com.teavaro.ecommDemoApp.ui.shop.ShopAdapter
 import com.teavaro.funnelConnect.core.initializer.FunnelConnectSDK
@@ -22,7 +23,7 @@ class AbandonedCartDialogFragment(private var items: List<ItemEntity>) : DialogF
     private var addItemsAction: ((List<ItemEntity>) -> Unit)? = null
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        FunnelConnectSDK.cdp().logEvent("Navigation", "abandonedCartDialog")
+        TrackUtils.impression("abandoned_cart_view")
         val dialog = super.onCreateDialog(savedInstanceState)
         dialog.window?.requestFeature(Window.FEATURE_NO_TITLE)
         dialog.setCancelable(true)
@@ -44,6 +45,7 @@ class AbandonedCartDialogFragment(private var items: List<ItemEntity>) : DialogF
 
         binding.btnAddItemsToCart.setOnClickListener {
             addItemsAction?.let {
+                TrackUtils.click("add_abandoned_items_to_cart")
                 it.invoke(items)
             }
             this.dismiss()

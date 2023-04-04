@@ -18,6 +18,7 @@ import com.swrve.sdk.geo.SwrveGeoSDK
 import com.teavaro.ecommDemoApp.BuildConfig
 import com.teavaro.ecommDemoApp.R
 import com.teavaro.ecommDemoApp.core.Store
+import com.teavaro.ecommDemoApp.core.utils.TrackUtils
 import com.teavaro.funnelConnect.core.initializer.FunnelConnectSDK
 import com.teavaro.funnelConnect.data.models.dataClasses.FCOptions
 
@@ -68,7 +69,7 @@ class FCApplication: Application() {
             //geo config
             val geoConfig = SwrveGeoConfig.Builder()
                 .geofenceTransitionListener { name: String?, transition: String?, triggerLocation: Location?, customProperties: String? ->
-                    FunnelConnectSDK.cdp().logEvent("entryGeoPlace", name.toString())
+                    TrackUtils.geoPlace(name.toString())
                 }
                 .build()
             SwrveGeoSDK.init(this, geoConfig)

@@ -11,6 +11,7 @@ import androidx.navigation.findNavController
 import com.teavaro.ecommDemoApp.R
 import com.teavaro.ecommDemoApp.core.Store
 import com.teavaro.ecommDemoApp.core.room.ItemEntity
+import com.teavaro.ecommDemoApp.core.utils.TrackUtils
 import com.teavaro.ecommDemoApp.ui.ItemDescriptionDialogFragment
 import com.teavaro.funnelConnect.core.initializer.FunnelConnectSDK
 import kotlinx.android.synthetic.main.item_cart.view.*
@@ -32,7 +33,8 @@ class CartAdapter(context: Context,
         layout.txtSubTotal.text = "$$subTotal / piece"
 
         layout.btnRemove.setOnClickListener {
-            FunnelConnectSDK.cdp().logEvent("Button", "removeFromCart")
+            val events = mapOf(TrackUtils.CLICK to "remove_item_from_cart", "item_id" to item.itemId.toString())
+            TrackUtils.events(events)
             Store.removeItemFromCart(item.itemId)
             parent.findNavController().navigate(R.id.navigation_cart)
             Toast.makeText(context, "Product removed!", Toast.LENGTH_SHORT).show()

@@ -7,6 +7,7 @@ import android.view.Window
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentManager
 import com.teavaro.ecommDemoApp.R
+import com.teavaro.ecommDemoApp.core.utils.TrackUtils
 import com.teavaro.ecommDemoApp.databinding.FragmentFPermissionsConsentBinding
 import com.teavaro.ecommDemoApp.viewBinding
 import com.teavaro.funnelConnect.core.initializer.FunnelConnectSDK
@@ -21,7 +22,7 @@ class PermissionConsentDialogFragment : DialogFragment(R.layout.fragment_f_permi
 //    override fun getTheme() = R.style.FullScreenDimmedDialogFragment
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        FunnelConnectSDK.cdp().logEvent("Navigation", "permissionDialog")
+        TrackUtils.impression("permission_view")
         val dialog = super.onCreateDialog(savedInstanceState)
         dialog.window?.requestFeature(Window.FEATURE_NO_TITLE)
         dialog.setCancelable(true)
