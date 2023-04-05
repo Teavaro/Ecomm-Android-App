@@ -63,7 +63,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
 
         Store.initializeData(db){
             this@MainActivity.runOnUiThread {
-                navController.navigate(R.id.navigation_home)
+                navController.navigate(it)
             }
         }
 

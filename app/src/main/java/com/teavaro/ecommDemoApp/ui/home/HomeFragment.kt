@@ -55,9 +55,6 @@ class HomeFragment : Fragment() {
             TrackUtils.click("explore")
             root.findNavController().navigate(R.id.navigation_shop)
         }
-        Store.navigateAction = { section: Int ->
-            root.findNavController().navigate(section)
-        }
         loadAd()
         return root
     }
