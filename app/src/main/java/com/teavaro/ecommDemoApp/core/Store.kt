@@ -31,7 +31,7 @@ object Store {
     var listCart: ArrayList<ItemEntity> = ArrayList()
     var listWish: ArrayList<ItemEntity> = ArrayList()
     var listAc : ArrayList<ACEntity> = ArrayList()
-    var section = ""
+    var section = "none"
     var isLogin = false
     var navigateAction: ((Int) -> Unit)? = null
     var infoResponse: String = "{}"
@@ -237,7 +237,9 @@ object Store {
             listItems = db.itemDao().getAllItems() as ArrayList<ItemEntity>
             this.listAc = db.acDao().getAllAcs() as ArrayList<ACEntity>
             listOffers = getItemsOffer()
-            action.invoke(R.id.navigation_home)
+            if(section == "none")
+                action.invoke(R.id.navigation_home)
+            Log.d("iraniran", "section:navigation_home")
         }.start()
     }
 

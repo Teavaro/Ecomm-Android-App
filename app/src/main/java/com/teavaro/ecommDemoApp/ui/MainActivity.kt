@@ -129,6 +129,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
         super.onResume()
         when (Store.section) {
             "store" -> {
+                Log.d("iraniran", "section:${Store.section}")
                 navController.navigate(R.id.navigation_shop)
                 Store.section = ""
             }
