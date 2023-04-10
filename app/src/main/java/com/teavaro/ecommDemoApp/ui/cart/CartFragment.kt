@@ -12,6 +12,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.teavaro.ecommDemoApp.R
 import com.teavaro.ecommDemoApp.core.Store
+import com.teavaro.ecommDemoApp.core.utils.StringUtils
+import com.teavaro.ecommDemoApp.core.utils.TrackUtils
 import com.teavaro.ecommDemoApp.databinding.FragmentCartBinding
 import com.teavaro.funnelConnect.core.initializer.FunnelConnectSDK
 
@@ -31,7 +33,7 @@ class CartFragment : Fragment() {
         val cartViewModel =
             ViewModelProvider(this).get(CartViewModel::class.java)
 
-        FunnelConnectSDK.cdp().logEvent("Navigation", "cart")
+        TrackUtils.impression("cart_view")
 
         _binding = FragmentCartBinding.inflate(inflater, container, false)
         val root: View = binding.root
@@ -52,18 +54,38 @@ class CartFragment : Fragment() {
             binding.layTotal.visibility = LinearLayout.VISIBLE
 
         binding.btnCheckout.setOnClickListener {
-            FunnelConnectSDK.cdp().logEvent("Button", "dialogCheckout")
+            TrackUtils.impression("dialog_checkout")
             val builder = AlertDialog.Builder(context)
             builder.setTitle("Checkout confirmation")
                 .setMessage("Do you want to proceed with checkout?")
                 .setNegativeButton("Cancel")  {_,_ ->
-                    FunnelConnectSDK.cdp().logEvent("Button", "cancelCheckout")
+                    TrackUtils.click("cancel_checkout")
                 }
                 .setPositiveButton("Proceed") { _, _ ->
-                    FunnelConnectSDK.cdp().logEvent("Button", "proceedCheckout")
+                    TrackUtils.click("proceed_checkout")
                     Store.removeAllCartItems()
-                    root.findNavController().navigate(R.id.navigation_home)
+                    root.findNavController().navigate(R.id.navigation_cart)
                     Toast.makeText(context, "Success!", Toast.LENGTH_SHORT).show()
+                }
+                .create().show()
+        }
+
+        binding.btnClearCart.setOnClickListener {
+            TrackUtils.click("clear_cart")
+            val builder = AlertDialog.Builder(context)
+            builder.setTitle("Clear confirmation")
+                .setMessage("Do you want to clear the cart?")
+                .setNegativeButton("Cancel")  {_,_ ->
+                    TrackUtils.click("calcel_clear_cart")
+                }
+                .setPositiveButton("Proceed") { _, _ ->
+                    val acId = Store.addAbandonedCart(Store.getItemsCart())
+                    StringUtils.setClipboard(requireContext(), "http://www.teavarodemoapp.com?ab_cart_id=$acId")
+                    val events = mapOf(TrackUtils.CLICK to "proceed_clear_cart", TrackUtils.ABANDONED_CART_ID to acId.toString())
+                    TrackUtils.events(events)
+                    Store.removeAllCartItems()
+                    root.findNavController().navigate(R.id.navigation_cart)
+                    Toast.makeText(context, "Cart cleared!", Toast.LENGTH_SHORT).show()
                 }
                 .create().show()
         }

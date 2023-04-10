@@ -1,4 +1,4 @@
-package com.teavaro.ecommDemoApp.core
+package com.teavaro.ecommDemoApp.core.utils
 
 import android.content.Context
 
@@ -8,9 +8,9 @@ object SharedPreferenceUtils {
 
     private fun getSharedPreferences(context: Context) = context.getSharedPreferences("MySharedPreferences", Context.MODE_PRIVATE)
 
-    fun isStubMode(context: Context) = this.getSharedPreferences(context).getBoolean(STUB_MODE, false)
+    fun isStubMode(context: Context) = getSharedPreferences(context).getBoolean(STUB_MODE, false)
 
     fun setStubMode(context: Context, value: Boolean) {
-        this.getSharedPreferences(context).edit().putBoolean(STUB_MODE, value).apply()
+        getSharedPreferences(context).edit().putBoolean(STUB_MODE, value).apply()
     }
 }

@@ -5,9 +5,11 @@
     <string name="title_wishlist">Wishlist</string>
     <string name="title_shop">Shop</string>
     <string name="title_settings">Settings</string>
+    <string name="title_notifications">Send Notifications</string>
     <string name="title_login">Login</string>
     <string name="menu_login">Log in</string>
     <string name="menu_logout">Log out</string>
+    <string name="menu_notifications">Send Notifications</string>
     <string name="clear_data">Clear data</string>
     <string name="consent_management">Consent Management</string>
     <string name="mode">Day</string>

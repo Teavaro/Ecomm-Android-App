@@ -5,6 +5,7 @@ plugins {
     id(BuildSystem.plugins.extensions)
     id("com.google.gms.google-services")
     id("org.jetbrains.kotlin.android")
+    id("kotlin-kapt")
 }
 
 apply {
@@ -100,8 +101,8 @@ dependencies {
 
     testImplementation("junit:junit:4.13.2")
 
-    val room_version = "2.3.0" // check latest version from docs
-
+    val room_version = "2.4.0-alpha03" // check latest version from docs
     implementation("androidx.room:room-runtime:$room_version")
     annotationProcessor("androidx.room:room-compiler:$room_version")
-}
+    kapt("androidx.room:room-compiler:$room_version")
+   }

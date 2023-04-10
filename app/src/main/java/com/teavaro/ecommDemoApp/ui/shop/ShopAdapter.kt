@@ -7,16 +7,16 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.teavaro.ecommDemoApp.R
-import com.teavaro.ecommDemoApp.core.Item
 import com.teavaro.ecommDemoApp.core.Store
+import com.teavaro.ecommDemoApp.core.room.ItemEntity
+import com.teavaro.ecommDemoApp.core.utils.TrackUtils
 import com.teavaro.ecommDemoApp.ui.ItemDescriptionDialogFragment
 import com.teavaro.funnelConnect.core.initializer.FunnelConnectSDK
 import kotlinx.android.synthetic.main.item_shop.view.*
 
-
 class ShopAdapter(context: Context,
-                  private val listItems: List<Item>) :
-    ArrayAdapter<Item>(context, 0, listItems) {
+                  private val listItems: List<ItemEntity>) :
+    ArrayAdapter<ItemEntity>(context, 0, listItems) {
 
     private lateinit var layout: View
 
@@ -29,31 +29,34 @@ class ShopAdapter(context: Context,
         val imgId: Int = parent.resources.getIdentifier(item.picture, "drawable", "com.teavaro.ecommDemoApp")
         layout.imgPicture.setImageResource(imgId)
 
-        if(!item.isInStock) {
+        if(item.isInStock == false) {
             layout.btnAddToCart.visibility = Button.GONE
             layout.outOfStock.visibility = TextView.VISIBLE
         }
 
 
         layout.btnAddToCart.setOnClickListener {
-            FunnelConnectSDK.cdp().logEvent("Button", "addToCart")
-            Store.addItemToCart(item.id)
+            val events = mapOf(TrackUtils.CLICK to "add_item_to_cart", "item_id" to item.itemId.toString())
+            TrackUtils.events(events)
+            Store.addItemToCart(item.itemId)
             Toast.makeText(context, "Product added!", Toast.LENGTH_SHORT).show()
         }
 
         layout.btnAddToWish.let { imageView ->
             setWishPicture(imageView, item)
             imageView.setOnClickListener {
-                if(!item.isWish) {
-                    FunnelConnectSDK.cdp().logEvent("Button", "addToWish")
-                    Store.addItemToWish(item.id)
-                    item.isWish = true
+                if(item.isInWish == false) {
+                    val events = mapOf(TrackUtils.IMPRESSION to "add_item_to_wish", "item_id" to item.itemId.toString())
+                    TrackUtils.events(events)
+                    Store.addItemToWish(item.itemId)
+                    item.isInWish = true
                     Toast.makeText(context, "Product added!", Toast.LENGTH_SHORT).show()
                 }
                 else {
-                    FunnelConnectSDK.cdp().logEvent("Button", "removeFromWish")
-                    Store.removeItemFromWish(item.id)
-                    item.isWish = false
+                    val events = mapOf(TrackUtils.IMPRESSION to "remove_item_from_wish", "item_id" to item.itemId.toString())
+                    TrackUtils.events(events)
+                    Store.removeItemFromWish(item.itemId)
+                    item.isInWish = false
                     Toast.makeText(context, "Product removed!", Toast.LENGTH_SHORT).show()
                 }
                 setWishPicture(imageView as ImageView, item)
@@ -61,19 +64,19 @@ class ShopAdapter(context: Context,
         }
 
         layout.imgPicture.setOnClickListener{
-            if(item.isWish) {
+            if(item.isInWish == true) {
                 ItemDescriptionDialogFragment.open(
                     (context as AppCompatActivity).supportFragmentManager,
                     item,
                     {
-                        Store.addItemToCart(item.id)
+                        Store.addItemToCart(item.itemId)
                     })
             }
             else{
                 ItemDescriptionDialogFragment.open((context as AppCompatActivity).supportFragmentManager, item, {
-                    Store.addItemToCart(item.id)
+                    Store.addItemToCart(item.itemId)
                 },{
-                    Store.addItemToWish(item.id)
+                    Store.addItemToWish(item.itemId)
                 })
             }
         }
@@ -81,8 +84,8 @@ class ShopAdapter(context: Context,
         return layout
     }
 
-    private fun setWishPicture(imageView: ImageView, item: Item){
-        if(item.isWish)
+    private fun setWishPicture(imageView: ImageView, item: ItemEntity){
+        if(item.isInWish == true)
             imageView.setImageResource(R.drawable.ic_wishlist_red_24dp)
         else
             imageView.setImageResource(R.drawable.ic_wishlist_black_24dp)
