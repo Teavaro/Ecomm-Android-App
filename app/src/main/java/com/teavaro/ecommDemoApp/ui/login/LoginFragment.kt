@@ -32,7 +32,7 @@ class LoginFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         val loginViewModel =
-            ViewModelProvider(this).get(LoginViewModel::class.java)
+            ViewModelProvider(this).get(NotificationsViewModel::class.java)
 
         TrackUtils.impression("login_view")
 

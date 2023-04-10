@@ -105,7 +105,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
 
     private fun showDeepLinkOffer(appLinkAction: String?, appLinkData: Uri?) {
         if (Intent.ACTION_VIEW == appLinkAction && appLinkData != null) {
-            Store.handleDeepLink(appLinkData, supportFragmentManager)
+            Store.handleDeepLink(this, appLinkData, supportFragmentManager)
         }
     }
 

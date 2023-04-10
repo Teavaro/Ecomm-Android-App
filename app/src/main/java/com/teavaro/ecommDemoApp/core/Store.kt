@@ -34,11 +34,10 @@ object Store {
     var section = "none"
     var isLogin = false
     var navigateAction: ((Int) -> Unit)? = null
-    var infoResponse: String = "{}"
+    var infoResponse: String? = null
     val notificationName = "MAIN_CS"
     val notificationVersion = 1
     var itemId = ""
-    var abCartId = ""
     var description =
         "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don’t look even slightly believable. If you are going to use a passage of Lorem Ipsum."
 
@@ -173,23 +172,26 @@ object Store {
     fun getBanner(): String {
         var text = ""
         var gson = Gson()
-        infoResponse.let { info ->
-            var obj: InfoResponse = gson.fromJson(info, InfoResponse::class.java)
-            obj.let { ob ->
-                ob.attributes?.let { attr ->
-                    attr.forEach {
-                        text += "&amp;" + it.key + "=" + it.value
+        infoResponse?.let { info ->
+            val classOb = InfoResponse::class.java
+            classOb?.let { classOnj ->
+                var obj: InfoResponse = gson.fromJson(info, classOnj)
+                obj.let { ob ->
+                    ob.attributes?.let { attr ->
+                        attr.forEach {
+                            text += "&amp;" + it.key + "=" + it.value
+                        }
                     }
                 }
+                Log.d("iran:infoResponse", info)
             }
+
         }
         text += "&amp;device=android"
         text += "&amp;impression=offer"
-        if(this.listAc.isNotEmpty()){
-            val abCartId = this.listAc.last().acId
-            text += "&amp;ab_cart_id=$abCartId"
+        getAbCartId()?.let {
+            text += "&amp;ab_cart_id=$it"
         }
-        Log.d("iran:infoResponse", infoResponse)
         Log.d("iran:attr", text)
         return """
            <!DOCTYPE html>
@@ -228,17 +230,21 @@ object Store {
                 db.itemDao().saveItems(ItemEntity(0,"Jacob’s Baked Crinklys Cheese",description,60.00f,"crinklys",true))
                 db.itemDao().saveItems(ItemEntity(1, "Pork Cocktail Sausages, Pack", description, 54.00f, "pork", true, false, acId = 123))
                 db.itemDao().saveItems(ItemEntity(2, "Broccoli and Cauliflower Mix", description, 6.00f, "cauliflower"))
-                db.itemDao().saveItems(ItemEntity(3, "Morrisons Creamed Rice Pudding", description, 44.00f, "paprika"))
-                db.itemDao().saveItems(ItemEntity(4, "Fresh For The Bold Ground Amazon", description, 12.00f, "burst"))
-                db.itemDao().saveItems(ItemEntity(5, "Frito-Lay Doritos & Cheetos Mix", description, 20.00f, "watermelon"))
-                db.itemDao().saveItems(ItemEntity(6, "Green Mountain Coffee Roast", description, 20.00f, "grapes"))
-                db.itemDao().saveItems(ItemEntity(7, "Nature’s Bakery Whole Wheat Bars", description, 50.00f, "mixed"))
+                db.itemDao().saveItems(ItemEntity(3, "Morrisons Smoked Paprika", description, 44.00f, "paprika"))
+                db.itemDao().saveItems(ItemEntity(4, "Jaffa Tropical Flavour Burst Seedless", description, 12.00f, "burst"))
+                db.itemDao().saveItems(ItemEntity(5, "Pams Chopped Watermelon", description, 20.00f, "watermelon"))
+                db.itemDao().saveItems(ItemEntity(6, "Woolworths Food Flavourburst Seedless Grapes", description, 20.00f, "grapes"))
+                db.itemDao().saveItems(ItemEntity(7, "Ocado Mixed Seedless Grapes", description, 50.00f, "mixed"))
+                db.itemDao().saveItems(ItemEntity(8, "Whole Foods Market, Organic Coleslaw Mix", description, 5.49f, "coleslaw"))
+                db.itemDao().saveItems(ItemEntity(9, "TSARINE Caviar 50g", description, 45.50f, "tsarine"))
+                db.itemDao().saveItems(ItemEntity(10, "Knorr Tomato al Gusto All’ Arrabbiata Soße 370g", description, 3.99f, "tomato"))
             }
             listItems = db.itemDao().getAllItems() as ArrayList<ItemEntity>
             this.listAc = db.acDao().getAllAcs() as ArrayList<ACEntity>
             listOffers = getItemsOffer()
             if(section == "none")
                 action.invoke(R.id.navigation_home)
+            section = ""
             Log.d("iraniran", "section:navigation_home")
         }.start()
     }
@@ -258,8 +264,7 @@ object Store {
                 }
                 if(!attr.isNull("ab_cart_id")) {
                     attr.getString("ab_cart_id")?.let {
-                        abCartId = it
-                        refreshAcItems(abCartId.toInt()){ list ->
+                        refreshAcItems(it.toInt()){ list ->
                             showAbandonedCartDialog(supportFragmentManager, list)
                         }
                     }
@@ -267,6 +272,7 @@ object Store {
                 if(!attr.isNull("impression")) {
                     attr.getString("impression")?.let { impression ->
                         if(impression == "ShopView"){
+                            section = "ShopView"
                             navigateAction?.let {
                                 it.invoke(R.id.navigation_shop)
                             }
@@ -307,12 +313,41 @@ object Store {
         }
     }
 
-    fun handleDeepLink(appLinkData: Uri, supportFragmentManager: FragmentManager) {
-        val acId = appLinkData.getQueryParameter("abandoned_cart_id")
+    fun handleDeepLink(context: Context, appLinkData: Uri, supportFragmentManager: FragmentManager) {
+        val acId = appLinkData.getQueryParameter("ab_cart_id")
+        val itemId = appLinkData.getQueryParameter("item_id")
+        val impression = appLinkData.getQueryParameter("impression")
         acId?.let {
             refreshAcItems(it.toInt()){ items ->
                 showAbandonedCartDialog(supportFragmentManager, items)
             }
+            navigateAction?.let { action ->
+                action.invoke(R.id.navigation_home)
+            }
         }
+        itemId?.let {
+            ItemDescriptionDialogFragment.open((context as AppCompatActivity).supportFragmentManager, listItems[it.toInt()], {
+                addItemToCart(it.toInt())
+            },{
+                addItemToWish(it.toInt())
+            })
+            navigateAction?.let { action ->
+                action.invoke(R.id.navigation_home)
+            }
+        }
+        impression?.let {
+            if(it == "ShopView"){
+                navigateAction?.let { action ->
+                    action.invoke(R.id.navigation_shop)
+                }
+            }
+        }
+    }
+
+    fun getAbCartId(): Int? {
+        if(this.listAc.isNotEmpty()){
+            return listAc.last().acId
+        }
+        return null
     }
 }

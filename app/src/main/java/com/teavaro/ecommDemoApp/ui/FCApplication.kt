@@ -60,11 +60,11 @@ class FCApplication: Application() {
                     .largeIconDrawableId(R.drawable.grapes)
                     .accentColorHex("#3949AB")
             config.notificationConfig = notificationConfig.build()
-            config.notificationListener = SwrvePushNotificationListener {
-                val section = it.getJSONObject("New Group 1").getString("section")
-                Store.section = section
-//                Log.e("SwrveDemo", section)
-            }
+//            config.notificationListener = SwrvePushNotificationListener {
+//                val section = it.getJSONObject("New Group 1").getString("section")
+//                Store.section = section
+////                Log.e("SwrveDemo", section)
+//            }
             SwrveSDK.createInstance(this, 32153, "FiIpd4eZ8CtQ6carAAx9", config)
             //geo config
             val geoConfig = SwrveGeoConfig.Builder()

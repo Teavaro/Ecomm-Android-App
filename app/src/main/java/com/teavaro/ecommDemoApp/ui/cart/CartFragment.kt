@@ -80,7 +80,7 @@ class CartFragment : Fragment() {
                 }
                 .setPositiveButton("Proceed") { _, _ ->
                     val acId = Store.addAbandonedCart(Store.getItemsCart())
-                    StringUtils.setClipboard(requireContext(), "http://www.teavarodemoapp.com?abandoned_cart_id=$acId")
+                    StringUtils.setClipboard(requireContext(), "http://www.teavarodemoapp.com?ab_cart_id=$acId")
                     val events = mapOf(TrackUtils.CLICK to "proceed_clear_cart", TrackUtils.ABANDONED_CART_ID to acId.toString())
                     TrackUtils.events(events)
                     Store.removeAllCartItems()

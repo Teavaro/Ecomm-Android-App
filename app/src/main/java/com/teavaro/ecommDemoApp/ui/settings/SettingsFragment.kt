@@ -13,6 +13,7 @@ import com.teavaro.ecommDemoApp.R
 import com.teavaro.ecommDemoApp.core.utils.HTTPAsyncTask
 import com.teavaro.ecommDemoApp.core.utils.SharedPreferenceUtils
 import com.teavaro.ecommDemoApp.core.Store
+import com.teavaro.ecommDemoApp.core.utils.PushNotification
 import com.teavaro.ecommDemoApp.core.utils.TrackUtils
 import com.teavaro.ecommDemoApp.databinding.FragmentSettingsBinding
 import com.teavaro.funnelConnect.core.initializer.FunnelConnectSDK
@@ -46,13 +47,8 @@ class SettingsFragment : Fragment() {
             Toast.makeText(requireContext(), "Data cleared!", Toast.LENGTH_LONG).show()
         }
 
-        binding.sendNotification.setOnClickListener {
-            FunnelConnectSDK.cdp().getUmid()?.let {
-                val httpAsyncTask = HTTPAsyncTask{
-                    Toast.makeText(requireContext(), "Notification sent!", Toast.LENGTH_LONG).show()
-                }
-                httpAsyncTask.execute(it, "Swrve App Push Notification...")
-            }
+        binding.notifications.setOnClickListener {
+            root.findNavController().navigate(R.id.navigation_notifications)
         }
 
         binding.logIn.setOnClickListener {
