@@ -3,7 +3,7 @@ package com.teavaro.ecommDemoApp.core
 import android.content.Context
 import android.net.Uri
 import android.util.Log
-import androidx.annotation.MainThread
+import android.webkit.WebView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentManager
 import com.google.gson.Gson
@@ -13,14 +13,12 @@ import com.teavaro.ecommDemoApp.core.room.ACEntity
 import com.teavaro.ecommDemoApp.core.room.AppDb
 import com.teavaro.ecommDemoApp.core.room.ItemEntity
 import com.teavaro.ecommDemoApp.core.utils.SharedPreferenceUtils
-import com.teavaro.ecommDemoApp.core.utils.StringUtils
 import com.teavaro.ecommDemoApp.ui.AbandonedCartDialogFragment
 import com.teavaro.ecommDemoApp.ui.ItemDescriptionDialogFragment
 import com.teavaro.ecommDemoApp.ui.PermissionConsentDialogFragment
 import com.teavaro.funnelConnect.core.initializer.FunnelConnectSDK
 import com.teavaro.funnelConnect.utils.platformTypes.permissionsMap.PermissionsMap
 import org.json.JSONObject
-import java.util.*
 import kotlin.collections.ArrayList
 
 
@@ -33,6 +31,7 @@ object Store {
     var listAc : ArrayList<ACEntity> = ArrayList()
     var section = "none"
     var isLogin = false
+    var webView: WebView? = null
     var navigateAction: ((Int) -> Unit)? = null
     var infoResponse: String? = null
     val notificationName = "MAIN_CS"
@@ -175,8 +174,8 @@ object Store {
         infoResponse?.let { info ->
             val classOb = InfoResponse::class.java
             classOb?.let { classOnj ->
-                var obj: InfoResponse = gson.fromJson(info, classOnj)
-                obj.let { ob ->
+                var obj: InfoResponse? = gson.fromJson(info, classOnj)
+                obj?.let { ob ->
                     ob.attributes?.let { attr ->
                         attr.forEach {
                             text += "&amp;" + it.key + "=" + it.value
