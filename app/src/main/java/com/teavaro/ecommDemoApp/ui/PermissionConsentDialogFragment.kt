@@ -7,7 +7,7 @@ import android.view.Window
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentManager
 import com.teavaro.ecommDemoApp.R
-import com.teavaro.ecommDemoApp.core.SharedPreferenceUtils
+import com.teavaro.ecommDemoApp.core.utils.TrackUtils
 import com.teavaro.ecommDemoApp.databinding.FragmentFPermissionsConsentBinding
 import com.teavaro.ecommDemoApp.viewBinding
 import com.teavaro.funnelConnect.core.initializer.FunnelConnectSDK
@@ -15,14 +15,14 @@ import com.teavaro.funnelConnect.core.initializer.FunnelConnectSDK
 class PermissionConsentDialogFragment : DialogFragment(R.layout.fragment_f_permissions_consent) {
 
     private val binding by viewBinding(FragmentFPermissionsConsentBinding::bind)
-    private var acceptAction: ((omPermissionAccepted: Boolean, optPermissionAccepted: Boolean, nbaPermissionAccepted: Boolean) -> Unit)? =
+    private var acceptAction: ((omPermissionAccepted: Boolean, optPermissionAccepted: Boolean, nbaPermissionAccepted: Boolean, tpidPermissionAccepted: Boolean) -> Unit)? =
         null
     private var rejectAction: (() -> Unit)? = null
 
 //    override fun getTheme() = R.style.FullScreenDimmedDialogFragment
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        FunnelConnectSDK.cdp().logEvent("Navigation", "permissionDialog")
+        TrackUtils.impression("permission_view")
         val dialog = super.onCreateDialog(savedInstanceState)
         dialog.window?.requestFeature(Window.FEATURE_NO_TITLE)
         dialog.setCancelable(true)
@@ -37,11 +37,12 @@ class PermissionConsentDialogFragment : DialogFragment(R.layout.fragment_f_permi
             val om = binding.swCookies
             val opt = binding.swNetwork
             val nba = binding.swPersonal
-            this.acceptAction?.invoke(om.isChecked, opt.isChecked, nba.isChecked)
+            val tpid = true
+            this.acceptAction?.invoke(om.isChecked, opt.isChecked, nba.isChecked, tpid)
             this.dismiss()
         }
         binding.acceptButton.setOnClickListener {
-            this.acceptAction?.invoke(true, true, true)
+            this.acceptAction?.invoke(true, true, true, true)
             this.dismiss()
         }
         binding.cancelButton.setOnClickListener {
@@ -55,9 +56,10 @@ class PermissionConsentDialogFragment : DialogFragment(R.layout.fragment_f_permi
 
     private fun initialPresets() {
         FunnelConnectSDK.cdp().getPermissions().let {
-            binding.swCookies.isChecked = it.getPermission("CS-TMI")
+            binding.swCookies.isChecked = it.getPermission("CS-OM")
             binding.swNetwork.isChecked = it.getPermission("CS-OPT")
             binding.swPersonal.isChecked = it.getPermission("CS-NBA")
+            binding.swPersonal.isChecked = it.getPermission("CS-TPID")
         }
     }
 
@@ -65,7 +67,7 @@ class PermissionConsentDialogFragment : DialogFragment(R.layout.fragment_f_permi
 
         fun open(
             fm: FragmentManager,
-            acceptAction: (omPermissionAccepted: Boolean, optPermissionAccepted: Boolean, nbaPermissionAccepted: Boolean) -> Unit = { _, _, _ -> },
+            acceptAction: (omPermissionAccepted: Boolean, optPermissionAccepted: Boolean, nbaPermissionAccepted: Boolean, tpidPermissionAccepted: Boolean) -> Unit = { _, _, _, _ -> },
             rejectAction: (() -> Unit)
         ) {
             val dialogFragment = PermissionConsentDialogFragment()

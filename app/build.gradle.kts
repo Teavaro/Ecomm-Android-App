@@ -5,6 +5,7 @@ plugins {
     id(BuildSystem.plugins.extensions)
     id("com.google.gms.google-services")
     id("org.jetbrains.kotlin.android")
+    id("kotlin-kapt")
 }
 
 apply {
@@ -62,6 +63,11 @@ android {
             }
         }
     }
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
+    }
 }
 
 dependencies {
@@ -91,6 +97,16 @@ dependencies {
     implementation(BuildSystem.libraries.teavaroSDK)
     implementation(BuildSystem.libraries.googleServices)
 
+
+//    implementation("com.github.Teavaro.FunnelConnect-SDK:core:0.7.26")
+//    implementation("com.github.Teavaro.FunnelConnect-SDK:shared-test:0.7.26")
+//    implementation("com.github.Teavaro.FunnelConnect-SDK:utiq:0.7.26")
+//    implementation("com.github.Teavaro.FunnelConnect-SDK:funnelConnect:0.7.26")
+
+//    implementation("com.github.Teavaro.FunnelConnect-SDK:funnelConnect:0.7.42")
+//    implementation("com.github.Teavaro.FunnelConnect-SDK:utiq:0.7.42")
+
+
     //
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.3.1")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1")
@@ -100,8 +116,8 @@ dependencies {
 
     testImplementation("junit:junit:4.13.2")
 
-    val room_version = "2.3.0" // check latest version from docs
-
+    val room_version = "2.4.0-alpha03" // check latest version from docs
     implementation("androidx.room:room-runtime:$room_version")
     annotationProcessor("androidx.room:room-compiler:$room_version")
-}
+    kapt("androidx.room:room-compiler:$room_version")
+   }

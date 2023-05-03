@@ -18,6 +18,7 @@ import com.swrve.sdk.geo.SwrveGeoSDK
 import com.teavaro.ecommDemoApp.BuildConfig
 import com.teavaro.ecommDemoApp.R
 import com.teavaro.ecommDemoApp.core.Store
+import com.teavaro.ecommDemoApp.core.utils.TrackUtils
 import com.teavaro.funnelConnect.core.initializer.FunnelConnectSDK
 import com.teavaro.funnelConnect.data.models.dataClasses.FCOptions
 
@@ -29,7 +30,7 @@ class FCApplication: Application() {
         super.onCreate()
         this.initAppPolices()
         println("Teavaro:------------------initializing FunnelConnectSDK-${BuildConfig.VERSION_NAME}-------------")
-        FunnelConnectSDK.initialize(this, "R&Ai^v>TfqCz4Y^HH2?3uk8j", FCOptions(true))
+        FunnelConnectSDK.initialize(this, "ko8G.Rv_vT97LiDuoBHbhBJt", FCOptions(true))
         FirebaseApp.initializeApp(this)
         initSwrve()
     }
@@ -59,16 +60,16 @@ class FCApplication: Application() {
                     .largeIconDrawableId(R.drawable.grapes)
                     .accentColorHex("#3949AB")
             config.notificationConfig = notificationConfig.build()
-            config.notificationListener = SwrvePushNotificationListener {
-                val section = it.getJSONObject("New Group 1").getString("section")
-                Store.section = section
-//                Log.e("SwrveDemo", section)
-            }
+//            config.notificationListener = SwrvePushNotificationListener {
+//                val section = it.getJSONObject("New Group 1").getString("section")
+//                Store.section = section
+////                Log.e("SwrveDemo", section)
+//            }
             SwrveSDK.createInstance(this, 32153, "FiIpd4eZ8CtQ6carAAx9", config)
             //geo config
             val geoConfig = SwrveGeoConfig.Builder()
                 .geofenceTransitionListener { name: String?, transition: String?, triggerLocation: Location?, customProperties: String? ->
-                    FunnelConnectSDK.cdp().logEvent("entryGeoPlace", name.toString())
+                    TrackUtils.geoPlace(name.toString())
                 }
                 .build()
             SwrveGeoSDK.init(this, geoConfig)

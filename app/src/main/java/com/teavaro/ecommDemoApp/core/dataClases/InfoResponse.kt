@@ -1,4 +1,4 @@
-package com.teavaro.ecommDemoApp.core
+package com.teavaro.ecommDemoApp.core.dataClases
 
 data class InfoResponse(
     val umid: String? = null,

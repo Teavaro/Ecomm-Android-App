@@ -45,11 +45,10 @@
                     android:text="Explore Fresh" />
             </LinearLayout>
 
-            <WebView
+            <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/webView"
-                tools:ignore="WebViewLayout" />
+                android:id="@+id/webView"/>
 
             <TextView
                 style="@style/BoldText"

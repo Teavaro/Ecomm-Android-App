@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.teavaro.ecommDemoApp.core.Store
+import com.teavaro.ecommDemoApp.core.utils.TrackUtils
 import com.teavaro.ecommDemoApp.databinding.FragmentShopBinding
 import com.teavaro.funnelConnect.core.initializer.FunnelConnectSDK
 
@@ -23,7 +24,7 @@ class ShopFragment : Fragment() {
         val shopViewModel =
             ViewModelProvider(this).get(ShopViewModel::class.java)
 
-        FunnelConnectSDK.cdp().logEvent("Navigation", "shop")
+        TrackUtils.impression("shop_view")
 
         _binding = FragmentShopBinding.inflate(inflater, container, false)
         val root: View = binding.root
