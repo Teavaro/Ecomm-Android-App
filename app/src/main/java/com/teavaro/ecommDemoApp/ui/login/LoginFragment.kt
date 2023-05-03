@@ -11,6 +11,7 @@ import androidx.navigation.findNavController
 import com.swrve.sdk.SwrveSDK
 import com.teavaro.ecommDemoApp.R
 import com.teavaro.ecommDemoApp.core.Store
+import com.teavaro.ecommDemoApp.core.utils.SharedPreferenceUtils
 import com.teavaro.ecommDemoApp.core.utils.StringUtils.stringToSha256String
 import com.teavaro.ecommDemoApp.core.utils.TrackUtils
 import com.teavaro.ecommDemoApp.databinding.FragmentLoginBinding
@@ -46,7 +47,7 @@ class LoginFragment : Fragment() {
                 FunnelConnectSDK.cdp().setUser(FCUser("hemail", emailCoded),{
                     Store.infoResponse = it
                 })
-                Store.isLogin = true
+                SharedPreferenceUtils.setLogin(requireContext(), true)
                 root.findNavController().navigate(R.id.navigation_settings)
                 SwrveSDK.start(parentFragment?.activity, FunnelConnectSDK.cdp().getUmid())
                 Toast.makeText(context, "Login success!" + FunnelConnectSDK.cdp().getUmid(), Toast.LENGTH_SHORT).show()

@@ -16,4 +16,7 @@ interface AcDAO {
 
     @Query("SELECT * FROM ACEntity")
     fun getAllAcs(): List<ACEntity>
+
+    @Query("Delete from ACEntity")
+    fun removeAllAc()
 }

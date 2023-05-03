@@ -33,7 +33,7 @@ class SettingsFragment : Fragment() {
 
         TrackUtils.impression("settings_view")
 
-        if(Store.isLogin){
+        if(SharedPreferenceUtils.isLogin(requireContext())){
             binding.logOut.visibility = Button.VISIBLE
             binding.logIn.visibility = Button.GONE
         }
@@ -65,7 +65,7 @@ class SettingsFragment : Fragment() {
                 }
                 .setPositiveButton("Proceed") { _, _ ->
                     TrackUtils.click("proceed_logout")
-                    Store.isLogin = false
+                    SharedPreferenceUtils.setLogin(requireContext(), false)
                     root.findNavController().navigate(R.id.navigation_settings)
                     Toast.makeText(requireContext(), "Logout success!", Toast.LENGTH_SHORT).show()
                 }

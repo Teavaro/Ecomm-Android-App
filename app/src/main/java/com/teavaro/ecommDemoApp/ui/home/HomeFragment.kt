@@ -72,7 +72,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun loadAd() {
-        if(Store.webView == null) {
+//        if(Store.webView == null) {
             var webView = WebView(requireContext())
             val html = Store.getBanner()
             webView.webViewClient = object : WebViewClient() {
@@ -89,7 +89,7 @@ class HomeFragment : Fragment() {
                     parentFragmentManager
                 ), "Android"
             )
-            val content = webView.loadDataWithBaseURL(
+            webView.loadDataWithBaseURL(
                 "http://www.example.com/",
                 html,
                 "text/html",
@@ -97,12 +97,12 @@ class HomeFragment : Fragment() {
                 null
             )
             binding.webView.addView(webView)
-        }
-        else{
-            Store.webView?.let {
-                binding.webView.addView(it)
-            }
-        }
+//        }
+//        else{
+//            Store.webView?.let {
+//                binding.webView.addView(it)
+//            }
+//        }
     }
 
     override fun onPause() {

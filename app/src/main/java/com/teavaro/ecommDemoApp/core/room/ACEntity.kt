@@ -12,7 +12,7 @@ data class ACEntity(
     @Expose
     @ColumnInfo(name = "ac_id")
     @PrimaryKey
-    var acId: Int = 0,
+    var acId: Int = -1,
 )
 
 @Entity(primaryKeys = ["ac_id", "item_id"])

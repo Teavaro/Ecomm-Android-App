@@ -9,8 +9,6 @@
     android:layout_marginRight="20dp"
     tools:context=".ui.settings.SettingsFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/log_in"
         style="?android:attr/borderlessButtonStyle"

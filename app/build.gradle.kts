@@ -63,6 +63,11 @@ android {
             }
         }
     }
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
+    }
 }
 
 dependencies {
@@ -91,6 +96,16 @@ dependencies {
     implementation(BuildSystem.libraries.swrveGeo)
     implementation(BuildSystem.libraries.teavaroSDK)
     implementation(BuildSystem.libraries.googleServices)
+
+
+//    implementation("com.github.Teavaro.FunnelConnect-SDK:core:0.7.26")
+//    implementation("com.github.Teavaro.FunnelConnect-SDK:shared-test:0.7.26")
+//    implementation("com.github.Teavaro.FunnelConnect-SDK:utiq:0.7.26")
+//    implementation("com.github.Teavaro.FunnelConnect-SDK:funnelConnect:0.7.26")
+
+//    implementation("com.github.Teavaro.FunnelConnect-SDK:funnelConnect:0.7.42")
+//    implementation("com.github.Teavaro.FunnelConnect-SDK:utiq:0.7.42")
+
 
     //
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.3.1")

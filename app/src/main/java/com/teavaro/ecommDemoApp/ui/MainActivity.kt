@@ -5,11 +5,13 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.Drawable
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toolbar
+import androidx.annotation.RequiresApi
 import androidx.core.graphics.drawable.DrawableCompat
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -53,6 +55,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
                 R.id.navigation_settings
             )
         )
+
         setupActionBarWithNavController(this.navController, appBarConfiguration)
         navView.setupWithNavController(this.navController)
         supportActionBar?.setDisplayShowHomeEnabled(true)
@@ -61,7 +64,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
             supportActionBar?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT));
         }
 
-        Store.initializeData(db){
+        Store.initializeData(db) {
             this@MainActivity.runOnUiThread {
                 navController.navigate(it)
             }
@@ -88,6 +91,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
         handleIntent(intent)
     }
 
+    @RequiresApi(Build.VERSION_CODES.M)
     fun setOverflowButtonColor(toolbar: Toolbar, color: Int) {
         var drawable: Drawable? = toolbar.overflowIcon
         if (drawable != null) {

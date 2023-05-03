@@ -1,6 +1,8 @@
 package com.teavaro.ecommDemoApp.core
 
+import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
 import android.net.Uri
 import android.util.Log
 import android.webkit.WebView
@@ -19,9 +21,9 @@ import com.teavaro.ecommDemoApp.ui.PermissionConsentDialogFragment
 import com.teavaro.funnelConnect.core.initializer.FunnelConnectSDK
 import com.teavaro.funnelConnect.utils.platformTypes.permissionsMap.PermissionsMap
 import org.json.JSONObject
-import kotlin.collections.ArrayList
 
 
+@SuppressLint("StaticFieldLeak")
 object Store {
     private var db: AppDb? = null
     var listItems: ArrayList<ItemEntity> = ArrayList()
@@ -30,7 +32,6 @@ object Store {
     var listWish: ArrayList<ItemEntity> = ArrayList()
     var listAc : ArrayList<ACEntity> = ArrayList()
     var section = "none"
-    var isLogin = false
     var webView: WebView? = null
     var navigateAction: ((Int) -> Unit)? = null
     var infoResponse: String? = null
@@ -146,9 +147,10 @@ object Store {
             {
                 FunnelConnectSDK.trustPid().rejectConsent()
                 val permissions = PermissionsMap()
-                permissions.addPermission("CS-TMI", false)
+                permissions.addPermission("CS-OM", false)
                 permissions.addPermission("CS-OPT", false)
                 permissions.addPermission("CS-NBA", false)
+                permissions.addPermission("CS-TPID", false)
                 FunnelConnectSDK.cdp()
                     .updatePermissions(permissions, notificationName, notificationVersion)
             })
@@ -186,12 +188,16 @@ object Store {
             }
 
         }
+        FunnelConnectSDK.cdp().getUserId()?.let {user_id ->
+            text += "&amp;rp.user.userId=$user_id"
+        }
         text += "&amp;device=android"
         text += "&amp;impression=offer"
         getAbCartId()?.let {
+//            Log.d("iraniran:acid", it.toString())
             text += "&amp;ab_cart_id=$it"
         }
-        Log.d("iran:attr", text)
+//        Log.d("iran:attr", text)
         return """
            <!DOCTYPE html>
            <html>
@@ -225,6 +231,7 @@ object Store {
         this.db = db
         Thread {
 //            db.itemDao().removeAllItems()
+//            db.acDao().removeAllAc()
             if (db.itemDao().getAllItems().isEmpty()) {
                 db.itemDao().saveItems(ItemEntity(0,"Jacob’s Baked Crinklys Cheese",description,60.00f,"crinklys",true))
                 db.itemDao().saveItems(ItemEntity(1, "Pork Cocktail Sausages, Pack", description, 54.00f, "pork", true, false, acId = 123))
@@ -240,11 +247,16 @@ object Store {
             }
             listItems = db.itemDao().getAllItems() as ArrayList<ItemEntity>
             this.listAc = db.acDao().getAllAcs() as ArrayList<ACEntity>
+//            var teto = ""
+//            for(ac in this.listAc){
+//                teto += "${ac.acId}, "
+//            }
+//            Log.d("iraniranListAc", teto)
             listOffers = getItemsOffer()
             if(section == "none")
                 action.invoke(R.id.navigation_home)
             section = ""
-            Log.d("iraniran", "section:navigation_home")
+//            Log.d("iraniran", "section:navigation_home")
         }.start()
     }
 
@@ -263,8 +275,18 @@ object Store {
                 }
                 if(!attr.isNull("ab_cart_id")) {
                     attr.getString("ab_cart_id")?.let {
-                        refreshAcItems(it.toInt()){ list ->
-                            showAbandonedCartDialog(supportFragmentManager, list)
+                        if(it != "-1")
+//                            Log.d("iraniran:acid", it)
+                            refreshAcItems(it.toInt()){ list ->
+                                showAbandonedCartDialog(supportFragmentManager, list)
+                            }
+                    }
+                }
+                if(!attr.isNull("ident_url")) {
+                    attr.getString("ident_url")?.let { url ->
+                        if(FunnelConnectSDK.cdp().getUserId() != null) {
+                            val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+                            context.startActivity(browserIntent)
                         }
                     }
                 }
@@ -345,7 +367,8 @@ object Store {
 
     fun getAbCartId(): Int? {
         if(this.listAc.isNotEmpty()){
-            return listAc.last().acId
+//            Log.d("iraniranCountAc", this.listAc.size.toString())
+            return this.listAc.last().acId
         }
         return null
     }
