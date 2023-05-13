@@ -1,4 +1,4 @@
-package com.teavaro.ecommDemoApp.ui.login
+package com.teavaro.ecommDemoApp.ui.notifications
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

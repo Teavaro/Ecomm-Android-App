@@ -13,6 +13,7 @@ object PushNotification {
     private const val paprikaKeyCampaign = "27e0048f-1200-44be-b3e1-fed6eecd437a"
     private const val watermelonKeyCampaign = "76066617-d885-47c0-a01d-04d00381f254"
     private const val acKeyCampaign = "cf0d9bc0-cf5e-4687-b5d2-c75d0ddc8245"
+    private const val identClickKeyCampaign = "47399c46-d27c-4679-97b8-70e0bc5dc91d"
     private const val URL = "https://service.swrve.com/push"
 
     fun send(address: String, action: (()->Unit)) {
@@ -49,6 +50,12 @@ object PushNotification {
     fun sendAbandonedCart(user: String, action: (()->Unit)) {
         Store.getAbCartId()?.let {
             send("$URL?push_key=$acKeyCampaign&user=$user&data_template={\"ab_cart_id\":\"$it\"}", action)
+        }
+    }
+
+    fun sendIdentClick(user: String, action: (()->Unit)) {
+        Store.getUserId()?.let {
+            send("$URL?push_key=$identClickKeyCampaign&user=$user&data_template={\"userr_id\":\"$it\"}", action)
         }
     }
 

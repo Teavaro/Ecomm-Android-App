@@ -43,12 +43,20 @@ class SettingsFragment : Fragment() {
         }
 
         binding.clearData.setOnClickListener{
-            clearData()
+            clearData(root)
             Toast.makeText(requireContext(), "Data cleared!", Toast.LENGTH_LONG).show()
         }
 
         binding.notifications.setOnClickListener {
             root.findNavController().navigate(R.id.navigation_notifications)
+        }
+
+        binding.ids.setOnClickListener {
+            root.findNavController().navigate(R.id.navigation_ids)
+        }
+
+        binding.email.setOnClickListener {
+            root.findNavController().navigate(R.id.navigation_email)
         }
 
         binding.logIn.setOnClickListener {
@@ -78,7 +86,7 @@ class SettingsFragment : Fragment() {
 
         binding.stubMode.isChecked = SharedPreferenceUtils.isStubMode(requireContext())
         binding.stubMode.setOnCheckedChangeListener { _, isStub ->
-            clearData()
+            clearData(root)
             SharedPreferenceUtils.setStubMode(requireContext(), isStub)
             Store.showPermissionsDialog(requireContext() ,parentFragmentManager)
         }
@@ -91,8 +99,10 @@ class SettingsFragment : Fragment() {
         _binding = null
     }
 
-    private fun clearData(){
+    private fun clearData(root: View){
         FunnelConnectSDK.clearData()
         FunnelConnectSDK.clearCookies()
+        SharedPreferenceUtils.setLogin(requireContext(),false)
+        root.findNavController().navigate(R.id.navigation_settings)
     }
 }

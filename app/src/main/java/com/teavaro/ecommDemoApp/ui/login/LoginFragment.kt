@@ -15,6 +15,7 @@ import com.teavaro.ecommDemoApp.core.utils.SharedPreferenceUtils
 import com.teavaro.ecommDemoApp.core.utils.StringUtils.stringToSha256String
 import com.teavaro.ecommDemoApp.core.utils.TrackUtils
 import com.teavaro.ecommDemoApp.databinding.FragmentLoginBinding
+import com.teavaro.ecommDemoApp.ui.notifications.NotificationsViewModel
 import com.teavaro.funnelConnect.core.initializer.FunnelConnectSDK
 import com.teavaro.funnelConnect.data.models.dataClasses.FCUser
 

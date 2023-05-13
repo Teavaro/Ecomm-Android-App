@@ -6,6 +6,7 @@ import android.content.Intent
 import android.net.Uri
 import android.util.Log
 import android.webkit.WebView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentManager
 import com.google.gson.Gson
@@ -264,6 +265,23 @@ object Store {
         var obj = JSONObject(data)
         obj?.let { ob ->
             ob.getJSONObject("attributes")?.let { attr ->
+                if(!attr.isNull("impression")) {
+                    attr.getString("impression")?.let { impression ->
+                        if(impression == "ShopView"){
+                            section = "ShopView"
+                            navigateAction?.let {
+                                it.invoke(R.id.navigation_shop)
+                            }
+                        }
+                        if(impression == "AbCartView" && listAc.isEmpty()) {
+                            Toast.makeText(
+                                context,
+                                "There isn't abandoned items.",
+                                Toast.LENGTH_LONG
+                            ).show()
+                        }
+                    }
+                }
                 if(!attr.isNull("item_id")) {
                     attr.getString("item_id")?.let {
                         ItemDescriptionDialogFragment.open((context as AppCompatActivity).supportFragmentManager, listItems[it.toInt()], {
@@ -275,11 +293,11 @@ object Store {
                 }
                 if(!attr.isNull("ab_cart_id")) {
                     attr.getString("ab_cart_id")?.let {
-                        if(it != "-1")
-//                            Log.d("iraniran:acid", it)
-                            refreshAcItems(it.toInt()){ list ->
+                        if(it != "-1") {
+                            refreshAcItems(it.toInt()) { list ->
                                 showAbandonedCartDialog(supportFragmentManager, list)
                             }
+                        }
                     }
                 }
                 if(!attr.isNull("ident_url")) {
@@ -288,16 +306,8 @@ object Store {
                             val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
                             context.startActivity(browserIntent)
                         }
-                    }
-                }
-                if(!attr.isNull("impression")) {
-                    attr.getString("impression")?.let { impression ->
-                        if(impression == "ShopView"){
-                            section = "ShopView"
-                            navigateAction?.let {
-                                it.invoke(R.id.navigation_shop)
-                            }
-                        }
+                        else
+                            Toast.makeText(context, "Log in first please.", Toast.LENGTH_LONG).show()
                     }
                 }
             }
@@ -371,5 +381,9 @@ object Store {
             return this.listAc.last().acId
         }
         return null
+    }
+
+    fun getUserId(): String?{
+        return FunnelConnectSDK.cdp().getUserId()
     }
 }

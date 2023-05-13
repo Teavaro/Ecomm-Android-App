@@ -10,6 +10,15 @@
     tools:context=".ui.notifications.NotificationsFragment">
 
     <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/identClick"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Ident Click campaign"
+        android:textAlignment="textStart"
+        android:textColor="@color/orange" />
+
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/abandonedCart"
         style="?android:attr/borderlessButtonStyle"
         android:layout_width="match_parent"

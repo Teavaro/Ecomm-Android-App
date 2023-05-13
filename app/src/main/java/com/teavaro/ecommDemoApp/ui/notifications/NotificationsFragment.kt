@@ -10,7 +10,6 @@ import androidx.lifecycle.ViewModelProvider
 import com.teavaro.ecommDemoApp.core.utils.PushNotification
 import com.teavaro.ecommDemoApp.core.utils.TrackUtils
 import com.teavaro.ecommDemoApp.databinding.FragmentNotificationsBinding
-import com.teavaro.ecommDemoApp.ui.login.NotificationsViewModel
 import com.teavaro.funnelConnect.core.initializer.FunnelConnectSDK
 
 
@@ -70,6 +69,14 @@ class NotificationsFragment : Fragment() {
         binding.abandonedCart.setOnClickListener {
             FunnelConnectSDK.cdp().getUmid()?.let {
                 PushNotification.sendAbandonedCart(it){
+                    Toast.makeText(requireContext(), "Notification sent!", Toast.LENGTH_LONG).show()
+                }
+            }
+        }
+
+        binding.identClick.setOnClickListener {
+            FunnelConnectSDK.cdp().getUmid()?.let {
+                PushNotification.sendIdentClick(it){
                     Toast.makeText(requireContext(), "Notification sent!", Toast.LENGTH_LONG).show()
                 }
             }
