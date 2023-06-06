@@ -11,7 +11,6 @@ import com.teavaro.ecommDemoApp.core.Store
 import com.teavaro.ecommDemoApp.core.room.ItemEntity
 import com.teavaro.ecommDemoApp.core.utils.TrackUtils
 import com.teavaro.ecommDemoApp.ui.ItemDescriptionDialogFragment
-import com.teavaro.funnelConnect.core.initializer.FunnelConnectSDK
 import kotlinx.android.synthetic.main.item_shop.view.*
 
 class ShopAdapter(context: Context,

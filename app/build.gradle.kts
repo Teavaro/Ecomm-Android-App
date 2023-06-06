@@ -68,6 +68,12 @@ android {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
+    kotlinOptions {
+        jvmTarget = "11"
+    }
+    kotlin {
+        jvmToolchain(11)
+    }
 }
 
 dependencies {
@@ -94,16 +100,11 @@ dependencies {
     releaseImplementation(BuildSystem.libraries.hyperionNoop)
     implementation(BuildSystem.libraries.swrve)
     implementation(BuildSystem.libraries.swrveGeo)
-    implementation(BuildSystem.libraries.teavaroSDK)
+//    implementation(BuildSystem.libraries.teavaroSDK)
     implementation(BuildSystem.libraries.googleServices)
 
-
-//    implementation("com.github.Teavaro.FunnelConnect-SDK:core:0.7.26")
-//    implementation("com.github.Teavaro.FunnelConnect-SDK:shared-test:0.7.26")
-//    implementation("com.github.Teavaro.FunnelConnect-SDK:utiq:0.7.26")
-//    implementation("com.github.Teavaro.FunnelConnect-SDK:funnelConnect:0.7.26")
-
-//    implementation("com.github.Teavaro.FunnelConnect-SDK:funnelConnect:0.7.42")
+//    implementation("com.github.Teavaro.FunnelConnect-SDK:core:0.7.42")
+    implementation("com.github.Teavaro.FunnelConnect-Mobile-SDK:funnelConnect:0.0.2")
 //    implementation("com.github.Teavaro.FunnelConnect-SDK:utiq:0.7.42")
 
 

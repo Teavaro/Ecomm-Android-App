@@ -28,7 +28,7 @@ import com.teavaro.ecommDemoApp.core.room.AppDb
 import com.teavaro.ecommDemoApp.core.utils.SharedPreferenceUtils
 import com.teavaro.ecommDemoApp.core.utils.TrackUtils
 import com.teavaro.ecommDemoApp.databinding.ActivityMainBinding
-import com.teavaro.funnelConnect.core.initializer.FunnelConnectSDK
+import com.teavaro.funnelConnect.initializer.FunnelConnectSDK
 
 class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::inflate) {
 
@@ -71,16 +71,16 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
         }
 
         FunnelConnectSDK.onInitialize({
-            if (FunnelConnectSDK.trustPid().isConsentAccepted()) {
-                val isStub = SharedPreferenceUtils.isStubMode(this)
-                FunnelConnectSDK.trustPid().startService(isStub)
-            }
-            FunnelConnectSDK.cdp()
+//            if (FunnelConnectSDK.trustPid().isConsentAccepted()) {
+//                val isStub = SharedPreferenceUtils.isStubMode(this)
+//                FunnelConnectSDK.trustPid().startService(isStub)
+//            }
+            FunnelConnectSDK
                 .startService(null, Store.notificationName, Store.notificationVersion, {
                     Store.infoResponse = it
-                    if (FunnelConnectSDK.cdp().getPermissions().isEmpty())
+                    if (FunnelConnectSDK.getPermissions().isEmpty())
                         Store.showPermissionsDialog(this, supportFragmentManager)
-                    SwrveSDK.start(this, FunnelConnectSDK.cdp().getUmid())
+                    SwrveSDK.start(this, FunnelConnectSDK.getUMID())
                     SwrveGeoSDK.start(this)
                 },
                     {

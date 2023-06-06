@@ -15,11 +15,12 @@ import com.teavaro.ecommDemoApp.core.dataClases.InfoResponse
 import com.teavaro.ecommDemoApp.core.room.ACEntity
 import com.teavaro.ecommDemoApp.core.room.AppDb
 import com.teavaro.ecommDemoApp.core.room.ItemEntity
-import com.teavaro.ecommDemoApp.core.utils.SharedPreferenceUtils
+//import com.teavaro.ecommDemoApp.core.utils.SharedPreferenceUtils
 import com.teavaro.ecommDemoApp.ui.AbandonedCartDialogFragment
 import com.teavaro.ecommDemoApp.ui.ItemDescriptionDialogFragment
 import com.teavaro.ecommDemoApp.ui.PermissionConsentDialogFragment
-import com.teavaro.funnelConnect.core.initializer.FunnelConnectSDK
+//import com.teavaro.funnelConnect.core.initializer.FunnelConnectSDK
+import com.teavaro.funnelConnect.initializer.FunnelConnectSDK
 import com.teavaro.funnelConnect.utils.platformTypes.permissionsMap.PermissionsMap
 import org.json.JSONObject
 
@@ -136,23 +137,23 @@ object Store {
                 permissions.addPermission("CS-OPT", optPermissionAccepted)
                 permissions.addPermission("CS-NBA", nbaPermissionAccepted)
                 permissions.addPermission("CS-TPID", tpidPermissionAccepted)
-                FunnelConnectSDK.cdp()
+                FunnelConnectSDK
                     .updatePermissions(permissions, notificationName, notificationVersion)
-                if (nbaPermissionAccepted) {
-                    FunnelConnectSDK.trustPid().acceptConsent()
-                    val isStub = SharedPreferenceUtils.isStubMode(context)
-                    FunnelConnectSDK.trustPid().startService(isStub)
-                } else
-                    FunnelConnectSDK.trustPid().rejectConsent()
+//                if (nbaPermissionAccepted) {
+//                    FunnelConnectSDK.trustPid().acceptConsent()
+//                    val isStub = SharedPreferenceUtils.isStubMode(context)
+//                    FunnelConnectSDK.trustPid().startService(isStub)
+//                } else
+//                    FunnelConnectSDK.trustPid().rejectConsent()
             },
             {
-                FunnelConnectSDK.trustPid().rejectConsent()
+//                FunnelConnectSDK.trustPid().rejectConsent()
                 val permissions = PermissionsMap()
                 permissions.addPermission("CS-OM", false)
                 permissions.addPermission("CS-OPT", false)
                 permissions.addPermission("CS-NBA", false)
                 permissions.addPermission("CS-TPID", false)
-                FunnelConnectSDK.cdp()
+                FunnelConnectSDK
                     .updatePermissions(permissions, notificationName, notificationVersion)
             })
     }
@@ -189,7 +190,7 @@ object Store {
             }
 
         }
-        FunnelConnectSDK.cdp().getUserId()?.let {user_id ->
+        FunnelConnectSDK.getUserId()?.let {user_id ->
             text += "&amp;rp.user.userId=$user_id"
         }
         text += "&amp;device=android"
@@ -302,7 +303,7 @@ object Store {
                 }
                 if(!attr.isNull("ident_url")) {
                     attr.getString("ident_url")?.let { url ->
-                        if(FunnelConnectSDK.cdp().getUserId() != null) {
+                        if(FunnelConnectSDK.getUserId() != null) {
                             val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
                             context.startActivity(browserIntent)
                         }
@@ -384,6 +385,6 @@ object Store {
     }
 
     fun getUserId(): String?{
-        return FunnelConnectSDK.cdp().getUserId()
+        return FunnelConnectSDK.getUserId()
     }
 }

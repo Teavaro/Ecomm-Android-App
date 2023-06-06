@@ -19,8 +19,8 @@ import com.teavaro.ecommDemoApp.BuildConfig
 import com.teavaro.ecommDemoApp.R
 import com.teavaro.ecommDemoApp.core.Store
 import com.teavaro.ecommDemoApp.core.utils.TrackUtils
-import com.teavaro.funnelConnect.core.initializer.FunnelConnectSDK
-import com.teavaro.funnelConnect.data.models.dataClasses.FCOptions
+import com.teavaro.funnelConnect.data.models.FCOptions
+import com.teavaro.funnelConnect.initializer.FunnelConnectSDK
 
 
 @Suppress("unused")

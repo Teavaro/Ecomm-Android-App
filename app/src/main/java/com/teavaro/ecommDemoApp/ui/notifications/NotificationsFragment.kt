@@ -10,7 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.teavaro.ecommDemoApp.core.utils.PushNotification
 import com.teavaro.ecommDemoApp.core.utils.TrackUtils
 import com.teavaro.ecommDemoApp.databinding.FragmentNotificationsBinding
-import com.teavaro.funnelConnect.core.initializer.FunnelConnectSDK
+import com.teavaro.funnelConnect.initializer.FunnelConnectSDK
 
 
 class NotificationsFragment : Fragment() {
@@ -35,7 +35,7 @@ class NotificationsFragment : Fragment() {
         val root: View = binding.root
 
         binding.crinklys.setOnClickListener {
-            FunnelConnectSDK.cdp().getUmid()?.let {
+            FunnelConnectSDK.getUMID()?.let {
                 PushNotification.sendCrilklys(it){
                     Toast.makeText(requireContext(), "Notification sent!", Toast.LENGTH_LONG).show()
                 }
@@ -43,7 +43,7 @@ class NotificationsFragment : Fragment() {
         }
 
         binding.watermelon.setOnClickListener {
-            FunnelConnectSDK.cdp().getUmid()?.let {
+            FunnelConnectSDK.getUMID()?.let {
                 PushNotification.sendWatermelon(it){
                     Toast.makeText(requireContext(), "Notification sent!", Toast.LENGTH_LONG).show()
                 }
@@ -51,7 +51,7 @@ class NotificationsFragment : Fragment() {
         }
 
         binding.paprika.setOnClickListener {
-            FunnelConnectSDK.cdp().getUmid()?.let {
+            FunnelConnectSDK.getUMID()?.let {
                 PushNotification.sendPaprika(it){
                     Toast.makeText(requireContext(), "Notification sent!", Toast.LENGTH_LONG).show()
                 }
@@ -59,7 +59,7 @@ class NotificationsFragment : Fragment() {
         }
 
         binding.shop.setOnClickListener {
-            FunnelConnectSDK.cdp().getUmid()?.let {
+            FunnelConnectSDK.getUMID()?.let {
                 PushNotification.sendShop(it){
                     Toast.makeText(requireContext(), "Notification sent!", Toast.LENGTH_LONG).show()
                 }
@@ -67,7 +67,7 @@ class NotificationsFragment : Fragment() {
         }
 
         binding.abandonedCart.setOnClickListener {
-            FunnelConnectSDK.cdp().getUmid()?.let {
+            FunnelConnectSDK.getUMID()?.let {
                 PushNotification.sendAbandonedCart(it){
                     Toast.makeText(requireContext(), "Notification sent!", Toast.LENGTH_LONG).show()
                 }
@@ -75,7 +75,7 @@ class NotificationsFragment : Fragment() {
         }
 
         binding.identClick.setOnClickListener {
-            FunnelConnectSDK.cdp().getUmid()?.let {
+            FunnelConnectSDK.getUMID()?.let {
                 PushNotification.sendIdentClick(it){
                     Toast.makeText(requireContext(), "Notification sent!", Toast.LENGTH_LONG).show()
                 }

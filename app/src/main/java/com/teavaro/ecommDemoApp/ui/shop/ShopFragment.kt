@@ -9,7 +9,6 @@ import androidx.lifecycle.ViewModelProvider
 import com.teavaro.ecommDemoApp.core.Store
 import com.teavaro.ecommDemoApp.core.utils.TrackUtils
 import com.teavaro.ecommDemoApp.databinding.FragmentShopBinding
-import com.teavaro.funnelConnect.core.initializer.FunnelConnectSDK
 
 class ShopFragment : Fragment() {
 

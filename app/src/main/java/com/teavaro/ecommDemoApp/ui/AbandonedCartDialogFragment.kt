@@ -14,7 +14,6 @@ import com.teavaro.ecommDemoApp.core.room.ItemEntity
 import com.teavaro.ecommDemoApp.core.utils.TrackUtils
 import com.teavaro.ecommDemoApp.databinding.FragmentAbandonedCartDialogBinding
 import com.teavaro.ecommDemoApp.ui.shop.ShopAdapter
-import com.teavaro.funnelConnect.core.initializer.FunnelConnectSDK
 
 class AbandonedCartDialogFragment(private var items: List<ItemEntity>) : DialogFragment(R.layout.fragment_abandoned_cart_dialog) {
 

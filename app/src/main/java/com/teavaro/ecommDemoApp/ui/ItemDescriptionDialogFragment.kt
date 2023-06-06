@@ -12,7 +12,6 @@ import com.teavaro.ecommDemoApp.core.room.ItemEntity
 import com.teavaro.ecommDemoApp.core.utils.TrackUtils
 import com.teavaro.ecommDemoApp.databinding.FragmentFItemDescriptionBinding
 import com.teavaro.ecommDemoApp.viewBinding
-import com.teavaro.funnelConnect.core.initializer.FunnelConnectSDK
 
 class ItemDescriptionDialogFragment(item: ItemEntity) :
     DialogFragment(R.layout.fragment_f_item_description) {

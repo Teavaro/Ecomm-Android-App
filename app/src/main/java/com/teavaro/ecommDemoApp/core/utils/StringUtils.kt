@@ -4,12 +4,11 @@ import android.content.ClipData
 import android.content.Context
 import android.os.Build
 import android.text.ClipboardManager
-import com.teavaro.funnelConnect.utils.stringUtils.IStringUtils
 import java.net.URLDecoder
 import java.nio.charset.StandardCharsets
 import java.security.MessageDigest
 
-internal object StringUtils: IStringUtils {
+internal object StringUtils {
 
     fun stringToSha256String(string: String): String {
         val bytes = MessageDigest.getInstance("SHA-256").digest(string.encodeToByteArray())
