@@ -1,6 +1,8 @@
 package com.teavaro.ecommDemoApp.core.utils
 
+import android.widget.Toast
 import androidx.lifecycle.*
+import com.teavaro.ecommDemoApp.ui.FCApplication
 import com.teavaro.funnelConnect.initializer.FunnelConnectSDK
 
 object TrackUtils  : LifecycleObserver {
@@ -10,7 +12,11 @@ object TrackUtils  : LifecycleObserver {
     const val ABANDONED_CART_ID = "abandoned_cart_id"
 
     fun impression(value: String) {
-        FunnelConnectSDK.logEvent(IMPRESSION, value)
+        FunnelConnectSDK.onInitialize({
+            FunnelConnectSDK.logEvent(IMPRESSION, value)
+        }, {
+            Toast.makeText(FCApplication.instance, it.message, Toast.LENGTH_LONG).show()
+        })
     }
 
     fun click(value: String){

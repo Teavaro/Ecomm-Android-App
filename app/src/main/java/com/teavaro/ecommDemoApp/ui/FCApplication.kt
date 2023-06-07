@@ -10,14 +10,12 @@ import android.util.Log
 import com.google.firebase.FirebaseApp
 import com.swrve.sdk.SwrveInitMode
 import com.swrve.sdk.SwrveNotificationConfig
-import com.swrve.sdk.SwrvePushNotificationListener
 import com.swrve.sdk.SwrveSDK
 import com.swrve.sdk.config.SwrveConfig
 import com.swrve.sdk.geo.SwrveGeoConfig
 import com.swrve.sdk.geo.SwrveGeoSDK
 import com.teavaro.ecommDemoApp.BuildConfig
 import com.teavaro.ecommDemoApp.R
-import com.teavaro.ecommDemoApp.core.Store
 import com.teavaro.ecommDemoApp.core.utils.TrackUtils
 import com.teavaro.funnelConnect.data.models.FCOptions
 import com.teavaro.funnelConnect.initializer.FunnelConnectSDK
@@ -26,8 +24,13 @@ import com.teavaro.funnelConnect.initializer.FunnelConnectSDK
 @Suppress("unused")
 class FCApplication: Application() {
 
+    companion object {
+        lateinit var instance: Context
+    }
+
     override fun onCreate() {
         super.onCreate()
+        instance = this
         this.initAppPolices()
         println("Teavaro:------------------initializing FunnelConnectSDK-${BuildConfig.VERSION_NAME}-------------")
         FunnelConnectSDK.initialize(this, "ko8G.Rv_vT97LiDuoBHbhBJt", FCOptions(true))

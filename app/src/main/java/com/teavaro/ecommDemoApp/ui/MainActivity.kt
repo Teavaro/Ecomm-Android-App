@@ -10,6 +10,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Toast
 import android.widget.Toolbar
 import androidx.annotation.RequiresApi
 import androidx.core.graphics.drawable.DrawableCompat
@@ -86,8 +87,8 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
                     {
                     })
         }) {
+            Toast.makeText(FCApplication.instance, it.message, Toast.LENGTH_LONG).show()
         }
-
         handleIntent(intent)
     }
 

@@ -17,13 +17,12 @@ import com.teavaro.ecommDemoApp.core.room.AppDb
 import com.teavaro.ecommDemoApp.core.room.ItemEntity
 //import com.teavaro.ecommDemoApp.core.utils.SharedPreferenceUtils
 import com.teavaro.ecommDemoApp.ui.AbandonedCartDialogFragment
+import com.teavaro.ecommDemoApp.ui.FCApplication
 import com.teavaro.ecommDemoApp.ui.ItemDescriptionDialogFragment
 import com.teavaro.ecommDemoApp.ui.PermissionConsentDialogFragment
-//import com.teavaro.funnelConnect.core.initializer.FunnelConnectSDK
 import com.teavaro.funnelConnect.initializer.FunnelConnectSDK
 import com.teavaro.funnelConnect.utils.platformTypes.permissionsMap.PermissionsMap
 import org.json.JSONObject
-
 
 @SuppressLint("StaticFieldLeak")
 object Store {
@@ -153,8 +152,7 @@ object Store {
                 permissions.addPermission("CS-OPT", false)
                 permissions.addPermission("CS-NBA", false)
                 permissions.addPermission("CS-TPID", false)
-                FunnelConnectSDK
-                    .updatePermissions(permissions, notificationName, notificationVersion)
+                FunnelConnectSDK.updatePermissions(permissions, notificationName, notificationVersion)
             })
     }
 
@@ -190,9 +188,13 @@ object Store {
             }
 
         }
-        FunnelConnectSDK.getUserId()?.let {user_id ->
-            text += "&amp;rp.user.userId=$user_id"
-        }
+        FunnelConnectSDK.onInitialize({
+            FunnelConnectSDK.getUserId()?.let {user_id ->
+                text += "&amp;rp.user.userId=$user_id"
+            }
+        }, {
+            Toast.makeText(FCApplication.instance, it.message, Toast.LENGTH_LONG).show()
+        })
         text += "&amp;device=android"
         text += "&amp;impression=offer"
         getAbCartId()?.let {
