@@ -16,7 +16,7 @@ import com.teavaro.ecommDemoApp.core.Store
 import com.teavaro.ecommDemoApp.core.utils.PushNotification
 import com.teavaro.ecommDemoApp.core.utils.TrackUtils
 import com.teavaro.ecommDemoApp.databinding.FragmentSettingsBinding
-import com.teavaro.funnelConnect.initializer.FunnelConnectSDK
+//import com.teavaro.funnelConnect.initializer.FunnelConnectSDK
 
 class SettingsFragment : Fragment() {
 
@@ -100,8 +100,8 @@ class SettingsFragment : Fragment() {
     }
 
     private fun clearData(root: View){
-        FunnelConnectSDK.clearData()
-        FunnelConnectSDK.clearCookies()
+//        FunnelConnectSDK.clearData()
+//        FunnelConnectSDK.clearCookies()
         SharedPreferenceUtils.setLogin(requireContext(),false)
         root.findNavController().navigate(R.id.navigation_settings)
     }

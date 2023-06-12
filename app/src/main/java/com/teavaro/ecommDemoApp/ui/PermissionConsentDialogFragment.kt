@@ -10,7 +10,7 @@ import com.teavaro.ecommDemoApp.R
 import com.teavaro.ecommDemoApp.core.utils.TrackUtils
 import com.teavaro.ecommDemoApp.databinding.FragmentFPermissionsConsentBinding
 import com.teavaro.ecommDemoApp.viewBinding
-import com.teavaro.funnelConnect.initializer.FunnelConnectSDK
+//import com.teavaro.funnelConnect.initializer.FunnelConnectSDK
 
 class PermissionConsentDialogFragment : DialogFragment(R.layout.fragment_f_permissions_consent) {
 
@@ -55,12 +55,12 @@ class PermissionConsentDialogFragment : DialogFragment(R.layout.fragment_f_permi
     }
 
     private fun initialPresets() {
-        FunnelConnectSDK.getPermissions().let {
-            binding.swCookies.isChecked = it.getPermission("CS-OM")
-            binding.swNetwork.isChecked = it.getPermission("CS-OPT")
-            binding.swPersonal.isChecked = it.getPermission("CS-NBA")
-            binding.swPersonal.isChecked = it.getPermission("CS-TPID")
-        }
+//        FunnelConnectSDK.getPermissions().let {
+//            binding.swCookies.isChecked = it.getPermission("CS-OM")
+//            binding.swNetwork.isChecked = it.getPermission("CS-OPT")
+//            binding.swPersonal.isChecked = it.getPermission("CS-NBA")
+//            binding.swPersonal.isChecked = it.getPermission("CS-TPID")
+//        }
     }
 
     companion object {

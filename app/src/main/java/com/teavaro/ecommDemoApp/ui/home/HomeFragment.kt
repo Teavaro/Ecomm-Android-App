@@ -2,6 +2,7 @@ package com.teavaro.ecommDemoApp.ui.home
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,6 +10,7 @@ import android.webkit.JavascriptInterface
 import android.webkit.ValueCallback
 import android.webkit.WebView
 import android.webkit.WebViewClient
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.ViewModelProvider
@@ -17,9 +19,14 @@ import com.teavaro.ecommDemoApp.R
 import com.teavaro.ecommDemoApp.core.Store
 import com.teavaro.ecommDemoApp.core.utils.TrackUtils
 import com.teavaro.ecommDemoApp.databinding.FragmentHomeBinding
+import com.teavaro.ecommDemoApp.ui.FCApplication
 import com.teavaro.ecommDemoApp.ui.shop.ShopAdapter
+//import com.teavaro.initializer.UTIQ
+//import com.teavaro.funnelConnect.initializer.FunnelConnectSDK
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_home.view.*
+import java.io.IOException
+import java.lang.Exception
 
 
 class HomeFragment : Fragment() {
@@ -38,10 +45,10 @@ class HomeFragment : Fragment() {
         val homeViewModel =
             ViewModelProvider(this).get(HomeViewModel::class.java)
 
-        TrackUtils.impression("home_view")
-
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
+
+        TrackUtils.impression("home_view")
 
         var list = Store.listOffers
         val shopAdapter = ShopAdapter(requireContext(), list)

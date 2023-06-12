@@ -11,7 +11,7 @@ import com.teavaro.ecommDemoApp.core.utils.TrackUtils
 import com.teavaro.ecommDemoApp.databinding.FragmentEmailsBinding
 import com.teavaro.ecommDemoApp.databinding.FragmentIdsBinding
 import com.teavaro.ecommDemoApp.ui.notifications.NotificationsViewModel
-import com.teavaro.funnelConnect.initializer.FunnelConnectSDK
+//import com.teavaro.funnelConnect.initializer.FunnelConnectSDK
 
 
 class IdsFragment : Fragment() {
@@ -35,8 +35,8 @@ class IdsFragment : Fragment() {
         _binding = FragmentIdsBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        binding.txtUserid.text = FunnelConnectSDK.getUserId()
-        binding.txtUmid.text = FunnelConnectSDK.getUMID()
+//        binding.txtUserid.text = FunnelConnectSDK.getUserId()
+//        binding.txtUmid.text = FunnelConnectSDK.getUMID()
 
         return root
     }

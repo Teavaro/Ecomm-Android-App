@@ -11,7 +11,7 @@ import com.teavaro.ecommDemoApp.core.Store
 import com.teavaro.ecommDemoApp.core.utils.TrackUtils
 import com.teavaro.ecommDemoApp.databinding.FragmentEmailsBinding
 import com.teavaro.ecommDemoApp.ui.notifications.NotificationsViewModel
-import com.teavaro.funnelConnect.initializer.FunnelConnectSDK
+//import com.teavaro.funnelConnect.initializer.FunnelConnectSDK
 
 
 class EmailsFragment : Fragment() {
@@ -36,7 +36,8 @@ class EmailsFragment : Fragment() {
         val root: View = binding.root
 
         binding.identClick.setOnClickListener {
-            val userId = FunnelConnectSDK.getUserId()
+//            val userId = FunnelConnectSDK.getUserId()
+            val userId = ""
             val identClikLink =
                 "https://funnelconnect.brand-demo.com/op/brand-demo-app-click-ident/click?hemail=$userId&uri=https%3A%2F%2Fweb.brand-demo.com%2F"
             shareLink("Ident click link from AndroidDemoApp", identClikLink)
