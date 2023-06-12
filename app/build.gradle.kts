@@ -103,10 +103,8 @@ dependencies {
 //    implementation(BuildSystem.libraries.teavaroSDK)
     implementation(BuildSystem.libraries.googleServices)
 
-//    implementation("com.github.Teavaro.FunnelConnect-SDK:core:0.7.42")
-    implementation("com.github.Teavaro.FunnelConnect-Mobile-SDK:funnelConnect:0.0.2")
-//    implementation("com.github.Teavaro.FunnelConnect-SDK:utiq:0.7.42")
-
+    implementation("com.github.Teavaro.FunnelConnect-Mobile-SDK:funnelConnect:0.0.3")
+//    implementation("com.github.Utiq-tech.UTIQ-Mobile-SDK:utiq:0.0.3")
 
     //
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.3.1")

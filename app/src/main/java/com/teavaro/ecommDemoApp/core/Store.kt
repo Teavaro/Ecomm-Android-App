@@ -20,8 +20,8 @@ import com.teavaro.ecommDemoApp.ui.AbandonedCartDialogFragment
 import com.teavaro.ecommDemoApp.ui.FCApplication
 import com.teavaro.ecommDemoApp.ui.ItemDescriptionDialogFragment
 import com.teavaro.ecommDemoApp.ui.PermissionConsentDialogFragment
-import com.teavaro.funnelConnect.initializer.FunnelConnectSDK
-import com.teavaro.funnelConnect.utils.platformTypes.permissionsMap.PermissionsMap
+//import com.teavaro.funnelConnect.initializer.FunnelConnectSDK
+//import com.teavaro.funnelConnect.utils.platformTypes.permissionsMap.PermissionsMap
 import org.json.JSONObject
 
 @SuppressLint("StaticFieldLeak")
@@ -131,13 +131,13 @@ object Store {
         PermissionConsentDialogFragment.open(
             supportFragmentManager,
             { omPermissionAccepted, optPermissionAccepted, nbaPermissionAccepted, tpidPermissionAccepted ->
-                val permissions = PermissionsMap()
-                permissions.addPermission("CS-OM", omPermissionAccepted)
-                permissions.addPermission("CS-OPT", optPermissionAccepted)
-                permissions.addPermission("CS-NBA", nbaPermissionAccepted)
-                permissions.addPermission("CS-TPID", tpidPermissionAccepted)
-                FunnelConnectSDK
-                    .updatePermissions(permissions, notificationName, notificationVersion)
+//                val permissions = PermissionsMap()
+//                permissions.addPermission("CS-OM", omPermissionAccepted)
+//                permissions.addPermission("CS-OPT", optPermissionAccepted)
+//                permissions.addPermission("CS-NBA", nbaPermissionAccepted)
+//                permissions.addPermission("CS-TPID", tpidPermissionAccepted)
+//                FunnelConnectSDK
+//                    .updatePermissions(permissions, notificationName, notificationVersion)
 //                if (nbaPermissionAccepted) {
 //                    FunnelConnectSDK.trustPid().acceptConsent()
 //                    val isStub = SharedPreferenceUtils.isStubMode(context)
@@ -147,12 +147,12 @@ object Store {
             },
             {
 //                FunnelConnectSDK.trustPid().rejectConsent()
-                val permissions = PermissionsMap()
-                permissions.addPermission("CS-OM", false)
-                permissions.addPermission("CS-OPT", false)
-                permissions.addPermission("CS-NBA", false)
-                permissions.addPermission("CS-TPID", false)
-                FunnelConnectSDK.updatePermissions(permissions, notificationName, notificationVersion)
+//                val permissions = PermissionsMap()
+//                permissions.addPermission("CS-OM", false)
+//                permissions.addPermission("CS-OPT", false)
+//                permissions.addPermission("CS-NBA", false)
+//                permissions.addPermission("CS-TPID", false)
+//                FunnelConnectSDK.updatePermissions(permissions, notificationName, notificationVersion)
             })
     }
 
@@ -188,13 +188,13 @@ object Store {
             }
 
         }
-        FunnelConnectSDK.onInitialize({
-            FunnelConnectSDK.getUserId()?.let {user_id ->
-                text += "&amp;rp.user.userId=$user_id"
-            }
-        }, {
-            Toast.makeText(FCApplication.instance, it.message, Toast.LENGTH_LONG).show()
-        })
+//        FunnelConnectSDK.onInitialize({
+//            FunnelConnectSDK.getUserId()?.let {user_id ->
+//                text += "&amp;rp.user.userId=$user_id"
+//            }
+//        }, {
+//            Toast.makeText(FCApplication.instance, it.message, Toast.LENGTH_LONG).show()
+//        })
         text += "&amp;device=android"
         text += "&amp;impression=offer"
         getAbCartId()?.let {
@@ -305,12 +305,12 @@ object Store {
                 }
                 if(!attr.isNull("ident_url")) {
                     attr.getString("ident_url")?.let { url ->
-                        if(FunnelConnectSDK.getUserId() != null) {
-                            val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
-                            context.startActivity(browserIntent)
-                        }
-                        else
-                            Toast.makeText(context, "Log in first please.", Toast.LENGTH_LONG).show()
+//                        if(FunnelConnectSDK.getUserId() != null) {
+//                            val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+//                            context.startActivity(browserIntent)
+//                        }
+//                        else
+//                            Toast.makeText(context, "Log in first please.", Toast.LENGTH_LONG).show()
                     }
                 }
             }
@@ -387,6 +387,7 @@ object Store {
     }
 
     fun getUserId(): String?{
-        return FunnelConnectSDK.getUserId()
+//        return FunnelConnectSDK.getUserId()
+        return ""
     }
 }

@@ -16,8 +16,8 @@ import com.teavaro.ecommDemoApp.core.utils.StringUtils.stringToSha256String
 import com.teavaro.ecommDemoApp.core.utils.TrackUtils
 import com.teavaro.ecommDemoApp.databinding.FragmentLoginBinding
 import com.teavaro.ecommDemoApp.ui.notifications.NotificationsViewModel
-import com.teavaro.funnelConnect.data.models.FCUser
-import com.teavaro.funnelConnect.initializer.FunnelConnectSDK
+//import com.teavaro.funnelConnect.data.models.FCUser
+//import com.teavaro.funnelConnect.initializer.FunnelConnectSDK
 
 
 class LoginFragment : Fragment() {
@@ -45,13 +45,13 @@ class LoginFragment : Fragment() {
             TrackUtils.click("login")
             if (!binding.edtEmail.text.isNullOrEmpty() && !binding.edtPassword.text.isNullOrEmpty()) {
                 val emailCoded = stringToSha256String(binding.edtEmail.text.toString())
-                FunnelConnectSDK.setUser(FCUser("hemail", emailCoded),{
-                    Store.infoResponse = it
-                })
+//                FunnelConnectSDK.setUser(FCUser("hemail", emailCoded),{
+//                    Store.infoResponse = it
+//                })
                 SharedPreferenceUtils.setLogin(requireContext(), true)
                 root.findNavController().navigate(R.id.navigation_settings)
-                SwrveSDK.start(parentFragment?.activity, FunnelConnectSDK.getUMID())
-                Toast.makeText(context, "Login success!" + FunnelConnectSDK.getUMID(), Toast.LENGTH_SHORT).show()
+//                SwrveSDK.start(parentFragment?.activity, FunnelConnectSDK.getUMID())
+//                Toast.makeText(context, "Login success!" + FunnelConnectSDK.getUMID(), Toast.LENGTH_SHORT).show()
             } else
                 Toast.makeText(context, "Need to insert email and password!", Toast.LENGTH_SHORT)
                     .show()
