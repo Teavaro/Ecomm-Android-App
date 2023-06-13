@@ -9,7 +9,7 @@ object Versions {
     const val swiftToolsVersion         = 5.3
     const val iOSSdkVersion             = "0.1.8"
     // Libraries versions
-    const val gradle                    = "7.4.2"
+    const val gradle                    = "8.0.1"
     const val kotlin                    = "1.6.21"
     const val kotlinMultiplatform       = "0.3.1"
     const val swiftPackagePlugin        = "2.0.3"

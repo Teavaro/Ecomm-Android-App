@@ -14,6 +14,8 @@ apply {
 
 android {
 
+    namespace = "com.teavaro.ecommDemoApp"
+
     defaultConfig {
         applicationId = "com.teavaro.ecommDemoApp"
         minSdk = BuildSystem.versions.minSdk
@@ -38,7 +40,11 @@ android {
         enable = true
     }
 
-    packagingOptions {
+    buildFeatures {
+        buildConfig = true
+    }
+
+    packaging {
         resources.excludes.addAll(listOf(
             "META-INF/DEPENDENCIES",
             "META-INF/LICENSE-notice.md",
@@ -103,7 +109,7 @@ dependencies {
 //    implementation(BuildSystem.libraries.teavaroSDK)
     implementation(BuildSystem.libraries.googleServices)
 
-    implementation("com.github.Teavaro.FunnelConnect-Mobile-SDK:funnelConnect:0.0.3")
+    implementation("com.github.Teavaro.FunnelConnect-Mobile-SDK:funnelConnect:0.0.5")
 //    implementation("com.github.Utiq-tech.UTIQ-Mobile-SDK:utiq:0.0.3")
 
     //
