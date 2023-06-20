@@ -19,8 +19,8 @@ import com.teavaro.ecommDemoApp.R
 import com.teavaro.ecommDemoApp.core.utils.TrackUtils
 import com.teavaro.funnelConnect.data.models.FCOptions
 import com.teavaro.funnelConnect.initializer.FunnelConnectSDK
-//import com.teavaro.initializer.UTIQ
-//import com.teavaro.data.models.UTIQOptions
+import com.teavaro.initializer.UTIQ
+import com.teavaro.data.models.UTIQOptions
 
 
 @Suppress("unused")
@@ -36,7 +36,7 @@ class FCApplication: Application() {
         this.initAppPolices()
         println("Teavaro:------------------initializing FunnelConnectSDK-${BuildConfig.VERSION_NAME}-------------")
         FunnelConnectSDK.initialize(this, "ko8G.Rv_vT97LiDuoBHbhBJt", FCOptions(true))
-//        UTIQ.initialize(this, "ko8G.Rv_vT97LiDuoBHbhBJt", UTIQOptions(true))
+        UTIQ.initialize(this, "ko8G.Rv_vT97LiDuoBHbhBJt", UTIQOptions(true))
         FirebaseApp.initializeApp(this)
         initSwrve()
     }

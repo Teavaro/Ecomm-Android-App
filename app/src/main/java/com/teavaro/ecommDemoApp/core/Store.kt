@@ -15,13 +15,13 @@ import com.teavaro.ecommDemoApp.core.dataClases.InfoResponse
 import com.teavaro.ecommDemoApp.core.room.ACEntity
 import com.teavaro.ecommDemoApp.core.room.AppDb
 import com.teavaro.ecommDemoApp.core.room.ItemEntity
-//import com.teavaro.ecommDemoApp.core.utils.SharedPreferenceUtils
+import com.teavaro.ecommDemoApp.core.utils.SharedPreferenceUtils
 import com.teavaro.ecommDemoApp.ui.AbandonedCartDialogFragment
-import com.teavaro.ecommDemoApp.ui.FCApplication
 import com.teavaro.ecommDemoApp.ui.ItemDescriptionDialogFragment
 import com.teavaro.ecommDemoApp.ui.PermissionConsentDialogFragment
-//import com.teavaro.funnelConnect.initializer.FunnelConnectSDK
-//import com.teavaro.funnelConnect.utils.platformTypes.permissionsMap.PermissionsMap
+import com.teavaro.funnelConnect.initializer.FunnelConnectSDK
+import com.teavaro.funnelConnect.utils.platformTypes.permissionsMap.PermissionsMap
+import com.teavaro.initializer.UTIQ
 import org.json.JSONObject
 
 @SuppressLint("StaticFieldLeak")
@@ -31,7 +31,7 @@ object Store {
     var listOffers: ArrayList<ItemEntity> = ArrayList()
     var listCart: ArrayList<ItemEntity> = ArrayList()
     var listWish: ArrayList<ItemEntity> = ArrayList()
-    var listAc : ArrayList<ACEntity> = ArrayList()
+    var listAc: ArrayList<ACEntity> = ArrayList()
     var section = "none"
     var webView: WebView? = null
     var navigateAction: ((Int) -> Unit)? = null
@@ -58,7 +58,7 @@ object Store {
         listCart = getItemsCart()
     }
 
-    fun updateItemDB(item: ItemEntity){
+    fun updateItemDB(item: ItemEntity) {
         db?.let {
             Thread {
                 it.itemDao().update(item)
@@ -120,7 +120,7 @@ object Store {
 
     fun removeAllCartItems() {
         for (item in listItems) {
-            if(item.countInCart > 0) {
+            if (item.countInCart > 0) {
                 item.countInCart = 0
                 updateItemDB(item)
             }
@@ -131,28 +131,32 @@ object Store {
         PermissionConsentDialogFragment.open(
             supportFragmentManager,
             { omPermissionAccepted, optPermissionAccepted, nbaPermissionAccepted, tpidPermissionAccepted ->
-//                val permissions = PermissionsMap()
-//                permissions.addPermission("CS-OM", omPermissionAccepted)
-//                permissions.addPermission("CS-OPT", optPermissionAccepted)
-//                permissions.addPermission("CS-NBA", nbaPermissionAccepted)
-//                permissions.addPermission("CS-TPID", tpidPermissionAccepted)
-//                FunnelConnectSDK
-//                    .updatePermissions(permissions, notificationName, notificationVersion)
-//                if (nbaPermissionAccepted) {
-//                    FunnelConnectSDK.trustPid().acceptConsent()
-//                    val isStub = SharedPreferenceUtils.isStubMode(context)
-//                    FunnelConnectSDK.trustPid().startService(isStub)
-//                } else
-//                    FunnelConnectSDK.trustPid().rejectConsent()
+                val permissions = PermissionsMap()
+                permissions.addPermission("CS-OM", omPermissionAccepted)
+                permissions.addPermission("CS-OPT", optPermissionAccepted)
+                permissions.addPermission("CS-NBA", nbaPermissionAccepted)
+                permissions.addPermission("CS-TPID", tpidPermissionAccepted)
+                FunnelConnectSDK
+                    .updatePermissions(permissions, notificationName, notificationVersion)
+                if (nbaPermissionAccepted) {
+                    UTIQ.acceptConsent()
+                    val isStub = SharedPreferenceUtils.isStubMode(context)
+                    UTIQ.startService(isStub)
+                } else
+                    UTIQ.rejectConsent()
             },
             {
-//                FunnelConnectSDK.trustPid().rejectConsent()
-//                val permissions = PermissionsMap()
-//                permissions.addPermission("CS-OM", false)
-//                permissions.addPermission("CS-OPT", false)
-//                permissions.addPermission("CS-NBA", false)
-//                permissions.addPermission("CS-TPID", false)
-//                FunnelConnectSDK.updatePermissions(permissions, notificationName, notificationVersion)
+                UTIQ.rejectConsent()
+                val permissions = PermissionsMap()
+                permissions.addPermission("CS-OM", false)
+                permissions.addPermission("CS-OPT", false)
+                permissions.addPermission("CS-NBA", false)
+                permissions.addPermission("CS-TPID", false)
+                FunnelConnectSDK.updatePermissions(
+                    permissions,
+                    notificationName,
+                    notificationVersion
+                )
             })
     }
 
@@ -161,7 +165,7 @@ object Store {
             supportFragmentManager,
             items
         ) { items ->
-            for(item in items){
+            for (item in items) {
                 addItemToCart(item.itemId)
             }
             navigateAction?.let {
@@ -188,13 +192,11 @@ object Store {
             }
 
         }
-//        FunnelConnectSDK.onInitialize({
-//            FunnelConnectSDK.getUserId()?.let {user_id ->
-//                text += "&amp;rp.user.userId=$user_id"
-//            }
-//        }, {
-//            Toast.makeText(FCApplication.instance, it.message, Toast.LENGTH_LONG).show()
-//        })
+        if(FunnelConnectSDK.isInitialized()) {
+            FunnelConnectSDK.getUserId()?.let { user_id ->
+                text += "&amp;rp.user.userId=$user_id"
+            }
+        }
         text += "&amp;device=android"
         text += "&amp;impression=offer"
         getAbCartId()?.let {
@@ -237,46 +239,129 @@ object Store {
 //            db.itemDao().removeAllItems()
 //            db.acDao().removeAllAc()
             if (db.itemDao().getAllItems().isEmpty()) {
-                db.itemDao().saveItems(ItemEntity(0,"Jacob’s Baked Crinklys Cheese",description,60.00f,"crinklys",true))
-                db.itemDao().saveItems(ItemEntity(1, "Pork Cocktail Sausages, Pack", description, 54.00f, "pork", true, false, acId = 123))
-                db.itemDao().saveItems(ItemEntity(2, "Broccoli and Cauliflower Mix", description, 6.00f, "cauliflower"))
-                db.itemDao().saveItems(ItemEntity(3, "Morrisons Smoked Paprika", description, 44.00f, "paprika"))
-                db.itemDao().saveItems(ItemEntity(4, "Jaffa Tropical Flavour Burst Seedless", description, 12.00f, "burst"))
-                db.itemDao().saveItems(ItemEntity(5, "Pams Chopped Watermelon", description, 20.00f, "watermelon"))
-                db.itemDao().saveItems(ItemEntity(6, "Woolworths Food Flavourburst Seedless Grapes", description, 20.00f, "grapes"))
-                db.itemDao().saveItems(ItemEntity(7, "Ocado Mixed Seedless Grapes", description, 50.00f, "mixed"))
-                db.itemDao().saveItems(ItemEntity(8, "Whole Foods Market, Organic Coleslaw Mix", description, 5.49f, "coleslaw"))
-                db.itemDao().saveItems(ItemEntity(9, "TSARINE Caviar 50g", description, 45.50f, "tsarine"))
-                db.itemDao().saveItems(ItemEntity(10, "Knorr Tomato al Gusto All’ Arrabbiata Soße 370g", description, 3.99f, "tomato"))
+                db.itemDao().saveItems(
+                    ItemEntity(
+                        0,
+                        "Jacob’s Baked Crinklys Cheese",
+                        description,
+                        60.00f,
+                        "crinklys",
+                        true
+                    )
+                )
+                db.itemDao().saveItems(
+                    ItemEntity(
+                        1,
+                        "Pork Cocktail Sausages, Pack",
+                        description,
+                        54.00f,
+                        "pork",
+                        true,
+                        false,
+                        acId = 123
+                    )
+                )
+                db.itemDao().saveItems(
+                    ItemEntity(
+                        2,
+                        "Broccoli and Cauliflower Mix",
+                        description,
+                        6.00f,
+                        "cauliflower"
+                    )
+                )
+                db.itemDao().saveItems(
+                    ItemEntity(
+                        3,
+                        "Morrisons Smoked Paprika",
+                        description,
+                        44.00f,
+                        "paprika"
+                    )
+                )
+                db.itemDao().saveItems(
+                    ItemEntity(
+                        4,
+                        "Jaffa Tropical Flavour Burst Seedless",
+                        description,
+                        12.00f,
+                        "burst"
+                    )
+                )
+                db.itemDao().saveItems(
+                    ItemEntity(
+                        5,
+                        "Pams Chopped Watermelon",
+                        description,
+                        20.00f,
+                        "watermelon"
+                    )
+                )
+                db.itemDao().saveItems(
+                    ItemEntity(
+                        6,
+                        "Woolworths Food Flavourburst Seedless Grapes",
+                        description,
+                        20.00f,
+                        "grapes"
+                    )
+                )
+                db.itemDao().saveItems(
+                    ItemEntity(
+                        7,
+                        "Ocado Mixed Seedless Grapes",
+                        description,
+                        50.00f,
+                        "mixed"
+                    )
+                )
+                db.itemDao().saveItems(
+                    ItemEntity(
+                        8,
+                        "Whole Foods Market, Organic Coleslaw Mix",
+                        description,
+                        5.49f,
+                        "coleslaw"
+                    )
+                )
+                db.itemDao()
+                    .saveItems(ItemEntity(9, "TSARINE Caviar 50g", description, 45.50f, "tsarine"))
+                db.itemDao().saveItems(
+                    ItemEntity(
+                        10,
+                        "Knorr Tomato al Gusto All’ Arrabbiata Soße 370g",
+                        description,
+                        3.99f,
+                        "tomato"
+                    )
+                )
             }
             listItems = db.itemDao().getAllItems() as ArrayList<ItemEntity>
             this.listAc = db.acDao().getAllAcs() as ArrayList<ACEntity>
-//            var teto = ""
-//            for(ac in this.listAc){
-//                teto += "${ac.acId}, "
-//            }
-//            Log.d("iraniranListAc", teto)
             listOffers = getItemsOffer()
-            if(section == "none")
+            if (section == "none")
                 action.invoke(R.id.navigation_home)
             section = ""
-//            Log.d("iraniran", "section:navigation_home")
         }.start()
     }
 
-    fun processCelraAction(context: Context, data: String, supportFragmentManager: FragmentManager){
+    fun processCelraAction(
+        context: Context,
+        data: String,
+        supportFragmentManager: FragmentManager
+    ) {
         var obj = JSONObject(data)
         obj?.let { ob ->
             ob.getJSONObject("attributes")?.let { attr ->
-                if(!attr.isNull("impression")) {
+                if (!attr.isNull("impression")) {
                     attr.getString("impression")?.let { impression ->
-                        if(impression == "ShopView"){
+                        if (impression == "ShopView") {
                             section = "ShopView"
                             navigateAction?.let {
                                 it.invoke(R.id.navigation_shop)
                             }
                         }
-                        if(impression == "AbCartView" && listAc.isEmpty()) {
+                        if (impression == "AbCartView" && listAc.isEmpty()) {
                             Toast.makeText(
                                 context,
                                 "There isn't abandoned items.",
@@ -285,32 +370,36 @@ object Store {
                         }
                     }
                 }
-                if(!attr.isNull("item_id")) {
+                if (!attr.isNull("item_id")) {
                     attr.getString("item_id")?.let {
-                        ItemDescriptionDialogFragment.open((context as AppCompatActivity).supportFragmentManager, listItems[it.toInt()], {
-                            addItemToCart(it.toInt())
-                        },{
-                            addItemToWish(it.toInt())
-                        })
+                        ItemDescriptionDialogFragment.open(
+                            (context as AppCompatActivity).supportFragmentManager,
+                            listItems[it.toInt()],
+                            {
+                                addItemToCart(it.toInt())
+                            },
+                            {
+                                addItemToWish(it.toInt())
+                            })
                     }
                 }
-                if(!attr.isNull("ab_cart_id")) {
+                if (!attr.isNull("ab_cart_id")) {
                     attr.getString("ab_cart_id")?.let {
-                        if(it != "-1") {
+                        if (it != "-1") {
                             refreshAcItems(it.toInt()) { list ->
                                 showAbandonedCartDialog(supportFragmentManager, list)
                             }
                         }
                     }
                 }
-                if(!attr.isNull("ident_url")) {
+                if (!attr.isNull("ident_url")) {
                     attr.getString("ident_url")?.let { url ->
-//                        if(FunnelConnectSDK.getUserId() != null) {
-//                            val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
-//                            context.startActivity(browserIntent)
-//                        }
-//                        else
-//                            Toast.makeText(context, "Log in first please.", Toast.LENGTH_LONG).show()
+                        if(FunnelConnectSDK.getUserId() != null) {
+                            val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+                            context.startActivity(browserIntent)
+                        }
+                        else
+                            Toast.makeText(context, "Log in first please.", Toast.LENGTH_LONG).show()
                     }
                 }
             }
@@ -321,7 +410,7 @@ object Store {
         val acId = getUniqueId()
         db?.let { db ->
             Thread {
-                for(item in items){
+                for (item in items) {
                     item.acId = acId
                     db.itemDao().update(item)
                 }
@@ -338,7 +427,7 @@ object Store {
         return (0..1000).random()
     }
 
-    fun refreshAcItems(acId: Int, action: ((List<ItemEntity>)->Unit)) {
+    fun refreshAcItems(acId: Int, action: ((List<ItemEntity>) -> Unit)) {
         db?.let {
             Thread {
                 val list = it.itemDao().getAllAcItems(acId)
@@ -347,12 +436,16 @@ object Store {
         }
     }
 
-    fun handleDeepLink(context: Context, appLinkData: Uri, supportFragmentManager: FragmentManager) {
+    fun handleDeepLink(
+        context: Context,
+        appLinkData: Uri,
+        supportFragmentManager: FragmentManager
+    ) {
         val acId = appLinkData.getQueryParameter("ab_cart_id")
         val itemId = appLinkData.getQueryParameter("item_id")
         val impression = appLinkData.getQueryParameter("impression")
         acId?.let {
-            refreshAcItems(it.toInt()){ items ->
+            refreshAcItems(it.toInt()) { items ->
                 showAbandonedCartDialog(supportFragmentManager, items)
             }
             navigateAction?.let { action ->
@@ -360,17 +453,21 @@ object Store {
             }
         }
         itemId?.let {
-            ItemDescriptionDialogFragment.open((context as AppCompatActivity).supportFragmentManager, listItems[it.toInt()], {
-                addItemToCart(it.toInt())
-            },{
-                addItemToWish(it.toInt())
-            })
+            ItemDescriptionDialogFragment.open(
+                (context as AppCompatActivity).supportFragmentManager,
+                listItems[it.toInt()],
+                {
+                    addItemToCart(it.toInt())
+                },
+                {
+                    addItemToWish(it.toInt())
+                })
             navigateAction?.let { action ->
                 action.invoke(R.id.navigation_home)
             }
         }
         impression?.let {
-            if(it == "ShopView"){
+            if (it == "ShopView") {
                 navigateAction?.let { action ->
                     action.invoke(R.id.navigation_shop)
                 }
@@ -379,15 +476,15 @@ object Store {
     }
 
     fun getAbCartId(): Int? {
-        if(this.listAc.isNotEmpty()){
+        if (this.listAc.isNotEmpty()) {
 //            Log.d("iraniranCountAc", this.listAc.size.toString())
             return this.listAc.last().acId
         }
         return null
     }
 
-    fun getUserId(): String?{
-//        return FunnelConnectSDK.getUserId()
+    fun getUserId(): String? {
+        return FunnelConnectSDK.getUserId()
         return ""
     }
 }

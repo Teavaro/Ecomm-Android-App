@@ -1,10 +1,10 @@
 package com.teavaro.ecommDemoApp.core.utils
 
-import android.util.Log
-import android.widget.Toast
-import androidx.lifecycle.*
-import com.teavaro.ecommDemoApp.ui.FCApplication
-//import com.teavaro.funnelConnect.initializer.FunnelConnectSDK
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleEventObserver
+import androidx.lifecycle.LifecycleObserver
+import androidx.lifecycle.LifecycleOwner
+import com.teavaro.funnelConnect.initializer.FunnelConnectSDK
 
 object TrackUtils  : LifecycleObserver {
     const val IMPRESSION = "impression"
@@ -13,19 +13,33 @@ object TrackUtils  : LifecycleObserver {
     const val ABANDONED_CART_ID = "abandoned_cart_id"
 
     fun impression(value: String) {
-//        FunnelConnectSDK.logEvent(IMPRESSION, value)
+        logEvent {
+            FunnelConnectSDK.logEvent(IMPRESSION, value)
+        }
     }
 
     fun click(value: String){
-//        FunnelConnectSDK.logEvent(CLICK, value)
+        logEvent {
+            FunnelConnectSDK.logEvent(CLICK, value)
+        }
     }
 
     fun events(events: Map<String, String>){
-//        FunnelConnectSDK.logEvents(events)
+        logEvent {
+            FunnelConnectSDK.logEvents(events)
+        }
     }
 
     fun geoPlace(value: String){
-//        FunnelConnectSDK.logEvent(GEO_PLACE, value)
+        logEvent {
+            FunnelConnectSDK.logEvent(GEO_PLACE, value)
+        }
+    }
+
+    fun logEvent(action: (()->Unit)){
+        if(FunnelConnectSDK.isInitialized()){
+            action.invoke()
+        }
     }
 
     fun lifeCycle(lifecycle: Lifecycle) {

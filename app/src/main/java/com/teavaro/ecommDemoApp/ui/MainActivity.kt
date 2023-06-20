@@ -30,7 +30,7 @@ import com.teavaro.ecommDemoApp.core.utils.SharedPreferenceUtils
 import com.teavaro.ecommDemoApp.core.utils.TrackUtils
 import com.teavaro.ecommDemoApp.databinding.ActivityMainBinding
 import com.teavaro.funnelConnect.initializer.FunnelConnectSDK
-//import com.teavaro.initializer.UTIQ
+import com.teavaro.initializer.UTIQ
 
 class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::inflate) {
 
@@ -72,24 +72,28 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
         }
         Log.d("okhttp.OkHttpClient:", "before UTIQ.onInitialize")
         FunnelConnectSDK.onInitialize({
-            Log.d("okhttp.OkHttpClient:", "inside UTIQ.onInitialize")
-//            if (UTIQ.isConsentAccepted()) {
-//                val isStub = SharedPreferenceUtils.isStubMode(this)
-//                UTIQ.startService(isStub)
-//            }
-//            FunnelConnectSDK
-//                .startService(null, Store.notificationName, Store.notificationVersion, {
-//                    Store.infoResponse = it
-//                    if (FunnelConnectSDK.getPermissions().isEmpty())
-//                        Store.showPermissionsDialog(this, supportFragmentManager)
-//                    SwrveSDK.start(this, FunnelConnectSDK.getUMID())
-//                    SwrveGeoSDK.start(this)
-//                },
-//                    {
-//                    })
+            FunnelConnectSDK
+                .startService(null, Store.notificationName, Store.notificationVersion, {
+                    Store.infoResponse = it
+                    if (FunnelConnectSDK.getPermissions().isEmpty())
+                        Store.showPermissionsDialog(this, supportFragmentManager)
+                    SwrveSDK.start(this, FunnelConnectSDK.getUMID())
+                    SwrveGeoSDK.start(this)
+                },
+                    {
+                    })
         }) {
             Toast.makeText(FCApplication.instance, it.message, Toast.LENGTH_LONG).show()
         }
+        UTIQ.onInitialize({
+            Log.d("okhttp.OkHttpClient:", "inside UTIQ.onInitialize")
+            if (UTIQ.isConsentAccepted()) {
+                val isStub = SharedPreferenceUtils.isStubMode(this)
+                UTIQ.startService(isStub)
+            }
+        },{
+
+        })
         handleIntent(intent)
     }
 

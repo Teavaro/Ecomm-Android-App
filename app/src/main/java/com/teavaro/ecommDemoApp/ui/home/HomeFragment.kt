@@ -19,14 +19,7 @@ import com.teavaro.ecommDemoApp.R
 import com.teavaro.ecommDemoApp.core.Store
 import com.teavaro.ecommDemoApp.core.utils.TrackUtils
 import com.teavaro.ecommDemoApp.databinding.FragmentHomeBinding
-import com.teavaro.ecommDemoApp.ui.FCApplication
 import com.teavaro.ecommDemoApp.ui.shop.ShopAdapter
-//import com.teavaro.initializer.UTIQ
-//import com.teavaro.funnelConnect.initializer.FunnelConnectSDK
-import kotlinx.android.synthetic.main.fragment_home.*
-import kotlinx.android.synthetic.main.fragment_home.view.*
-import java.io.IOException
-import java.lang.Exception
 
 
 class HomeFragment : Fragment() {

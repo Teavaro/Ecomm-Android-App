@@ -10,7 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.teavaro.ecommDemoApp.core.utils.PushNotification
 import com.teavaro.ecommDemoApp.core.utils.TrackUtils
 import com.teavaro.ecommDemoApp.databinding.FragmentNotificationsBinding
-//import com.teavaro.funnelConnect.initializer.FunnelConnectSDK
+import com.teavaro.funnelConnect.initializer.FunnelConnectSDK
 
 
 class NotificationsFragment : Fragment() {
@@ -35,51 +35,51 @@ class NotificationsFragment : Fragment() {
         val root: View = binding.root
 
         binding.crinklys.setOnClickListener {
-//            FunnelConnectSDK.getUMID()?.let {
-//                PushNotification.sendCrilklys(it){
-//                    Toast.makeText(requireContext(), "Notification sent!", Toast.LENGTH_LONG).show()
-//                }
-//            }
+            FunnelConnectSDK.getUMID()?.let {
+                PushNotification.sendCrilklys(it){
+                    Toast.makeText(requireContext(), "Notification sent!", Toast.LENGTH_LONG).show()
+                }
+            }
         }
 
         binding.watermelon.setOnClickListener {
-//            FunnelConnectSDK.getUMID()?.let {
-//                PushNotification.sendWatermelon(it){
-//                    Toast.makeText(requireContext(), "Notification sent!", Toast.LENGTH_LONG).show()
-//                }
-//            }
+            FunnelConnectSDK.getUMID()?.let {
+                PushNotification.sendWatermelon(it){
+                    Toast.makeText(requireContext(), "Notification sent!", Toast.LENGTH_LONG).show()
+                }
+            }
         }
 
         binding.paprika.setOnClickListener {
-//            FunnelConnectSDK.getUMID()?.let {
-//                PushNotification.sendPaprika(it){
-//                    Toast.makeText(requireContext(), "Notification sent!", Toast.LENGTH_LONG).show()
-//                }
-//            }
+            FunnelConnectSDK.getUMID()?.let {
+                PushNotification.sendPaprika(it){
+                    Toast.makeText(requireContext(), "Notification sent!", Toast.LENGTH_LONG).show()
+                }
+            }
         }
 
         binding.shop.setOnClickListener {
-//            FunnelConnectSDK.getUMID()?.let {
-//                PushNotification.sendShop(it){
-//                    Toast.makeText(requireContext(), "Notification sent!", Toast.LENGTH_LONG).show()
-//                }
-//            }
+            FunnelConnectSDK.getUMID()?.let {
+                PushNotification.sendShop(it){
+                    Toast.makeText(requireContext(), "Notification sent!", Toast.LENGTH_LONG).show()
+                }
+            }
         }
 
         binding.abandonedCart.setOnClickListener {
-//            FunnelConnectSDK.getUMID()?.let {
-//                PushNotification.sendAbandonedCart(it){
-//                    Toast.makeText(requireContext(), "Notification sent!", Toast.LENGTH_LONG).show()
-//                }
-//            }
+            FunnelConnectSDK.getUMID()?.let {
+                PushNotification.sendAbandonedCart(it){
+                    Toast.makeText(requireContext(), "Notification sent!", Toast.LENGTH_LONG).show()
+                }
+            }
         }
 
         binding.identClick.setOnClickListener {
-//            FunnelConnectSDK.getUMID()?.let {
-//                PushNotification.sendIdentClick(it){
-//                    Toast.makeText(requireContext(), "Notification sent!", Toast.LENGTH_LONG).show()
-//                }
-//            }
+            FunnelConnectSDK.getUMID()?.let {
+                PushNotification.sendIdentClick(it){
+                    Toast.makeText(requireContext(), "Notification sent!", Toast.LENGTH_LONG).show()
+                }
+            }
         }
         return root
     }
