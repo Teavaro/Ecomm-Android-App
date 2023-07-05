@@ -38,6 +38,8 @@ object Store {
     var infoResponse: String? = null
     val notificationName = "MAIN_CS"
     val notificationVersion = 1
+    var atid = ""
+    var mtid = ""
     var itemId = ""
     var description =
         "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don’t look even slightly believable. If you are going to use a passage of Lorem Ipsum."

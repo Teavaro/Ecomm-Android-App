@@ -100,17 +100,11 @@ dependencies {
      * Ref: https://stackoverflow.com/a/70870040/6927433
      */
     implementation(BuildSystem.libraries.androidXWorkRuntime)
-    // Hyperion debugger
-    debugImplementation(BuildSystem.libraries.hyperionCore)
-    debugImplementation(BuildSystem.libraries.hyperionSharedPreferences)
-    releaseImplementation(BuildSystem.libraries.hyperionNoop)
+    // Swrve
     implementation(BuildSystem.libraries.swrve)
     implementation(BuildSystem.libraries.swrveGeo)
-//    implementation(BuildSystem.libraries.teavaroSDK)
     implementation(BuildSystem.libraries.googleServices)
-
-//    implementation("com.github.Teavaro.FunnelConnect-Mobile-SDK:funnelConnect:0.0.5")
-//    implementation("com.github.Utiq-tech.UTIQ-Mobile-SDK:utiq:0.0.3")
+    //FunnelConnect and UTIQ
     implementation("com.github.Teavaro.FunnelConnect-Mobile-SDK:funnelConnect:0.0.5") {
         exclude("com.github.Teavaro.FunnelConnect-Mobile-SDK", "core-android")
     }
@@ -122,8 +116,13 @@ dependencies {
     implementation("androidx.navigation:navigation-ui-ktx:2.3.5")
     implementation ("com.google.code.gson:gson:2.8.2")
 
-    testImplementation("junit:junit:4.13.2")
+    // Hyperion debugger
+    debugImplementation(BuildSystem.libraries.hyperionCore)
+    debugImplementation(BuildSystem.libraries.hyperionSharedPreferences)
+    releaseImplementation(BuildSystem.libraries.hyperionNoop)
 
+    testImplementation("junit:junit:4.13.2")
+    //Room
     val room_version = "2.4.0-alpha03" // check latest version from docs
     implementation("androidx.room:room-runtime:$room_version")
     annotationProcessor("androidx.room:room-compiler:$room_version")

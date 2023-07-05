@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.teavaro.ecommDemoApp.core.Store
 import com.teavaro.ecommDemoApp.core.utils.TrackUtils
 import com.teavaro.ecommDemoApp.databinding.FragmentEmailsBinding
 import com.teavaro.ecommDemoApp.databinding.FragmentIdsBinding
@@ -37,6 +38,8 @@ class IdsFragment : Fragment() {
 
         binding.txtUserid.text = FunnelConnectSDK.getUserId()
         binding.txtUmid.text = FunnelConnectSDK.getUMID()
+        binding.txtAtid.text = Store.atid
+        binding.txtMtid.text = Store.mtid
 
         return root
     }

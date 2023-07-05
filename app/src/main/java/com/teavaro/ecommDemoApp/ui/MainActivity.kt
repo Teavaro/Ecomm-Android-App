@@ -89,7 +89,12 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
             Log.d("okhttp.OkHttpClient:", "inside UTIQ.onInitialize")
             if (UTIQ.isConsentAccepted()) {
                 val isStub = SharedPreferenceUtils.isStubMode(this)
-                UTIQ.startService(isStub)
+                UTIQ.startService(isStub, {
+                    Store.atid = it.atid.toString()
+                    Store.mtid = it.mtid.toString()
+                },{
+
+                })
             }
         },{
 

@@ -44,11 +44,11 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
-        android:text="Mtid:"
+        android:text="Atid:"
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/txtMtid"
+        android:id="@+id/txtAtid"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
@@ -59,11 +59,11 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
-        android:text="Atid:"
+        android:text="Mtid:"
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/txtAtid"
+        android:id="@+id/txtMtid"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
