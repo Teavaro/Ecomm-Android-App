@@ -20,8 +20,8 @@ import com.teavaro.ecommDemoApp.ui.AbandonedCartDialogFragment
 import com.teavaro.ecommDemoApp.ui.ItemDescriptionDialogFragment
 import com.teavaro.ecommDemoApp.ui.PermissionConsentDialogFragment
 import com.teavaro.funnelConnect.initializer.FunnelConnectSDK
-import com.teavaro.funnelConnect.utils.platformTypes.permissionsMap.PermissionsMap
-import com.teavaro.initializer.UTIQ
+import com.teavaro.funnelConnect.utils.platformTypes.permissionsMap.Permissions
+import com.teavaro.utiqTech.initializer.UTIQ
 import org.json.JSONObject
 
 @SuppressLint("StaticFieldLeak")
@@ -133,23 +133,22 @@ object Store {
         PermissionConsentDialogFragment.open(
             supportFragmentManager,
             { omPermissionAccepted, optPermissionAccepted, nbaPermissionAccepted, tpidPermissionAccepted ->
-                val permissions = PermissionsMap()
+                if (nbaPermissionAccepted) {
+                    UTIQ.acceptConsent()
+                    utiqStartService(context)
+                } else
+                    UTIQ.rejectConsent()
+                val permissions = Permissions()
                 permissions.addPermission("CS-OM", omPermissionAccepted)
                 permissions.addPermission("CS-OPT", optPermissionAccepted)
                 permissions.addPermission("CS-NBA", nbaPermissionAccepted)
                 permissions.addPermission("CS-TPID", tpidPermissionAccepted)
                 FunnelConnectSDK
                     .updatePermissions(permissions, notificationName, notificationVersion)
-                if (nbaPermissionAccepted) {
-                    UTIQ.acceptConsent()
-                    val isStub = SharedPreferenceUtils.isStubMode(context)
-                    UTIQ.startService(isStub)
-                } else
-                    UTIQ.rejectConsent()
             },
             {
                 UTIQ.rejectConsent()
-                val permissions = PermissionsMap()
+                val permissions = Permissions()
                 permissions.addPermission("CS-OM", false)
                 permissions.addPermission("CS-OPT", false)
                 permissions.addPermission("CS-NBA", false)
@@ -488,5 +487,15 @@ object Store {
     fun getUserId(): String? {
         return FunnelConnectSDK.getUserId()
         return ""
+    }
+
+    fun utiqStartService(context: Context){
+        val stubToken = SharedPreferenceUtils.getStubToken(context)
+        UTIQ.startService(stubToken, {
+            atid = it.atid.toString()
+            mtid = it.mtid.toString()
+        },{
+
+        })
     }
 }

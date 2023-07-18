@@ -10,13 +10,12 @@ import android.widget.Button
 import android.widget.Toast
 import androidx.navigation.findNavController
 import com.teavaro.ecommDemoApp.R
-import com.teavaro.ecommDemoApp.core.utils.HTTPAsyncTask
 import com.teavaro.ecommDemoApp.core.utils.SharedPreferenceUtils
 import com.teavaro.ecommDemoApp.core.Store
-import com.teavaro.ecommDemoApp.core.utils.PushNotification
 import com.teavaro.ecommDemoApp.core.utils.TrackUtils
 import com.teavaro.ecommDemoApp.databinding.FragmentSettingsBinding
 import com.teavaro.funnelConnect.initializer.FunnelConnectSDK
+import com.teavaro.utiqTech.initializer.UTIQ
 
 class SettingsFragment : Fragment() {
 
@@ -43,7 +42,8 @@ class SettingsFragment : Fragment() {
         }
 
         binding.clearData.setOnClickListener{
-            clearData(root)
+            clearData()
+            root.findNavController().navigate(R.id.navigation_settings)
             Toast.makeText(requireContext(), "Data cleared!", Toast.LENGTH_LONG).show()
         }
 
@@ -84,13 +84,16 @@ class SettingsFragment : Fragment() {
             Store.showPermissionsDialog(requireContext(), parentFragmentManager)
         }
 
-        binding.stubMode.isChecked = SharedPreferenceUtils.isStubMode(requireContext())
+        binding.stubMode.isChecked = SharedPreferenceUtils.getStubToken(requireContext()) != null
         binding.stubMode.setOnCheckedChangeListener { _, isStub ->
-            clearData(root)
-            SharedPreferenceUtils.setStubMode(requireContext(), isStub)
+            if(isStub) {
+                SharedPreferenceUtils.setStubToken(requireContext(), "523393b9b7aa92a534db512af83084506d89e965b95c36f982200e76afcb82cb")
+            }
+            else{
+                clearData()
+            }
             Store.showPermissionsDialog(requireContext() ,parentFragmentManager)
         }
-
         return root
     }
 
@@ -99,10 +102,10 @@ class SettingsFragment : Fragment() {
         _binding = null
     }
 
-    private fun clearData(root: View){
+    private fun clearData(){
         FunnelConnectSDK.clearData()
         FunnelConnectSDK.clearCookies()
-        SharedPreferenceUtils.setLogin(requireContext(),false)
-        root.findNavController().navigate(R.id.navigation_settings)
+//        SharedPreferenceUtils.clearPreferences(requireContext())
+        SharedPreferenceUtils.setStubToken(requireContext(), null)
     }
 }

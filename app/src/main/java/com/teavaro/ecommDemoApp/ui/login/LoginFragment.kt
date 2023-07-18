@@ -45,7 +45,7 @@ class LoginFragment : Fragment() {
             TrackUtils.click("login")
             if (!binding.edtEmail.text.isNullOrEmpty() && !binding.edtPassword.text.isNullOrEmpty()) {
                 val emailCoded = stringToSha256String(binding.edtEmail.text.toString())
-                FunnelConnectSDK.setUser(FCUser("hemail", emailCoded),{
+                FunnelConnectSDK.setUser(FCUser("enemail", emailCoded),{
                     Store.infoResponse = it
                 })
                 SharedPreferenceUtils.setLogin(requireContext(), true)
