@@ -81,6 +81,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
                     SwrveGeoSDK.start(this)
                 },
                     {
+                        Log.d("error:", "FunnelConnectSDK.startService")
                     })
         }) {
             Toast.makeText(FCApplication.instance, it.message, Toast.LENGTH_LONG).show()
@@ -90,7 +91,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
             if (UTIQ.isConsentAccepted()) {
                 Store.utiqStartService(this)
             }
-        },{
+        }, {
 
         })
         handleIntent(intent)
