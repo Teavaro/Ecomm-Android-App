@@ -37,7 +37,7 @@ class CartFragment : Fragment() {
         _binding = FragmentCartBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        var list = Store.getItemsCart()
+        val list = Store.getItemsCart()
         val cartAdapter = CartAdapter(requireContext(), list)
         for (pos in 0..list.lastIndex){
             container?.let {

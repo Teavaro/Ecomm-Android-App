@@ -3,15 +3,10 @@ object Versions {
     const val minSdk                    = 21
     const val targetSdk                 = 33
     const val compileSdk                = 33
-    const val jvmTarget                 = 1.8
-    // iOS
-    const val minIosVersion             = 12
-    const val swiftToolsVersion         = 5.3
-    const val iOSSdkVersion             = "0.1.8"
+    const val jvmTarget                 = "17"
     // Libraries versions
-    const val gradle                    = "8.0.1"
-    const val kotlin                    = "1.6.21"
-    const val kotlinMultiplatform       = "0.3.1"
+    const val gradle                    = "8.1.0"
+    const val kotlin                    = "1.8.22"
     const val swiftPackagePlugin        = "2.0.3"
     const val androidXWorkRuntime       = "2.7.1"
     const val constraintLayout          = "2.1.3"
@@ -38,8 +33,8 @@ object Versions {
     const val facebookFlipperNoop       = "0.9.0"
     const val facebookSoloader          = "0.10.3"
     const val hyperion                  = "0.9.34"
-    const val swrve                  = "10.0.0"
+    const val swrve                     = "10.0.0"
     const val swrveGeo                  = "7.0.0"
-    const val teavaro                  = "0.6.6"
-    const val googleServices                  = "4.3.3"
+    const val teavaro                   = "0.6.6"
+    const val googleServices            = "4.3.15"
 }

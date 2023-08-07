@@ -13,7 +13,6 @@ import com.teavaro.ecommDemoApp.databinding.FragmentEmailsBinding
 import com.teavaro.ecommDemoApp.databinding.FragmentIdsBinding
 import com.teavaro.ecommDemoApp.ui.notifications.NotificationsViewModel
 import com.teavaro.funnelConnect.initializer.FunnelConnectSDK
-import com.teavaro.utiqTech.initializer.UTIQ
 
 
 class IdsFragment : Fragment() {
@@ -46,7 +45,7 @@ class IdsFragment : Fragment() {
     }
 
     fun refreshIds(){
-        binding.txtUserid.text = FunnelConnectSDK.getUserId()
+        binding.txtUserid.text = FunnelConnectSDK.getUsers().firstOrNull()?.userId
         binding.txtUmid.text = FunnelConnectSDK.getUMID()
         binding.txtAtid.text = Store.atid
         binding.txtMtid.text = Store.mtid

@@ -1,10 +1,7 @@
 plugins {
-    id(BuildSystem.plugins.
-    androidApplication)
+    id(BuildSystem.plugins.androidApplication)
     id(BuildSystem.plugins.kotlinAndroid)
-    id(BuildSystem.plugins.extensions)
     id("com.google.gms.google-services")
-    id("org.jetbrains.kotlin.android")
     id("kotlin-kapt")
 }
 
@@ -71,14 +68,12 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
+
     kotlinOptions {
-        jvmTarget = "11"
-    }
-    kotlin {
-        jvmToolchain(11)
+        jvmTarget = JavaVersion.VERSION_17.toString()
     }
 }
 
@@ -105,16 +100,16 @@ dependencies {
     implementation(BuildSystem.libraries.swrveGeo)
     implementation(BuildSystem.libraries.googleServices)
     //FunnelConnect and UTIQ
-    implementation("com.github.Teavaro.FunnelConnect-Mobile-SDK:funnelConnect:0.0.8") {
+    implementation("com.github.Teavaro.FunnelConnect-Mobile-SDK:funnelConnect:0.0.101") {
         exclude("com.github.Teavaro.FunnelConnect-Mobile-SDK", "core-android")
     }
-    implementation("com.github.Utiq-tech.UTIQ-Mobile-SDK:utiq:0.0.8")
+    implementation("com.github.Utiq-tech.UTIQ-Mobile-SDK:utiq:0.0.92")
     //
-    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.3.1")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1")
-    implementation("androidx.navigation:navigation-fragment-ktx:2.3.5")
-    implementation("androidx.navigation:navigation-ui-ktx:2.3.5")
-    implementation ("com.google.code.gson:gson:2.8.2")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.1")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1")
+    implementation("androidx.navigation:navigation-fragment-ktx:2.6.0")
+    implementation("androidx.navigation:navigation-ui-ktx:2.6.0")
+    implementation ("com.google.code.gson:gson:2.8.9")
 
     // Hyperion debugger
     debugImplementation(BuildSystem.libraries.hyperionCore)

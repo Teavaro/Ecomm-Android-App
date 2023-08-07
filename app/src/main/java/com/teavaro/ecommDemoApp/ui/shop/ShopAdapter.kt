@@ -10,41 +10,37 @@ import com.teavaro.ecommDemoApp.R
 import com.teavaro.ecommDemoApp.core.Store
 import com.teavaro.ecommDemoApp.core.room.ItemEntity
 import com.teavaro.ecommDemoApp.core.utils.TrackUtils
+import com.teavaro.ecommDemoApp.databinding.ItemShopBinding
 import com.teavaro.ecommDemoApp.ui.ItemDescriptionDialogFragment
-import kotlinx.android.synthetic.main.item_shop.view.*
 
 class ShopAdapter(context: Context,
                   private val listItems: List<ItemEntity>) :
     ArrayAdapter<ItemEntity>(context, 0, listItems) {
 
-    private lateinit var layout: View
-
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
-        layout = LayoutInflater.from(context).inflate(R.layout.item_shop,parent, false)
-
+        val binding = if (convertView != null)
+            ItemShopBinding.bind(convertView)
+        else
+            ItemShopBinding.inflate(LayoutInflater.from(context), parent, false)
         val item = listItems[position]
-        layout.txtTitle.text = item.title
-        layout.txtPrice.text = "$${item.price}"
+        binding.txtTitle.text = item.title
+        binding.txtPrice.text = "$${item.price}"
         val imgId: Int = parent.resources.getIdentifier(item.picture, "drawable", "com.teavaro.ecommDemoApp")
-        layout.imgPicture.setImageResource(imgId)
-
-        if(item.isInStock == false) {
-            layout.btnAddToCart.visibility = Button.GONE
-            layout.outOfStock.visibility = TextView.VISIBLE
+        binding.imgPicture.setImageResource(imgId)
+        if(!item.isInStock) {
+            binding.btnAddToCart.visibility = Button.GONE
+            binding.outOfStock.visibility = TextView.VISIBLE
         }
-
-
-        layout.btnAddToCart.setOnClickListener {
+        binding.btnAddToCart.setOnClickListener {
             val events = mapOf(TrackUtils.CLICK to "add_item_to_cart", "item_id" to item.itemId.toString())
             TrackUtils.events(events)
             Store.addItemToCart(item.itemId)
             Toast.makeText(context, "Product added!", Toast.LENGTH_SHORT).show()
         }
-
-        layout.btnAddToWish.let { imageView ->
+        binding.btnAddToWish.let { imageView ->
             setWishPicture(imageView, item)
             imageView.setOnClickListener {
-                if(item.isInWish == false) {
+                if(!item.isInWish) {
                     val events = mapOf(TrackUtils.IMPRESSION to "add_item_to_wish", "item_id" to item.itemId.toString())
                     TrackUtils.events(events)
                     Store.addItemToWish(item.itemId)
@@ -58,12 +54,11 @@ class ShopAdapter(context: Context,
                     item.isInWish = false
                     Toast.makeText(context, "Product removed!", Toast.LENGTH_SHORT).show()
                 }
-                setWishPicture(imageView as ImageView, item)
+                setWishPicture(imageView, item)
             }
         }
-
-        layout.imgPicture.setOnClickListener{
-            if(item.isInWish == true) {
+        binding.imgPicture.setOnClickListener{
+            if(item.isInWish) {
                 ItemDescriptionDialogFragment.open(
                     (context as AppCompatActivity).supportFragmentManager,
                     item,
@@ -79,12 +74,11 @@ class ShopAdapter(context: Context,
                 })
             }
         }
-
-        return layout
+        return binding.root
     }
 
-    private fun setWishPicture(imageView: ImageView, item: ItemEntity){
-        if(item.isInWish == true)
+    private fun setWishPicture(imageView: ImageView, item: ItemEntity) {
+        if(item.isInWish)
             imageView.setImageResource(R.drawable.ic_wishlist_red_24dp)
         else
             imageView.setImageResource(R.drawable.ic_wishlist_black_24dp)

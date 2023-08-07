@@ -22,7 +22,6 @@ import com.teavaro.funnelConnect.initializer.FunnelConnectSDK
 import com.teavaro.utiqTech.data.models.UTIQOptions
 import com.teavaro.utiqTech.initializer.UTIQ
 
-
 @Suppress("unused")
 class FCApplication: Application() {
 

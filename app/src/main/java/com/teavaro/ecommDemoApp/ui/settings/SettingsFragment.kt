@@ -15,7 +15,6 @@ import com.teavaro.ecommDemoApp.core.Store
 import com.teavaro.ecommDemoApp.core.utils.TrackUtils
 import com.teavaro.ecommDemoApp.databinding.FragmentSettingsBinding
 import com.teavaro.funnelConnect.initializer.FunnelConnectSDK
-import com.teavaro.utiqTech.initializer.UTIQ
 
 class SettingsFragment : Fragment() {
 

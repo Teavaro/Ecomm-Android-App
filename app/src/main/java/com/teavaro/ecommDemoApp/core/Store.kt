@@ -136,7 +136,8 @@ object Store {
                 if (nbaPermissionAccepted) {
                     UTIQ.acceptConsent()
                     utiqStartService(context)
-                } else
+                }
+                 else
                     UTIQ.rejectConsent()
                 val permissions = Permissions()
                 permissions.addPermission("CS-OM", omPermissionAccepted)
@@ -165,13 +166,11 @@ object Store {
         AbandonedCartDialogFragment.open(
             supportFragmentManager,
             items
-        ) { items ->
-            for (item in items) {
+        ) {
+            it.forEach { item ->
                 addItemToCart(item.itemId)
             }
-            navigateAction?.let {
-                it.invoke(R.id.navigation_cart)
-            }
+            navigateAction?.invoke(R.id.navigation_cart)
         }
     }
 
@@ -194,7 +193,7 @@ object Store {
 
         }
         if(FunnelConnectSDK.isInitialized()) {
-            FunnelConnectSDK.getUserId()?.let { user_id ->
+            FunnelConnectSDK.getUsers().firstOrNull()?.let { user_id ->
                 text += "&amp;rp.user.userId=$user_id"
             }
         }
@@ -395,7 +394,7 @@ object Store {
                 }
                 if (!attr.isNull("ident_url")) {
                     attr.getString("ident_url")?.let { url ->
-                        if(FunnelConnectSDK.getUserId() != null) {
+                        if(FunnelConnectSDK.getUsers().firstOrNull() != null) {
                             val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
                             context.startActivity(browserIntent)
                         }
@@ -478,15 +477,14 @@ object Store {
 
     fun getAbCartId(): Int? {
         if (this.listAc.isNotEmpty()) {
-//            Log.d("iraniranCountAc", this.listAc.size.toString())
+            Log.d("iraniranCountAc", this.listAc.size.toString())
             return this.listAc.last().acId
         }
         return null
     }
 
     fun getUserId(): String? {
-        return FunnelConnectSDK.getUserId()
-        return ""
+        return FunnelConnectSDK.getUsers().firstOrNull()?.userId
     }
 
     fun utiqStartService(context: Context){
