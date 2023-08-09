@@ -26,6 +26,7 @@ import org.json.JSONObject
 
 @SuppressLint("StaticFieldLeak")
 object Store {
+    val stubToken = "523393b9b7aa92a534db512af83084506d89e965b95c36f982200e76afcb82cb"
     private var db: AppDb? = null
     var listItems: ArrayList<ItemEntity> = ArrayList()
     var listOffers: ArrayList<ItemEntity> = ArrayList()
@@ -38,8 +39,11 @@ object Store {
     var infoResponse: String? = null
     val notificationName = "MAIN_CS"
     val notificationVersion = 1
-    var atid = ""
-    var mtid = ""
+    val userType = "enemail"
+    var atid: String? = null
+    var mtid: String? = null
+    var umid: String? = null
+    var userId: String? = null
     var itemId = ""
     var description =
         "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don’t look even slightly believable. If you are going to use a passage of Lorem Ipsum."
@@ -136,8 +140,7 @@ object Store {
                 if (nbaPermissionAccepted) {
                     UTIQ.acceptConsent()
                     utiqStartService(context)
-                }
-                 else
+                } else
                     UTIQ.rejectConsent()
                 val permissions = Permissions()
                 permissions.addPermission("CS-OM", omPermissionAccepted)
@@ -192,11 +195,11 @@ object Store {
             }
 
         }
-        if(FunnelConnectSDK.isInitialized()) {
-            FunnelConnectSDK.getUsers().firstOrNull()?.let { user_id ->
-                text += "&amp;rp.user.userId=$user_id"
-            }
+        userId?.let {
+            text += "&amp;rp.user.userId=$it"
+            text += "&amp;userType=$userType"
         }
+
         text += "&amp;device=android"
         text += "&amp;impression=offer"
         getAbCartId()?.let {
@@ -221,7 +224,7 @@ object Store {
                             for (var k in params) {
                                 qs += '&amp;' + encodeURIComponent(k) + '=' + encodeURIComponent(params[k]);
                             }
-                            var src = 'https://ads.celtra.com/fa87bccb/web.js?' + qs + '$text';
+                            var src = 'https://funnelconnect.brand-demo.com/op/brand-demo-app-celtra/ad?' + qs + '$text';
                             req.src = src;
                             img.parentNode.insertBefore(req, img.nextSibling);
                         })(this);
@@ -232,7 +235,7 @@ object Store {
         """.trimIndent()
     }
 
-    fun initializeData(db: AppDb, action: ((Int) -> Unit)) {
+    fun initializeData(context: Context, db: AppDb, action: ((Int) -> Unit)) {
         navigateAction = action
         this.db = db
         Thread {
@@ -342,6 +345,7 @@ object Store {
             if (section == "none")
                 action.invoke(R.id.navigation_home)
             section = ""
+            userId = SharedPreferenceUtils.getUserId(context)
         }.start()
     }
 
@@ -394,12 +398,12 @@ object Store {
                 }
                 if (!attr.isNull("ident_url")) {
                     attr.getString("ident_url")?.let { url ->
-                        if(FunnelConnectSDK.getUsers().firstOrNull() != null) {
+                        if (userId != null) {
                             val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
                             context.startActivity(browserIntent)
-                        }
-                        else
-                            Toast.makeText(context, "Log in first please.", Toast.LENGTH_LONG).show()
+                        } else
+                            Toast.makeText(context, "Log in first please.", Toast.LENGTH_LONG)
+                                .show()
                     }
                 }
             }
@@ -477,23 +481,37 @@ object Store {
 
     fun getAbCartId(): Int? {
         if (this.listAc.isNotEmpty()) {
-            Log.d("iraniranCountAc", this.listAc.size.toString())
+//            Log.d("iraniranCountAc", this.listAc.size.toString())
             return this.listAc.last().acId
         }
         return null
     }
 
-    fun getUserId(): String? {
-        return FunnelConnectSDK.getUsers().firstOrNull()?.userId
-    }
 
-    fun utiqStartService(context: Context){
+    fun utiqStartService(context: Context) {
         val stubToken = SharedPreferenceUtils.getStubToken(context)
         UTIQ.startService(stubToken, {
             atid = it.atid.toString()
             mtid = it.mtid.toString()
-        },{
+        }, {
 
         })
+    }
+
+    fun getClickIdentLink(context: Context): String? {
+        SharedPreferenceUtils.getUserId(context)?.let {
+            return "https://funnelconnect.brand-demo.com/op/brand-demo-app-click-ident/click?$userType=$userId&uri=https%3A%2F%2Fweb.brand-demo.com%2F"
+        }
+        return null
+    }
+
+    fun clearData(context: Context){
+        umid = null
+        userId = null
+        atid = null
+        mtid = null
+        SharedPreferenceUtils.setUserId(context, null)
+        SharedPreferenceUtils.setLogin(context, false)
+        SharedPreferenceUtils.setStubToken(context, null)
     }
 }

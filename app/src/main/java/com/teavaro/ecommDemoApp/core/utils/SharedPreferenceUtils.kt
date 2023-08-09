@@ -6,6 +6,7 @@ object SharedPreferenceUtils {
 
     private const val STUB_TOKEN = "STUB_TOKEN"
     private const val IS_LOGIN = "IS_LOGIN"
+    private const val USER_ID = "USER_ID"
 
     private fun getSharedPreferences(context: Context) = context.getSharedPreferences("MySharedPreferences", Context.MODE_PRIVATE)
 
@@ -24,4 +25,10 @@ object SharedPreferenceUtils {
     fun clearPreferences(context: Context){
         getSharedPreferences(context).edit().clear()
     }
+
+    fun setUserId(context: Context, value: String?) {
+        getSharedPreferences(context).edit().putString(USER_ID, value).apply()
+    }
+
+    fun getUserId(context: Context) = getSharedPreferences(context).getString(USER_ID, null)
 }

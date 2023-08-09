@@ -54,7 +54,7 @@ object PushNotification {
     }
 
     fun sendIdentClick(user: String, action: (()->Unit)) {
-        Store.getUserId()?.let {
+        Store.userId?.let {
             send("$URL?push_key=$identClickKeyCampaign&user=$user&data_template={\"userr_id\":\"$it\"}", action)
         }
     }

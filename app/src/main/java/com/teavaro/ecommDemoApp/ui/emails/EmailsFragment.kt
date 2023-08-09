@@ -36,11 +36,11 @@ class EmailsFragment : Fragment() {
         val root: View = binding.root
 
         binding.identClick.setOnClickListener {
-            val userId = FunnelConnectSDK.getUsers().firstOrNull()?.userId
-            val identClikLink =
-                "https://funnelconnect.brand-demo.com/op/brand-demo-app-click-ident/click?enemail=$userId&uri=https%3A%2F%2Fweb.brand-demo.com%2F"
-            shareLink("Ident click link from AndroidDemoApp", identClikLink)
-
+            Store.userId?.let {
+                Store.getClickIdentLink(requireContext())?.let {
+                    shareLink("Ident click link from AndroidDemoApp", it)
+                }
+            }
         }
 
         binding.abandonedCart.setOnClickListener {

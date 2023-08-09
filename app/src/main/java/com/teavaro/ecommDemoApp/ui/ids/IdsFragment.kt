@@ -45,8 +45,8 @@ class IdsFragment : Fragment() {
     }
 
     fun refreshIds(){
-        binding.txtUserid.text = FunnelConnectSDK.getUsers().firstOrNull()?.userId
-        binding.txtUmid.text = FunnelConnectSDK.getUMID()
+        binding.txtUserid.text = Store.userId
+        binding.txtUmid.text = Store.umid
         binding.txtAtid.text = Store.atid
         binding.txtMtid.text = Store.mtid
     }

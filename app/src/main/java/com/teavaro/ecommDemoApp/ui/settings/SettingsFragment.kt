@@ -73,6 +73,8 @@ class SettingsFragment : Fragment() {
                 .setPositiveButton("Proceed") { _, _ ->
                     TrackUtils.click("proceed_logout")
                     SharedPreferenceUtils.setLogin(requireContext(), false)
+                    SharedPreferenceUtils.setUserId(requireContext(), "")
+                    Store.userId = ""
                     root.findNavController().navigate(R.id.navigation_settings)
                     Toast.makeText(requireContext(), "Logout success!", Toast.LENGTH_SHORT).show()
                 }
@@ -86,7 +88,7 @@ class SettingsFragment : Fragment() {
         binding.stubMode.isChecked = SharedPreferenceUtils.getStubToken(requireContext()) != null
         binding.stubMode.setOnCheckedChangeListener { _, isStub ->
             if(isStub) {
-                SharedPreferenceUtils.setStubToken(requireContext(), "523393b9b7aa92a534db512af83084506d89e965b95c36f982200e76afcb82cb")
+                SharedPreferenceUtils.setStubToken(requireContext(), Store.stubToken)
             }
             else{
                 clearData()
@@ -104,7 +106,6 @@ class SettingsFragment : Fragment() {
     private fun clearData(){
         FunnelConnectSDK.clearData()
         FunnelConnectSDK.clearCookies()
-//        SharedPreferenceUtils.clearPreferences(requireContext())
-        SharedPreferenceUtils.setStubToken(requireContext(), null)
+        Store.clearData(requireContext())
     }
 }

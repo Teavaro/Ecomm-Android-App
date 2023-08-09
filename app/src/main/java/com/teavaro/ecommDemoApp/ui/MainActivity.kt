@@ -65,7 +65,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
             supportActionBar?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT));
         }
 
-        Store.initializeData(db) {
+        Store.initializeData(this, db) {
             this@MainActivity.runOnUiThread {
                 navController.navigate(it)
             }
@@ -77,6 +77,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
                     Store.infoResponse = it
                     if (FunnelConnectSDK.getPermissions().isEmpty())
                         Store.showPermissionsDialog(this, supportFragmentManager)
+                    Store.umid = FunnelConnectSDK.getUMID()
                     SwrveSDK.start(this, FunnelConnectSDK.getUMID())
                     SwrveGeoSDK.start(this)
                 },

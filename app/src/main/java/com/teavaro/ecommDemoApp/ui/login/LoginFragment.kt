@@ -45,13 +45,20 @@ class LoginFragment : Fragment() {
             TrackUtils.click("login")
             if (!binding.edtEmail.text.isNullOrEmpty() && !binding.edtPassword.text.isNullOrEmpty()) {
                 val emailCoded = stringToSha256String(binding.edtEmail.text.toString())
-                FunnelConnectSDK.setUser(FCUser("enemail", emailCoded),{
-                    Store.infoResponse = it
-                })
-                SharedPreferenceUtils.setLogin(requireContext(), true)
-                root.findNavController().navigate(R.id.navigation_settings)
-                SwrveSDK.start(parentFragment?.activity, FunnelConnectSDK.getUMID())
-                Toast.makeText(context, "Login success!" + FunnelConnectSDK.getUMID(), Toast.LENGTH_SHORT).show()
+                if(FunnelConnectSDK.isInitialized()) {
+                    binding.btnLogin.text = "Processing..."
+                    binding.btnLogin.isEnabled = false
+                    FunnelConnectSDK.setUser(FCUser("enemail", emailCoded), {
+                        Store.infoResponse = it
+                        Store.umid = FunnelConnectSDK.getUMID()
+                        Store.userId = emailCoded
+                        SharedPreferenceUtils.setUserId(requireContext(), emailCoded)
+                        SharedPreferenceUtils.setLogin(requireContext(), true)
+                        root.findNavController().navigate(R.id.navigation_settings)
+                        SwrveSDK.start(parentFragment?.activity, Store.umid)
+                        Toast.makeText(context, "Login success!", Toast.LENGTH_SHORT).show()
+                    })
+                }
             } else
                 Toast.makeText(context, "Need to insert email and password!", Toast.LENGTH_SHORT)
                     .show()
