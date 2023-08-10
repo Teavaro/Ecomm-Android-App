@@ -342,9 +342,8 @@ object Store {
             listItems = db.itemDao().getAllItems() as ArrayList<ItemEntity>
             this.listAc = db.acDao().getAllAcs() as ArrayList<ACEntity>
             listOffers = getItemsOffer()
-            if (section == "none")
-                action.invoke(R.id.navigation_home)
-            section = ""
+            action.invoke(R.id.navigation_home)
+            section = "none"
             userId = SharedPreferenceUtils.getUserId(context)
         }.start()
     }
@@ -510,6 +509,7 @@ object Store {
         userId = null
         atid = null
         mtid = null
+        listAc.clear()
         SharedPreferenceUtils.setUserId(context, null)
         SharedPreferenceUtils.setLogin(context, false)
         SharedPreferenceUtils.setStubToken(context, null)

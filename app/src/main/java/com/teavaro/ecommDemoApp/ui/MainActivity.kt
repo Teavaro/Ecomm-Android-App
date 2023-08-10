@@ -26,11 +26,11 @@ import com.teavaro.ecommDemoApp.R
 import com.teavaro.ecommDemoApp.baseClasses.mvvm.BaseActivity
 import com.teavaro.ecommDemoApp.core.*
 import com.teavaro.ecommDemoApp.core.room.AppDb
-import com.teavaro.ecommDemoApp.core.utils.SharedPreferenceUtils
 import com.teavaro.ecommDemoApp.core.utils.TrackUtils
 import com.teavaro.ecommDemoApp.databinding.ActivityMainBinding
 import com.teavaro.funnelConnect.initializer.FunnelConnectSDK
 import com.teavaro.utiqTech.initializer.UTIQ
+
 
 class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::inflate) {
 
