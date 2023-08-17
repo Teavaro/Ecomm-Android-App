@@ -7,6 +7,7 @@ import android.view.Window
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentManager
 import com.teavaro.ecommDemoApp.R
+import com.teavaro.ecommDemoApp.core.Store
 import com.teavaro.ecommDemoApp.core.utils.TrackUtils
 import com.teavaro.ecommDemoApp.databinding.FragmentFPermissionsConsentBinding
 import com.teavaro.ecommDemoApp.viewBinding
@@ -37,8 +38,8 @@ class PermissionConsentDialogFragment : DialogFragment(R.layout.fragment_f_permi
             val om = binding.swCookies
             val opt = binding.swNetwork
             val nba = binding.swPersonal
-            val tpid = true
-            this.acceptAction?.invoke(om.isChecked, opt.isChecked, nba.isChecked, tpid)
+            val utiq = binding.swUtiq
+            this.acceptAction?.invoke(om.isChecked, opt.isChecked, nba.isChecked, utiq.isChecked)
             this.dismiss()
         }
         binding.acceptButton.setOnClickListener {
@@ -56,10 +57,10 @@ class PermissionConsentDialogFragment : DialogFragment(R.layout.fragment_f_permi
 
     private fun initialPresets() {
         FunnelConnectSDK.getPermissions().let {
-            binding.swCookies.isChecked = it.getPermission("CS-OM")
-            binding.swNetwork.isChecked = it.getPermission("CS-OPT")
-            binding.swPersonal.isChecked = it.getPermission("CS-NBA")
-            binding.swPersonal.isChecked = it.getPermission("CS-TPID")
+            binding.swCookies.isChecked = it.getPermission(Store.keyOm)
+            binding.swNetwork.isChecked = it.getPermission(Store.keyOpt)
+            binding.swPersonal.isChecked = it.getPermission(Store.keyNba)
+            binding.swUtiq.isChecked = it.getPermission(Store.keyUtiq)
         }
     }
 
@@ -67,7 +68,7 @@ class PermissionConsentDialogFragment : DialogFragment(R.layout.fragment_f_permi
 
         fun open(
             fm: FragmentManager,
-            acceptAction: (omPermissionAccepted: Boolean, optPermissionAccepted: Boolean, nbaPermissionAccepted: Boolean, tpidPermissionAccepted: Boolean) -> Unit = { _, _, _, _ -> },
+            acceptAction: (omPermissionAccepted: Boolean, optPermissionAccepted: Boolean, nbaPermissionAccepted: Boolean, utiqPermissionAccepted: Boolean) -> Unit = { _, _, _, _ -> },
             rejectAction: (() -> Unit)
         ) {
             val dialogFragment = PermissionConsentDialogFragment()

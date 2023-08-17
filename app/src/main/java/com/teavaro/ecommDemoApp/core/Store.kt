@@ -37,8 +37,13 @@ object Store {
     var webView: WebView? = null
     var navigateAction: ((Int) -> Unit)? = null
     var infoResponse: String? = null
-    val notificationName = "MAIN_CS"
-    val notificationVersion = 1
+    val keyOm = "CS-OM"
+    val keyOpt = "CS-OPT"
+    val keyNba = "CS-NBA"
+    val keyUtiq = "CS-TPID"
+    val fcNotificationsName = "MAIN_CS"
+    val utiqNotificationsName = "MAIN_CS_UTIQ"
+    val notificationsVersion = 1
     val userType = "enemail"
     var atid: String? = null
     var mtid: String? = null
@@ -136,33 +141,31 @@ object Store {
     fun showPermissionsDialog(context: Context, supportFragmentManager: FragmentManager) {
         PermissionConsentDialogFragment.open(
             supportFragmentManager,
-            { omPermissionAccepted, optPermissionAccepted, nbaPermissionAccepted, tpidPermissionAccepted ->
-                if (nbaPermissionAccepted) {
+            { omPermissionAccepted, optPermissionAccepted, nbaPermissionAccepted, utiqPermissionAccepted ->
+                if (utiqPermissionAccepted) {
                     UTIQ.acceptConsent()
                     utiqStartService(context)
                 } else
                     UTIQ.rejectConsent()
-                val permissions = Permissions()
-                permissions.addPermission("CS-OM", omPermissionAccepted)
-                permissions.addPermission("CS-OPT", optPermissionAccepted)
-                permissions.addPermission("CS-NBA", nbaPermissionAccepted)
-                permissions.addPermission("CS-TPID", tpidPermissionAccepted)
-                FunnelConnectSDK
-                    .updatePermissions(permissions, notificationName, notificationVersion)
+                updatePermissions(omPermissionAccepted, optPermissionAccepted, nbaPermissionAccepted, utiqPermissionAccepted)
             },
             {
                 UTIQ.rejectConsent()
-                val permissions = Permissions()
-                permissions.addPermission("CS-OM", false)
-                permissions.addPermission("CS-OPT", false)
-                permissions.addPermission("CS-NBA", false)
-                permissions.addPermission("CS-TPID", false)
-                FunnelConnectSDK.updatePermissions(
-                    permissions,
-                    notificationName,
-                    notificationVersion
-                )
+                updatePermissions(om = false, opt = false, nba = false, utiq = false)
             })
+    }
+
+    fun updatePermissions(om: Boolean, opt: Boolean, nba: Boolean, utiq: Boolean){
+        val permissions = Permissions()
+        permissions.addPermission(keyOm, om)
+        permissions.addPermission(keyOpt, opt)
+        permissions.addPermission(keyNba, nba)
+        permissions.addPermission(keyUtiq, utiq)
+        FunnelConnectSDK.updatePermissions(
+            permissions,
+            fcNotificationsName,
+            notificationsVersion
+        )
     }
 
     fun showAbandonedCartDialog(supportFragmentManager: FragmentManager, items: List<ItemEntity>) {

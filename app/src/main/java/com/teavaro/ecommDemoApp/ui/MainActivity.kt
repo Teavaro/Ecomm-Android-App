@@ -73,7 +73,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
         Log.d("okhttp.OkHttpClient:", "before UTIQ.onInitialize")
         FunnelConnectSDK.onInitialize({
             FunnelConnectSDK
-                .startService(null, Store.notificationName, Store.notificationVersion, {
+                .startService(null, Store.fcNotificationsName, Store.notificationsVersion, {
                     Store.infoResponse = it
                     if (FunnelConnectSDK.getPermissions().isEmpty())
                         Store.showPermissionsDialog(this, supportFragmentManager)

@@ -40,7 +40,7 @@
 
         <androidx.appcompat.widget.SwitchCompat
             android:id="@+id/swCookies"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginBottom="10dp"
@@ -58,7 +58,7 @@
 
         <androidx.appcompat.widget.SwitchCompat
             android:id="@+id/swNetwork"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginBottom="10dp"
@@ -76,10 +76,19 @@
 
         <com.google.android.material.switchmaterial.SwitchMaterial
             android:id="@+id/swPersonal"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:text="This enables us to use a mobile network token to collect behavioural data for analytics and personalisation."
+            android:textSize="15dp"
+            tools:ignore="HardcodedText" />
+
+        <com.google.android.material.switchmaterial.SwitchMaterial
+            android:id="@+id/swUtiq"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:text="UTIQ."
             android:textSize="15dp"
             tools:ignore="HardcodedText" />
 
