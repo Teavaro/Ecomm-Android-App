@@ -1,4 +1,4 @@
-package com.teavaro.ecommDemoApp.ui
+package com.teavaro.ecommDemoApp.ui.permissions
 
 import android.app.Dialog
 import android.os.Bundle
@@ -16,7 +16,7 @@ import com.teavaro.funnelConnect.initializer.FunnelConnectSDK
 class PermissionConsentDialogFragment : DialogFragment(R.layout.fragment_f_permissions_consent) {
 
     private val binding by viewBinding(FragmentFPermissionsConsentBinding::bind)
-    private var acceptAction: ((omPermissionAccepted: Boolean, optPermissionAccepted: Boolean, nbaPermissionAccepted: Boolean, tpidPermissionAccepted: Boolean) -> Unit)? =
+    private var acceptAction: ((omPermissionAccepted: Boolean, optPermissionAccepted: Boolean, nbaPermissionAccepted: Boolean) -> Unit)? =
         null
     private var rejectAction: (() -> Unit)? = null
 
@@ -38,12 +38,11 @@ class PermissionConsentDialogFragment : DialogFragment(R.layout.fragment_f_permi
             val om = binding.swCookies
             val opt = binding.swNetwork
             val nba = binding.swPersonal
-            val utiq = binding.swUtiq
-            this.acceptAction?.invoke(om.isChecked, opt.isChecked, nba.isChecked, utiq.isChecked)
+            this.acceptAction?.invoke(om.isChecked, opt.isChecked, nba.isChecked)
             this.dismiss()
         }
         binding.acceptButton.setOnClickListener {
-            this.acceptAction?.invoke(true, true, true, true)
+            this.acceptAction?.invoke(true, true, true)
             this.dismiss()
         }
         binding.cancelButton.setOnClickListener {
@@ -60,7 +59,6 @@ class PermissionConsentDialogFragment : DialogFragment(R.layout.fragment_f_permi
             binding.swCookies.isChecked = it.getPermission(Store.keyOm)
             binding.swNetwork.isChecked = it.getPermission(Store.keyOpt)
             binding.swPersonal.isChecked = it.getPermission(Store.keyNba)
-            binding.swUtiq.isChecked = it.getPermission(Store.keyUtiq)
         }
     }
 
@@ -68,7 +66,7 @@ class PermissionConsentDialogFragment : DialogFragment(R.layout.fragment_f_permi
 
         fun open(
             fm: FragmentManager,
-            acceptAction: (omPermissionAccepted: Boolean, optPermissionAccepted: Boolean, nbaPermissionAccepted: Boolean, utiqPermissionAccepted: Boolean) -> Unit = { _, _, _, _ -> },
+            acceptAction: (omPermissionAccepted: Boolean, optPermissionAccepted: Boolean, nbaPermissionAccepted: Boolean) -> Unit = { _, _, _ -> },
             rejectAction: (() -> Unit)
         ) {
             val dialogFragment = PermissionConsentDialogFragment()

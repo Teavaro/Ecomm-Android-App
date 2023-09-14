@@ -75,11 +75,13 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
             FunnelConnectSDK
                 .startService(null, Store.fcNotificationsName, Store.notificationsVersion, {
                     Store.infoResponse = it
-                    if (FunnelConnectSDK.getPermissions().isEmpty())
+                    if (FunnelConnectSDK.getPermissions().isEmpty()) {
                         Store.showPermissionsDialog(this, supportFragmentManager)
+                    }
                     Store.umid = FunnelConnectSDK.getUMID()
                     SwrveSDK.start(this, FunnelConnectSDK.getUMID())
                     SwrveGeoSDK.start(this)
+                    Store.refreshCeltraAd?.invoke()
                 },
                     {
                         Log.d("error:", "FunnelConnectSDK.startService")

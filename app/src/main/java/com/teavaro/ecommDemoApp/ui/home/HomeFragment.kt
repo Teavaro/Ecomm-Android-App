@@ -20,6 +20,7 @@ import com.teavaro.ecommDemoApp.core.Store
 import com.teavaro.ecommDemoApp.core.utils.TrackUtils
 import com.teavaro.ecommDemoApp.databinding.FragmentHomeBinding
 import com.teavaro.ecommDemoApp.ui.shop.ShopAdapter
+import com.teavaro.funnelConnect.initializer.FunnelConnectSDK
 
 
 class HomeFragment : Fragment() {
@@ -42,7 +43,7 @@ class HomeFragment : Fragment() {
         val root: View = binding.root
 
         TrackUtils.impression("home_view")
-
+        Store.section = "home"
         var list = Store.listOffers
         val shopAdapter = ShopAdapter(requireContext(), list)
         for (pos in 0..list.lastIndex){
@@ -53,7 +54,12 @@ class HomeFragment : Fragment() {
             TrackUtils.click("explore")
             root.findNavController().navigate(R.id.navigation_shop)
         }
-        loadAd()
+        if(Store.infoResponse != null)
+            loadAd()
+        Store.refreshCeltraAd = {
+            if(Store.section == "home")
+                loadAd()
+        }
         return root
     }
 
@@ -73,6 +79,7 @@ class HomeFragment : Fragment() {
 
     private fun loadAd() {
 //        if(Store.webView == null) {
+            binding.webView.removeAllViews()
             var webView = WebView(requireContext())
             val html = Store.getBanner()
             webView.webViewClient = object : WebViewClient() {

@@ -4,12 +4,12 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
-import android.util.Log
 import android.webkit.WebView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentManager
 import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import com.teavaro.ecommDemoApp.R
 import com.teavaro.ecommDemoApp.core.dataClases.InfoResponse
 import com.teavaro.ecommDemoApp.core.room.ACEntity
@@ -18,11 +18,15 @@ import com.teavaro.ecommDemoApp.core.room.ItemEntity
 import com.teavaro.ecommDemoApp.core.utils.SharedPreferenceUtils
 import com.teavaro.ecommDemoApp.ui.AbandonedCartDialogFragment
 import com.teavaro.ecommDemoApp.ui.ItemDescriptionDialogFragment
-import com.teavaro.ecommDemoApp.ui.PermissionConsentDialogFragment
+import com.teavaro.ecommDemoApp.ui.permissions.PermissionConsentDialogFragment
+import com.teavaro.ecommDemoApp.ui.permissions.UtiqConsent
 import com.teavaro.funnelConnect.initializer.FunnelConnectSDK
 import com.teavaro.funnelConnect.utils.platformTypes.permissionsMap.Permissions
 import com.teavaro.utiqTech.initializer.UTIQ
 import org.json.JSONObject
+import java.lang.reflect.Type
+import java.net.URLEncoder
+
 
 @SuppressLint("StaticFieldLeak")
 object Store {
@@ -40,9 +44,9 @@ object Store {
     val keyOm = "CS-OM"
     val keyOpt = "CS-OPT"
     val keyNba = "CS-NBA"
-    val keyUtiq = "CS-TPID"
+    val keyUtiq = "CS-UTIQ"
     val fcNotificationsName = "MAIN_CS"
-    val utiqNotificationsName = "MAIN_CS_UTIQ"
+    val utiqNotificationsName = "UTIQ_CS"
     val notificationsVersion = 1
     val userType = "enemail"
     var atid: String? = null
@@ -52,6 +56,7 @@ object Store {
     var itemId = ""
     var description =
         "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don’t look even slightly believable. If you are going to use a passage of Lorem Ipsum."
+    var refreshCeltraAd: (() -> Unit)? = null
 
     init {
 
@@ -141,26 +146,41 @@ object Store {
     fun showPermissionsDialog(context: Context, supportFragmentManager: FragmentManager) {
         PermissionConsentDialogFragment.open(
             supportFragmentManager,
-            { omPermissionAccepted, optPermissionAccepted, nbaPermissionAccepted, utiqPermissionAccepted ->
-                if (utiqPermissionAccepted) {
-                    UTIQ.acceptConsent()
-                    utiqStartService(context)
-                } else
-                    UTIQ.rejectConsent()
-                updatePermissions(omPermissionAccepted, optPermissionAccepted, nbaPermissionAccepted, utiqPermissionAccepted)
+            { omPermissionAccepted, optPermissionAccepted, nbaPermissionAccepted ->
+                updatePermissions(omPermissionAccepted, optPermissionAccepted, nbaPermissionAccepted)
+                if(omPermissionAccepted || optPermissionAccepted || nbaPermissionAccepted) {
+                    UtiqConsent.open(supportFragmentManager) { consent ->
+                        if (UTIQ.isInitialized()) {
+                            if (consent) {
+                                UTIQ.acceptConsent()
+                                utiqStartService(context)
+                            } else
+                                UTIQ.rejectConsent()
+                            updateUtiqConsent(consent)
+                        }
+                    }
+                }
             },
             {
-                UTIQ.rejectConsent()
-                updatePermissions(om = false, opt = false, nba = false, utiq = false)
+                updatePermissions(om = false, opt = false, nba = false)
             })
     }
 
-    fun updatePermissions(om: Boolean, opt: Boolean, nba: Boolean, utiq: Boolean){
+    private fun updateUtiqConsent(consent: Boolean) {
+        val permissions = Permissions()
+        permissions.addPermission(keyUtiq, consent)
+        FunnelConnectSDK.updatePermissions(
+            permissions,
+            utiqNotificationsName,
+            notificationsVersion
+        )
+    }
+
+    fun updatePermissions(om: Boolean, opt: Boolean, nba: Boolean){
         val permissions = Permissions()
         permissions.addPermission(keyOm, om)
         permissions.addPermission(keyOpt, opt)
         permissions.addPermission(keyNba, nba)
-        permissions.addPermission(keyUtiq, utiq)
         FunnelConnectSDK.updatePermissions(
             permissions,
             fcNotificationsName,
@@ -181,35 +201,27 @@ object Store {
     }
 
     fun getBanner(): String {
-        var text = ""
+        var text = "&amp;attributes=${URLEncoder.encode("{}", "utf-8")}"
         var gson = Gson()
-        infoResponse?.let { info ->
-            val classOb = InfoResponse::class.java
-            classOb?.let { classOnj ->
-                var obj: InfoResponse? = gson.fromJson(info, classOnj)
-                obj?.let { ob ->
-                    ob.attributes?.let { attr ->
-                        attr.forEach {
-                            text += "&amp;" + it.key + "=" + it.value
+        if(isNbaPermissionAccepted()){
+            infoResponse?.let { info ->
+                val classOb = InfoResponse::class.java
+                classOb?.let { classOnj ->
+                    var obj: InfoResponse? = gson.fromJson(info, classOnj)
+                    obj?.let { ob ->
+                        ob.attributes?.let { attr ->
+                            val gsonType: Type = object : TypeToken<HashMap<*, *>?>() {}.type
+                            val gsonString: String = gson.toJson(attr, gsonType)
+                            text = "&amp;attributes=${URLEncoder.encode(gsonString, "utf-8")}"
                         }
                     }
                 }
-                Log.d("iran:infoResponse", info)
             }
-
+            text += "&amp;allowTracking=true"
         }
-        userId?.let {
-            text += "&amp;rp.user.userId=$it"
-            text += "&amp;userType=$userType"
+        else {
+            text += "&amp;allowTracking=false"
         }
-
-        text += "&amp;device=android"
-        text += "&amp;impression=offer"
-        getAbCartId()?.let {
-//            Log.d("iraniran:acid", it.toString())
-            text += "&amp;ab_cart_id=$it"
-        }
-//        Log.d("iran:attr", text)
         return """
            <!DOCTYPE html>
            <html>
@@ -227,7 +239,7 @@ object Store {
                             for (var k in params) {
                                 qs += '&amp;' + encodeURIComponent(k) + '=' + encodeURIComponent(params[k]);
                             }
-                            var src = 'https://funnelconnect.brand-demo.com/op/brand-demo-app-celtra/ad?' + qs + '$text';
+                            var src = 'https://funnelconnect.brand-demo.com/op/brand-demo-web-celtra/ad?' + qs + '$text';
                             req.src = src;
                             img.parentNode.insertBefore(req, img.nextSibling);
                         })(this);
@@ -236,6 +248,10 @@ object Store {
            </body>
         </html>
         """.trimIndent()
+    }
+
+    fun createUrl(){
+
     }
 
     fun initializeData(context: Context, db: AppDb, action: ((Int) -> Unit)) {
@@ -516,5 +532,9 @@ object Store {
         SharedPreferenceUtils.setUserId(context, null)
         SharedPreferenceUtils.setLogin(context, false)
         SharedPreferenceUtils.setStubToken(context, null)
+    }
+
+    fun isNbaPermissionAccepted(): Boolean{
+        return FunnelConnectSDK.getPermissions().getPermission(keyNba)
     }
 }

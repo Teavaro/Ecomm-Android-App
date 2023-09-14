@@ -24,6 +24,7 @@ class ShopFragment : Fragment() {
             ViewModelProvider(this).get(ShopViewModel::class.java)
 
         TrackUtils.impression("shop_view")
+        Store.section = "shop"
 
         _binding = FragmentShopBinding.inflate(inflater, container, false)
         val root: View = binding.root

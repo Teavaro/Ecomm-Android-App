@@ -7,6 +7,7 @@ import android.text.ClipboardManager
 import java.net.URLDecoder
 import java.nio.charset.StandardCharsets
 import java.security.MessageDigest
+import java.util.Base64
 
 internal object StringUtils {
 

@@ -51,7 +51,7 @@ class LoginFragment : Fragment() {
         binding.btnLogin.setOnClickListener {
             TrackUtils.click("login")
             if (!binding.edtEmail.text.isNullOrEmpty() && !binding.edtPassword.text.isNullOrEmpty()) {
-                if (FunnelConnectSDK.isInitialized()) {
+                if (FunnelConnectSDK.isInitialized() && Store.isNbaPermissionAccepted()) {
                     binding.btnLogin.text = "Processing..."
                     binding.btnLogin.isEnabled = false
                     binding.edtEmail.text.toString().encryptCBC()?.let {userId ->

@@ -30,6 +30,7 @@ class SettingsFragment : Fragment() {
         val root: View = binding.root
 
         TrackUtils.impression("settings_view")
+        Store.section = "settings"
 
         if(SharedPreferenceUtils.isLogin(requireContext())){
             binding.logOut.visibility = Button.VISIBLE

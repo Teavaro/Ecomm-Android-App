@@ -4,6 +4,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.LifecycleOwner
+import com.teavaro.ecommDemoApp.core.Store
 import com.teavaro.funnelConnect.initializer.FunnelConnectSDK
 
 object TrackUtils  : LifecycleObserver {
@@ -37,7 +38,7 @@ object TrackUtils  : LifecycleObserver {
     }
 
     fun logEvent(action: (()->Unit)){
-        if(FunnelConnectSDK.isInitialized()){
+        if(FunnelConnectSDK.isInitialized() && Store.isNbaPermissionAccepted()){
             action.invoke()
         }
     }

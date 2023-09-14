@@ -28,6 +28,7 @@ class WishlistFragment : Fragment() {
             ViewModelProvider(this).get(WishlistViewModel::class.java)
 
         TrackUtils.impression("wishlist_view")
+        Store.section = "wishlist"
 
         _binding = FragmentWishlistBinding.inflate(inflater, container, false)
         val root: View = binding.root
