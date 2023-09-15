@@ -45,6 +45,7 @@ object Store {
     var webView: WebView? = null
     var navigateAction: ((Int) -> Unit)? = null
     var infoResponse: String? = null
+    var attributes: String? = null
     val keyOm = "CS-OM"
     val keyOpt = "CS-OPT"
     val keyNba = "CS-NBA"
@@ -251,22 +252,28 @@ object Store {
         }
     }
 
-    fun getBanner(): String {
-        var text = "&amp;attributes=${URLEncoder.encode("{}", "utf-8")}"
-        var gson = Gson()
-        if (isNbaPermissionAccepted()) {
-            infoResponse?.let { info ->
-                val classOb = InfoResponse::class.java
-                classOb?.let { classOnj ->
-                    var obj: InfoResponse? = gson.fromJson(info, classOnj)
-                    obj?.let { ob ->
-                        ob.attributes?.let { attr ->
-                            val gsonType: Type = object : TypeToken<HashMap<*, *>?>() {}.type
-                            val gsonString: String = gson.toJson(attr, gsonType)
-                            text = "&amp;attributes=${URLEncoder.encode(gsonString, "utf-8")}"
-                        }
+    fun getAttributesFromInfo(): String?{
+        infoResponse?.let { info ->
+            var gson = Gson()
+            val classOb = InfoResponse::class.java
+            classOb?.let { classOnj ->
+                var obj: InfoResponse? = gson.fromJson(info, classOnj)
+                obj?.let { ob ->
+                    ob.attributes?.let { attr ->
+                        val gsonType: Type = object : TypeToken<HashMap<*, *>?>() {}.type
+                        return gson.toJson(attr, gsonType)
                     }
                 }
+            }
+        }
+        return null
+    }
+
+    fun getBanner(): String {
+        var text = "&amp;attributes=${URLEncoder.encode("{}", "utf-8")}"
+        if (isNbaPermissionAccepted()) {
+            attributes?.let {
+                text = "&amp;attributes=${URLEncoder.encode(it, "utf-8")}"
             }
             text += "&amp;allowTracking=true"
         } else {
@@ -298,10 +305,6 @@ object Store {
            </body>
         </html>
         """.trimIndent()
-    }
-
-    fun createUrl() {
-
     }
 
     fun initializeData(context: Context, db: AppDb, action: ((Int) -> Unit)) {
@@ -374,6 +377,16 @@ object Store {
                         "/product/healthy-snack-box-variety-pack-60-count/"
                     )
                 )
+                db.itemDao().saveItems(
+                        ItemEntity(
+                        6,
+                    "Pork Cocktail Sausages, Pack",
+                    description,
+                    3.29f,
+                    "pork",
+                    "/product/pork-cocktail-sausages-pack/"
+                )
+                )
             }
             listItems = db.itemDao().getAllItems() as ArrayList<ItemEntity>
             this.listAc = db.acDao().getAllAcs() as ArrayList<ACEntity>
@@ -412,7 +425,7 @@ object Store {
                 if (!attr.isNull("item_id")) {
                     attr.getString("item_id")?.let {
                         ItemDescriptionDialogFragment.open(
-                            (context as AppCompatActivity).supportFragmentManager,
+                            supportFragmentManager,
                             listItems[it.toInt()],
                             {
                                 addItemToCart(it.toInt())
@@ -420,6 +433,23 @@ object Store {
                             {
                                 addItemToWish(it.toInt())
                             })
+                    }
+                }
+                if (!attr.isNull("item_data")) {
+                    attr.getString("item_data")?.let {data ->
+                        Log.d("OkHttp", data)
+                        findItemWithData(data)?.let {
+                        ItemDescriptionDialogFragment.open(
+                            supportFragmentManager,
+                            it,
+                            {
+                                addItemToCart(it.itemId)
+                            },
+                            {
+                                addItemToWish(it.itemId)
+                            })
+
+                        }
                     }
                 }
                 if (!attr.isNull("ab_cart_id")) {
@@ -443,6 +473,17 @@ object Store {
                 }
             }
         }
+    }
+
+    private fun findItemWithData(data: String): ItemEntity? {
+        var index: Int
+        for(item in listItems){
+            index = item.data.indexOf(data)
+            if(index > -1) {
+                return item
+            }
+        }
+        return null
     }
 
     fun addAbandonedCart(items: List<ItemEntity>): Int {
@@ -544,6 +585,8 @@ object Store {
 
     fun clearData(context: Context) {
         umid = ""
+        infoResponse = ""
+        attributes = ""
         userId = null
         listAc.clear()
         SharedPreferenceUtils.setUserId(context, null)
@@ -573,6 +616,7 @@ object Store {
         FunnelConnectSDK
             .startService(null, fcNotificationsName, notificationsVersion, {
                 infoResponse = it
+                attributes = getAttributesFromInfo()
                 umid = FunnelConnectSDK.getUMID()
                 SwrveSDK.start(context, FunnelConnectSDK.getUMID())
                 SwrveGeoSDK.start(context)

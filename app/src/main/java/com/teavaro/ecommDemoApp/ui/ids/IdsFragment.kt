@@ -49,6 +49,7 @@ class IdsFragment : Fragment() {
         binding.txtUmid.text = Store.umid
         binding.txtAtid.text = Store.atid
         binding.txtMtid.text = Store.mtid
+        binding.txtInfo.text = Store.attributes
     }
 
     fun shareLink(subject: String, body: String) {

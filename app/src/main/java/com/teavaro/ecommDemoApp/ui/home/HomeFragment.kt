@@ -41,7 +41,7 @@ class HomeFragment : Fragment() {
         Store.section = "home"
         var list = Store.listOffers
         val shopAdapter = ShopAdapter(requireContext(), list)
-        for (pos in 0..list.lastIndex){
+        for (pos in 0..list.lastIndex) {
             binding.listItems.addView(shopAdapter.getView(pos, view, container!!))
         }
 
@@ -49,10 +49,10 @@ class HomeFragment : Fragment() {
             TrackUtils.click("explore")
             Store.navigateAction?.invoke(R.id.navigation_shop)
         }
-        if(Store.infoResponse != null)
+        if (Store.infoResponse != null)
             loadAd()
         Store.refreshCeltraAd = {
-            if(Store.section == "home")
+            if (Store.section == "home")
                 loadAd()
         }
         return root
@@ -64,7 +64,10 @@ class HomeFragment : Fragment() {
     }
 
     /** Instantiate the interface and set the context  */
-    class WebAppInterface(private var context: Context, private var supportFragmentManager: FragmentManager) {
+    class WebAppInterface(
+        private var context: Context,
+        private var supportFragmentManager: FragmentManager
+    ) {
         /** Show a toast from the web page  */
         @JavascriptInterface
         fun postMessage(data: String) {
@@ -74,31 +77,31 @@ class HomeFragment : Fragment() {
 
     private fun loadAd() {
 //        if(Store.webView == null) {
-            binding.webView.removeAllViews()
-            var webView = WebView(requireContext())
-            val html = Store.getBanner()
-            webView.webViewClient = object : WebViewClient() {
-                override fun onPageFinished(view: WebView, url: String) {
-                    Store.webView = webView
-                }
+        binding.webView.removeAllViews()
+        var webView = WebView(requireContext())
+        val html = Store.getBanner()
+        webView.webViewClient = object : WebViewClient() {
+            override fun onPageFinished(view: WebView, url: String) {
+                Store.webView = webView
             }
-            webView.settings.javaScriptEnabled = true
-            webView.settings.loadWithOverviewMode = true
-            webView.settings.useWideViewPort = true
-            webView.addJavascriptInterface(
-                WebAppInterface(
-                    requireContext(),
-                    parentFragmentManager
-                ), "Android"
-            )
-            webView.loadDataWithBaseURL(
-                "http://www.example.com/",
-                html,
-                "text/html",
-                "UTF-8",
-                null
-            )
-            binding.webView.addView(webView)
+        }
+        webView.settings.javaScriptEnabled = true
+        webView.settings.loadWithOverviewMode = true
+        webView.settings.useWideViewPort = true
+        webView.addJavascriptInterface(
+            WebAppInterface(
+                requireContext(),
+                parentFragmentManager
+            ), "Android"
+        )
+        webView.loadDataWithBaseURL(
+            "http://www.example.com/",
+            html,
+            "text/html",
+            "UTF-8",
+            null
+        )
+        binding.webView.addView(webView)
 //        }
 //        else{
 //            Store.webView?.let {

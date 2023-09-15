@@ -2,6 +2,7 @@ package com.teavaro.ecommDemoApp.ui
 
 import android.app.Dialog
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.view.Window
 import android.widget.Button
@@ -77,6 +78,7 @@ class ItemDescriptionDialogFragment(item: ItemEntity) :
             addToCartAction: (() -> Unit)? = null,
             addToWishlistAction: (() -> Unit)? = null
         ) {
+            Log.d("OkHttp", "fun open(")
             val dialogFragment = ItemDescriptionDialogFragment(item)
             addToWishlistAction?.let { dialogFragment.addToWishlistAction = it }
             addToCartAction?.let { dialogFragment.addToCartAction = it }
