@@ -4,7 +4,7 @@ import androidx.room.Database
 import androidx.room.RoomDatabase
 
 @Database(entities = [(ItemEntity::class),(ACEntity::class), (ACItemCrossRef::class)],
-    version = 14)
+    version = 15)
 abstract class AppDb : RoomDatabase() {
 
     abstract fun itemDao(): ItemDAO

@@ -32,8 +32,7 @@ class CartAdapter(context: Context, private val listItems: List<ItemEntity>) :
         binding.txtCount.text = item.countInCart.toString()
         binding.txtSubTotal.text = "$$subTotal / piece"
         binding.btnRemove.setOnClickListener {
-            val events = mapOf(TrackUtils.CLICK to "remove_item_from_cart", "item_id" to item.itemId.toString())
-            TrackUtils.events(events)
+            TrackUtils.click("remove_item_from_cart" + "," + item.data)
             Store.removeItemFromCart(item.itemId)
             parent.findNavController().navigate(R.id.navigation_cart)
             Toast.makeText(context, "Product removed!", Toast.LENGTH_SHORT).show()

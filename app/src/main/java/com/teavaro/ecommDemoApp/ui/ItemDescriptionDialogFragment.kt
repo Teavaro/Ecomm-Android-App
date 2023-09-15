@@ -24,8 +24,7 @@ class ItemDescriptionDialogFragment(item: ItemEntity) :
 //    override fun getTheme() = R.style.FullScreenDimmedDialogFragment
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        val events = mapOf(TrackUtils.IMPRESSION to "item_view", "item_id" to item.itemId.toString())
-        TrackUtils.events(events)
+        TrackUtils.impression(item.data)
         val dialog = super.onCreateDialog(savedInstanceState)
         dialog.window?.requestFeature(Window.FEATURE_NO_TITLE)
         dialog.setCancelable(true)
@@ -39,8 +38,7 @@ class ItemDescriptionDialogFragment(item: ItemEntity) :
         this.addToWishlistAction?.let {
             binding.btnAddToWish.visibility = Button.VISIBLE
             binding.btnAddToWish.setOnClickListener {
-                val events = mapOf(TrackUtils.CLICK to "add_item_to_wish", "item_id" to item.itemId.toString())
-                TrackUtils.events(events)
+                TrackUtils.click("add_to_wishlist" + "," + item.data)
                 this.addToWishlistAction?.invoke()
                 this.dismiss()
             }
@@ -50,8 +48,7 @@ class ItemDescriptionDialogFragment(item: ItemEntity) :
             if(item.isInStock == true) {
                 binding.btnAddToCart.visibility = Button.VISIBLE
                 binding.btnAddToCart.setOnClickListener {
-                    val events = mapOf(TrackUtils.CLICK to "add_item_to_cart", "item_id" to item.itemId.toString())
-                    TrackUtils.events(events)
+                    TrackUtils.click("add_to_cart" + "," + item.data)
                     this.addToCartAction?.invoke()
                     this.dismiss()
                 }

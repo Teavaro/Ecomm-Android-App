@@ -33,6 +33,10 @@ class ItemEntity(
     @Expose
     var picture: String = "",
 
+    @SerializedName("data")
+    @Expose
+    var data: String = "",
+
     @SerializedName("is_offer")
     @ColumnInfo(name = "is_offer")
     @Expose

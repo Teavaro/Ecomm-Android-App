@@ -36,22 +36,19 @@ class WishAdapter(context: Context,
             binding.btnAddToCart.visibility = Button.GONE
         }
         binding.btnRemove.setOnClickListener {
-            val events = mapOf(TrackUtils.CLICK to "remove_item_from_wish", "item_id" to item.itemId.toString())
-            TrackUtils.events(events)
+            TrackUtils.click( "remove_from_wishlist" + "," + item.data)
             Store.removeItemFromWish(item.itemId)
             parent.findNavController().navigate(R.id.navigation_wishlist)
             Toast.makeText(context, "Product removed!", Toast.LENGTH_SHORT).show()
         }
         binding.btnAddToCart.setOnClickListener {
-            val events = mapOf(TrackUtils.CLICK to "add_item_to_cart", "item_id" to item.itemId.toString())
-            TrackUtils.events(events)
+            TrackUtils.click( "add_to_cart" + "," + item.data)
             Store.addItemToCart(item.itemId)
             Toast.makeText(context, "Product added!", Toast.LENGTH_SHORT).show()
         }
         binding.txtTitle.setOnClickListener{
             ItemDescriptionDialogFragment.open((context as AppCompatActivity).supportFragmentManager, item, {
-                val events = mapOf(TrackUtils.CLICK to "add_item_to_cart", "item_id" to item.itemId.toString())
-                TrackUtils.events(events)
+                TrackUtils.click( "add_to_cart" + "," + item.data)
                 Store.addItemToCart(item.itemId)
             })
         }

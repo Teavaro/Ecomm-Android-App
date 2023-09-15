@@ -75,13 +75,12 @@ class CartFragment : Fragment() {
             builder.setTitle("Clear confirmation")
                 .setMessage("Do you want to clear the cart?")
                 .setNegativeButton("Cancel")  {_,_ ->
-                    TrackUtils.click("calcel_clear_cart")
+                    TrackUtils.click("clear_cart_cancel")
                 }
                 .setPositiveButton("Proceed") { _, _ ->
                     val acId = Store.addAbandonedCart(Store.getItemsCart())
                     StringUtils.setClipboard(requireContext(), "http://www.teavarodemoapp.com?ab_cart_id=$acId")
-                    val events = mapOf(TrackUtils.CLICK to "proceed_clear_cart", TrackUtils.ABANDONED_CART_ID to acId.toString())
-                    TrackUtils.events(events)
+                    TrackUtils.click("clear_cart_confirm")
                     Store.removeAllCartItems()
                     root.findNavController().navigate(R.id.navigation_cart)
                     Toast.makeText(context, "Cart cleared!", Toast.LENGTH_SHORT).show()

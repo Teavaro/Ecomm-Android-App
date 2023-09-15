@@ -314,97 +314,64 @@ object Store {
                 db.itemDao().saveItems(
                     ItemEntity(
                         0,
-                        "Jacob’s Baked Crinklys Cheese",
+                        "RUF Porridge Apfel Zimt mit Vollkorn Haferflocken",
                         description,
-                        60.00f,
-                        "crinklys",
+                        1.69f,
+                        "porridge",
+                        "/product/ruf-porridge-apfel-zimt-mit-vollkorn-haferflocken/",
                         true
                     )
                 )
                 db.itemDao().saveItems(
                     ItemEntity(
                         1,
-                        "Pork Cocktail Sausages, Pack",
+                        "TSARINE Caviar 50g",
                         description,
-                        54.00f,
-                        "pork",
+                        45.50f,
+                        "tsarine",
+                        "/product/marke-tsarine-caviar-50g/",
                         true,
-                        false,
                         acId = 123
                     )
                 )
                 db.itemDao().saveItems(
                     ItemEntity(
                         2,
-                        "Broccoli and Cauliflower Mix",
+                        "Hillshire Farm Lit'l Smokies Salchicha ahumada, 14 oz",
                         description,
-                        6.00f,
-                        "cauliflower"
+                        5.31f,
+                        "hillshire",
+                        "/product/hillshire-farm-litl-smokies-salchicha-ahumada-14-oz/"
                     )
                 )
                 db.itemDao().saveItems(
                     ItemEntity(
                         3,
-                        "Morrisons Smoked Paprika",
+                        "Good Soy Cookies",
                         description,
-                        44.00f,
-                        "paprika"
+                        3.99f,
+                        "cookies",
+                        "/product/good-soy-cookies/"
                     )
                 )
                 db.itemDao().saveItems(
                     ItemEntity(
                         4,
-                        "Jaffa Tropical Flavour Burst Seedless",
+                        "Jack Link’s Teriyaki, Beef Jerky",
                         description,
-                        12.00f,
-                        "burst"
+                        6.60f,
+                        "teriyaki",
+                        "/product/save-on-jack-links-beef-jerky-teriyaki/"
                     )
                 )
                 db.itemDao().saveItems(
                     ItemEntity(
                         5,
-                        "Pams Chopped Watermelon",
+                        "Absolute Organic Cashews",
                         description,
                         20.00f,
-                        "watermelon"
-                    )
-                )
-                db.itemDao().saveItems(
-                    ItemEntity(
-                        6,
-                        "Woolworths Food Flavourburst Seedless Grapes",
-                        description,
-                        20.00f,
-                        "grapes"
-                    )
-                )
-                db.itemDao().saveItems(
-                    ItemEntity(
-                        7,
-                        "Ocado Mixed Seedless Grapes",
-                        description,
-                        50.00f,
-                        "mixed"
-                    )
-                )
-                db.itemDao().saveItems(
-                    ItemEntity(
-                        8,
-                        "Whole Foods Market, Organic Coleslaw Mix",
-                        description,
-                        5.49f,
-                        "coleslaw"
-                    )
-                )
-                db.itemDao()
-                    .saveItems(ItemEntity(9, "TSARINE Caviar 50g", description, 45.50f, "tsarine"))
-                db.itemDao().saveItems(
-                    ItemEntity(
-                        10,
-                        "Knorr Tomato al Gusto All’ Arrabbiata Soße 370g",
-                        description,
-                        3.99f,
-                        "tomato"
+                        "cashews",
+                        "/product/healthy-snack-box-variety-pack-60-count/"
                     )
                 )
             }

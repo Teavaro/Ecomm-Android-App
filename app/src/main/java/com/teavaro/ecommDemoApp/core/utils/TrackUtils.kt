@@ -8,39 +8,34 @@ import com.teavaro.ecommDemoApp.core.Store
 import com.teavaro.funnelConnect.initializer.FunnelConnectSDK
 
 object TrackUtils  : LifecycleObserver {
-    const val IMPRESSION = "impression"
-    const val CLICK = "click"
-    const val GEO_PLACE = "geo_place"
-    const val ABANDONED_CART_ID = "abandoned_cart_id"
+    var mtid: String? = null
+    const val EVENT_NAME = "event_name"
+    const val EVENT_DATA = "event_data"
 
     fun impression(value: String) {
-        logEvent {
-            FunnelConnectSDK.logEvent(IMPRESSION, value)
-        }
+        event(value, "navigation")
     }
 
     fun click(value: String){
-        logEvent {
-            FunnelConnectSDK.logEvent(CLICK, value)
+        event(value, "click")
+    }
+
+    fun event(value: String, name: String){
+        val eventsMap = mutableMapOf( EVENT_NAME to name, EVENT_DATA to value)
+        mtid?.let {
+            eventsMap["mtid"] = it
         }
+        events(eventsMap)
     }
 
     fun events(events: Map<String, String>){
-        logEvent {
+        if(FunnelConnectSDK.isInitialized() && Store.isNbaPermissionAccepted()) {
             FunnelConnectSDK.logEvents(events)
         }
     }
 
     fun geoPlace(value: String){
-        logEvent {
-            FunnelConnectSDK.logEvent(GEO_PLACE, value)
-        }
-    }
-
-    fun logEvent(action: (()->Unit)){
-        if(FunnelConnectSDK.isInitialized() && Store.isNbaPermissionAccepted()){
-            action.invoke()
-        }
+        event(value, "location")
     }
 
     fun lifeCycle(lifecycle: Lifecycle) {

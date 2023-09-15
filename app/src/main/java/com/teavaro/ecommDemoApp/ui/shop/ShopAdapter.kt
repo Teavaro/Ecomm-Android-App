@@ -32,8 +32,7 @@ class ShopAdapter(context: Context,
             binding.outOfStock.visibility = TextView.VISIBLE
         }
         binding.btnAddToCart.setOnClickListener {
-            val events = mapOf(TrackUtils.CLICK to "add_item_to_cart", "item_id" to item.itemId.toString())
-            TrackUtils.events(events)
+            TrackUtils.click("add_to_cart"  + "," + item.data)
             Store.addItemToCart(item.itemId)
             Toast.makeText(context, "Product added!", Toast.LENGTH_SHORT).show()
         }
@@ -41,15 +40,13 @@ class ShopAdapter(context: Context,
             setWishPicture(imageView, item)
             imageView.setOnClickListener {
                 if(!item.isInWish) {
-                    val events = mapOf(TrackUtils.IMPRESSION to "add_item_to_wish", "item_id" to item.itemId.toString())
-                    TrackUtils.events(events)
+                    TrackUtils.click("add_to_wishlist"  + "," + item.data)
                     Store.addItemToWish(item.itemId)
                     item.isInWish = true
                     Toast.makeText(context, "Product added!", Toast.LENGTH_SHORT).show()
                 }
                 else {
-                    val events = mapOf(TrackUtils.IMPRESSION to "remove_item_from_wish", "item_id" to item.itemId.toString())
-                    TrackUtils.events(events)
+                    TrackUtils.click("remove_from_wishlist"  + "," + item.data)
                     Store.removeItemFromWish(item.itemId)
                     item.isInWish = false
                     Toast.makeText(context, "Product removed!", Toast.LENGTH_SHORT).show()
