@@ -20,8 +20,6 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import androidx.room.Room
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.swrve.sdk.SwrveSDK
-import com.swrve.sdk.geo.SwrveGeoSDK
 import com.teavaro.ecommDemoApp.R
 import com.teavaro.ecommDemoApp.baseClasses.mvvm.BaseActivity
 import com.teavaro.ecommDemoApp.core.*
@@ -72,21 +70,13 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
         }
         Log.d("okhttp.OkHttpClient:", "before UTIQ.onInitialize")
         FunnelConnectSDK.onInitialize({
-            FunnelConnectSDK
-                .startService(null, Store.fcNotificationsName, Store.notificationsVersion, {
-                    Store.infoResponse = it
-                    if (FunnelConnectSDK.getPermissions().isEmpty()) {
-                        Store.showPermissionsDialog(this, supportFragmentManager)
-                    }
-                    Store.umid = FunnelConnectSDK.getUMID()
-                    SwrveSDK.start(this, FunnelConnectSDK.getUMID())
-                    SwrveGeoSDK.start(this)
-                    Store.refreshCeltraAd?.invoke()
-                },
-                    {
-                        Log.d("error:", "FunnelConnectSDK.startService")
-                    })
+            Store.fcStartService(this){
+                if (FunnelConnectSDK.getPermissions().isEmpty()) {
+                    Store.showPermissionsDialog(this, supportFragmentManager)
+                }
+            }
         }) {
+            Store.umid = "FunnelConnect failed initialization."
             Toast.makeText(FCApplication.instance, it.message, Toast.LENGTH_LONG).show()
         }
         UTIQ.onInitialize({
@@ -95,7 +85,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
                 Store.utiqStartService(this)
             }
         }, {
-
+            Toast.makeText(FCApplication.instance, it.message, Toast.LENGTH_LONG).show()
         })
         handleIntent(intent)
     }

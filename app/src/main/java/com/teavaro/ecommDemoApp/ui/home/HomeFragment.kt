@@ -2,25 +2,20 @@ package com.teavaro.ecommDemoApp.ui.home
 
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.webkit.JavascriptInterface
-import android.webkit.ValueCallback
 import android.webkit.WebView
 import android.webkit.WebViewClient
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.findNavController
 import com.teavaro.ecommDemoApp.R
 import com.teavaro.ecommDemoApp.core.Store
 import com.teavaro.ecommDemoApp.core.utils.TrackUtils
 import com.teavaro.ecommDemoApp.databinding.FragmentHomeBinding
 import com.teavaro.ecommDemoApp.ui.shop.ShopAdapter
-import com.teavaro.funnelConnect.initializer.FunnelConnectSDK
 
 
 class HomeFragment : Fragment() {
@@ -52,7 +47,7 @@ class HomeFragment : Fragment() {
 
         binding.btnExplore.setOnClickListener {
             TrackUtils.click("explore")
-            root.findNavController().navigate(R.id.navigation_shop)
+            Store.navigateAction?.invoke(R.id.navigation_shop)
         }
         if(Store.infoResponse != null)
             loadAd()

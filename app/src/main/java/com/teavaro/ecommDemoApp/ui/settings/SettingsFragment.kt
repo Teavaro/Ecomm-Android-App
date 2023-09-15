@@ -14,7 +14,6 @@ import com.teavaro.ecommDemoApp.core.utils.SharedPreferenceUtils
 import com.teavaro.ecommDemoApp.core.Store
 import com.teavaro.ecommDemoApp.core.utils.TrackUtils
 import com.teavaro.ecommDemoApp.databinding.FragmentSettingsBinding
-import com.teavaro.funnelConnect.initializer.FunnelConnectSDK
 
 class SettingsFragment : Fragment() {
 
@@ -83,18 +82,16 @@ class SettingsFragment : Fragment() {
         }
 
         binding.consentManagement.setOnClickListener {
-            Store.showPermissionsDialog(requireContext(), parentFragmentManager)
+            Store.showPermissionsDialog(requireActivity(), parentFragmentManager)
         }
 
         binding.stubMode.isChecked = SharedPreferenceUtils.getStubToken(requireContext()) != null
         binding.stubMode.setOnCheckedChangeListener { _, isStub ->
+            Store.clearUtiqData(requireContext())
             if(isStub) {
                 SharedPreferenceUtils.setStubToken(requireContext(), Store.stubToken)
             }
-            else{
-                clearData()
-            }
-            Store.showPermissionsDialog(requireContext() ,parentFragmentManager)
+            Store.showUtiqConsent(requireActivity() ,parentFragmentManager)
         }
         return root
     }
@@ -105,8 +102,6 @@ class SettingsFragment : Fragment() {
     }
 
     private fun clearData(){
-        FunnelConnectSDK.clearData()
-        FunnelConnectSDK.clearCookies()
         Store.clearData(requireContext())
     }
 }

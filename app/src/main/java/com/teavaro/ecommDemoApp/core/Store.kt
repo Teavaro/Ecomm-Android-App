@@ -1,15 +1,19 @@
 package com.teavaro.ecommDemoApp.core
 
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
+import android.util.Log
 import android.webkit.WebView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentManager
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import com.swrve.sdk.SwrveSDK
+import com.swrve.sdk.geo.SwrveGeoSDK
 import com.teavaro.ecommDemoApp.R
 import com.teavaro.ecommDemoApp.core.dataClases.InfoResponse
 import com.teavaro.ecommDemoApp.core.room.ACEntity
@@ -49,11 +53,12 @@ object Store {
     val utiqNotificationsName = "UTIQ_CS"
     val notificationsVersion = 1
     val userType = "enemail"
-    var atid: String? = null
-    var mtid: String? = null
-    var umid: String? = null
+    var atid: String = "UTIQ not initialized."
+    var mtid: String = "UTIQ not initialized."
+    var umid: String? = "FunnelConnect not initialized."
     var userId: String? = null
     var itemId = ""
+    var isFunnelConnectStarted = false
     var description =
         "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don’t look even slightly believable. If you are going to use a passage of Lorem Ipsum."
     var refreshCeltraAd: (() -> Unit)? = null
@@ -143,49 +148,95 @@ object Store {
         }
     }
 
-    fun showPermissionsDialog(context: Context, supportFragmentManager: FragmentManager) {
+    fun showPermissionsDialog(context: Activity, supportFragmentManager: FragmentManager) {
         PermissionConsentDialogFragment.open(
             supportFragmentManager,
             { omPermissionAccepted, optPermissionAccepted, nbaPermissionAccepted ->
-                updatePermissions(omPermissionAccepted, optPermissionAccepted, nbaPermissionAccepted)
-                if(omPermissionAccepted || optPermissionAccepted || nbaPermissionAccepted) {
-                    UtiqConsent.open(supportFragmentManager) { consent ->
-                        if (UTIQ.isInitialized()) {
-                            if (consent) {
-                                UTIQ.acceptConsent()
-                                utiqStartService(context)
-                            } else
-                                UTIQ.rejectConsent()
-                            updateUtiqConsent(consent)
-                        }
-                    }
+                updatePermissions(
+                    omPermissionAccepted,
+                    optPermissionAccepted,
+                    nbaPermissionAccepted,
+                    context,
+                    supportFragmentManager
+                )
+                if (omPermissionAccepted || optPermissionAccepted || nbaPermissionAccepted) {
+                    showUtiqConsent(context, supportFragmentManager)
+                } else {
+                    clearData(context)
                 }
             },
             {
-                updatePermissions(om = false, opt = false, nba = false)
+                updatePermissions(
+                    om = false,
+                    opt = false,
+                    nba = false,
+                    context,
+                    supportFragmentManager
+                )
+                clearData(context)
             })
     }
 
-    private fun updateUtiqConsent(consent: Boolean) {
-        val permissions = Permissions()
-        permissions.addPermission(keyUtiq, consent)
-        FunnelConnectSDK.updatePermissions(
-            permissions,
-            utiqNotificationsName,
-            notificationsVersion
-        )
+    fun showUtiqConsent(context: Activity, supportFragmentManager: FragmentManager) {
+        UtiqConsent.open(supportFragmentManager) { consent ->
+            if (UTIQ.isInitialized()) {
+                if (consent) {
+                    UTIQ.acceptConsent()
+                    utiqStartService(context)
+                } else {
+                    UTIQ.rejectConsent()
+                }
+                updateUtiqConsent(consent, context, supportFragmentManager)
+            }
+        }
     }
 
-    fun updatePermissions(om: Boolean, opt: Boolean, nba: Boolean){
-        val permissions = Permissions()
-        permissions.addPermission(keyOm, om)
-        permissions.addPermission(keyOpt, opt)
-        permissions.addPermission(keyNba, nba)
-        FunnelConnectSDK.updatePermissions(
-            permissions,
-            fcNotificationsName,
-            notificationsVersion
-        )
+    private fun updateUtiqConsent(consent: Boolean,
+                                  context: Activity,
+                                  supportFragmentManager: FragmentManager) {
+        val action = {
+            val permissions = Permissions()
+            permissions.addPermission(keyUtiq, consent)
+            FunnelConnectSDK.updatePermissions(
+                permissions,
+                utiqNotificationsName,
+                notificationsVersion
+            )
+        }
+        if (isFunnelConnectStarted) {
+            action.invoke()
+        } else {
+            fcStartService(context) {
+                action.invoke()
+            }
+        }
+    }
+
+    fun updatePermissions(
+        om: Boolean,
+        opt: Boolean,
+        nba: Boolean,
+        context: Activity,
+        supportFragmentManager: FragmentManager
+    ) {
+        val action = {
+            val permissions = Permissions()
+            permissions.addPermission(keyOm, om)
+            permissions.addPermission(keyOpt, opt)
+            permissions.addPermission(keyNba, nba)
+            FunnelConnectSDK.updatePermissions(
+                permissions,
+                fcNotificationsName,
+                notificationsVersion
+            )
+        }
+        if (isFunnelConnectStarted) {
+            action.invoke()
+        } else {
+            fcStartService(context) {
+                action.invoke()
+            }
+        }
     }
 
     fun showAbandonedCartDialog(supportFragmentManager: FragmentManager, items: List<ItemEntity>) {
@@ -203,7 +254,7 @@ object Store {
     fun getBanner(): String {
         var text = "&amp;attributes=${URLEncoder.encode("{}", "utf-8")}"
         var gson = Gson()
-        if(isNbaPermissionAccepted()){
+        if (isNbaPermissionAccepted()) {
             infoResponse?.let { info ->
                 val classOb = InfoResponse::class.java
                 classOb?.let { classOnj ->
@@ -218,8 +269,7 @@ object Store {
                 }
             }
             text += "&amp;allowTracking=true"
-        }
-        else {
+        } else {
             text += "&amp;allowTracking=false"
         }
         return """
@@ -250,7 +300,7 @@ object Store {
         """.trimIndent()
     }
 
-    fun createUrl(){
+    fun createUrl() {
 
     }
 
@@ -507,6 +557,8 @@ object Store {
 
 
     fun utiqStartService(context: Context) {
+        atid = "{\"status\":\"notFound\"}"
+        mtid = "{\"status\":\"notFound\"}"
         val stubToken = SharedPreferenceUtils.getStubToken(context)
         UTIQ.startService(stubToken, {
             atid = it.atid.toString()
@@ -523,18 +575,46 @@ object Store {
         return null
     }
 
-    fun clearData(context: Context){
-        umid = null
+    fun clearData(context: Context) {
+        umid = ""
         userId = null
-        atid = null
-        mtid = null
         listAc.clear()
         SharedPreferenceUtils.setUserId(context, null)
         SharedPreferenceUtils.setLogin(context, false)
-        SharedPreferenceUtils.setStubToken(context, null)
+        FunnelConnectSDK.clearData()
+        FunnelConnectSDK.clearCookies()
+        clearUtiqData(context)
+        isFunnelConnectStarted = false
     }
 
-    fun isNbaPermissionAccepted(): Boolean{
+    fun clearUtiqData(context: Context) {
+        SharedPreferenceUtils.setStubToken(context, null)
+        UTIQ.clearData()
+        UTIQ.clearCookies()
+        atid = ""
+        mtid = ""
+    }
+
+    fun isNbaPermissionAccepted(): Boolean {
         return FunnelConnectSDK.getPermissions().getPermission(keyNba)
+    }
+
+    fun fcStartService(
+        context: Activity,
+        action: (() -> Unit)? = null
+    ) {
+        FunnelConnectSDK
+            .startService(null, fcNotificationsName, notificationsVersion, {
+                infoResponse = it
+                umid = FunnelConnectSDK.getUMID()
+                SwrveSDK.start(context, FunnelConnectSDK.getUMID())
+                SwrveGeoSDK.start(context)
+                isFunnelConnectStarted = true
+                action?.invoke()
+                refreshCeltraAd?.invoke()
+            },
+                {
+                    Log.d("error:", "FunnelConnectSDK.startService")
+                })
     }
 }

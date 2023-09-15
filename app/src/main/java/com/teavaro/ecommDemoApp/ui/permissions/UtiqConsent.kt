@@ -43,6 +43,9 @@ class UtiqConsent : DialogFragment(R.layout.fragment_utiq_consent) {
             this.action?.invoke(false)
             this.dismiss()
         }
+        binding.btnClose.setOnClickListener {
+            this.dismiss()
+        }
     }
 
     companion object {
