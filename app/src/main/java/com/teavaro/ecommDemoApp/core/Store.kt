@@ -157,8 +157,7 @@ object Store {
                     omPermissionAccepted,
                     optPermissionAccepted,
                     nbaPermissionAccepted,
-                    context,
-                    supportFragmentManager
+                    context
                 )
                 if (omPermissionAccepted || optPermissionAccepted || nbaPermissionAccepted) {
                     showUtiqConsent(context, supportFragmentManager)
@@ -171,8 +170,7 @@ object Store {
                     om = false,
                     opt = false,
                     nba = false,
-                    context,
-                    supportFragmentManager
+                    context
                 )
                 clearData(context)
             })
@@ -187,21 +185,22 @@ object Store {
                 } else {
                     UTIQ.rejectConsent()
                 }
-                updateUtiqConsent(consent, context, supportFragmentManager)
+                updateUtiqConsent(consent, context)
             }
         }
     }
 
     private fun updateUtiqConsent(consent: Boolean,
-                                  context: Activity,
-                                  supportFragmentManager: FragmentManager) {
+                                  context: Activity) {
         val action = {
             val permissions = Permissions()
             permissions.addPermission(keyUtiq, consent)
             FunnelConnectSDK.updatePermissions(
                 permissions,
                 utiqNotificationsName,
-                notificationsVersion
+                notificationsVersion,{
+                    updateFCData(it)
+                }
             )
         }
         if (isFunnelConnectStarted) {
@@ -217,8 +216,7 @@ object Store {
         om: Boolean,
         opt: Boolean,
         nba: Boolean,
-        context: Activity,
-        supportFragmentManager: FragmentManager
+        context: Activity
     ) {
         val action = {
             val permissions = Permissions()
@@ -228,7 +226,9 @@ object Store {
             FunnelConnectSDK.updatePermissions(
                 permissions,
                 fcNotificationsName,
-                notificationsVersion
+                notificationsVersion,{
+                    updateFCData(it)
+                }
             )
         }
         if (isFunnelConnectStarted) {
@@ -615,17 +615,22 @@ object Store {
     ) {
         FunnelConnectSDK
             .startService(null, fcNotificationsName, notificationsVersion, {
-                infoResponse = it
-                attributes = getAttributesFromInfo()
-                umid = FunnelConnectSDK.getUMID()
+                updateFCData(it)
                 SwrveSDK.start(context, FunnelConnectSDK.getUMID())
                 SwrveGeoSDK.start(context)
                 isFunnelConnectStarted = true
                 action?.invoke()
-                refreshCeltraAd?.invoke()
             },
                 {
                     Log.d("error:", "FunnelConnectSDK.startService")
                 })
     }
+
+    private fun updateFCData(info: String){
+        infoResponse = info
+        attributes = getAttributesFromInfo()
+        umid = FunnelConnectSDK.getUMID()
+        refreshCeltraAd?.invoke()
+    }
 }
+

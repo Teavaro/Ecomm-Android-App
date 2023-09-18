@@ -49,8 +49,6 @@ class HomeFragment : Fragment() {
             TrackUtils.click("explore")
             Store.navigateAction?.invoke(R.id.navigation_shop)
         }
-        if (Store.infoResponse != null)
-            loadAd()
         Store.refreshCeltraAd = {
             if (Store.section == "home")
                 loadAd()
@@ -113,6 +111,12 @@ class HomeFragment : Fragment() {
     override fun onPause() {
         super.onPause()
         binding.webView.removeAllViews()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        if (Store.infoResponse != null)
+            loadAd()
     }
 }
 

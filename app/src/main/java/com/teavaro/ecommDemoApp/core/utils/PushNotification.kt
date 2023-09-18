@@ -9,9 +9,7 @@ import java.net.URL
 object PushNotification {
 
     private const val shopKeyCampaign = "708f47c5-e22d-457b-9d34-4cd35a160acb"
-    private const val crilklysKeyCampaign = "28eb267d-f758-4418-bf26-93dfda80c581"
-    private const val paprikaKeyCampaign = "27e0048f-1200-44be-b3e1-fed6eecd437a"
-    private const val watermelonKeyCampaign = "76066617-d885-47c0-a01d-04d00381f254"
+    private const val cashewsKeyCampaign = "27e0048f-1200-44be-b3e1-fed6eecd437a"
     private const val acKeyCampaign = "cf0d9bc0-cf5e-4687-b5d2-c75d0ddc8245"
     private const val identClickKeyCampaign = "47399c46-d27c-4679-97b8-70e0bc5dc91d"
     private const val URL = "https://service.swrve.com/push"
@@ -35,16 +33,8 @@ object PushNotification {
         }
     }
 
-    fun sendCrilklys(user: String, action: (()->Unit)) {
-        send("$URL?push_key=$crilklysKeyCampaign&user=$user&data_template={\"item_id\":\"0\"}", action)
-    }
-
-    fun sendPaprika(user: String, action: (()->Unit)) {
-        send("$URL?push_key=$paprikaKeyCampaign&user=$user&data_template={\"item_id\":\"3\"}", action)
-    }
-
-    fun sendWatermelon(user: String, action: (()->Unit)) {
-        send("$URL?push_key=$watermelonKeyCampaign&user=$user&data_template={\"item_id\":\"5\"}", action)
+    fun sendCashews(user: String, action: (()->Unit)) {
+        send("$URL?push_key=$cashewsKeyCampaign&user=$user&data_template={\"item_id\":\"5\"}", action)
     }
 
     fun sendAbandonedCart(user: String, action: (()->Unit)) {
@@ -67,9 +57,5 @@ object PushNotification {
         Thread{
             action.invoke()
         }.start()
-    }
-
-    fun crilklysPush(){
-
     }
 }

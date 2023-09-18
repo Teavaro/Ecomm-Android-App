@@ -64,6 +64,9 @@ class LoginFragment : Fragment() {
                             root.findNavController().navigate(R.id.navigation_settings)
                             SwrveSDK.start(parentFragment?.activity, Store.umid)
                             Toast.makeText(context, "Login success!", Toast.LENGTH_SHORT).show()
+                        },{
+                            binding.btnLogin.text = "LOG IN"
+                            binding.btnLogin.isEnabled = true
                         })
                     }
                 }

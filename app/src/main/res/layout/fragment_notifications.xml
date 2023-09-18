@@ -37,29 +37,11 @@
         android:textColor="@color/orange" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/crinklys"
+        android:id="@+id/cashews"
         style="?android:attr/borderlessButtonStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Crinklys's campaign"
-        android:textAlignment="textStart"
-        android:textColor="@color/orange" />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/watermelon"
-        style="?android:attr/borderlessButtonStyle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Watermelon's campaign"
-        android:textAlignment="textStart"
-        android:textColor="@color/orange" />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/paprika"
-        style="?android:attr/borderlessButtonStyle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Paprika's campaign"
+        android:text="Cashews's campaign"
         android:textAlignment="textStart"
         android:textColor="@color/orange" />
 </LinearLayout>

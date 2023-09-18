@@ -34,25 +34,9 @@ class NotificationsFragment : Fragment() {
         _binding = FragmentNotificationsBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        binding.crinklys.setOnClickListener {
+        binding.cashews.setOnClickListener {
             FunnelConnectSDK.getUMID()?.let {
-                PushNotification.sendCrilklys(it){
-                    Toast.makeText(requireContext(), "Notification sent!", Toast.LENGTH_LONG).show()
-                }
-            }
-        }
-
-        binding.watermelon.setOnClickListener {
-            FunnelConnectSDK.getUMID()?.let {
-                PushNotification.sendWatermelon(it){
-                    Toast.makeText(requireContext(), "Notification sent!", Toast.LENGTH_LONG).show()
-                }
-            }
-        }
-
-        binding.paprika.setOnClickListener {
-            FunnelConnectSDK.getUMID()?.let {
-                PushNotification.sendPaprika(it){
+                PushNotification.sendCashews(it){
                     Toast.makeText(requireContext(), "Notification sent!", Toast.LENGTH_LONG).show()
                 }
             }
