@@ -34,7 +34,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="10dp"
-            android:text="Analytics Cookies:"
+            android:text="Marketing and Social Network:"
             android:textSize="14dp"
             tools:ignore="HardcodedText" />
 
@@ -44,7 +44,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginBottom="10dp"
-            android:text="Enhance your experience. Our cookies improve our website by analyzing visitor behavior, such as page duration and return frequency."
+            android:text="Enhance your browsing experience. Our cookies evaluate your behavior and present relevant offers. They also enable valuable insights for advertisers and publishers. We share this information with trusted analytics, marketing, and social media partners. If you're logged in to a social network, your user profile may be enriched with your surfing behavior."
             android:textSize="12dp"
             tools:ignore="HardcodedText" />
 
@@ -52,7 +52,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:text="Marketing and Social Network:"
+            android:text="Analytics Cookies:"
             android:textSize="14dp"
             tools:ignore="HardcodedText" />
 
@@ -62,7 +62,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginBottom="10dp"
-            android:text="Enhance your browsing experience. Our cookies evaluate your behavior and present relevant offers. They also enable valuable insights for advertisers and publishers. We share this information with trusted analytics, marketing, and social media partners. If you're logged in to a social network, your user profile may be enriched with your surfing behavior."
+            android:text="Enhance your experience. Our cookies improve our website by analyzing visitor behavior, such as page duration and return frequency."
             android:textSize="12dp"
             tools:ignore="HardcodedText" />
 

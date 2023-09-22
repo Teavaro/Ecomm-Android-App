@@ -29,7 +29,7 @@ object TrackUtils  : LifecycleObserver {
     }
 
     fun events(events: Map<String, String>){
-        if(FunnelConnectSDK.isInitialized() && Store.isNbaPermissionAccepted()) {
+        if(FunnelConnectSDK.isInitialized() && Store.isOptPermissionAccepted()) {
             FunnelConnectSDK.logEvents(events)
         }
     }

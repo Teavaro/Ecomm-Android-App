@@ -39,21 +39,28 @@ class HomeFragment : Fragment() {
 
         TrackUtils.impression("home_view")
         Store.section = "home"
-        var list = Store.listOffers
-        val shopAdapter = ShopAdapter(requireContext(), list)
-        for (pos in 0..list.lastIndex) {
-            binding.listItems.addView(shopAdapter.getView(pos, view, container!!))
-        }
+
+        refreshOfferItems(container!!)
 
         binding.btnExplore.setOnClickListener {
             TrackUtils.click("explore")
             Store.navigateAction?.invoke(R.id.navigation_shop)
         }
+
         Store.refreshCeltraAd = {
             if (Store.section == "home")
                 loadAd()
         }
         return root
+    }
+
+    private fun refreshOfferItems(container: ViewGroup) {
+        var list = Store.listOffers
+        val shopAdapter = ShopAdapter(requireContext(), list)
+        shopAdapter.notifyDataSetChanged()
+        for (pos in 0..list.lastIndex) {
+            binding.listItems.addView(shopAdapter.getView(pos, view, container))
+        }
     }
 
     override fun onDestroyView() {

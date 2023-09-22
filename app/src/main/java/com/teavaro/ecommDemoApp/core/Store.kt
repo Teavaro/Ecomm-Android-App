@@ -391,8 +391,7 @@ object Store {
             listItems = db.itemDao().getAllItems() as ArrayList<ItemEntity>
             this.listAc = db.acDao().getAllAcs() as ArrayList<ACEntity>
             listOffers = getItemsOffer()
-            action.invoke(R.id.navigation_home)
-            section = "none"
+//            action.invoke(R.id.navigation_home)
             userId = SharedPreferenceUtils.getUserId(context)
         }.start()
     }
@@ -528,9 +527,7 @@ object Store {
             refreshAcItems(it.toInt()) { items ->
                 showAbandonedCartDialog(supportFragmentManager, items)
             }
-            navigateAction?.let { action ->
-                action.invoke(R.id.navigation_home)
-            }
+            navigateAction?.invoke(R.id.navigation_home)
         }
         itemId?.let {
             ItemDescriptionDialogFragment.open(
@@ -542,15 +539,11 @@ object Store {
                 {
                     addItemToWish(it.toInt())
                 })
-            navigateAction?.let { action ->
-                action.invoke(R.id.navigation_home)
-            }
+            navigateAction?.invoke(R.id.navigation_home)
         }
         impression?.let {
             if (it == "ShopView") {
-                navigateAction?.let { action ->
-                    action.invoke(R.id.navigation_shop)
-                }
+                navigateAction?.invoke(R.id.navigation_shop)
             }
         }
     }
@@ -607,6 +600,10 @@ object Store {
 
     fun isNbaPermissionAccepted(): Boolean {
         return FunnelConnectSDK.getPermissions().getPermission(keyNba)
+    }
+
+    fun isOptPermissionAccepted(): Boolean {
+        return FunnelConnectSDK.getPermissions().getPermission(keyOpt)
     }
 
     fun fcStartService(

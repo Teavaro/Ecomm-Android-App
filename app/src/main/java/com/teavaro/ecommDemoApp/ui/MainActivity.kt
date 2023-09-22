@@ -14,6 +14,7 @@ import android.widget.Toast
 import android.widget.Toolbar
 import androidx.annotation.RequiresApi
 import androidx.core.graphics.drawable.DrawableCompat
+import androidx.core.view.isVisible
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
@@ -44,9 +45,12 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
 //            .fallbackToDestructiveMigration()
             .build()
 
+
+
         val navView: BottomNavigationView = viewBinding.navView
         val appBarConfiguration = AppBarConfiguration(
             setOf(
+                R.id.navigation_start,
                 R.id.navigation_home,
                 R.id.navigation_cart,
                 R.id.navigation_wishlist,
@@ -65,6 +69,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
 
         Store.initializeData(this, db) {
             this@MainActivity.runOnUiThread {
+                navView.selectedItemId = it
                 navController.navigate(it)
             }
         }
@@ -122,20 +127,10 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
+        Log.d("iraniran","navigation_home")
         when (item.itemId) {
             else -> navController.navigate(R.id.navigation_settings)
         }
         return true
-    }
-
-    override fun onResume() {
-        super.onResume()
-        when (Store.section) {
-            "store" -> {
-                Log.d("iraniran", "section:${Store.section}")
-                navController.navigate(R.id.navigation_shop)
-                Store.section = ""
-            }
-        }
     }
 }
