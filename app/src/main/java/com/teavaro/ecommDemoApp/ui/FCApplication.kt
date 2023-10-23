@@ -60,9 +60,9 @@ class FCApplication: Application() {
                     notificationManager.createNotificationChannel(channel);
                 }
             }
-            val notificationConfig: SwrveNotificationConfig.Builder = SwrveNotificationConfig.Builder(R.drawable.burst, R.drawable.crinklys, channel)
+            val notificationConfig: SwrveNotificationConfig.Builder = SwrveNotificationConfig.Builder(R.drawable.logo1, R.drawable.logo1, channel)
                 .activityClass(MainActivity::class.java)
-                    .largeIconDrawableId(R.drawable.grapes)
+                    .largeIconDrawableId(R.drawable.logo1)
                     .accentColorHex("#3949AB")
             config.notificationConfig = notificationConfig.build()
 //            config.notificationListener = SwrvePushNotificationListener {

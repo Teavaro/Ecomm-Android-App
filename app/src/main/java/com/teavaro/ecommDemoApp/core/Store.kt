@@ -391,7 +391,7 @@ object Store {
             listItems = db.itemDao().getAllItems() as ArrayList<ItemEntity>
             this.listAc = db.acDao().getAllAcs() as ArrayList<ACEntity>
             listOffers = getItemsOffer()
-//            action.invoke(R.id.navigation_home)
+            action.invoke(R.id.navigation_home)
             userId = SharedPreferenceUtils.getUserId(context)
         }.start()
     }
@@ -623,7 +623,7 @@ object Store {
                 })
     }
 
-    private fun updateFCData(info: String){
+    fun updateFCData(info: String){
         infoResponse = info
         attributes = getAttributesFromInfo()
         umid = FunnelConnectSDK.getUMID()

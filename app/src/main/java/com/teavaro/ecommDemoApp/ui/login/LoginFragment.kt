@@ -57,6 +57,7 @@ class LoginFragment : Fragment() {
                     binding.edtEmail.text.toString().encryptCBC()?.let {userId ->
                         FunnelConnectSDK.setUser(FCUser("enemail", userId), {
                             Store.infoResponse = it
+                            Store.updateFCData(it)
                             Store.umid = FunnelConnectSDK.getUMID()
                             Store.userId = userId
                             SharedPreferenceUtils.setUserId(requireContext(), userId)
