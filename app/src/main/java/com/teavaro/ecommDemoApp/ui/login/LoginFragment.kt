@@ -71,6 +71,9 @@ class LoginFragment : Fragment() {
                         })
                     }
                 }
+                else{
+                    Store.showPermissionsDialog(requireActivity(), parentFragmentManager)
+                }
             } else
                 Toast.makeText(context, "Need to insert email and password!", Toast.LENGTH_SHORT)
                     .show()
