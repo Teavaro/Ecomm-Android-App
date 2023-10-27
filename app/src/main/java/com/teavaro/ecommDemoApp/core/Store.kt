@@ -20,6 +20,7 @@ import com.teavaro.ecommDemoApp.core.room.ACEntity
 import com.teavaro.ecommDemoApp.core.room.AppDb
 import com.teavaro.ecommDemoApp.core.room.ItemEntity
 import com.teavaro.ecommDemoApp.core.utils.SharedPreferenceUtils
+import com.teavaro.ecommDemoApp.core.utils.TrackUtils
 import com.teavaro.ecommDemoApp.ui.AbandonedCartDialogFragment
 import com.teavaro.ecommDemoApp.ui.ItemDescriptionDialogFragment
 import com.teavaro.ecommDemoApp.ui.permissions.PermissionConsentDialogFragment
@@ -564,6 +565,7 @@ object Store {
         UTIQ.startService(stubToken, {
             atid = it.atid.toString()
             mtid = it.mtid.toString()
+            TrackUtils.mtid = mtid
         }, {
 
         })
@@ -596,6 +598,7 @@ object Store {
         UTIQ.clearCookies()
         atid = ""
         mtid = ""
+        TrackUtils.mtid = null
     }
 
     fun isNbaPermissionAccepted(): Boolean {
