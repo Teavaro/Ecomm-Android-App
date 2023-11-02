@@ -14,6 +14,7 @@ import com.teavaro.ecommDemoApp.core.utils.SharedPreferenceUtils
 import com.teavaro.ecommDemoApp.core.Store
 import com.teavaro.ecommDemoApp.core.utils.TrackUtils
 import com.teavaro.ecommDemoApp.databinding.FragmentSettingsBinding
+import com.teavaro.utiqTech.initializer.UTIQ
 
 class SettingsFragment : Fragment() {
 
@@ -90,8 +91,8 @@ class SettingsFragment : Fragment() {
             Store.clearUtiqData(requireContext())
             if(isStub) {
                 SharedPreferenceUtils.setStubToken(requireContext(), Store.stubToken)
+                Store.showUtiqConsent(requireActivity() ,parentFragmentManager)
             }
-            Store.showUtiqConsent(requireActivity() ,parentFragmentManager)
         }
         return root
     }

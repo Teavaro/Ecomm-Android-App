@@ -161,7 +161,11 @@ object Store {
                     context
                 )
                 if (omPermissionAccepted || optPermissionAccepted || nbaPermissionAccepted) {
-                    showUtiqConsent(context, supportFragmentManager)
+                    UTIQ.checkMNOEligibility({
+                        showUtiqConsent(context, supportFragmentManager)
+                    }, {
+
+                    })
                 } else {
                     clearData(context)
                 }
@@ -191,15 +195,17 @@ object Store {
         }
     }
 
-    private fun updateUtiqConsent(consent: Boolean,
-                                  context: Activity) {
+    private fun updateUtiqConsent(
+        consent: Boolean,
+        context: Activity
+    ) {
         val action = {
             val permissions = Permissions()
             permissions.addPermission(keyUtiq, consent)
             FunnelConnectSDK.updatePermissions(
                 permissions,
                 utiqNotificationsName,
-                notificationsVersion,{
+                notificationsVersion, {
                     updateFCData(it)
                 }
             )
@@ -227,7 +233,7 @@ object Store {
             FunnelConnectSDK.updatePermissions(
                 permissions,
                 fcNotificationsName,
-                notificationsVersion,{
+                notificationsVersion, {
                     updateFCData(it)
                 }
             )
@@ -253,7 +259,7 @@ object Store {
         }
     }
 
-    fun getAttributesFromInfo(): String?{
+    fun getAttributesFromInfo(): String? {
         infoResponse?.let { info ->
             var gson = Gson()
             val classOb = InfoResponse::class.java
@@ -379,14 +385,14 @@ object Store {
                     )
                 )
                 db.itemDao().saveItems(
-                        ItemEntity(
+                    ItemEntity(
                         6,
-                    "Pork Cocktail Sausages, Pack",
-                    description,
-                    3.29f,
-                    "pork",
-                    "/product/pork-cocktail-sausages-pack/"
-                )
+                        "Pork Cocktail Sausages, Pack",
+                        description,
+                        3.29f,
+                        "pork",
+                        "/product/pork-cocktail-sausages-pack/"
+                    )
                 )
             }
             listItems = db.itemDao().getAllItems() as ArrayList<ItemEntity>
@@ -436,18 +442,18 @@ object Store {
                     }
                 }
                 if (!attr.isNull("item_data")) {
-                    attr.getString("item_data")?.let {data ->
+                    attr.getString("item_data")?.let { data ->
                         Log.d("OkHttp", data)
                         findItemWithData(data)?.let {
-                        ItemDescriptionDialogFragment.open(
-                            supportFragmentManager,
-                            it,
-                            {
-                                addItemToCart(it.itemId)
-                            },
-                            {
-                                addItemToWish(it.itemId)
-                            })
+                            ItemDescriptionDialogFragment.open(
+                                supportFragmentManager,
+                                it,
+                                {
+                                    addItemToCart(it.itemId)
+                                },
+                                {
+                                    addItemToWish(it.itemId)
+                                })
 
                         }
                     }
@@ -477,9 +483,9 @@ object Store {
 
     private fun findItemWithData(data: String): ItemEntity? {
         var index: Int
-        for(item in listItems){
+        for (item in listItems) {
             index = item.data.indexOf(data)
-            if(index > -1) {
+            if (index > -1) {
                 return item
             }
         }
@@ -626,7 +632,7 @@ object Store {
                 })
     }
 
-    fun updateFCData(info: String){
+    fun updateFCData(info: String) {
         infoResponse = info
         attributes = getAttributesFromInfo()
         umid = FunnelConnectSDK.getUMID()
