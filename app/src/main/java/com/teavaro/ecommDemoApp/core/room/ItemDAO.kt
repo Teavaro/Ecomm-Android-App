@@ -21,10 +21,10 @@ interface ItemDAO {
     fun addItemToCart(itemId: Int, countInCart: Int)
 
     @Update
-    fun update(item: ItemEntity?)
+    fun update(item: ItemEntity)
 
     @Delete
-    fun delete(item: ItemEntity?)
+    fun delete(item: ItemEntity)
 
 
 }

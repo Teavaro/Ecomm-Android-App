@@ -41,7 +41,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
         TrackUtils.lifeCycle(lifecycle)
 
         var db = Room.databaseBuilder(applicationContext, AppDb::class.java, "TeavaroEcommDB")
-//            .fallbackToDestructiveMigration()
+            .fallbackToDestructiveMigration()
             .build()
 
 

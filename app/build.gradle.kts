@@ -101,7 +101,7 @@ dependencies {
     implementation(BuildSystem.libraries.swrveGeo)
     implementation(BuildSystem.libraries.googleServices)
 
-    val teavaro_version = "0.1.22"
+    val teavaro_version = "0.1.37"
     //FunnelConnect and UTIQ
     implementation("com.github.Teavaro.FunnelConnect-Mobile-SDK:funnelConnect:0.1.33") {
         exclude("com.github.Teavaro.FunnelConnect-Mobile-SDK", "core-android")
@@ -121,7 +121,7 @@ dependencies {
 
     testImplementation("junit:junit:4.13.2")
     //Room
-    val room_version = "2.4.0-alpha03" // check latest version from docs
+    val room_version = "2.6.1" // check latest version from docs
     implementation("androidx.room:room-runtime:$room_version")
     annotationProcessor("androidx.room:room-compiler:$room_version")
     kapt("androidx.room:room-compiler:$room_version")

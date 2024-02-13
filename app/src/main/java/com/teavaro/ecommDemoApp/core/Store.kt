@@ -65,10 +65,6 @@ object Store {
         "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don’t look even slightly believable. If you are going to use a passage of Lorem Ipsum."
     var refreshCeltraAd: (() -> Unit)? = null
 
-    init {
-
-    }
-
     fun addItemToCart(id: Int) {
         listItems[id].countInCart += 1
         updateItemDB(listItems[id])

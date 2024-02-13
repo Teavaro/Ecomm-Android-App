@@ -35,8 +35,8 @@ class FCApplication: Application() {
         this.initAppPolices()
         println("Teavaro:------------------initializing FunnelConnectSDK-${BuildConfig.VERSION_NAME}-------------")
         //FunnelConnectSDK.initialize(this, "cBsA3tQa.fyL749JH+?yJW=7", FCOptions(true))
-        FunnelConnectSDK.initialize(this, "ko8G.Rv_vT97LiDuoBHbhBJt", R.raw.utiq_configs, FCOptions(true))
-        UTIQ.initialize(this, "R&Ai^v>TfqCz4Y^HH2?3uk8j", UTIQOptions(true))
+        FunnelConnectSDK.initialize(this, "ko8G.Rv_vT97LiDuoBHbhBJt", R.raw.fc_configs, FCOptions(true))
+        UTIQ.initialize(this, "R&Ai^v>TfqCz4Y^HH2?3uk8j", R.raw.utiq_configs, UTIQOptions(true))
         FirebaseApp.initializeApp(this)
         initSwrve()
     }
