@@ -14,7 +14,6 @@ import android.widget.Toast
 import android.widget.Toolbar
 import androidx.annotation.RequiresApi
 import androidx.core.graphics.drawable.DrawableCompat
-import androidx.core.view.isVisible
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
@@ -23,7 +22,7 @@ import androidx.room.Room
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.teavaro.ecommDemoApp.R
 import com.teavaro.ecommDemoApp.baseClasses.mvvm.BaseActivity
-import com.teavaro.ecommDemoApp.core.*
+import com.teavaro.ecommDemoApp.core.Store
 import com.teavaro.ecommDemoApp.core.room.AppDb
 import com.teavaro.ecommDemoApp.core.utils.TrackUtils
 import com.teavaro.ecommDemoApp.databinding.ActivityMainBinding
@@ -58,7 +57,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
                 R.id.navigation_settings
             )
         )
-
         setupActionBarWithNavController(this.navController, appBarConfiguration)
         navView.setupWithNavController(this.navController)
         supportActionBar?.setDisplayShowHomeEnabled(true)

@@ -34,7 +34,8 @@ class FCApplication: Application() {
         instance = this
         this.initAppPolices()
         println("Teavaro:------------------initializing FunnelConnectSDK-${BuildConfig.VERSION_NAME}-------------")
-        FunnelConnectSDK.initialize(this, "ko8G.Rv_vT97LiDuoBHbhBJt", FCOptions(true))
+        //FunnelConnectSDK.initialize(this, "cBsA3tQa.fyL749JH+?yJW=7", FCOptions(true))
+        FunnelConnectSDK.initialize(this, "ko8G.Rv_vT97LiDuoBHbhBJt", R.raw.utiq_configs, FCOptions(true))
         UTIQ.initialize(this, "R&Ai^v>TfqCz4Y^HH2?3uk8j", UTIQOptions(true))
         FirebaseApp.initializeApp(this)
         initSwrve()
@@ -60,9 +61,10 @@ class FCApplication: Application() {
                     notificationManager.createNotificationChannel(channel);
                 }
             }
-            val notificationConfig: SwrveNotificationConfig.Builder = SwrveNotificationConfig.Builder(R.drawable.logo1, R.drawable.logo1, channel)
+            val notificationConfig: SwrveNotificationConfig.Builder = SwrveNotificationConfig.Builder(
+                com.teavaro.ecommDemoApp.R.drawable.logo1, com.teavaro.ecommDemoApp.R.drawable.logo1, channel)
                 .activityClass(MainActivity::class.java)
-                    .largeIconDrawableId(R.drawable.logo1)
+                    .largeIconDrawableId(com.teavaro.ecommDemoApp.R.drawable.logo1)
                     .accentColorHex("#3949AB")
             config.notificationConfig = notificationConfig.build()
 //            config.notificationListener = SwrvePushNotificationListener {
