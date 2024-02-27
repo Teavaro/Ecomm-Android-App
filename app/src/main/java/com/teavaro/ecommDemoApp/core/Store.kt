@@ -565,11 +565,12 @@ object Store {
         mtid = "{\"status\":\"notFound\"}"
         val stubToken = SharedPreferenceUtils.getStubToken(context)
         UTIQ.startService(stubToken, {
+            Log.d("okhttp.OkHttpClient", "startService good")
             atid = it.atid.toString()
             mtid = it.mtid.toString()
             TrackUtils.mtid = mtid
         }, {
-
+            Log.d("okhttp.OkHttpClient", it.message)
         })
     }
 

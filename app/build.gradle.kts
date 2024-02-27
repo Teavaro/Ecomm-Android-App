@@ -101,18 +101,19 @@ dependencies {
     implementation(BuildSystem.libraries.swrveGeo)
     implementation(BuildSystem.libraries.googleServices)
 
-    val teavaro_version = "0.1.37"
     //FunnelConnect and UTIQ
     implementation("com.github.Teavaro.FunnelConnect-Mobile-SDK:funnelConnect:0.1.33") {
         exclude("com.github.Teavaro.FunnelConnect-Mobile-SDK", "core-android")
     }
-    implementation("com.github.Utiq-tech.UTIQ-Mobile-SDK:utiq:$teavaro_version")
+    implementation("com.github.Utiq-tech.UTIQ-Mobile-SDK:utiq:0.1.37")
     //
-    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.1")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1")
-    implementation("androidx.navigation:navigation-fragment-ktx:2.6.0")
-    implementation("androidx.navigation:navigation-ui-ktx:2.6.0")
-    implementation ("com.google.code.gson:gson:2.8.9")
+    val lifecycleVersion = "2.7.0"
+    val navigationVersion = "2.7.7"
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion")
+    implementation("androidx.navigation:navigation-fragment-ktx:$navigationVersion")
+    implementation("androidx.navigation:navigation-ui-ktx:$navigationVersion")
+    implementation ("com.google.code.gson:gson:2.10")
 
     // Hyperion debugger
     debugImplementation(BuildSystem.libraries.hyperionCore)
@@ -121,8 +122,8 @@ dependencies {
 
     testImplementation("junit:junit:4.13.2")
     //Room
-    val room_version = "2.6.1" // check latest version from docs
-    implementation("androidx.room:room-runtime:$room_version")
-    annotationProcessor("androidx.room:room-compiler:$room_version")
-    kapt("androidx.room:room-compiler:$room_version")
+    val roomVersion = "2.6.1"
+    implementation("androidx.room:room-runtime:$roomVersion")
+    annotationProcessor("androidx.room:room-compiler:$roomVersion")
+    kapt("androidx.room:room-compiler:$roomVersion")
    }

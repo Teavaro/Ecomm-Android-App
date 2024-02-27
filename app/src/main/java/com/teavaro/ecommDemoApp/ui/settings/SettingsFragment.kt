@@ -2,19 +2,18 @@ package com.teavaro.ecommDemoApp.ui.settings
 
 import android.app.AlertDialog
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import com.teavaro.ecommDemoApp.R
-import com.teavaro.ecommDemoApp.core.utils.SharedPreferenceUtils
 import com.teavaro.ecommDemoApp.core.Store
+import com.teavaro.ecommDemoApp.core.utils.SharedPreferenceUtils
 import com.teavaro.ecommDemoApp.core.utils.TrackUtils
 import com.teavaro.ecommDemoApp.databinding.FragmentSettingsBinding
-import com.teavaro.utiqTech.initializer.UTIQ
 
 class SettingsFragment : Fragment() {
 
@@ -88,10 +87,9 @@ class SettingsFragment : Fragment() {
 
         binding.stubMode.isChecked = SharedPreferenceUtils.getStubToken(requireContext()) != null
         binding.stubMode.setOnCheckedChangeListener { _, isStub ->
-            Store.clearUtiqData(requireContext())
             if(isStub) {
                 SharedPreferenceUtils.setStubToken(requireContext(), Store.stubToken)
-                Store.showUtiqConsent(requireActivity() ,parentFragmentManager)
+                Store.showUtiqConsent(requireActivity(), parentFragmentManager)
             }
         }
         return root

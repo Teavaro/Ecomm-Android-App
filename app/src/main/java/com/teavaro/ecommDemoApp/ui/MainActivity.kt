@@ -85,6 +85,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
         UTIQ.onInitialize({
             Log.d("okhttp.OkHttpClient:", "inside UTIQ.onInitialize")
             if (UTIQ.isConsentAccepted()) {
+                Log.d("okhttp.OkHttpClient:", "isConsentAccepted()")
                 Store.utiqStartService(this)
             }
         }, {
