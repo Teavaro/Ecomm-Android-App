@@ -21,6 +21,7 @@ import androidx.navigation.ui.setupWithNavController
 import androidx.room.Room
 import com.teavaro.ecommDemoApp.baseClasses.mvvm.BaseActivity
 import com.teavaro.ecommDemoApp.core.Store
+import com.teavaro.ecommDemoApp.core.Store.utiqStartService
 import com.teavaro.ecommDemoApp.core.room.AppDb
 import com.teavaro.ecommDemoApp.core.utils.TrackUtils
 import com.teavaro.ecommDemoApp.databinding.ActivityMainBinding
@@ -96,7 +97,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
             Log.d("okhttp.OkHttpClient:", "inside UTIQ.onInitialize")
             if (Utiq.isConsentAccepted()) {
                 Log.d("okhttp.OkHttpClient:", "isConsentAccepted()")
-                Store.utiqStartService(this)
+                utiqStartService(this)
             }
         }, {
             Toast.makeText(FCApplication.instance, it.message, Toast.LENGTH_LONG).show()

@@ -160,11 +160,13 @@ object Store {
                 )
                 if (omPermissionAccepted || optPermissionAccepted || nbaPermissionAccepted) {
                     val stubToken = SharedPreferenceUtils.getStubToken(context)
-                    Utiq.checkMNOEligibility(stubToken, {
-                        showUtiqConsent(context, supportFragmentManager)
-                    }, {
+                    if (Utiq.isInitialized() && !Utiq.isConsentAccepted()) {
+                        Utiq.checkMNOEligibility(stubToken, {
+                            showUtiqConsent(context, supportFragmentManager)
+                        }, {
 
-                    })
+                        })
+                    }
                 } else {
                     clearData(context)
                 }
@@ -185,7 +187,20 @@ object Store {
             if (Utiq.isInitialized()) {
                 if (consent) {
                     Utiq.acceptConsent()
-                    utiqStartService(context)
+                    utiqStartService(context, { atid, mtid ->
+                        Log.d("okhttp.OkHttpClient", "startService good")
+                        Store.atid = atid
+                        Store.mtid = mtid
+                        SharedPreferenceUtils.setMartechpass(context, mtid)
+                        fcStartService(context) {
+
+                        }
+                    },
+                    { message ->
+                        atid = message
+                        mtid = message
+                        Log.d("okhttp.OkHttpClient", message)
+                    })
                 } else {
                     Utiq.rejectConsent()
                 }
@@ -564,20 +579,41 @@ object Store {
     }
 
 
-    fun utiqStartService(context: Context) {
-        atid = "{\"status\":\"notFound\"}"
-        mtid = "{\"status\":\"notFound\"}"
+    fun utiqStartService(
+        context: Context,
+        successAction: (String, String) -> Unit,
+        failureAction: (String) -> Unit
+    ) {
         val stubToken = SharedPreferenceUtils.getStubToken(context)
-        Utiq.fetchIdConnectData(stubToken, {
-            Log.d("okhttp.OkHttpClient", "startService good")
-            atid = it.atid.toString()
-            SharedPreferenceUtils.setMartechpass(context, it.mtid.toString())
-            fcStartService(context as Activity) {
+        if (Utiq.isInitialized()) {
+            Utiq.fetchIdConnectData(stubToken, {
+                successAction(it.atid.toString(), it.mtid.toString())
+            }, {
+                failureAction(it.message)
+            })
+        }
+    }
 
-            }
-        }, {
-            Log.d("okhttp.OkHttpClient", it.message)
-        })
+    fun utiqStartService(
+        context: Context
+    ) {
+        Log.d("okhttp.OkHttpClient", "utiqStartService...")
+        val stubToken = SharedPreferenceUtils.getStubToken(context)
+        if (Utiq.isInitialized()) {
+            Utiq.fetchIdConnectData(stubToken, {
+                Log.d("okhttp.OkHttpClient", "startService good")
+                atid = it.atid.toString()
+                mtid = it.mtid.toString()
+                SharedPreferenceUtils.setMartechpass(context, mtid)
+                fcStartService(context) {
+
+                }
+            }, {
+                atid = it.message
+                mtid = ""
+                Log.d("okhttp.OkHttpClient", it.message)
+            })
+        }
     }
 
     fun getClickIdentLink(context: Context): String? {
@@ -603,8 +639,10 @@ object Store {
 
     fun clearUtiqData(context: Context) {
         SharedPreferenceUtils.setStubToken(context, null)
-        Utiq.clearData()
-        Utiq.clearCookies()
+        if (Utiq.isInitialized()) {
+            Utiq.clearData()
+            Utiq.clearCookies()
+        }
         atid = ""
         mtid = ""
         SharedPreferenceUtils.setMartechpass(context, null)
@@ -619,17 +657,22 @@ object Store {
     }
 
     fun fcStartService(
-        context: Activity,
+        context: Context,
         action: (() -> Unit)? = null
     ) {
         FunnelConnectSDK
-            .startService(null, SharedPreferenceUtils.getMartechpass(FCApplication.instance)?.let { PassQuery("martechpass", it) }, fcNotificationsName, notificationsVersion, {
-                updateFCData(it)
-                SwrveSDK.start(context, FunnelConnectSDK.getUMID())
-                SwrveGeoSDK.start(context)
-                isFunnelConnectStarted = true
-                action?.invoke()
-            },
+            .startService(null,
+                SharedPreferenceUtils.getMartechpass(FCApplication.instance)
+                    ?.let { PassQuery("martechpass", it) },
+                fcNotificationsName,
+                notificationsVersion,
+                {
+                    updateFCData(it)
+                    SwrveSDK.start(context as Activity, FunnelConnectSDK.getUMID())
+                    SwrveGeoSDK.start(context)
+                    isFunnelConnectStarted = true
+                    action?.invoke()
+                },
                 {
                     Log.d("error:", "FunnelConnectSDK.startService")
                 })

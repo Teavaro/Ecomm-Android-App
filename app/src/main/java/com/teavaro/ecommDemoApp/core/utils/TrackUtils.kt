@@ -6,6 +6,7 @@ import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.LifecycleOwner
 import com.teavaro.ecommDemoApp.FCApplication
 import com.teavaro.ecommDemoApp.core.Store
+import com.teavaro.ecommDemoApp.core.Store.utiqStartService
 import com.teavaro.funnelConnect.main.FunnelConnectSDK
 
 object TrackUtils  : LifecycleObserver {
@@ -14,6 +15,7 @@ object TrackUtils  : LifecycleObserver {
 
     fun impression(value: String) {
         event(value, "navigation")
+        utiqStartService(FCApplication.instance)
     }
 
     fun click(value: String){

@@ -43,7 +43,7 @@ class FCApplication: Application() {
             .use { it.readText() }
         val utiqOptions = UtiqOptions().enableLogging().setFallBackConfigJson(config)
         println("UTIQSDK-${BuildConfig.VERSION_NAME}-------------")
-        Utiq.initialize(this, "R&Ai^v>TfqCz4Y^HH2?3uk8j", utiqOptions)
+        Utiq.initialize(this, "rpCq2SQO9hdNAGwWF7zKVHTL3yU5zzto", utiqOptions)
         FirebaseApp.initializeApp(this)
         initSwrve()
     }
@@ -69,9 +69,9 @@ class FCApplication: Application() {
                 }
             }
             val notificationConfig: SwrveNotificationConfig.Builder = SwrveNotificationConfig.Builder(
-                com.teavaro.ecommDemoApp.R.drawable.logo1, com.teavaro.ecommDemoApp.R.drawable.logo1, channel)
+                R.drawable.logo1, R.drawable.logo1, channel)
                 .activityClass(MainActivity::class.java)
-                    .largeIconDrawableId(com.teavaro.ecommDemoApp.R.drawable.logo1)
+                    .largeIconDrawableId(R.drawable.logo1)
                     .accentColorHex("#3949AB")
             config.notificationConfig = notificationConfig.build()
             config.notificationListener = SwrvePushNotificationListener {
