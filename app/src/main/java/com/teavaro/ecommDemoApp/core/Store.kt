@@ -641,7 +641,6 @@ object Store {
         SharedPreferenceUtils.setStubToken(context, null)
         if (Utiq.isInitialized()) {
             Utiq.clearData()
-            Utiq.clearCookies()
         }
         atid = ""
         mtid = ""

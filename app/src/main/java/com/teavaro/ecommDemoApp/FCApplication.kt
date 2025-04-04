@@ -17,6 +17,7 @@ import com.swrve.sdk.geo.SwrveGeoConfig
 import com.swrve.sdk.geo.SwrveGeoSDK
 import com.teavaro.ecommDemoApp.core.Store
 import com.teavaro.ecommDemoApp.core.utils.TrackUtils
+import com.teavaro.ecommDemoApp.debugging.SharedPreferencesServer
 import com.teavaro.funnelConnect.data.models.FCOptions
 import com.teavaro.funnelConnect.main.FunnelConnectSDK
 import com.utiq.utiqTech.data.models.UtiqOptions
@@ -46,6 +47,7 @@ class FCApplication: Application() {
         Utiq.initialize(this, "rpCq2SQO9hdNAGwWF7zKVHTL3yU5zzto", utiqOptions)
         FirebaseApp.initializeApp(this)
         initSwrve()
+        initSharedPreferenceDebugger()
     }
 
     private fun initAppPolices() {
@@ -53,6 +55,11 @@ class FCApplication: Application() {
             val threadPolices = StrictMode.ThreadPolicy.Builder().permitAll().build()
             StrictMode.setThreadPolicy(threadPolices)
         }
+    }
+
+    private fun initSharedPreferenceDebugger() {
+        if (BuildConfig.DEBUG)
+            SharedPreferencesServer.start(this, "utiq_pref")
     }
 
     private fun initSwrve(){

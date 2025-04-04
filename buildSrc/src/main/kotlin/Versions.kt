@@ -5,7 +5,7 @@ object Versions {
     const val compileSdk                = 35
     const val jvmTarget                 = "17"
     // Libraries versions
-    const val gradle                    = "8.3.0"
+    const val gradle                    = "8.9.1"
     const val kotlin                    = "1.8.22"
     const val androidXWorkRuntime       = "2.7.1"
     const val constraintLayout          = "2.1.3"

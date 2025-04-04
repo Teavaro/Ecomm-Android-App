@@ -101,22 +101,20 @@ dependencies {
     implementation(BuildSystem.libraries.swrveGeo)
     implementation(BuildSystem.libraries.googleServices)
     // FunnelConnect and UTIQ
-    implementation("com.github.Teavaro.FunnelConnect-Mobile-SDK:funnelConnect:0.1.47") {
+    implementation("com.github.Teavaro.FunnelConnect-Mobile-SDK:funnelConnect:0.1.48") {
         exclude("com.github.Teavaro.FunnelConnect-Mobile-SDK", "core-android")
     }
-    implementation("com.github.Utiq-tech.UTIQ-Mobile-SDK:utiq:0.1.66") //65
-    val lifecycleVersion = "2.8.5"
-    val navigationVersion = "2.8.0"
+    implementation("com.github.Utiq-tech.UTIQ-Mobile-SDK:utiq:0.1.68")
+    val lifecycleVersion = "2.8.7"
+    val navigationVersion = "2.8.9"
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion")
     implementation("androidx.navigation:navigation-fragment-ktx:$navigationVersion")
     implementation("androidx.navigation:navigation-ui-ktx:$navigationVersion")
-    implementation ("com.google.code.gson:gson:2.10.1")
-
-    // Hyperion debugger
-    //debugImplementation(BuildSystem.libraries.hyperionCore)
-    //debugImplementation(BuildSystem.libraries.hyperionSharedPreferences)
-    //releaseImplementation(BuildSystem.libraries.hyperionNoop)
+    implementation ("com.google.code.gson:gson:2.11.0")
+    //
+    implementation("org.nanohttpd:nanohttpd:2.3.1")
+    //
     testImplementation("junit:junit:4.13.2")
     //Room
     val roomVersion = "2.6.1"
