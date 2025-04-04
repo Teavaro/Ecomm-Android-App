@@ -199,6 +199,7 @@ object Store {
                     { message ->
                         atid = message
                         mtid = message
+                        SharedPreferenceUtils.setMartechpass(context, null)
                         Log.d("okhttp.OkHttpClient", message)
                     })
                 } else {
@@ -610,7 +611,8 @@ object Store {
                 }
             }, {
                 atid = it.message
-                mtid = ""
+                mtid = it.message
+                SharedPreferenceUtils.setMartechpass(context, null)
                 Log.d("okhttp.OkHttpClient", it.message)
             })
         }
