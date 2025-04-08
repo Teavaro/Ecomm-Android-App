@@ -308,13 +308,13 @@
             }
 
             modalContent.innerHTML = `
-  <div class="key-container">
-      <strong>Key:</strong>
-      <span>${key}</span>
-  </div>
-  <textarea id="updateValue" rows="10" style="width: 100%; resize: none;">${displayValue}</textarea>
-  <button onclick="updateValue('${key}')">Save</button>
-  <button class="close-btn" onclick="closeModal()">Close</button>
+<div class="key-container">
+  <strong>Key:</strong>
+  <span>${key}</span>
+</div>
+<textarea id="updateValue" rows="10" style="width: 100%; resize: none;">${displayValue}</textarea>
+<button onclick="updateValue('${key}')">Save</button>
+<button class="close-btn" onclick="closeModal()">Close</button>
 `;
         }
 
@@ -332,7 +332,8 @@
             body.append("value", updatedValue); // The value is sent as a string
 
             try {
-                const response = await fetch("http://localhost:8080/update", {
+                const baseUrl = window.location.origin; // Get the base URL (e.g., http://localhost:8080)
+                const response = await fetch(`${baseUrl}/update`, {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/x-www-form-urlencoded", // Set the content type to URL-encoded
