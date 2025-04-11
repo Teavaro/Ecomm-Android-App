@@ -85,6 +85,10 @@ class SettingsFragment : Fragment() {
             Store.showPermissionsDialog(requireActivity(), parentFragmentManager)
         }
 
+        binding.utiqConsentManagement.setOnClickListener {
+            Store.showUtiqConsent(requireActivity(), parentFragmentManager)
+        }
+
         binding.stubMode.isChecked = SharedPreferenceUtils.getStubToken(requireContext()) != null
         binding.stubMode.setOnCheckedChangeListener { _, isStub ->
             Store.clearUtiqData(FCApplication.instance)
