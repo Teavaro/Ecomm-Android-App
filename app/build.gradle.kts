@@ -101,10 +101,10 @@ dependencies {
     implementation(BuildSystem.libraries.swrveGeo)
     implementation(BuildSystem.libraries.googleServices)
     // FunnelConnect and UTIQ
-    implementation("com.github.Teavaro.FunnelConnect-Mobile-SDK:funnelConnect:0.1.48") {
+    implementation("com.github.Teavaro.FunnelConnect-Mobile-SDK:funnelConnect:0.1.49") {
         exclude("com.github.Teavaro.FunnelConnect-Mobile-SDK", "core-android")
     }
-    implementation("com.github.Utiq-tech.UTIQ-Mobile-SDK:utiq:0.1.68")
+    implementation("com.github.Utiq-tech.UTIQ-Mobile-SDK:utiq:0.1.70")
     val lifecycleVersion = "2.8.7"
     val navigationVersion = "2.8.9"
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion")
@@ -117,7 +117,7 @@ dependencies {
     //
     testImplementation("junit:junit:4.13.2")
     //Room
-    val roomVersion = "2.6.1"
+    val roomVersion = "2.7.1"
     implementation("androidx.room:room-runtime:$roomVersion")
     annotationProcessor("androidx.room:room-compiler:$roomVersion")
     kapt("androidx.room:room-compiler:$roomVersion")

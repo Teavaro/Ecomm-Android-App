@@ -59,7 +59,7 @@ class FCApplication: Application() {
 
     private fun initSharedPreferenceDebugger() {
         if (BuildConfig.DEBUG)
-            SharedPreferencesServer.start(this, "utiq_pref")
+            SharedPreferencesServer.start(this, "com.utiqTech.utiq.sdk.settings")
     }
 
     private fun initSwrve(){
