@@ -104,7 +104,7 @@ dependencies {
     implementation("com.github.Teavaro.FunnelConnect-Mobile-SDK:funnelConnect:0.1.49") {
         exclude("com.github.Teavaro.FunnelConnect-Mobile-SDK", "core-android")
     }
-    implementation("com.github.Utiq-tech.UTIQ-Mobile-SDK:utiq:0.1.70")
+    implementation("com.github.Utiq-tech.UTIQ-Mobile-SDK:utiq:0.1.71")
     val lifecycleVersion = "2.8.7"
     val navigationVersion = "2.8.9"
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion")

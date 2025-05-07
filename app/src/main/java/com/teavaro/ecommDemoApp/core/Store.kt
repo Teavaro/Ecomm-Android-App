@@ -606,9 +606,6 @@ object Store {
                 atid = it.atid.toString()
                 mtid = it.mtid.toString()
                 SharedPreferenceUtils.setMartechpass(context, mtid)
-                fcStartService(context) {
-
-                }
             }, {
                 atid = it.message
                 mtid = it.message
