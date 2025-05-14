@@ -8,11 +8,14 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
+import android.view.Gravity
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.TextView
 import android.widget.Toast
 import android.widget.Toolbar
 import androidx.annotation.RequiresApi
+import androidx.appcompat.app.ActionBar
 import androidx.core.graphics.drawable.DrawableCompat
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -60,6 +63,23 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
         supportActionBar?.setIcon(R.drawable.logo2)
         if (resources.getString(R.string.mode) == "Day") {
             supportActionBar?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT));
+        }
+
+        val textView = TextView(applicationContext).apply {
+            "v${BuildConfig.VERSION_NAME}(${BuildConfig.VERSION_CODE})".also { text = it }
+            setTextColor(Color.BLACK)
+            textSize = 16f
+            setPadding(0, 0, 5, 0) // Optional: adjust for alignment
+            gravity = Gravity.END or Gravity.CENTER_VERTICAL
+            layoutParams = ActionBar.LayoutParams(
+                ActionBar.LayoutParams.WRAP_CONTENT,
+                ActionBar.LayoutParams.MATCH_PARENT,
+                Gravity.END or Gravity.CENTER_VERTICAL
+            )
+        }
+        supportActionBar?.apply {
+            setDisplayShowCustomEnabled(true)
+            customView = textView
         }
 
         navView.setOnItemSelectedListener { item ->
