@@ -24,11 +24,12 @@ import androidx.navigation.ui.setupWithNavController
 import androidx.room.Room
 import com.teavaro.ecommDemoApp.baseClasses.mvvm.BaseActivity
 import com.teavaro.ecommDemoApp.core.Store
+import com.teavaro.ecommDemoApp.core.Store.showUtiqConsent
 import com.teavaro.ecommDemoApp.core.Store.utiqStartService
 import com.teavaro.ecommDemoApp.core.room.AppDb
+import com.teavaro.ecommDemoApp.core.utils.SharedPreferenceUtils
 import com.teavaro.ecommDemoApp.core.utils.TrackUtils
 import com.teavaro.ecommDemoApp.databinding.ActivityMainBinding
-import com.teavaro.funnelConnect.main.FunnelConnectSDK
 import com.utiq.utiqTech.main.Utiq
 
 
@@ -85,11 +86,10 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
         navView.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.navigation_settings -> {
-                    Log.d("test->", item.itemId.toString())
                     Store.lastPage = R.id.navigation_settings
                 }
+
                 R.id.navigation_home -> {
-                    Log.d("test->", item.itemId.toString())
                     Store.lastPage = R.id.navigation_home
                 }
             }
@@ -103,7 +103,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
             }
         }
         Log.d("okhttp.OkHttpClient:", "before UTIQ.onInitialize")
-        FunnelConnectSDK.onInitialize({
+        /*FunnelConnectSDK.onInitialize({
             Store.fcStartService(this) {
                 if (FunnelConnectSDK.getPermissions().isEmpty()) {
                     Store.showPermissionsDialog(this, supportFragmentManager)
@@ -112,12 +112,19 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
         }) {
             Store.umid = "FunnelConnect failed initialization."
             Toast.makeText(FCApplication.instance, it.message, Toast.LENGTH_LONG).show()
-        }
+        }*/
         Utiq.onInitialize({
             Log.d("okhttp.OkHttpClient:", "inside UTIQ.onInitialize")
             if (Utiq.isConsentAccepted()) {
                 Log.d("okhttp.OkHttpClient:", "isConsentAccepted()")
                 utiqStartService(this)
+            } else {
+                val stubToken = SharedPreferenceUtils.getStubToken(this)
+                Utiq.checkMNOEligibility(stubToken, {
+                    showUtiqConsent(this, supportFragmentManager)
+                }, {
+
+                })
             }
         }, {
             Toast.makeText(FCApplication.instance, it.message, Toast.LENGTH_LONG).show()
@@ -154,7 +161,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        Log.d("test->", item.itemId.toString())
         Store.navigateAction?.invoke(Store.lastPage)
         return true
     }

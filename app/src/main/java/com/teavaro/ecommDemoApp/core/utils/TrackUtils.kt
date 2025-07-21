@@ -5,9 +5,9 @@ import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.LifecycleOwner
 import com.teavaro.ecommDemoApp.FCApplication
-import com.teavaro.ecommDemoApp.core.Store
 import com.teavaro.ecommDemoApp.core.Store.utiqStartService
-import com.teavaro.funnelConnect.main.FunnelConnectSDK
+
+//import com.teavaro.funnelConnect.main.FunnelConnectSDK
 
 object TrackUtils  : LifecycleObserver {
     const val EVENT_NAME = "event_name"
@@ -31,9 +31,9 @@ object TrackUtils  : LifecycleObserver {
     }
 
     fun events(events: Map<String, String>){
-        if(FunnelConnectSDK.isInitialized() && Store.isOptPermissionAccepted()) {
+        /*if(FunnelConnectSDK.isInitialized() && Store.isOptPermissionAccepted()) {
             FunnelConnectSDK.logEvents(events)
-        }
+        }*/
     }
 
     fun geoPlace(value: String){

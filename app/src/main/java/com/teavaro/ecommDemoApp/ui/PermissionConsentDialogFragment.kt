@@ -55,11 +55,11 @@ class PermissionConsentDialogFragment : DialogFragment(R.layout.fragment_f_permi
     }
 
     private fun initialPresets() {
-        FunnelConnectSDK.getPermissions().let {
+        /*FunnelConnectSDK.getPermissions().let {
             binding.swCookies.isChecked = it.getPermission(Store.keyOm)
             binding.swNetwork.isChecked = it.getPermission(Store.keyOpt)
             binding.swPersonal.isChecked = it.getPermission(Store.keyNba)
-        }
+        }*/
     }
 
     companion object {

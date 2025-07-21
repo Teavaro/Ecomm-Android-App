@@ -1,5 +1,6 @@
 package com.teavaro.ecommDemoApp.core
 
+//import com.teavaro.funnelConnect.main.FunnelConnectSDK
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
@@ -12,9 +13,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentManager
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import com.swrve.sdk.SwrveSDK
-import com.swrve.sdk.geo.SwrveGeoSDK
-import com.teavaro.ecommDemoApp.FCApplication
 import com.teavaro.ecommDemoApp.R
 import com.teavaro.ecommDemoApp.core.dataClases.InfoResponse
 import com.teavaro.ecommDemoApp.core.room.ACEntity
@@ -25,8 +23,6 @@ import com.teavaro.ecommDemoApp.ui.AbandonedCartDialogFragment
 import com.teavaro.ecommDemoApp.ui.ItemDescriptionDialogFragment
 import com.teavaro.ecommDemoApp.ui.PermissionConsentDialogFragment
 import com.teavaro.ecommDemoApp.ui.UtiqConsent
-import com.teavaro.funnelConnect.data.models.PassQuery
-import com.teavaro.funnelConnect.main.FunnelConnectSDK
 import com.teavaro.funnelConnect.utils.platformTypes.permissionsMap.Permissions
 import com.utiq.utiqTech.main.Utiq
 import org.json.JSONObject
@@ -217,13 +213,13 @@ object Store {
         val action = {
             val permissions = Permissions()
             permissions.addPermission(keyUtiq, consent)
-            FunnelConnectSDK.updatePermissions(
+            /*FunnelConnectSDK.updatePermissions(
                 permissions,
                 utiqNotificationsName,
                 notificationsVersion, {
                     updateFCData(it)
                 }
-            )
+            )*/
         }
         if (isFunnelConnectStarted) {
             action.invoke()
@@ -245,13 +241,13 @@ object Store {
             permissions.addPermission(keyOm, om)
             permissions.addPermission(keyOpt, opt)
             permissions.addPermission(keyNba, nba)
-            FunnelConnectSDK.updatePermissions(
+            /*FunnelConnectSDK.updatePermissions(
                 permissions,
                 fcNotificationsName,
                 notificationsVersion, {
                     updateFCData(it)
                 }
-            )
+            )*/
         }
         if (isFunnelConnectStarted) {
             action.invoke()
@@ -630,8 +626,8 @@ object Store {
         listAc.clear()
         SharedPreferenceUtils.setUserId(context, null)
         SharedPreferenceUtils.setLogin(context, false)
-        FunnelConnectSDK.clearData()
-        FunnelConnectSDK.clearCookies()
+        //FunnelConnectSDK.clearData()
+        //FunnelConnectSDK.clearCookies()
         clearUtiqData(context)
         isFunnelConnectStarted = false
     }
@@ -647,18 +643,19 @@ object Store {
     }
 
     fun isNbaPermissionAccepted(): Boolean {
-        return FunnelConnectSDK.getPermissions().getPermission(keyNba)
+        return true//FunnelConnectSDK.getPermissions().getPermission(keyNba)
     }
 
     fun isOptPermissionAccepted(): Boolean {
-        return FunnelConnectSDK.getPermissions().getPermission(keyOpt)
+        return true;
+        //return FunnelConnectSDK.getPermissions().getPermission(keyOpt)
     }
 
     fun fcStartService(
         context: Context,
         action: (() -> Unit)? = null
     ) {
-        FunnelConnectSDK
+        /*FunnelConnectSDK
             .startService(null,
                 SharedPreferenceUtils.getMartechpass(FCApplication.instance)
                     ?.let { PassQuery("martechpass", it) },
@@ -673,13 +670,13 @@ object Store {
                 },
                 {
                     Log.d("error:", "FunnelConnectSDK.startService")
-                })
+                })*/
     }
 
     fun updateFCData(info: String) {
         infoResponse = info
         attributes = getAttributesFromInfo()
-        umid = FunnelConnectSDK.getUMID()
+        umid = ""//FunnelConnectSDK.getUMID()
         refreshCeltraAd?.invoke()
     }
 }

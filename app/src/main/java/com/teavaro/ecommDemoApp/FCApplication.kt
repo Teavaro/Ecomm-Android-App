@@ -1,5 +1,6 @@
 package com.teavaro.ecommDemoApp
 
+//import com.teavaro.funnelConnect.main.FunnelConnectSDK
 import android.app.Application
 import android.app.NotificationChannel
 import android.app.NotificationManager
@@ -19,7 +20,6 @@ import com.teavaro.ecommDemoApp.core.Store
 import com.teavaro.ecommDemoApp.core.utils.TrackUtils
 import com.teavaro.ecommDemoApp.debugging.SharedPreferencesServer
 import com.teavaro.funnelConnect.data.models.FCOptions
-import com.teavaro.funnelConnect.main.FunnelConnectSDK
 import com.utiq.utiqTech.data.models.UtiqOptions
 import com.utiq.utiqTech.main.Utiq
 
@@ -38,7 +38,7 @@ class FCApplication: Application() {
             .bufferedReader()
             .use { it.readText() }
         val fcOptions = FCOptions().enableLogging().setFallBackConfigJson(config)
-        FunnelConnectSDK.initialize(this, "ko8G.Rv_vT97LiDuoBHbhBJt", fcOptions )
+        //FunnelConnectSDK.initialize(this, "ko8G.Rv_vT97LiDuoBHbhBJt", fcOptions )
         config = resources.openRawResource(R.raw.utiq_configs)
             .bufferedReader()
             .use { it.readText() }
