@@ -101,10 +101,10 @@ dependencies {
     implementation(BuildSystem.libraries.swrveGeo)
     implementation(BuildSystem.libraries.googleServices)
     // FunnelConnect and UTIQ
-    implementation("com.github.Teavaro.FunnelConnect-Mobile-SDK:funnelConnect:0.1.51") {
-        exclude("com.github.Teavaro.FunnelConnect-Mobile-SDK", "core-android")
-    }
-    implementation("com.github.Utiq-tech.UTIQ-Mobile-SDK:utiq:0.1.75.1")
+    //implementation("com.github.Teavaro.FunnelConnect-Mobile-SDK:funnelConnect:0.1.51") {
+    //    exclude("com.github.Teavaro.FunnelConnect-Mobile-SDK", "core-android")
+    //}
+    implementation("com.github.Utiq-tech.UTIQ-Mobile-SDK:utiq:0.1.75.2")
     val lifecycleVersion = "2.8.7"
     val navigationVersion = "2.8.9"
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion")

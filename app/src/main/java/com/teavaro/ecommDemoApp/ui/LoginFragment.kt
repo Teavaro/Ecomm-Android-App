@@ -14,8 +14,6 @@ import com.teavaro.ecommDemoApp.core.Store
 import com.teavaro.ecommDemoApp.core.utils.SharedPreferenceUtils
 import com.teavaro.ecommDemoApp.core.utils.TrackUtils
 import com.teavaro.ecommDemoApp.databinding.FragmentLoginBinding
-import com.teavaro.funnelConnect.data.models.FCUser
-import com.teavaro.funnelConnect.main.FunnelConnectSDK
 import java.nio.charset.StandardCharsets
 import java.util.Base64
 import javax.crypto.BadPaddingException

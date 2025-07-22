@@ -23,7 +23,6 @@ import com.teavaro.ecommDemoApp.ui.AbandonedCartDialogFragment
 import com.teavaro.ecommDemoApp.ui.ItemDescriptionDialogFragment
 import com.teavaro.ecommDemoApp.ui.PermissionConsentDialogFragment
 import com.teavaro.ecommDemoApp.ui.UtiqConsent
-import com.teavaro.funnelConnect.utils.platformTypes.permissionsMap.Permissions
 import com.utiq.utiqTech.main.Utiq
 import org.json.JSONObject
 import java.lang.reflect.Type
@@ -211,8 +210,8 @@ object Store {
         context: Activity
     ) {
         val action = {
-            val permissions = Permissions()
-            permissions.addPermission(keyUtiq, consent)
+            //val permissions = Permissions()
+            //permissions.addPermission(keyUtiq, consent)
             /*FunnelConnectSDK.updatePermissions(
                 permissions,
                 utiqNotificationsName,
@@ -237,10 +236,10 @@ object Store {
         context: Activity
     ) {
         val action = {
-            val permissions = Permissions()
-            permissions.addPermission(keyOm, om)
-            permissions.addPermission(keyOpt, opt)
-            permissions.addPermission(keyNba, nba)
+//            val permissions = Permissions()
+//            permissions.addPermission(keyOm, om)
+//            permissions.addPermission(keyOpt, opt)
+//            permissions.addPermission(keyNba, nba)
             /*FunnelConnectSDK.updatePermissions(
                 permissions,
                 fcNotificationsName,
