@@ -78,3 +78,4 @@ lint/tmp/
 gradle.properties
 secrets/tokens.properties
 firebaseDistribution/groups.txt
+/github.properties

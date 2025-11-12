@@ -44,6 +44,7 @@ android {
 
     packaging {
         resources.excludes.addAll(listOf(
+            "META-INF/versions/9/OSGI-INF/MANIFEST.MF",
             "META-INF/DEPENDENCIES",
             "META-INF/LICENSE-notice.md",
             "META-INF/LICENSE.md",
@@ -104,7 +105,8 @@ dependencies {
     //implementation("com.github.Teavaro.FunnelConnect-Mobile-SDK:funnelConnect:0.1.51") {
     //    exclude("com.github.Teavaro.FunnelConnect-Mobile-SDK", "core-android")
     //}
-    implementation("com.github.Utiq-tech.UTIQ-Mobile-SDK:utiq:0.1.75.2")
+    //implementation("internal.utiq:utiq-android:0.1.76")
+    implementation("com.utiq:utiq-android:0.1.76")
     val lifecycleVersion = "2.8.7"
     val navigationVersion = "2.8.9"
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion")

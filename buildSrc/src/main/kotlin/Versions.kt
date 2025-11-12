@@ -1,8 +1,8 @@
 object Versions {
     // Android
     const val minSdk                    = 24
-    const val targetSdk                 = 35
-    const val compileSdk                = 35
+    const val targetSdk                 = 36
+    const val compileSdk                = 36
     const val jvmTarget                 = "17"
     // Libraries versions
     const val gradle                    = "8.9.1"
