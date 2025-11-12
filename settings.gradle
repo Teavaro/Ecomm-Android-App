@@ -10,7 +10,18 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
-        maven { url 'https://jitpack.io' }
+        def props = new Properties()
+        def githubProps = file("github.properties")
+        if (githubProps.exists()) {
+            githubProps.withInputStream { props.load(it) }
+        }
+        maven {
+            url {"https://maven.pkg.github.com/UtiqTech/android-sdk"}
+            credentials {
+                username = props.getProperty('username', System.getenv('GITHUB_USER') ?: '')
+                password = props.getProperty('token', System.getenv('GITHUB_TOKEN') ?: '')
+            }
+        }
     }
 }
 rootProject.name = "teavaroDemoApp"

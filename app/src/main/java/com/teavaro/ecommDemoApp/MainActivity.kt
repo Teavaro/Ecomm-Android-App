@@ -8,11 +8,14 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
+import android.view.Gravity
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.TextView
 import android.widget.Toast
 import android.widget.Toolbar
 import androidx.annotation.RequiresApi
+import androidx.appcompat.app.ActionBar
 import androidx.core.graphics.drawable.DrawableCompat
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -21,10 +24,12 @@ import androidx.navigation.ui.setupWithNavController
 import androidx.room.Room
 import com.teavaro.ecommDemoApp.baseClasses.mvvm.BaseActivity
 import com.teavaro.ecommDemoApp.core.Store
+import com.teavaro.ecommDemoApp.core.Store.showUtiqConsent
+import com.teavaro.ecommDemoApp.core.Store.utiqStartService
 import com.teavaro.ecommDemoApp.core.room.AppDb
+import com.teavaro.ecommDemoApp.core.utils.SharedPreferenceUtils
 import com.teavaro.ecommDemoApp.core.utils.TrackUtils
 import com.teavaro.ecommDemoApp.databinding.ActivityMainBinding
-import com.teavaro.funnelConnect.main.FunnelConnectSDK
 import com.utiq.utiqTech.main.Utiq
 
 
@@ -61,31 +66,45 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
             supportActionBar?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT));
         }
 
+        val textView = TextView(applicationContext).apply {
+            "v${BuildConfig.VERSION_NAME}(${BuildConfig.VERSION_CODE})".also { text = it }
+            setTextColor(Color.BLACK)
+            textSize = 16f
+            setPadding(0, 0, 5, 0) // Optional: adjust for alignment
+            gravity = Gravity.END or Gravity.CENTER_VERTICAL
+            layoutParams = ActionBar.LayoutParams(
+                ActionBar.LayoutParams.WRAP_CONTENT,
+                ActionBar.LayoutParams.MATCH_PARENT,
+                Gravity.END or Gravity.CENTER_VERTICAL
+            )
+        }
+        supportActionBar?.apply {
+            setDisplayShowCustomEnabled(true)
+            customView = textView
+        }
+
         navView.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.navigation_settings -> {
-                    Log.d("test->", item.itemId.toString())
                     Store.lastPage = R.id.navigation_settings
                 }
+
                 R.id.navigation_home -> {
-                    Log.d("test->", item.itemId.toString())
                     Store.lastPage = R.id.navigation_home
                 }
             }
             navController.navigate(item.itemId)
             true
         }
-
         Store.initializeData(this, db) {
             this@MainActivity.runOnUiThread {
                 navView.selectedItemId = it
                 navController.navigate(it)
             }
         }
-
         Log.d("okhttp.OkHttpClient:", "before UTIQ.onInitialize")
-        FunnelConnectSDK.onInitialize({
-            Store.fcStartService(this){
+        /*FunnelConnectSDK.onInitialize({
+            Store.fcStartService(this) {
                 if (FunnelConnectSDK.getPermissions().isEmpty()) {
                     Store.showPermissionsDialog(this, supportFragmentManager)
                 }
@@ -93,12 +112,19 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
         }) {
             Store.umid = "FunnelConnect failed initialization."
             Toast.makeText(FCApplication.instance, it.message, Toast.LENGTH_LONG).show()
-        }
+        }*/
         Utiq.onInitialize({
             Log.d("okhttp.OkHttpClient:", "inside UTIQ.onInitialize")
             if (Utiq.isConsentAccepted()) {
                 Log.d("okhttp.OkHttpClient:", "isConsentAccepted()")
-                Store.utiqStartService(this)
+                utiqStartService(this)
+            } else {
+                val stubToken = SharedPreferenceUtils.getStubToken(this)
+                Utiq.checkMNOEligibility(stubToken, {
+                    showUtiqConsent(this, supportFragmentManager)
+                }, {
+
+                })
             }
         }, {
             Toast.makeText(FCApplication.instance, it.message, Toast.LENGTH_LONG).show()
@@ -135,7 +161,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        Log.d("test->", item.itemId.toString())
         Store.navigateAction?.invoke(Store.lastPage)
         return true
     }

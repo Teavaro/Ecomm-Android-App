@@ -1,5 +1,6 @@
 package com.teavaro.ecommDemoApp.core
 
+//import com.teavaro.funnelConnect.main.FunnelConnectSDK
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
@@ -12,21 +13,16 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentManager
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import com.swrve.sdk.SwrveSDK
-import com.swrve.sdk.geo.SwrveGeoSDK
 import com.teavaro.ecommDemoApp.R
 import com.teavaro.ecommDemoApp.core.dataClases.InfoResponse
 import com.teavaro.ecommDemoApp.core.room.ACEntity
 import com.teavaro.ecommDemoApp.core.room.AppDb
 import com.teavaro.ecommDemoApp.core.room.ItemEntity
 import com.teavaro.ecommDemoApp.core.utils.SharedPreferenceUtils
-import com.teavaro.ecommDemoApp.core.utils.TrackUtils
 import com.teavaro.ecommDemoApp.ui.AbandonedCartDialogFragment
 import com.teavaro.ecommDemoApp.ui.ItemDescriptionDialogFragment
 import com.teavaro.ecommDemoApp.ui.PermissionConsentDialogFragment
 import com.teavaro.ecommDemoApp.ui.UtiqConsent
-import com.teavaro.funnelConnect.main.FunnelConnectSDK
-import com.teavaro.funnelConnect.utils.platformTypes.permissionsMap.Permissions
 import com.utiq.utiqTech.main.Utiq
 import org.json.JSONObject
 import java.lang.reflect.Type
@@ -159,11 +155,13 @@ object Store {
                 )
                 if (omPermissionAccepted || optPermissionAccepted || nbaPermissionAccepted) {
                     val stubToken = SharedPreferenceUtils.getStubToken(context)
-                    Utiq.checkMNOEligibility(stubToken, {
-                        showUtiqConsent(context, supportFragmentManager)
-                    }, {
+                    if (Utiq.isInitialized() && !Utiq.isConsentAccepted()) {
+                        Utiq.checkMNOEligibility(stubToken, {
+                            showUtiqConsent(context, supportFragmentManager)
+                        }, {
 
-                    })
+                        })
+                    }
                 } else {
                     clearData(context)
                 }
@@ -184,7 +182,21 @@ object Store {
             if (Utiq.isInitialized()) {
                 if (consent) {
                     Utiq.acceptConsent()
-                    utiqStartService(context)
+                    utiqStartService(context, { atid, mtid ->
+                        Log.d("okhttp.OkHttpClient", "startService good")
+                        Store.atid = atid
+                        Store.mtid = mtid
+                        SharedPreferenceUtils.setMartechpass(context, mtid)
+                        fcStartService(context) {
+
+                        }
+                    },
+                    { message ->
+                        atid = message
+                        mtid = message
+                        SharedPreferenceUtils.setMartechpass(context, null)
+                        Log.d("okhttp.OkHttpClient", message)
+                    })
                 } else {
                     Utiq.rejectConsent()
                 }
@@ -198,15 +210,15 @@ object Store {
         context: Activity
     ) {
         val action = {
-            val permissions = Permissions()
-            permissions.addPermission(keyUtiq, consent)
-            FunnelConnectSDK.updatePermissions(
+            //val permissions = Permissions()
+            //permissions.addPermission(keyUtiq, consent)
+            /*FunnelConnectSDK.updatePermissions(
                 permissions,
                 utiqNotificationsName,
                 notificationsVersion, {
                     updateFCData(it)
                 }
-            )
+            )*/
         }
         if (isFunnelConnectStarted) {
             action.invoke()
@@ -224,17 +236,17 @@ object Store {
         context: Activity
     ) {
         val action = {
-            val permissions = Permissions()
-            permissions.addPermission(keyOm, om)
-            permissions.addPermission(keyOpt, opt)
-            permissions.addPermission(keyNba, nba)
-            FunnelConnectSDK.updatePermissions(
+//            val permissions = Permissions()
+//            permissions.addPermission(keyOm, om)
+//            permissions.addPermission(keyOpt, opt)
+//            permissions.addPermission(keyNba, nba)
+            /*FunnelConnectSDK.updatePermissions(
                 permissions,
                 fcNotificationsName,
                 notificationsVersion, {
                     updateFCData(it)
                 }
-            )
+            )*/
         }
         if (isFunnelConnectStarted) {
             action.invoke()
@@ -278,12 +290,13 @@ object Store {
         var text = "&amp;attributes=${URLEncoder.encode("{}", "utf-8")}"
         if (isNbaPermissionAccepted()) {
             attributes?.let {
-                text = "&amp;attributes=${URLEncoder.encode(it, "utf-8")}"
+                text = "&amp;attributes=${URLEncoder.encode(it, "utf-8")}&amp;fc_umid=$umid"
             }
             text += "&amp;allowTracking=true"
         } else {
             text += "&amp;allowTracking=false"
         }
+
         return """
            <!DOCTYPE html>
            <html>
@@ -562,18 +575,39 @@ object Store {
     }
 
 
-    fun utiqStartService(context: Context) {
-        atid = "{\"status\":\"notFound\"}"
-        mtid = "{\"status\":\"notFound\"}"
+    fun utiqStartService(
+        context: Context,
+        successAction: (String, String) -> Unit,
+        failureAction: (String) -> Unit
+    ) {
         val stubToken = SharedPreferenceUtils.getStubToken(context)
-        Utiq.startService(stubToken, {
-            Log.d("okhttp.OkHttpClient", "startService good")
-            atid = it.atid.toString()
-            mtid = it.mtid.toString()
-            TrackUtils.mtid = mtid
-        }, {
-            Log.d("okhttp.OkHttpClient", it.message)
-        })
+        if (Utiq.isInitialized()) {
+            Utiq.fetchIdConnectData(stubToken, {
+                successAction(it.atid.toString(), it.mtid.toString())
+            }, {
+                failureAction(it.message)
+            })
+        }
+    }
+
+    fun utiqStartService(
+        context: Context
+    ) {
+        Log.d("okhttp.OkHttpClient", "utiqStartService...")
+        val stubToken = SharedPreferenceUtils.getStubToken(context)
+        if (Utiq.isInitialized()) {
+            Utiq.fetchIdConnectData(stubToken, {
+                Log.d("okhttp.OkHttpClient", "startService good")
+                atid = it.atid.toString()
+                mtid = it.mtid.toString()
+                SharedPreferenceUtils.setMartechpass(context, mtid)
+            }, {
+                atid = it.message
+                mtid = it.message
+                SharedPreferenceUtils.setMartechpass(context, null)
+                Log.d("okhttp.OkHttpClient", it.message)
+            })
+        }
     }
 
     fun getClickIdentLink(context: Context): String? {
@@ -591,50 +625,57 @@ object Store {
         listAc.clear()
         SharedPreferenceUtils.setUserId(context, null)
         SharedPreferenceUtils.setLogin(context, false)
-        FunnelConnectSDK.clearData()
-        FunnelConnectSDK.clearCookies()
+        //FunnelConnectSDK.clearData()
+        //FunnelConnectSDK.clearCookies()
         clearUtiqData(context)
         isFunnelConnectStarted = false
     }
 
     fun clearUtiqData(context: Context) {
         SharedPreferenceUtils.setStubToken(context, null)
-        Utiq.clearData()
-        Utiq.clearCookies()
+        if (Utiq.isInitialized()) {
+            Utiq.clearData()
+        }
         atid = ""
         mtid = ""
-        TrackUtils.mtid = null
+        SharedPreferenceUtils.setMartechpass(context, null)
     }
 
     fun isNbaPermissionAccepted(): Boolean {
-        return FunnelConnectSDK.getPermissions().getPermission(keyNba)
+        return true//FunnelConnectSDK.getPermissions().getPermission(keyNba)
     }
 
     fun isOptPermissionAccepted(): Boolean {
-        return FunnelConnectSDK.getPermissions().getPermission(keyOpt)
+        return true;
+        //return FunnelConnectSDK.getPermissions().getPermission(keyOpt)
     }
 
     fun fcStartService(
-        context: Activity,
+        context: Context,
         action: (() -> Unit)? = null
     ) {
-        FunnelConnectSDK
-            .startService(null, fcNotificationsName, notificationsVersion, {
-                updateFCData(it)
-                SwrveSDK.start(context, FunnelConnectSDK.getUMID())
-                SwrveGeoSDK.start(context)
-                isFunnelConnectStarted = true
-                action?.invoke()
-            },
+        /*FunnelConnectSDK
+            .startService(null,
+                SharedPreferenceUtils.getMartechpass(FCApplication.instance)
+                    ?.let { PassQuery("martechpass", it) },
+                fcNotificationsName,
+                notificationsVersion,
+                {
+                    updateFCData(it)
+                    SwrveSDK.start(context as Activity, FunnelConnectSDK.getUMID())
+                    SwrveGeoSDK.start(context)
+                    isFunnelConnectStarted = true
+                    action?.invoke()
+                },
                 {
                     Log.d("error:", "FunnelConnectSDK.startService")
-                })
+                })*/
     }
 
     fun updateFCData(info: String) {
         infoResponse = info
         attributes = getAttributesFromInfo()
-        umid = FunnelConnectSDK.getUMID()
+        umid = ""//FunnelConnectSDK.getUMID()
         refreshCeltraAd?.invoke()
     }
 }

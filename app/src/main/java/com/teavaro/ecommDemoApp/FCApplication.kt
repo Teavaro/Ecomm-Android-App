@@ -1,5 +1,6 @@
 package com.teavaro.ecommDemoApp
 
+//import com.teavaro.funnelConnect.main.FunnelConnectSDK
 import android.app.Application
 import android.app.NotificationChannel
 import android.app.NotificationManager
@@ -17,12 +18,10 @@ import com.swrve.sdk.geo.SwrveGeoConfig
 import com.swrve.sdk.geo.SwrveGeoSDK
 import com.teavaro.ecommDemoApp.core.Store
 import com.teavaro.ecommDemoApp.core.utils.TrackUtils
-import com.teavaro.funnelConnect.data.models.FCOptions
-import com.teavaro.funnelConnect.main.FunnelConnectSDK
+import com.teavaro.ecommDemoApp.debugging.SharedPreferencesServer
 import com.utiq.utiqTech.data.models.UtiqOptions
 import com.utiq.utiqTech.main.Utiq
 
-@Suppress("unused")
 class FCApplication: Application() {
 
     companion object {
@@ -37,16 +36,17 @@ class FCApplication: Application() {
         var config = resources.openRawResource(R.raw.fc_configs)
             .bufferedReader()
             .use { it.readText() }
-        val fcOptions = FCOptions().enableLogging().setFallBackConfigJson(config)
-        FunnelConnectSDK.initialize(this, "ko8G.Rv_vT97LiDuoBHbhBJt", fcOptions )
+        //val fcOptions = FCOptions().enableLogging().setFallBackConfigJson(config)
+        //FunnelConnectSDK.initialize(this, "ko8G.Rv_vT97LiDuoBHbhBJt", fcOptions )
         config = resources.openRawResource(R.raw.utiq_configs)
             .bufferedReader()
             .use { it.readText() }
         val utiqOptions = UtiqOptions().enableLogging().setFallBackConfigJson(config)
         println("UTIQSDK-${BuildConfig.VERSION_NAME}-------------")
-        Utiq.initialize(this, "R&Ai^v>TfqCz4Y^HH2?3uk8j", utiqOptions)
+        Utiq.initialize(this, "rpCq2SQO9hdNAGwWF7zKVHTL3yU5zzto", utiqOptions)
         FirebaseApp.initializeApp(this)
         initSwrve()
+        initSharedPreferenceDebugger()
     }
 
     private fun initAppPolices() {
@@ -54,6 +54,11 @@ class FCApplication: Application() {
             val threadPolices = StrictMode.ThreadPolicy.Builder().permitAll().build()
             StrictMode.setThreadPolicy(threadPolices)
         }
+    }
+
+    private fun initSharedPreferenceDebugger() {
+        if (BuildConfig.DEBUG)
+            SharedPreferencesServer.start(this, "com.utiqTech.utiq.sdk.settings")
     }
 
     private fun initSwrve(){
@@ -70,9 +75,9 @@ class FCApplication: Application() {
                 }
             }
             val notificationConfig: SwrveNotificationConfig.Builder = SwrveNotificationConfig.Builder(
-                com.teavaro.ecommDemoApp.R.drawable.logo1, com.teavaro.ecommDemoApp.R.drawable.logo1, channel)
+                R.drawable.logo1, R.drawable.logo1, channel)
                 .activityClass(MainActivity::class.java)
-                    .largeIconDrawableId(com.teavaro.ecommDemoApp.R.drawable.logo1)
+                    .largeIconDrawableId(R.drawable.logo1)
                     .accentColorHex("#3949AB")
             config.notificationConfig = notificationConfig.build()
             config.notificationListener = SwrvePushNotificationListener {

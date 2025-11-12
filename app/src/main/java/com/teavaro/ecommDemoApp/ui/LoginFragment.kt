@@ -14,8 +14,6 @@ import com.teavaro.ecommDemoApp.core.Store
 import com.teavaro.ecommDemoApp.core.utils.SharedPreferenceUtils
 import com.teavaro.ecommDemoApp.core.utils.TrackUtils
 import com.teavaro.ecommDemoApp.databinding.FragmentLoginBinding
-import com.teavaro.funnelConnect.data.models.FCUser
-import com.teavaro.funnelConnect.main.FunnelConnectSDK
 import java.nio.charset.StandardCharsets
 import java.util.Base64
 import javax.crypto.BadPaddingException
@@ -47,11 +45,11 @@ class LoginFragment : Fragment() {
         binding.btnLogin.setOnClickListener {
             TrackUtils.click("login")
             if (!binding.edtEmail.text.isNullOrEmpty() && !binding.edtPassword.text.isNullOrEmpty()) {
-                if (FunnelConnectSDK.isInitialized() && Store.isNbaPermissionAccepted()) {
+                if (true){//FunnelConnectSDK.isInitialized() && Store.isNbaPermissionAccepted()) {
                     binding.btnLogin.text = "Processing..."
                     binding.btnLogin.isEnabled = false
                     binding.edtEmail.text.toString().encryptCBC()?.let {userId ->
-                        FunnelConnectSDK.setUser(FCUser("enemail", userId), {
+                        /*FunnelConnectSDK.setUser(FCUser("enemail", userId), {
                             Store.infoResponse = it
                             Store.updateFCData(it)
                             Store.umid = FunnelConnectSDK.getUMID()
@@ -64,7 +62,7 @@ class LoginFragment : Fragment() {
                         },{
                             binding.btnLogin.text = "LOG IN"
                             binding.btnLogin.isEnabled = true
-                        })
+                        })*/
                     }
                 }
                 else{

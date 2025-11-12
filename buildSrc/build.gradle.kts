@@ -10,7 +10,4 @@ repositories {
 
 dependencies {
     implementation(platform("org.jetbrains.kotlin:kotlin-bom"))
-    // Fuel Http Library
-    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
-    implementation("com.github.kittinunf.fuel:fuel:2.3.1")
 }

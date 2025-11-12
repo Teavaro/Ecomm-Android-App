@@ -17,20 +17,6 @@ tasks.register<customTasks.versioning.IncrementAndroidVersionCode>("incrementAnd
   }
 }
 
-tasks.register<customTasks.slackUploader.SlackUploader>("uploadDebugApkToSlack") {
-  dependsOn("incrementAndroidVersionCode", "assembleDebug")
-  slackUploaderInfo = customTasks.slackUploader.SlackUploaderInfo(
-    channels = listOf("sdk-apk-releases"),
-    variantName = BuildConfigFieldName.debugBuildType)
-}
-
-tasks.register<customTasks.slackUploader.SlackUploader>("uploadReleaseApkToSlack") {
-  dependsOn("incrementAndroidVersionCode", "assembleRelease")
-  slackUploaderInfo = customTasks.slackUploader.SlackUploaderInfo(
-    channels = listOf("sdk-apk-releases"),
-    variantName = BuildConfigFieldName.releaseBuildType)
-}
-
 tasks.register<Exec>("uploadDebugApkToFirebaseAppDistribution") {
   dependsOn("incrementAndroidVersionCode", "assembleDebug")
   commandLine("$rootDir/app/UploadApkToFirebaseAppDistribution.sh")

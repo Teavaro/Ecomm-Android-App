@@ -4,16 +4,18 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.LifecycleOwner
-import com.teavaro.ecommDemoApp.core.Store
-import com.teavaro.funnelConnect.main.FunnelConnectSDK
+import com.teavaro.ecommDemoApp.FCApplication
+import com.teavaro.ecommDemoApp.core.Store.utiqStartService
+
+//import com.teavaro.funnelConnect.main.FunnelConnectSDK
 
 object TrackUtils  : LifecycleObserver {
-    var mtid: String? = null
     const val EVENT_NAME = "event_name"
     const val EVENT_DATA = "event_data"
 
     fun impression(value: String) {
         event(value, "navigation")
+        utiqStartService(FCApplication.instance)
     }
 
     fun click(value: String){
@@ -22,16 +24,16 @@ object TrackUtils  : LifecycleObserver {
 
     fun event(value: String, name: String){
         val eventsMap = mutableMapOf( EVENT_NAME to name, EVENT_DATA to value)
-        mtid?.let {
-            eventsMap["mtid"] = it
+        SharedPreferenceUtils.getMartechpass(FCApplication.instance)?.let {
+            eventsMap["martechpass"] = it
         }
         events(eventsMap)
     }
 
     fun events(events: Map<String, String>){
-        if(FunnelConnectSDK.isInitialized() && Store.isOptPermissionAccepted()) {
+        /*if(FunnelConnectSDK.isInitialized() && Store.isOptPermissionAccepted()) {
             FunnelConnectSDK.logEvents(events)
-        }
+        }*/
     }
 
     fun geoPlace(value: String){

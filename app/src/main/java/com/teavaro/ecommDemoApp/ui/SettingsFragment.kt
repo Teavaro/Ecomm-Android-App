@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.teavaro.ecommDemoApp.FCApplication
 import com.teavaro.ecommDemoApp.R
 import com.teavaro.ecommDemoApp.core.Store
 import com.teavaro.ecommDemoApp.core.utils.SharedPreferenceUtils
@@ -84,12 +85,21 @@ class SettingsFragment : Fragment() {
             Store.showPermissionsDialog(requireActivity(), parentFragmentManager)
         }
 
+        binding.utiqConsentManagement.setOnClickListener {
+            Store.showUtiqConsent(requireActivity(), parentFragmentManager)
+        }
+
         binding.stubMode.isChecked = SharedPreferenceUtils.getStubToken(requireContext()) != null
         binding.stubMode.setOnCheckedChangeListener { _, isStub ->
+            Store.clearUtiqData(FCApplication.instance)
+            SharedPreferenceUtils.setMartechpass(requireContext(), null)
             if(isStub) {
                 SharedPreferenceUtils.setStubToken(requireContext(), Store.stubToken)
-                Store.showUtiqConsent(requireActivity(), parentFragmentManager)
             }
+            else{
+                SharedPreferenceUtils.setStubToken(requireContext(), null)
+            }
+            Store.showUtiqConsent(requireActivity(), parentFragmentManager)
         }
         return root
     }

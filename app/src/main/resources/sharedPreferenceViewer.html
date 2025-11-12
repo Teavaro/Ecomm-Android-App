@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SharedPreferences Editor</title>
+    <style>
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100%;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .card {
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 1000px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+        }
+
+        h1 {
+            color: #333;
+            margin-top: 8px;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            padding-top: 8px;
+            text-align: center;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            table-layout: fixed;
+        }
+
+        th,
+        td {
+            padding: 10px;
+            text-align: left;
+            border: 1px solid #ddd;
+            word-wrap: break-word;
+            white-space: pre-wrap;
+        }
+
+        th {
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+
+        th.key-column,
+        td.key-column {
+            width: 20%;
+        }
+
+        th.value-column,
+        td.value-column {
+            width: 50%;
+        }
+
+        th.action-column,
+        td.action-column {
+            width: 10%;
+            text-align: center;
+        }
+
+        td.key-column,
+        td.value-column,
+        td.action-column {
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        button {
+            width: 100%;
+            background-color: #28a745;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px 0;
+        }
+
+        button.delete {
+            background-color: #dc3545;
+        }
+
+        button:hover {
+            opacity: 0.8;
+        }
+
+        input {
+            width: 80%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            max-width: 400px;
+        }
+
+        .actions {
+            margin-top: 20px;
+        }
+
+        pre {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+            font-size: 12px;
+            white-space: pre-wrap;
+        }
+
+        td:nth-child(2) {
+            max-width: 400px;
+            word-wrap: break-word;
+            white-space: pre-wrap;
+            overflow-x: auto;
+        }
+
+        td.action-column {
+            padding: 5px !important;
+        }
+
+        td.action-column button {
+            width: 10px;
+            display: inline-block;
+            padding: 8px 5px;
+            margin: 2px;
+            box-sizing: border-box;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.4);
+            padding-top: 60px;
+            overflow-y: auto;
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 600px;
+            border-radius: 8px;
+            overflow: hidden;
+            max-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+        }
+
+        .key-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .key-container strong {
+            margin-right: 5px;
+            width: 30px;
+        }
+
+        .key-container span {
+            margin-right: 5px;
+            font-weight: normal;
+            font-size: 14px;
+        }
+
+        .modal-content button {
+            margin-top: 15px;
+            margin-right: 10px;
+        }
+
+        .close {
+            color: #aaa;
+            font-size: 28px;
+            font-weight: bold;
+            position: absolute;
+            top: 10px;
+            right: 25px;
+            color: #000;
+            cursor: pointer;
+        }
+
+        .confirm-modal {
+            display: none;
+        }
+
+        .confirm-modal-content {
+            text-align: center;
+            padding: 20px;
+            background-color: #f4f4f4;
+            border-radius: 8px;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .confirm-modal-content button {
+            background-color: #28a745;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 5px;
+            margin: 10px 0;
+            width: auto;
+            display: inline-block;
+        }
+
+        .confirm-modal-content .cancel-button {
+            background-color: #28a745;
+        }
+
+        .confirm-modal-content #confirmDeleteButton {
+            background-color: #dc3545;
+        }
+
+        /* Close button style for modal */
+        .close-btn {
+            background-color: #28a745;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+
+        .close-btn:hover {
+            opacity: 0.8;
+        }
+    </style>
+    <script>
+        async function loadData() {
+            const response = await fetch("/data");
+            const data = await response.json(); // Data is now a Map-like object
+            const tableBody = document.getElementById("data-table");
+            tableBody.innerHTML = "";
+
+            for (const key in data) {
+                if (data.hasOwnProperty(key)) {
+                    let row = document.createElement("tr");
+                    let keyCell = document.createElement("td");
+                    let valueCell = document.createElement("td");
+                    let actionCell = document.createElement("td");
+
+                    keyCell.textContent = key;
+
+                    let value = data[key]; // This is the string value for the key
+
+                    valueCell.textContent = value; // Display the value as a string
+
+                    let updateButton = document.createElement("button");
+                    updateButton.textContent = "Update";
+                    updateButton.onclick = () => openUpdateDialog(key, value);
+
+                    let deleteButton = document.createElement("button");
+                    deleteButton.textContent = "Delete";
+                    deleteButton.classList.add("delete");
+                    deleteButton.onclick = () => openDeleteConfirmation(key);
+
+                    actionCell.appendChild(updateButton);
+                    actionCell.appendChild(deleteButton);
+                    row.appendChild(keyCell);
+                    row.appendChild(valueCell);
+                    row.appendChild(actionCell);
+                    tableBody.appendChild(row);
+                }
+            }
+        }
+
+        function openUpdateDialog(key, value) {
+            const modal = document.getElementById("updateModal");
+            const modalContent = document.getElementById("modalContent");
+            modal.style.display = "block";
+
+            let displayValue = value;
+
+            // Try to parse value as JSON and pretty-print if valid
+            try {
+                const parsed = JSON.parse(value);
+                displayValue = JSON.stringify(parsed, null, 2);
+            } catch (e) {
+                // Not JSON, leave value as-is
+            }
+
+            modalContent.innerHTML = `
+<div class="key-container">
+  <strong>Key:</strong>
+  <span>${key}</span>
+</div>
+<textarea id="updateValue" rows="10" style="width: 100%; resize: none;">${displayValue}</textarea>
+<button onclick="updateValue('${key}')">Save</button>
+<button class="close-btn" onclick="closeModal()">Close</button>
+`;
+        }
+
+        function closeModal() {
+            const modal = document.getElementById("updateModal");
+            modal.style.display = "none";
+        }
+
+        async function updateValue(key) {
+            const updatedValue = document.getElementById("updateValue").value;
+
+            // URL encode the data (key=value format)
+            const body = new URLSearchParams();
+            body.append("key", key);
+            body.append("value", updatedValue); // The value is sent as a string
+
+            try {
+                const baseUrl = window.location.origin; // Get the base URL (e.g., http://localhost:8080)
+                const response = await fetch(`${baseUrl}/update`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/x-www-form-urlencoded", // Set the content type to URL-encoded
+                    },
+                    body: body.toString(), // The body is in the key=value format
+                });
+
+                if (response.ok) {
+                    console.log("Value updated successfully");
+                    loadData(); // Reload data to reflect changes
+                    closeModal(); // Close the update modal
+                } else {
+                    alert("Failed to update the key.");
+                }
+            } catch (error) {
+                console.error("Error:", error);
+                alert("Network error while updating.");
+            }
+        }
+
+        function openDeleteConfirmation(key) {
+            const modal = document.getElementById("deleteConfirmationModal");
+            modal.style.display = "block";
+
+            const confirmButton = document.getElementById("confirmDeleteButton");
+            const cancelButton = document.getElementById("cancelDeleteButton");
+
+            confirmButton.onclick = () => deleteValue(key);
+            cancelButton.onclick = () => closeDeleteConfirmation();
+        }
+
+        async function deleteValue(key) {
+            if (!key) {
+                alert("No key provided.");
+                return;
+            }
+
+            const body = new URLSearchParams();
+            body.append("key", key);
+
+            try {
+                const response = await fetch("/delete", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                    body: body.toString(),
+                });
+
+                if (response.ok) {
+                    closeDeleteConfirmation();
+                    loadData();
+                } else {
+                    alert("Failed to delete the key.");
+                }
+            } catch (err) {
+                alert("Network error while deleting.");
+            }
+        }
+
+        function closeDeleteConfirmation() {
+            const modal = document.getElementById("deleteConfirmationModal");
+            modal.style.display = "none";
+        }
+
+        window.onload = loadData;
+    </script>
+</head>
+<body>
+<div class="container">
+    <h1>SharedPreferences Editor</h1>
+    <div class="card">
+        <table>
+            <thead>
+            <tr>
+                <th class="key-column">Key</th>
+                <th class="value-column">Value</th>
+                <th class="action-column">Action</th>
+            </tr>
+            </thead>
+            <tbody id="data-table">
+            <tr>
+                <td colspan="3">Loading...</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Modal for editing a value -->
+<div id="updateModal" class="modal">
+    <div class="modal-content" id="modalContent">
+        <!-- Content will be dynamically populated -->
+    </div>
+</div>
+
+<!-- Delete confirmation modal -->
+<div id="deleteConfirmationModal" class="modal confirm-modal">
+    <div class="confirm-modal-content">
+        <p>Are you sure you want to delete this key?</p>
+        <button id="confirmDeleteButton">Delete</button>
+        <button id="cancelDeleteButton" class="cancel-button">Cancel</button>
+    </div>
+</div>
+</body>
+</html>
