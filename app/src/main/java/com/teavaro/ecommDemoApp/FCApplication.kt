@@ -38,10 +38,7 @@ class FCApplication: Application() {
             .use { it.readText() }
         //val fcOptions = FCOptions().enableLogging().setFallBackConfigJson(config)
         //FunnelConnectSDK.initialize(this, "ko8G.Rv_vT97LiDuoBHbhBJt", fcOptions )
-        config = resources.openRawResource(R.raw.utiq_configs)
-            .bufferedReader()
-            .use { it.readText() }
-        val utiqOptions = UtiqOptions().enableLogging().setFallBackConfigJson(config)
+        val utiqOptions = UtiqOptions().enableLogging()
         println("UTIQSDK-${BuildConfig.VERSION_NAME}-------------")
         Utiq.initialize(this, "rpCq2SQO9hdNAGwWF7zKVHTL3yU5zzto", utiqOptions)
         FirebaseApp.initializeApp(this)

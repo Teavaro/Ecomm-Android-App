@@ -155,7 +155,7 @@ object Store {
                 )
                 if (omPermissionAccepted || optPermissionAccepted || nbaPermissionAccepted) {
                     val stubToken = SharedPreferenceUtils.getStubToken(context)
-                    if (Utiq.isInitialized() && !Utiq.isConsentAccepted()) {
+                    if (Utiq.isInitialized() == true && !Utiq.isConsentAccepted()) {
                         Utiq.checkMNOEligibility(stubToken, {
                             showUtiqConsent(context, supportFragmentManager)
                         }, {
@@ -179,7 +179,7 @@ object Store {
 
     fun showUtiqConsent(context: Activity, supportFragmentManager: FragmentManager) {
         UtiqConsent.open(supportFragmentManager) { consent ->
-            if (Utiq.isInitialized()) {
+            if (Utiq.isInitialized() == true) {
                 if (consent) {
                     Utiq.acceptConsent()
                     utiqStartService(context, { atid, mtid ->
@@ -581,7 +581,7 @@ object Store {
         failureAction: (String) -> Unit
     ) {
         val stubToken = SharedPreferenceUtils.getStubToken(context)
-        if (Utiq.isInitialized()) {
+        if (Utiq.isInitialized() == true) {
             Utiq.fetchIdConnectData(stubToken, {
                 successAction(it.atid.toString(), it.mtid.toString())
             }, {
@@ -595,7 +595,7 @@ object Store {
     ) {
         Log.d("okhttp.OkHttpClient", "utiqStartService...")
         val stubToken = SharedPreferenceUtils.getStubToken(context)
-        if (Utiq.isInitialized()) {
+        if (Utiq.isInitialized() == true) {
             Utiq.fetchIdConnectData(stubToken, {
                 Log.d("okhttp.OkHttpClient", "startService good")
                 atid = it.atid.toString()
@@ -633,7 +633,7 @@ object Store {
 
     fun clearUtiqData(context: Context) {
         SharedPreferenceUtils.setStubToken(context, null)
-        if (Utiq.isInitialized()) {
+        if (Utiq.isInitialized() == true) {
             Utiq.clearData()
         }
         atid = ""
